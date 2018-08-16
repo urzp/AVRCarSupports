@@ -12,6 +12,7 @@
 #include "Panel.h"
 #include "Output.h"
 #include "test.h"
+#include "LCDn5110.h"
 
 
 #ifndef INITIALISATION_H_
@@ -30,18 +31,19 @@ Output suppot_1;
 
 void Initialisation(){
 	
-	DDRB = 0xFF;
-	DDRD = 0xFF;
+
 	
-	okButton.Init('B', 0);
-	upButton.Init('B', 1);
-	downButton.Init('B', 2);
-	leftButton.Init('B',3);
-	rightButton.Init('B',4);
+	okButton.Init('D', 1);
+	upButton.Init('D', 2);
+	downButton.Init('D', 3);
+	leftButton.Init('D',4);
+	rightButton.Init('D',5);
 	
 	panel.Init(okButton,upButton,downButton,leftButton,rightButton);
 	
-	suppot_1.Init('D', 1);
+	suppot_1.Init('D', 0);
+	
+	Lcd_init();
 	
 }
 

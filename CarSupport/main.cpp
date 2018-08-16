@@ -12,12 +12,19 @@
 #include "Output.h"
 #include "test.h"
 #include "Initialisation.h"
+#include "LCDn5110.h"
 
 
 
 int main(void)
 {	
+	
+	
 	Initialisation();
+	
+	test_LCD();
+	
+
 	
     while (1) 
     {
@@ -25,6 +32,7 @@ int main(void)
 		//test_out_timer(rightButton,suppot_1);
 		//test_Out_Set(downButton,suppot_1);
 		test_panel(panel,suppot_1);
+		
 		
     }
 }
