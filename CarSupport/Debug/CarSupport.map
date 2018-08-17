@@ -88,6 +88,26 @@ Discarded input sections
  .bss           0x00000000        0x0 Panel.o
  .text._ZN5Panel7PressedEi
                 0x00000000       0x6c Panel.o
+ .text          0x00000000        0x0 Wheel.o
+ .data          0x00000000        0x0 Wheel.o
+ .bss           0x00000000        0x0 Wheel.o
+ .text._ZN5WheelC2Ev
+                0x00000000        0x2 Wheel.o
+ .text._ZN5Wheel4InitEi
+                0x00000000        0x8 Wheel.o
+ .text._ZN5Wheel9get_hightEv
+                0x00000000       0x18 Wheel.o
+ .text._ZN5Wheel9set_hightEv
+                0x00000000        0x2 Wheel.o
+ .debug_info    0x00000000      0x1f0 Wheel.o
+ .debug_abbrev  0x00000000      0x132 Wheel.o
+ .debug_aranges
+                0x00000000       0x38 Wheel.o
+ .debug_ranges  0x00000000       0x28 Wheel.o
+ .debug_line    0x00000000       0x89 Wheel.o
+ .debug_str     0x00000000      0x1e0 Wheel.o
+ .comment       0x00000000       0x31 Wheel.o
+ .debug_frame   0x00000000       0x54 Wheel.o
  .text          0x00000000        0x0 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixsfsi.o)
  .data          0x00000000        0x0 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixsfsi.o)
  .bss           0x00000000        0x0 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixsfsi.o)
@@ -253,6 +273,7 @@ LOAD LCDn5110.o
 LOAD main.o
 LOAD Output.o
 LOAD Panel.o
+LOAD Wheel.o
 START GROUP
 LOAD c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 END GROUP

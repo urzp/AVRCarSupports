@@ -41,7 +41,8 @@ C_SRCS +=  \
 ../LCDn5110.cpp \
 ../main.cpp \
 ../Output.cpp \
-../Panel.cpp
+../Panel.cpp \
+../Wheel.cpp
 
 
 PREPROCESSING_SRCS += 
@@ -55,28 +56,32 @@ Button.o \
 LCDn5110.o \
 main.o \
 Output.o \
-Panel.o
+Panel.o \
+Wheel.o
 
 OBJS_AS_ARGS +=  \
 Button.o \
 LCDn5110.o \
 main.o \
 Output.o \
-Panel.o
+Panel.o \
+Wheel.o
 
 C_DEPS +=  \
 Button.d \
 LCDn5110.d \
 main.d \
 Output.d \
-Panel.d
+Panel.d \
+Wheel.d
 
 C_DEPS_AS_ARGS +=  \
 Button.d \
 LCDn5110.d \
 main.d \
 Output.d \
-Panel.d
+Panel.d \
+Wheel.d
 
 OUTPUT_FILE_PATH +=CarSupport.elf
 
@@ -121,6 +126,13 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./Panel.o: .././Panel.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328 -B "C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega328" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./Wheel.o: .././Wheel.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328 -B "C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega328" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
