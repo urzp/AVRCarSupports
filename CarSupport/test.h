@@ -51,7 +51,7 @@ void test_LCD(){
 		
 		Lcd_clear();
 		//Lcd_prints дл€ вывода статичных данных
-		Lcd_prints(0, 0, FONT_1X,(unsigned char *)PSTR("ѕривет!"));
+		Lcd_prints(0, 0, FONT_1X,(unsigned char *)PSTR("ѕѕивет!"));
 		//Lcd_print дл€ вывода из переменной
 		Lcd_print(0, 1, FONT_1X,(unsigned char *)s_data);
 		//Lcd_printf дл€ вывода дробного числа (преобразование float в string)
@@ -60,6 +60,16 @@ void test_LCD(){
 
 		//передадим данные
 		Lcd_update();
+}
+
+void test_LCD_clear(Panel panel){
+	
+	if (panel.Pressed(10) == 'R'){
+		Lcd_clear();
+		Lcd_update();
+	}
+	
+	
 }
 
 #endif /* TEST_H_ */

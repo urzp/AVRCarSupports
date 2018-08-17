@@ -31,8 +31,8 @@ int main(void)
 		
 		//test_out_timer(rightButton,suppot_1);
 		//test_Out_Set(downButton,suppot_1);
-		test_panel(panel,suppot_1);
-		
+		//test_panel(panel,suppot_1);
+		//test_LCD_clear(panel);
 		
     }
 }

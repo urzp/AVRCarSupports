@@ -33,11 +33,11 @@ void Initialisation(){
 	
 
 	
-	okButton.Init('D', 1);
-	upButton.Init('D', 2);
-	downButton.Init('D', 3);
-	leftButton.Init('D',4);
-	rightButton.Init('D',5);
+	okButton.Init('D', 2);
+	upButton.Init('D', 3);
+	downButton.Init('D', 4);
+	leftButton.Init('D',5);
+	rightButton.Init('D',6);
 	
 	panel.Init(okButton,upButton,downButton,leftButton,rightButton);
 	
