@@ -5,6 +5,9 @@
 * Author: user
 */
 
+const int NORMAL=0;
+const int UP=1;
+const int DOWN=2;
 
 #include "Wheel.h"
 
@@ -16,12 +19,27 @@ Wheel::Wheel()
 void Wheel::Init(int _number){
 	sensorWheels.Init();
 	number =  _number;
-	hight = 1.50;
+	sethight = 2.50;
 }
 
 float Wheel::get_hight(){
 	hight = sensorWheels.getParams(number);
 	return hight;
+}
+
+void Wheel::initialHight(){
+	get_hight();
+	sethight = hight;
+}
+
+int Wheel::takeDerection(){
+	if (!selected) return NORMAL;
+	get_hight();
+	diff = sethight*100 - hight*100;
+	_diff = diff;
+	if (_diff < 0) return DOWN;
+	if (_diff > 0) return UP;
+	return NORMAL;
 }
 
 void Wheel::set_hight(){
@@ -38,12 +56,12 @@ void Wheel::Select(){
 
 bool Wheel::Up(float step){
 	if (!selected){return false;}
-	hight += step;
+	sethight += step;
 	return true;
 }
 
 bool Wheel::Down(float step){
 	if (!selected){return false;}
-	hight -= step;
+	sethight -= step;
 	return true;
 }

@@ -65,7 +65,7 @@ void Activity::Init(){
 	Cursor = MENU;
 	
 	Statment = SCREEN_MAIN;
-	
+	//cursors map
 	Main_Screen_cursor_pathes[MENU][B_LEFT_] = LEFTUP;
 	Main_Screen_cursor_pathes[MENU][B_RIGHT] = RIGHTUP;
 	Main_Screen_cursor_pathes[MENU][B_UP___] = MENU;
@@ -120,11 +120,12 @@ bool Activity::Main_Screen_Move(Panel panel, Carrage &carrage){
 		next = Main_Screen_cursor_pathes[Cursor][move];
 		switch(next){
 			case (ACTION_WHEEL):SelectWheel(carrage);break;
-			case (ACTION_ADJUST):Statment = SCREEN_ADJUST ;break;
+			case (ACTION_ADJUST):Statment = SCREEN_ADJUST; carrage.beforeAdjast() ;break;
 			default: Cursor = next;break;
 		}
 		return true;
 }
+
 
 void Activity::SelectWheel(Carrage &carrage){
 	switch(Cursor){

@@ -16,6 +16,7 @@ class Wheel
 public:
 	int number;
 	float hight;
+	float sethight;
 	bool selected;
 	bool malfuction;
 	bool adjusted;
@@ -33,8 +34,12 @@ public:
 	bool Down(float step);
 	void PrintLCD();
 	void Select();
+	void initialHight();
+	int takeDerection();
 protected:
 private:
+	float diff;
+	int _diff;
 
 
 }; //Wheel

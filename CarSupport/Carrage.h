@@ -6,6 +6,7 @@
 */
 
 #include "Wheel.h"
+#include "Support.h"
 
 #ifndef __CARRAGE_H__
 #define __CARRAGE_H__
@@ -19,16 +20,20 @@ public:
 	Wheel Wheel_2;
 	Wheel Wheel_3;
 	Wheel Wheel_4;
+	Support support;
 protected:
 private:
+	int derWheel[5];
+	int finish,i;
 
 //functions
 public:
 	Carrage();
 	void Init(Wheel _Wheel_1, Wheel _Wheel_2, Wheel _Wheel_3, Wheel _Wheel_4);
+	void beforeAdjast();
 	void Up(float step);
 	void Down(float step);
-	
+	void Ajustment();
 protected:
 private:
 

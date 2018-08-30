@@ -15,8 +15,8 @@ Main_Screen.d Main_Screen.o: .././Main_Screen.cpp .././Main_Screen.h \
  c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- .././Carrage.h .././Wheel.h .././SensorsWheels.h .././Activity.h \
- .././Panel.h .././Button.h
+ .././Carrage.h .././Wheel.h .././SensorsWheels.h .././Support.h \
+ .././Activity.h .././Panel.h .././Button.h
 
 .././Main_Screen.h:
 
@@ -57,6 +57,8 @@ c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include
 .././Wheel.h:
 
 .././SensorsWheels.h:
+
+.././Support.h:
 
 .././Activity.h:
 

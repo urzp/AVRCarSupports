@@ -19,7 +19,7 @@
 #include "Carrage.h"
 #include "Main_Screen.h"
 #include "Activity.h"
-#include "Support.h"
+
 
 
 
@@ -48,7 +48,7 @@ Main_Screen mainScreen;
 
 Activity activity;
 
-Support support;
+
 
 
 void Initialisation(){
@@ -76,7 +76,7 @@ void Initialisation(){
 	
 	activity.Init();
 	
-	support.Init();
+
 	
 }
 

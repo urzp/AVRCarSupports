@@ -42,6 +42,10 @@ static uint8_t start_i2c(uint8_t d_adr);
 static inline void stop_i2c();
 static uint8_t write_i2c(uint8_t ADR, uint8_t value);
 
+const int NORMAL=0;
+const int UP=1;
+const int DOWN=2;
+
 // default constructor
 Support::Support()
 {
@@ -49,6 +53,7 @@ Support::Support()
 
 
 void Support::Init(){
+	write_i2c((I2C_ADR_PCF8574<<1), 0x00);
 	//TWBR = (F_CPU / 100000UL - 16)/2; // TWI bitrate
 	//TCCR1B |= (1<<WGM12);
 	
@@ -71,7 +76,24 @@ void Support::Up(int ms_time, bool support_1, bool support_2, bool support_3, bo
 	write_i2c((I2C_ADR_PCF8574<<1), 0x00);
 }
 
-
+void Support::Adjast(int ms_time, int DerWheel_1, int DerWheel_2,int DerWheel_3, int DerWheel_4){
+	uint8_t data = 0x00;
+	if(DerWheel_1 == UP){data |= (1<<0);};
+	if(DerWheel_1 == DOWN){data |= (1<<1);};
+		
+	if(DerWheel_2 == UP){data |= (1<<2);};
+	if(DerWheel_2 == DOWN){data |= (1<<3);};
+		
+	if(DerWheel_3 == UP){data |= (1<<4);};
+	if(DerWheel_3 == DOWN){data |= (1<<5);};
+		
+	if(DerWheel_4 == UP){data |= (1<<6);};
+	if(DerWheel_4 == DOWN){data |= (1<<7);};
+		
+	write_i2c((I2C_ADR_PCF8574<<1), data);
+	for (i=0;i<ms_time;i++){_delay_ms(1);}
+	write_i2c((I2C_ADR_PCF8574<<1), 0x00);
+}
 
 
 static uint8_t write_i2c(uint8_t ADR, uint8_t value) {

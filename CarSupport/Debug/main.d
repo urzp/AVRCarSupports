@@ -20,8 +20,8 @@ main.d main.o: .././main.cpp \
  c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  .././Button.h .././Panel.h .././Output.h .././test.h .././LCDn5110.h \
  c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
- .././Carrage.h .././Wheel.h .././SensorsWheels.h .././Initialisation.h \
- .././Main_Screen.h .././Activity.h .././Support.h
+ .././Carrage.h .././Wheel.h .././SensorsWheels.h .././Support.h \
+ .././Initialisation.h .././Main_Screen.h .././Activity.h
 
 c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -79,10 +79,10 @@ c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include
 
 .././SensorsWheels.h:
 
+.././Support.h:
+
 .././Initialisation.h:
 
 .././Main_Screen.h:
 
 .././Activity.h:
-
-.././Support.h:
