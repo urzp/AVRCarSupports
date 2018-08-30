@@ -29,7 +29,7 @@ class Panel
 	public:
 		Panel();
 		void Init(Button ok, Button up, Button down, Button left, Button rigit);
-		char Pressed(int debounse);
+		int Pressed(int debounse);
 	protected:
 	private:
 

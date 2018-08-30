@@ -305,6 +305,33 @@ byte LcdGotoXY ( byte x, byte y )
     return OK;
 }
 
+byte LcdChr_full(byte ch){
+	byte i, c;
+	byte b1, b2;
+	int  tmpIdx;
+	ch -= 32;
+	
+	    for ( i = 0; i < 6; i++ )
+	    {
+		    // Копируем вид символа из таблицы в кэш
+		    LcdCache[LcdCacheIdx++] = pgm_read_byte( &(FontLookup[ch][i]) );
+	    }
+	return OK;
+}
+
+byte LcdStepLevel(byte ch){
+		byte i, c;
+		byte b1, b2;
+		int  tmpIdx;
+		
+		
+		for ( i = 0; i < 24; i++ )
+		{
+			// Копируем вид символа из таблицы в кэш
+			LcdCache[LcdCacheIdx++] = pgm_read_byte( &(StepLevels[ch][i]) );
+		}
+		return OK;
+}
 
 /*
  * Имя                   :  LcdChr
@@ -323,9 +350,10 @@ byte LcdChr ( LcdFontSize size, byte ch )
     {
         // Обновляем нижнюю границу
         LoWaterMark = LcdCacheIdx;
+		
     }
 
-    if ( (ch >= 0x20) && (ch <= 0x7F) )
+    if ( (ch >= 0x20) && (ch <= 0xBF) )
     {
         // Смещение в таблице для символов ASCII[0x20-0x7F]
         ch -= 32;
@@ -552,215 +580,215 @@ byte Lcd_pixel ( byte x, byte y, LcdPixelMode mode )
  *                          mode    -> Off, On или Xor. Смотри enum в n5110.h
  * Возвращаемое значение :  смотри возвращаемое значение в n5110lcd.h
  */
-byte Lcd_line ( byte x1, byte y1, byte x2, byte y2, LcdPixelMode mode )
-{
-    int dx, dy, stepx, stepy, fraction;
-    byte response;
+// byte Lcd_line ( byte x1, byte y1, byte x2, byte y2, LcdPixelMode mode )
+// {
+//     int dx, dy, stepx, stepy, fraction;
+//     byte response;
 
-    // dy   y2 - y1
-    // -- = -------
-    // dx   x2 - x1
+//     // dy   y2 - y1
+//     // -- = -------
+//     // dx   x2 - x1
 
-    dy = y2 - y1;
-    dx = x2 - x1;
+//     dy = y2 - y1;
+//     dx = x2 - x1;
 
-    // dy отрицательное
-    if ( dy < 0 )
-    {
-        dy    = -dy;
-        stepy = -1;
-    }
-    else
-    {
-        stepy = 1;
-    }
+//     // dy отрицательное
+//     if ( dy < 0 )
+//     {
+//         dy    = -dy;
+//         stepy = -1;
+//     }
+//     else
+//     {
+//         stepy = 1;
+//     }
 
-    // dx отрицательное
-    if ( dx < 0 )
-    {
-        dx    = -dx;
-        stepx = -1;
-    }
-    else
-    {
-        stepx = 1;
-    }
+//     // dx отрицательное
+//     if ( dx < 0 )
+//     {
+//         dx    = -dx;
+//         stepx = -1;
+//     }
+//     else
+//     {
+//         stepx = 1;
+//     }
 
-    dx <<= 1;
-    dy <<= 1;
+//     dx <<= 1;
+//     dy <<= 1;
 
-    // Рисуем начальную точку
-    response = Lcd_pixel( x1, y1, mode );
-    if(response)
-        return response;
+//     // Рисуем начальную точку
+//     response = Lcd_pixel( x1, y1, mode );
+//     if(response)
+//         return response;
 
-    // Рисуем следующие точки до конца
-    if ( dx > dy )
-    {
-        fraction = dy - ( dx >> 1);
-        while ( x1 != x2 )
-        {
-            if ( fraction >= 0 )
-            {
-                y1 += stepy;
-                fraction -= dx;
-            }
-            x1 += stepx;
-            fraction += dy;
+//     // Рисуем следующие точки до конца
+//     if ( dx > dy )
+//     {
+//         fraction = dy - ( dx >> 1);
+//         while ( x1 != x2 )
+//         {
+//             if ( fraction >= 0 )
+//             {
+//                 y1 += stepy;
+//                 fraction -= dx;
+//             }
+//             x1 += stepx;
+//             fraction += dy;
 
-            response = Lcd_pixel( x1, y1, mode );
-            if(response)
-                return response;
+//             response = Lcd_pixel( x1, y1, mode );
+//             if(response)
+//                 return response;
 
-        }
-    }
-    else
-    {
-        fraction = dx - ( dy >> 1);
-        while ( y1 != y2 )
-        {
-            if ( fraction >= 0 )
-            {
-                x1 += stepx;
-                fraction -= dy;
-            }
-            y1 += stepy;
-            fraction += dx;
+//         }
+//     }
+//     else
+//     {
+//         fraction = dx - ( dy >> 1);
+//         while ( y1 != y2 )
+//         {
+//             if ( fraction >= 0 )
+//             {
+//                 x1 += stepx;
+//                 fraction -= dy;
+//             }
+//             y1 += stepy;
+//             fraction += dx;
 
-            response = Lcd_pixel( x1, y1, mode );
-            if(response)
-                return response;
-        }
-    }
+//             response = Lcd_pixel( x1, y1, mode );
+//             if(response)
+//                 return response;
+//         }
+//     }
 
-    // Установка флага изменений кэша
-    UpdateLcd = TRUE;
-    return OK;
-}
-
-
-
-/*
- * Имя                   :  Lcd_circle
- * Описание              :  Рисует окружность (алгоритм Брезенхэма)
- * Аргумент(ы)           :  x, y   -> абсолютные координаты центра
- *                          radius -> радиус окружности
- *                          mode   -> Off, On или Xor. Смотри enum в n5110.h
- * Возвращаемое значение :  смотри возвращаемое значение в n5110lcd.h
- */
-byte Lcd_circle(byte x, byte y, byte radius, LcdPixelMode mode)
-{
-    signed char xc = 0;
-    signed char yc = 0;
-    signed char p = 0;
-
-    if ( x >= LCD_X_RES || y >= LCD_Y_RES) return OUT_OF_BORDER;
-
-    yc = radius;
-    p = 3 - (radius<<1);
-    while (xc <= yc)  
-    {
-        Lcd_pixel(x + xc, y + yc, mode);
-        Lcd_pixel(x + xc, y - yc, mode);
-        Lcd_pixel(x - xc, y + yc, mode);
-        Lcd_pixel(x - xc, y - yc, mode);
-        Lcd_pixel(x + yc, y + xc, mode);
-        Lcd_pixel(x + yc, y - xc, mode);
-        Lcd_pixel(x - yc, y + xc, mode);
-        Lcd_pixel(x - yc, y - xc, mode);
-        if (p < 0) p += (xc++ << 2) + 6;
-            else p += ((xc++ - yc--)<<2) + 10;
-    }
-
-    // Установка флага изменений кэша
-    UpdateLcd = TRUE;
-    return OK;
-}
+//     // Установка флага изменений кэша
+//     UpdateLcd = TRUE;
+//     return OK;
+// }
 
 
-/*
- * Имя                   :  Lcd_rect  (rectangle)
- * Описание              :  Рисует один закрашенный прямоугольник
- * Аргумент(ы)           :  baseX  -> абсолютная координата x (нижний левый угол)
- *                          baseY  -> абсолютная координата y (нижний левый угол)
- *                          height -> высота (в пикселях)
- *                          width  -> ширина (в пикселях)
- *                          mode   -> Off, On или Xor. Смотри enum в n5110.h
- * Возвращаемое значение :  смотри возвращаемое значение в n5110lcd.h
- */
-byte Lcd_rect ( byte baseX, byte baseY, byte height, byte width, LcdPixelMode mode )
-{
-    byte tmpIdxX,tmpIdxY,tmp;
 
-    byte response;
+// /*
+//  * Имя                   :  Lcd_circle
+//  * Описание              :  Рисует окружность (алгоритм Брезенхэма)
+//  * Аргумент(ы)           :  x, y   -> абсолютные координаты центра
+//  *                          radius -> радиус окружности
+//  *                          mode   -> Off, On или Xor. Смотри enum в n5110.h
+//  * Возвращаемое значение :  смотри возвращаемое значение в n5110lcd.h
+//  */
+// byte Lcd_circle(byte x, byte y, byte radius, LcdPixelMode mode)
+// {
+//     signed char xc = 0;
+//     signed char yc = 0;
+//     signed char p = 0;
 
-    // Проверка границ
-    if ( ( baseX >= LCD_X_RES) || ( baseY >= LCD_Y_RES) ) return OUT_OF_BORDER;
+//     if ( x >= LCD_X_RES || y >= LCD_Y_RES) return OUT_OF_BORDER;
 
-    if ( height > baseY )
-        tmp = 0;
-    else
-        tmp = baseY - height + 1;
+//     yc = radius;
+//     p = 3 - (radius<<1);
+//     while (xc <= yc)  
+//     {
+//         Lcd_pixel(x + xc, y + yc, mode);
+//         Lcd_pixel(x + xc, y - yc, mode);
+//         Lcd_pixel(x - xc, y + yc, mode);
+//         Lcd_pixel(x - xc, y - yc, mode);
+//         Lcd_pixel(x + yc, y + xc, mode);
+//         Lcd_pixel(x + yc, y - xc, mode);
+//         Lcd_pixel(x - yc, y + xc, mode);
+//         Lcd_pixel(x - yc, y - xc, mode);
+//         if (p < 0) p += (xc++ << 2) + 6;
+//             else p += ((xc++ - yc--)<<2) + 10;
+//     }
 
-    // Рисование линий
-    for ( tmpIdxY = tmp; tmpIdxY <= baseY; tmpIdxY++ )
-    {
-        for ( tmpIdxX = baseX; tmpIdxX < (baseX + width); tmpIdxX++ )
-        {
-            response = Lcd_pixel( tmpIdxX, tmpIdxY, mode );
-            if(response)
-                return response;
-
-        }
-    }
-
-    // Установка флага изменений кэша
-    UpdateLcd = TRUE;
-    return OK;
-}
+//     // Установка флага изменений кэша
+//     UpdateLcd = TRUE;
+//     return OK;
+// }
 
 
+// /*
+//  * Имя                   :  Lcd_rect  (rectangle)
+//  * Описание              :  Рисует один закрашенный прямоугольник
+//  * Аргумент(ы)           :  baseX  -> абсолютная координата x (нижний левый угол)
+//  *                          baseY  -> абсолютная координата y (нижний левый угол)
+//  *                          height -> высота (в пикселях)
+//  *                          width  -> ширина (в пикселях)
+//  *                          mode   -> Off, On или Xor. Смотри enum в n5110.h
+//  * Возвращаемое значение :  смотри возвращаемое значение в n5110lcd.h
+//  */
+// byte Lcd_rect ( byte baseX, byte baseY, byte height, byte width, LcdPixelMode mode )
+// {
+//     byte tmpIdxX,tmpIdxY,tmp;
+
+//     byte response;
+
+//     // Проверка границ
+//     if ( ( baseX >= LCD_X_RES) || ( baseY >= LCD_Y_RES) ) return OUT_OF_BORDER;
+
+//     if ( height > baseY )
+//         tmp = 0;
+//     else
+//         tmp = baseY - height + 1;
+
+//     // Рисование линий
+//     for ( tmpIdxY = tmp; tmpIdxY <= baseY; tmpIdxY++ )
+//     {
+//         for ( tmpIdxX = baseX; tmpIdxX < (baseX + width); tmpIdxX++ )
+//         {
+//             response = Lcd_pixel( tmpIdxX, tmpIdxY, mode );
+//             if(response)
+//                 return response;
+
+//         }
+//     }
+
+//     // Установка флага изменений кэша
+//     UpdateLcd = TRUE;
+//     return OK;
+// }
 
 
 
 
-/*
- * Имя                   :  Lcd_rect_empty
- * Описание              :  Рисует незакрашенный прямоугольник
- * Аргумент(ы)           :  x1    -> абсолютная координата x левого верхнего угла
- *                          y1    -> абсолютная координата y левого верхнего угла
- *                          x2    -> абсолютная координата x правого нижнего угла
- *                          y2    -> абсолютная координата y правого нижнего угла
- *                          mode  -> Off, On или Xor. Смотри enum в n5110.h
- * Возвращаемое значение :  смотри возвращаемое значение в n5110lcd.h
- */
-byte Lcd_rect_empty ( byte x1, byte y1, byte x2, byte y2, LcdPixelMode mode )
-{
-    byte tmpIdx;
 
-    // Проверка границ
-    if ( ( x1 >= LCD_X_RES) ||  ( x2 >= LCD_X_RES) || ( y1 >= LCD_Y_RES) || ( y2 >= LCD_Y_RES) )
-        return OUT_OF_BORDER;
 
-    if ( ( x2 > x1 ) && ( y2 > y1 ) )
-    {
-        // Рисуем горизонтальные линии
-        for ( tmpIdx = x1; tmpIdx <= x2; tmpIdx++ )
-        {
-            Lcd_pixel( tmpIdx, y1, mode );
-            Lcd_pixel( tmpIdx, y2, mode );
-        }
+// /*
+//  * Имя                   :  Lcd_rect_empty
+//  * Описание              :  Рисует незакрашенный прямоугольник
+//  * Аргумент(ы)           :  x1    -> абсолютная координата x левого верхнего угла
+//  *                          y1    -> абсолютная координата y левого верхнего угла
+//  *                          x2    -> абсолютная координата x правого нижнего угла
+//  *                          y2    -> абсолютная координата y правого нижнего угла
+//  *                          mode  -> Off, On или Xor. Смотри enum в n5110.h
+//  * Возвращаемое значение :  смотри возвращаемое значение в n5110lcd.h
+//  */
+// byte Lcd_rect_empty ( byte x1, byte y1, byte x2, byte y2, LcdPixelMode mode )
+// {
+//     byte tmpIdx;
 
-        // Рисуем вертикальные линии
-        for ( tmpIdx = y1; tmpIdx <= y2; tmpIdx++ )
-        {
-            Lcd_pixel( x1, tmpIdx, mode );
-            Lcd_pixel( x2, tmpIdx, mode );
-        }
+//     // Проверка границ
+//     if ( ( x1 >= LCD_X_RES) ||  ( x2 >= LCD_X_RES) || ( y1 >= LCD_Y_RES) || ( y2 >= LCD_Y_RES) )
+//         return OUT_OF_BORDER;
 
-        // Установка флага изменений кэша
-        UpdateLcd = TRUE;
-    }
-    return OK;
-}
+//     if ( ( x2 > x1 ) && ( y2 > y1 ) )
+//     {
+//         // Рисуем горизонтальные линии
+//         for ( tmpIdx = x1; tmpIdx <= x2; tmpIdx++ )
+//         {
+//             Lcd_pixel( tmpIdx, y1, mode );
+//             Lcd_pixel( tmpIdx, y2, mode );
+//         }
+
+//         // Рисуем вертикальные линии
+//         for ( tmpIdx = y1; tmpIdx <= y2; tmpIdx++ )
+//         {
+//             Lcd_pixel( x1, tmpIdx, mode );
+//             Lcd_pixel( x2, tmpIdx, mode );
+//         }
+
+//         // Установка флага изменений кэша
+//         UpdateLcd = TRUE;
+//     }
+//     return OK;
+// }
 

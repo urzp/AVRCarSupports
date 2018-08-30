@@ -30,6 +30,7 @@ void Button::Init(char port, int pin)
 bool Button::Pressed(int debounce){
 	//debounce защита от дребезга
 	bool read_pin;
+	int i;
 	if (debounce >= 0){
 		switch (_port){
 			case 'B': read_pin = ((1 << _pin) & PINB); break;
@@ -44,7 +45,15 @@ bool Button::Pressed(int debounce){
 			debounce--;
 		};
 	};
-	
+	//button anti slice
+	while(!read_pin){
+		switch (_port){
+			case 'B': read_pin = ((1 << _pin) & PINB); break;
+			case 'C': read_pin = ((1 << _pin) & PINC); break;
+			case 'D': read_pin = ((1 << _pin) & PIND); break;
+			default: return false;
+		}
+	}
 	return true;
 	
 }

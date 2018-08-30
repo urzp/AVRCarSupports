@@ -166,10 +166,22 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Activity.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Activity.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Button.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Button.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Carrage.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Carrage.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Initialisation.h">
@@ -184,6 +196,12 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Main_Screen.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Main_Screen.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Output.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -194,6 +212,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Panel.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SensorsWheels.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SensorsWheels.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Support.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Support.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="test.h">

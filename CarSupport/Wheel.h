@@ -5,7 +5,7 @@
 * Author: user
 */
 
-
+#include "SensorsWheels.h"
 #ifndef __WHEEL_H__
 #define __WHEEL_H__
 
@@ -19,6 +19,7 @@ public:
 	bool selected;
 	bool malfuction;
 	bool adjusted;
+	SensorsWheels sensorWheels;
 protected:
 private:
 
@@ -28,7 +29,10 @@ public:
 	void Init(int _number);
 	float get_hight();
 	void set_hight();
-
+	bool Up(float step);
+	bool Down(float step);
+	void PrintLCD();
+	void Select();
 protected:
 private:
 
