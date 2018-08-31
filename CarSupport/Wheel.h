@@ -20,9 +20,12 @@ public:
 	bool selected;
 	bool malfuction;
 	bool adjusted;
+	bool stepAdjast;
 	SensorsWheels sensorWheels;
 protected:
 private:
+	float diff;
+	int _diff;
 
 //functions
 public:
@@ -38,8 +41,7 @@ public:
 	int takeDerection();
 protected:
 private:
-	float diff;
-	int _diff;
+
 
 
 }; //Wheel

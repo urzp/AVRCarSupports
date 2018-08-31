@@ -11,6 +11,7 @@ const int DOWN=2;
 
 #include "Wheel.h"
 
+
 // default constructor
 Wheel::Wheel()
 {
@@ -34,11 +35,14 @@ void Wheel::initialHight(){
 
 int Wheel::takeDerection(){
 	if (!selected) return NORMAL;
-	get_hight();
+	hight = get_hight();
 	diff = sethight*100 - hight*100;
 	_diff = diff;
-	if (_diff < 0) return DOWN;
-	if (_diff > 0) return UP;
+	adjusted = false;
+	if (_diff < 0){ stepAdjast = _diff; return DOWN;}
+	if (_diff > 0){ stepAdjast = _diff*-1; return UP;}
+	stepAdjast = 0;
+	adjusted = true;
 	return NORMAL;
 }
 

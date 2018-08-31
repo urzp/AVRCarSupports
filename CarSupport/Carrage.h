@@ -7,6 +7,7 @@
 
 #include "Wheel.h"
 #include "Support.h"
+#include "LCDn5110.h"
 
 #ifndef __CARRAGE_H__
 #define __CARRAGE_H__
@@ -23,9 +24,10 @@ public:
 	Support support;
 protected:
 private:
+	int sort_array[4];
 	int derWheel[5];
-	int finish,i;
-
+	int finish;
+	int _step;
 //functions
 public:
 	Carrage();
@@ -34,6 +36,10 @@ public:
 	void Up(float step);
 	void Down(float step);
 	void Ajustment();
+	void test();
+	
+	void Fast_print_LSD_hight(Wheel wheel);
+	int getStep();
 protected:
 private:
 
