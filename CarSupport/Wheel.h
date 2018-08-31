@@ -20,7 +20,7 @@ public:
 	bool selected;
 	bool malfuction;
 	bool adjusted;
-	bool stepAdjast;
+	int step;
 	SensorsWheels sensorWheels;
 protected:
 private:

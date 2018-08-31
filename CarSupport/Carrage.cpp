@@ -55,12 +55,15 @@ void Carrage::Ajustment(){
 	
 	finish=1;
 	int i=0;
-	while(i<10){
+	while(finish>0){
 		derWheel[1] = Wheel_1.takeDerection();
+		Fast_print_LSD_hight(Wheel_1);
 		derWheel[2] = Wheel_2.takeDerection();
+		Fast_print_LSD_hight(Wheel_2);
 		derWheel[3] = Wheel_3.takeDerection();
+		Fast_print_LSD_hight(Wheel_3);
 		derWheel[4] = Wheel_4.takeDerection();
-		
+		Fast_print_LSD_hight(Wheel_4);
 		
 		finish = derWheel[1] + derWheel[2] + derWheel[3] + derWheel[4];
 		support.Adjast(getStep() ,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );	
@@ -69,42 +72,34 @@ void Carrage::Ajustment(){
 
 }
 
-void Carrage::test(){
-	Wheel_1.stepAdjast = 100;
-	Wheel_2.stepAdjast = 20;
-	Wheel_3.stepAdjast = 130;
-	Wheel_4.stepAdjast = 160;
-	_step = getStep();
-}
 
 int Carrage::getStep(){
 	int step = 0;
 	int i;
-	sort_array[0] = Wheel_1.stepAdjast;
-	sort_array[1] = Wheel_2.stepAdjast;
-	sort_array[2] = Wheel_3.stepAdjast;
-	sort_array[3] = Wheel_4.stepAdjast;
-	//i = 0;
-	//while(i<4){
-		//if (sort_array[i]>0){step = sort_array[i];i=5;}
-		//i++;
-	//};
-	//
-	//if (step == 0){return 0;};
-		//
-	//i = 0;	
-	//while(i<4){
-		//if ( sort_array[i] > 0){
-			//if ( step > sort_array[i]){
-				//step = sort_array[i];
-			//};
-		//};
-		//i++;
-	//}
+	sort_array[0] = Wheel_1.step;
+	sort_array[1] = Wheel_2.step;
+	sort_array[2] = Wheel_3.step;
+	sort_array[3] = Wheel_4.step;
+	i = 0;
+	while(i<4){
+		if (sort_array[i]>0){step = sort_array[i];i=5;}
+		i++;
+	};
+	
+	if (step == 0){return 0;};
+		
+	i = 0;	
+	while(i<4){
+		if ( sort_array[i] > 0){
+			if ( step > sort_array[i]){
+				step = sort_array[i];
+			};
+		};
+		i++;
+	}
 	//step = sort_array[0];
-	_step ++;
-	step = _step;
-	step=step*100;
+	step=step;
+	if (step>50){step = 50;}
 	return step;
 } 
 
@@ -122,4 +117,5 @@ void Carrage::Fast_print_LSD_hight(Wheel wheel){
 	}
 	int hight = 100*wheel.get_hight();
 	Lcd_printf(hight_pos_x, hight_pos_y, FONT_1X, hight, 0);
+	Lcd_update();
 }
