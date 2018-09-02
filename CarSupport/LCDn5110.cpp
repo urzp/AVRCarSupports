@@ -466,7 +466,24 @@ byte Lcd_print ( byte x, byte y, LcdFontSize size, byte dataArray[] )
     return OK;
 }
 
-
+byte Lcd_print2 ( byte x, byte y, LcdFontSize size, byte dataArray[] )
+{
+	LcdGotoXY(x,y);
+	byte tmpIdx=0;
+	byte response;
+	while( dataArray[ tmpIdx ] != '\0' )
+	{
+		// Выводим символ
+		if (dataArray[ tmpIdx ] != '.'){response = LcdChr( size, dataArray[ tmpIdx ] );}	
+		// Не стоит волноваться если произойдет OUT_OF_BORDER,
+		// строка будет печататься дальше из начала дисплея
+		if( response == OUT_OF_BORDER)
+		return OUT_OF_BORDER;
+		// Увеличиваем указатель
+		tmpIdx++;
+	}
+	return OK;
+}
 
 /*
  * Имя                   :  Lcd_prints
@@ -511,6 +528,10 @@ void Lcd_printf ( byte x, byte y, LcdFontSize size, float data, int accuracy )
 	Lcd_print(x, y, size, (unsigned char*)gftoa(data, accuracy));
 }
 
+void Lcd_printf2 ( byte x, byte y, LcdFontSize size, float data, int accuracy )
+{
+	Lcd_print2(x, y, size, (unsigned char*)gftoa(data, accuracy));
+}
 
 
 /*

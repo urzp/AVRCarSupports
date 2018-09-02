@@ -81,8 +81,10 @@ byte LcdChr_full   ( byte ch );
 byte LcdStepLevel   ( byte ch );
 byte LcdChr        ( LcdFontSize size, byte ch );   // Вывод символа в текущей позиции
 byte Lcd_print     ( byte x, byte y, LcdFontSize size, byte dataArray[] );   // Вывод строки из переменной
+byte Lcd_print2     ( byte x, byte y, LcdFontSize size, byte dataArray[] );   // Вывод строки из переменной
 byte Lcd_prints    ( byte x, byte y, LcdFontSize size, const byte *dataPtr );   // Вывод статичной строки 
 void Lcd_printf    ( byte x, byte y, LcdFontSize size, float data, int accuracy );   // Вывод дробного значения
+void Lcd_printf2    ( byte x, byte y, LcdFontSize size, float data, int accuracy );   // Вывод дробного значения
 byte Lcd_pixel      ( byte x, byte y, LcdPixelMode mode );   // Точка
 // byte Lcd_line       ( byte x1, byte y1, byte x2, byte y2, LcdPixelMode mode );   // Линия
 // byte Lcd_circle     ( byte x, byte y, byte radius, LcdPixelMode mode);   // Окружность

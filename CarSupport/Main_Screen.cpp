@@ -101,8 +101,8 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
 		pos_y ++;
 	}
 	//print hight wheel	
-	int hight = 100*wheel.get_hight();	
-	Lcd_printf(hight_pos_x, hight_pos_y, FONT_1X, hight, 0);	
+	float hight = wheel.get_hight();	
+	Lcd_printf2(hight_pos_x, hight_pos_y, FONT_1X, hight, 2);	
 	//print point
 	LcdGotoXY(hight_pos_x , hight_pos_y + 1 );
 	LcdChr_full(0xA0);	

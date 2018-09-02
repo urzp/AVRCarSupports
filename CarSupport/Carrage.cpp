@@ -155,7 +155,7 @@ void Carrage::Fast_print_LSD_hight(Wheel wheel){
 		case 3:hight_pos_x = 11; hight_pos_y = 4 ;break;
 		case 4:hight_pos_x = 0; hight_pos_y = 4 ;break;
 	}
-	int hight = 100*wheel.get_hight();
-	Lcd_printf(hight_pos_x, hight_pos_y, FONT_1X, hight, 0);
+	float hight = wheel.get_hight();
+	Lcd_printf2(hight_pos_x, hight_pos_y, FONT_1X, hight, 2);
 	Lcd_update();
 }
