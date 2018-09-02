@@ -26,6 +26,7 @@ void Carrage::Init(Wheel _Wheel_1, Wheel _Wheel_2, Wheel _Wheel_3, Wheel _Wheel_
 	Wheel_4 = _Wheel_4;
 	support.Init();
 	_step =1;
+	chechAll();
 }
 
 void Carrage::beforeAdjast(){
@@ -55,7 +56,32 @@ void Carrage::Ajustment(){
 	
 	finish=1;
 	int i=0;
-	while(finish>0){
+	if (chechWheelsBefore()){
+		while(finish>0&&i<100){
+			derWheel[1] = Wheel_1.takeDerection();
+			Fast_print_LSD_hight(Wheel_1);
+			derWheel[2] = Wheel_2.takeDerection();
+			Fast_print_LSD_hight(Wheel_2);
+			derWheel[3] = Wheel_3.takeDerection();
+			Fast_print_LSD_hight(Wheel_3);
+			derWheel[4] = Wheel_4.takeDerection();
+			Fast_print_LSD_hight(Wheel_4);
+		
+			finish = derWheel[1] + derWheel[2] + derWheel[3] + derWheel[4];
+			support.Adjast(getStep() ,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );	
+			i++;
+		}
+	
+		if(i>=100){
+			if(derWheel[1]>0){Wheel_1.malfuction = true;}
+			if(derWheel[2]>0){Wheel_2.malfuction = true;}
+			if(derWheel[3]>0){Wheel_3.malfuction = true;}
+			if(derWheel[4]>0){Wheel_4.malfuction = true;}
+		}
+	}
+}
+
+bool Carrage::chechWheelsBefore(){
 		derWheel[1] = Wheel_1.takeDerection();
 		Fast_print_LSD_hight(Wheel_1);
 		derWheel[2] = Wheel_2.takeDerection();
@@ -64,14 +90,28 @@ void Carrage::Ajustment(){
 		Fast_print_LSD_hight(Wheel_3);
 		derWheel[4] = Wheel_4.takeDerection();
 		Fast_print_LSD_hight(Wheel_4);
-		
-		finish = derWheel[1] + derWheel[2] + derWheel[3] + derWheel[4];
-		support.Adjast(getStep() ,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );	
-		i++;
-	}
-
+		support.Adjast(10 ,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );
+		if	(derWheel[1]>0){checked[1]=Wheel_1.Check();}else{checked[1]=true;}
+		if	(derWheel[2]>0){checked[2]=Wheel_2.Check();}else{checked[2]=true;}
+		if	(derWheel[3]>0){checked[3]=Wheel_3.Check();}else{checked[3]=true;}
+		if	(derWheel[4]>0){checked[4]=Wheel_4.Check();}else{checked[4]=true;}	
+		if  (checked[1]&&checked[2]&&checked[3]&&checked[4]){return true;}else{return false;}					
 }
 
+bool Carrage::chechAll(){
+	Wheel_1.get_hight();
+	Wheel_2.get_hight();
+	Wheel_3.get_hight();
+	Wheel_4.get_hight();
+	support.Adjast(10 ,1, 1 ,1 ,1 );
+	checked[1]=Wheel_1.Check();	
+	checked[2]=Wheel_2.Check();
+	checked[3]=Wheel_3.Check();
+	checked[4]=Wheel_4.Check();
+	support.Adjast(10 ,2, 2 ,2 ,2 );
+	if  (checked[1]&&checked[2]&&checked[3]&&checked[4]){return true;}else{return false;}
+	
+}
 
 int Carrage::getStep(){
 	int step = 0;

@@ -37,6 +37,7 @@ void Wheel::initialHight(){
 
 int Wheel::takeDerection(){	
 	if (!selected) return NORMAL;
+	if (malfuction) return 0;
 	hight = get_hight();
 	diff = sethight*300 - hight*300;
 	step = diff;
@@ -49,6 +50,17 @@ int Wheel::takeDerection(){
 	return NORMAL;
 }
 
+bool Wheel::Check(){
+	checkhight = hight;
+	hight = get_hight();
+	if (checkhight == hight){
+		malfuction = true;
+		return false;
+	} else{
+		malfuction = false;
+		return true;
+	}
+}
 
 void Wheel::set_hight(){
 	

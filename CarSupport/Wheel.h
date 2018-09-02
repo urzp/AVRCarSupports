@@ -16,6 +16,7 @@ class Wheel
 public:
 	int number;
 	float hight;
+	float checkhight;
 	float sethight;
 	bool selected;
 	bool malfuction;
@@ -39,6 +40,7 @@ public:
 	void Select();
 	void initialHight();
 	int takeDerection();
+	bool Check();
 protected:
 private:
 

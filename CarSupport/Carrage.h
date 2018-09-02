@@ -26,6 +26,7 @@ protected:
 private:
 	int sort_array[4];
 	int derWheel[5];
+	int checked[5];
 	int finish;
 	int _step;
 //functions
@@ -37,7 +38,8 @@ public:
 	void Down(float step);
 	void Ajustment();
 	void test();
-	
+	bool chechAll();
+	bool chechWheelsBefore();
 	void Fast_print_LSD_hight(Wheel wheel);
 	int getStep();
 protected:
