@@ -24,11 +24,36 @@ const int B_NOTHING = -1;
 
 const int ACTION_WHEEL = 10;
 const int ACTION_ADJUST = 11;
+const int ACTION_MENU = 12;
+const int ACTION_MENU_EXIT = 13;
+const int ACTION_PARKING_SAVE =14;
+const int ACTION_HIGHTPOSITION_SAVE =14;
+const int ACTION_LOWPOSITION_SAVE =15;
+const int ACTION_PARKING_SET =16;
+const int ACTION_HIGHTPOSITION_SET =17;
+const int ACTION_LOWPOSITION_SET =18;
 
 
 const int SCREEN_MAIN = 0;
 const int SCREEN_MENU = 1;
 const int SCREEN_ADJUST = 2;
+
+const int SAVE = 0;
+const int SETPOSITION = 1;
+const int SETTINGS = 2;
+const int EXIT_1 = 3;
+
+const int PARKING_SAVE = 4;
+const int HIGHTPOSITION_SAVE = 5;
+const int LOWPOSITION_SAVE = 6;
+const int EXIT_SAVE = 7;
+
+const int PARKING_SET = 8;
+const int HIGHTPOSITION_SET = 9;
+const int LOWPOSITION_SET = 10;
+const int EXIT_SET = 11;
+
+
 
 // default constructor
 Activity::Activity()
@@ -68,9 +93,9 @@ void Activity::Init(){
 	//cursors map
 	Main_Screen_cursor_pathes[MENU][B_LEFT_] = LEFTUP;
 	Main_Screen_cursor_pathes[MENU][B_RIGHT] = RIGHTUP;
-	Main_Screen_cursor_pathes[MENU][B_UP___] = MENU;
+	Main_Screen_cursor_pathes[MENU][B_UP___] = ACTION_MENU;
 	Main_Screen_cursor_pathes[MENU][B_DOWN_] = ADJUST;
-	Main_Screen_cursor_pathes[MENU][B_OK___] = MENU;
+	Main_Screen_cursor_pathes[MENU][B_OK___] = ACTION_MENU;
 	
 	Main_Screen_cursor_pathes[LEFTUP][B_LEFT_] = LEFTUP;
 	Main_Screen_cursor_pathes[LEFTUP][B_RIGHT] = MENU;
@@ -102,16 +127,107 @@ void Activity::Init(){
 	Main_Screen_cursor_pathes[RIGHTUP][B_DOWN_] = RIGHTDOWN;
 	Main_Screen_cursor_pathes[RIGHTUP][B_OK___] = ACTION_WHEEL;
 	
-	//Menu_Screen_cursor_pathes
+	//******************************
+	//   Menu_Screen_cursor_pathes *
+	//   MAIN MENU				   *
+	//******************************
+	Menu_Screen_cursor_pathes[SAVE][B_LEFT_] = ACTION_MENU_EXIT;
+	Menu_Screen_cursor_pathes[SAVE][B_RIGHT] = PARKING_SAVE;
+	Menu_Screen_cursor_pathes[SAVE][B_UP___] = SAVE;
+	Menu_Screen_cursor_pathes[SAVE][B_DOWN_] = SETPOSITION;
+	Menu_Screen_cursor_pathes[SAVE][B_OK___] = PARKING_SAVE;
 	
+	Menu_Screen_cursor_pathes[SETPOSITION][B_LEFT_] = ACTION_MENU_EXIT;
+	Menu_Screen_cursor_pathes[SETPOSITION][B_RIGHT] = PARKING_SET;
+	Menu_Screen_cursor_pathes[SETPOSITION][B_UP___] = SAVE;
+	Menu_Screen_cursor_pathes[SETPOSITION][B_DOWN_] = SETTINGS;
+	Menu_Screen_cursor_pathes[SETPOSITION][B_OK___] = PARKING_SET;
+	
+	Menu_Screen_cursor_pathes[SETTINGS][B_LEFT_] = ACTION_MENU_EXIT;
+	Menu_Screen_cursor_pathes[SETTINGS][B_RIGHT] = PARKING_SET;
+	Menu_Screen_cursor_pathes[SETTINGS][B_UP___] = SETPOSITION;
+	Menu_Screen_cursor_pathes[SETTINGS][B_DOWN_] = EXIT_1;
+	Menu_Screen_cursor_pathes[SETTINGS][B_OK___] = PARKING_SET;
+	
+	Menu_Screen_cursor_pathes[EXIT_1][B_LEFT_] = ACTION_MENU_EXIT;
+	Menu_Screen_cursor_pathes[EXIT_1][B_RIGHT] = ACTION_MENU_EXIT;
+	Menu_Screen_cursor_pathes[EXIT_1][B_UP___] = SETTINGS;
+	Menu_Screen_cursor_pathes[EXIT_1][B_DOWN_] = EXIT_1;
+	Menu_Screen_cursor_pathes[EXIT_1][B_OK___] = ACTION_MENU_EXIT;
+	//*************
+	//* SAVE      *
+	//*************
+	Menu_Screen_cursor_pathes[PARKING_SAVE][B_LEFT_] = SAVE;
+	Menu_Screen_cursor_pathes[PARKING_SAVE][B_RIGHT] = ACTION_PARKING_SAVE;
+	Menu_Screen_cursor_pathes[PARKING_SAVE][B_UP___] = PARKING_SAVE;
+	Menu_Screen_cursor_pathes[PARKING_SAVE][B_DOWN_] = HIGHTPOSITION_SAVE;
+	Menu_Screen_cursor_pathes[PARKING_SAVE][B_OK___] = ACTION_PARKING_SAVE;
+	
+	Menu_Screen_cursor_pathes[HIGHTPOSITION_SAVE][B_LEFT_] = SAVE;
+	Menu_Screen_cursor_pathes[HIGHTPOSITION_SAVE][B_RIGHT] = ACTION_HIGHTPOSITION_SAVE;
+	Menu_Screen_cursor_pathes[HIGHTPOSITION_SAVE][B_UP___] = PARKING_SAVE;
+	Menu_Screen_cursor_pathes[HIGHTPOSITION_SAVE][B_DOWN_] = LOWPOSITION_SAVE;
+	Menu_Screen_cursor_pathes[HIGHTPOSITION_SAVE][B_OK___] = ACTION_HIGHTPOSITION_SAVE;
+	
+	Menu_Screen_cursor_pathes[LOWPOSITION_SAVE][B_LEFT_] = SAVE;
+	Menu_Screen_cursor_pathes[LOWPOSITION_SAVE][B_RIGHT] = ACTION_LOWPOSITION_SAVE;
+	Menu_Screen_cursor_pathes[LOWPOSITION_SAVE][B_UP___] = HIGHTPOSITION_SAVE;
+	Menu_Screen_cursor_pathes[LOWPOSITION_SAVE][B_DOWN_] = EXIT_SAVE;
+	Menu_Screen_cursor_pathes[LOWPOSITION_SAVE][B_OK___] = ACTION_LOWPOSITION_SAVE;
+	
+	Menu_Screen_cursor_pathes[EXIT_SAVE][B_LEFT_] = SAVE;
+	Menu_Screen_cursor_pathes[EXIT_SAVE][B_RIGHT] = ACTION_MENU_EXIT;
+	Menu_Screen_cursor_pathes[EXIT_SAVE][B_UP___] = LOWPOSITION_SAVE;
+	Menu_Screen_cursor_pathes[EXIT_SAVE][B_DOWN_] = EXIT_SAVE;
+	Menu_Screen_cursor_pathes[EXIT_SAVE][B_OK___] = ACTION_MENU_EXIT;
+	//*************
+	//* SET       *
+	//*************
+	Menu_Screen_cursor_pathes[PARKING_SET][B_LEFT_] = SETPOSITION;
+	Menu_Screen_cursor_pathes[PARKING_SET][B_RIGHT] = ACTION_PARKING_SET;
+	Menu_Screen_cursor_pathes[PARKING_SET][B_UP___] = PARKING_SET;
+	Menu_Screen_cursor_pathes[PARKING_SET][B_DOWN_] = HIGHTPOSITION_SET;
+	Menu_Screen_cursor_pathes[PARKING_SET][B_OK___] = ACTION_PARKING_SET;
+		
+	Menu_Screen_cursor_pathes[HIGHTPOSITION_SET][B_LEFT_] = SETPOSITION;
+	Menu_Screen_cursor_pathes[HIGHTPOSITION_SET][B_RIGHT] = ACTION_HIGHTPOSITION_SET;
+	Menu_Screen_cursor_pathes[HIGHTPOSITION_SET][B_UP___] = PARKING_SET;
+	Menu_Screen_cursor_pathes[HIGHTPOSITION_SET][B_DOWN_] = LOWPOSITION_SET;
+	Menu_Screen_cursor_pathes[HIGHTPOSITION_SET][B_OK___] = ACTION_HIGHTPOSITION_SET;
+		
+	Menu_Screen_cursor_pathes[LOWPOSITION_SET][B_LEFT_] = SETPOSITION;
+	Menu_Screen_cursor_pathes[LOWPOSITION_SET][B_RIGHT] = ACTION_LOWPOSITION_SET;
+	Menu_Screen_cursor_pathes[LOWPOSITION_SET][B_UP___] = HIGHTPOSITION_SET;
+	Menu_Screen_cursor_pathes[LOWPOSITION_SET][B_DOWN_] = EXIT_SET;
+	Menu_Screen_cursor_pathes[LOWPOSITION_SET][B_OK___] = ACTION_LOWPOSITION_SET;
+		
+	Menu_Screen_cursor_pathes[EXIT_SET][B_LEFT_] = SETPOSITION;
+	Menu_Screen_cursor_pathes[EXIT_SET][B_RIGHT] = ACTION_MENU_EXIT;
+	Menu_Screen_cursor_pathes[EXIT_SET][B_UP___] = LOWPOSITION_SET;
+	Menu_Screen_cursor_pathes[EXIT_SET][B_DOWN_] = EXIT_SET;
+	Menu_Screen_cursor_pathes[EXIT_SET][B_OK___] = ACTION_MENU_EXIT;
 }
 
 bool Activity::Cursor_Action(Panel panel, Carrage &carrage){
 	switch(Statment){
 		case(SCREEN_MAIN):Main_Screen_Move(panel,carrage);break;
-		case(SCREEN_MENU):;break;
+		case(SCREEN_MENU):Menu_Screen_Move(panel,carrage);break;
 		case(SCREEN_ADJUST):Adjusting_Carrage(panel,carrage);break;
 	}
+}
+
+bool Activity::Menu_Screen_Move(Panel panel, Carrage &carrage){
+		
+		int move = panel.Pressed(10);
+		int next;
+		if (move == B_NOTHING ){return false;}
+		next = Menu_Screen_cursor_pathes[Cursor][move];
+		switch(next){
+			case (ACTION_MENU_EXIT):Statment=SCREEN_MAIN;Cursor = MENU;break;
+			default: Cursor = next;break;
+		}
+		return true;
+			
 }
 
 bool Activity::Main_Screen_Move(Panel panel, Carrage &carrage){
@@ -124,6 +240,7 @@ bool Activity::Main_Screen_Move(Panel panel, Carrage &carrage){
 		switch(next){
 			case (ACTION_WHEEL):SelectWheel(carrage);break;
 			case (ACTION_ADJUST):Statment = SCREEN_ADJUST; carrage.beforeAdjast() ;break;
+			case (ACTION_MENU):Statment = SCREEN_MENU;Cursor = SAVE;break;
 			default: Cursor = next;break;
 		}
 		return true;

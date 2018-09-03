@@ -21,6 +21,7 @@ public:
 	int Step;
 	int Cursor;
 	int Main_Screen_cursor_pathes[6][6];
+	int Menu_Screen_cursor_pathes[15][5];
 protected:
 private:
 	
@@ -29,6 +30,7 @@ public:
 	Activity();
 	void Init();
 	bool Cursor_Action(Panel panel, Carrage &carrage);
+	bool Menu_Screen_Move(Panel panel, Carrage &carrage);
 	bool Main_Screen_Move(Panel panel, Carrage &carrage);
 	void SelectWheel(Carrage &carrage);
 	bool Adjusting_Carrage(Panel panel, Carrage &carrage);

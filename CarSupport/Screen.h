@@ -31,13 +31,17 @@ public:
 	void Init();
 	void Render(Activity _activity, Carrage _carrage);
 	void Render_main();
+	void Render_menu();
+	void PtintItems();
 protected:
 private:
+	void PrintTitle();
 	void Draw_icon_menu();
 	void Draw_Carrage();
 	void Draw_Wheel(Wheel wheel);
 	void Draw_adjustment_carrage();
-	bool Draw_Cursor();
+	bool Draw_CursorMainScreen();
+	void Draw_CursorMenuScreen();
 	bool Print_Step_Value();
 }; //Main_Screen
 

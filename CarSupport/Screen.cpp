@@ -19,6 +19,21 @@ const int SCREEN_MAIN = 0;
 const int SCREEN_MENU = 1;
 const int SCREEN_ADJUST = 2;
 
+const int SAVE = 0;
+const int SETPOSITION = 1;
+const int SETTINGS = 2;
+const int EXIT_1 = 3;
+
+const int PARKING_SAVE = 4;
+const int HIGHTPOSITION_SAVE = 5;
+const int LOWPOSITION_SAVE = 6;
+const int EXIT_SAVE = 7;
+
+const int PARKING_SET = 8;
+const int HIGHTPOSITION_SET = 9;
+const int LOWPOSITION_SET = 10;
+const int EXIT_SET = 11;
+
 // default constructor
 Screen::Screen()
 {
@@ -31,18 +46,78 @@ void Screen::Init(){
 void Screen::Render(Activity _activity, Carrage _carrage){
 	activity = _activity;
 	carrage = _carrage;
-	Render_main();
+	Lcd_clear();
+	switch(activity.Statment){
+		case(SCREEN_MAIN):Render_main();break;
+		case(SCREEN_ADJUST):Render_main();break;
+		case(SCREEN_MENU):Render_menu();break;
+	}
+	Lcd_update();
 }
 
-void Screen::Render_main(){
-	Lcd_clear();
+void Screen::Render_menu(){
+	PrintTitle();
+
+	Draw_CursorMenuScreen();	
+}
+
+void Screen::PrintTitle(){
+	if(activity.Cursor < PARKING_SAVE){
+		Lcd_print(5, 0, FONT_1X,(unsigned char *)"МЕНЮ");
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Сохранить");
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Установить");
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Настройки");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
+	}else if(activity.Cursor < PARKING_SET){
+		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Сохранить");
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
+	}else{
+		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Установить");
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
+	}
+	
+	
+}
+
+void Screen::PtintItems(){
+
+}
+
+void Screen::Draw_CursorMenuScreen(){
+	//LcdGotoXY(0,1);LcdChr_full(0x9B);
+	switch(activity.Cursor){
+		case(SAVE):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
+		case(SETPOSITION):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(SETTINGS):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
+		case(EXIT_1):LcdGotoXY(0,4);LcdChr_full(0x9B);break;	
+		case(PARKING_SAVE):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
+		case(HIGHTPOSITION_SAVE):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(EXIT_SAVE):LcdGotoXY(0,4);LcdChr_full(0x9B);break;	
+		case(LOWPOSITION_SAVE):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
+		case(PARKING_SET):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
+		case(HIGHTPOSITION_SET):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(LOWPOSITION_SET):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
+		case(EXIT_SET):LcdGotoXY(0,4);LcdChr_full(0x9B);break;	
+	}
+}
+
+
+//******************
+//*  MAIN SCREEN  *
+//*****************
+
+void Screen::Render_main(){	
 	Draw_icon_menu();
 	Draw_Carrage();
 	Draw_adjustment_carrage();
-	Draw_Cursor();	
+	Draw_CursorMainScreen();	
 	Print_Step_Value();
-	Lcd_update();
-	
 }
 
 
@@ -139,7 +214,7 @@ void Screen::Draw_adjustment_carrage(){
 
 }	
 
-bool Screen::Draw_Cursor(){
+bool Screen::Draw_CursorMainScreen(){
 	
 	if (activity.Statment == SCREEN_ADJUST ){return false;};
 	int Char_cursor[2];
