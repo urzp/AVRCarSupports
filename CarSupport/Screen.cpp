@@ -28,13 +28,19 @@ void Screen::Init(){
 	 
 }
 
-void Screen::Render(Activity activity, Carrage carrage){
+void Screen::Render(Activity _activity, Carrage _carrage){
+	activity = _activity;
+	carrage = _carrage;
+	Render_main();
+}
+
+void Screen::Render_main(){
 	Lcd_clear();
 	Draw_icon_menu();
-	Draw_Carrage(carrage);
-	Draw_adjustment_carrage(activity.Statment);
-	Draw_Cursor(activity);	
-	Print_Step_Value(activity);
+	Draw_Carrage();
+	Draw_adjustment_carrage();
+	Draw_Cursor();	
+	Print_Step_Value();
 	Lcd_update();
 	
 }
@@ -47,7 +53,7 @@ void Screen::Draw_icon_menu(){
 	LcdChr_full(0x9F);
 }
 
-void Screen::Draw_Carrage(Carrage carrage){
+void Screen::Draw_Carrage(){
 	Draw_Wheel(carrage.Wheel_1);
 	Draw_Wheel(carrage.Wheel_2);
 	Draw_Wheel(carrage.Wheel_3);
@@ -109,7 +115,8 @@ void Screen::Draw_Wheel(Wheel wheel){
 	LcdChr_full(0xA0);	
 }
 
-void Screen::Draw_adjustment_carrage(int statment){
+void Screen::Draw_adjustment_carrage(){
+	int statment = activity.Statment;
 	if (statment == SCREEN_ADJUST){
 		LcdGotoXY(6,2);
 		LcdChr_full(0x96);
@@ -132,7 +139,7 @@ void Screen::Draw_adjustment_carrage(int statment){
 
 }	
 
-bool Screen::Draw_Cursor(Activity activity){
+bool Screen::Draw_Cursor(){
 	
 	if (activity.Statment == SCREEN_ADJUST ){return false;};
 	int Char_cursor[2];
@@ -158,7 +165,7 @@ bool Screen::Draw_Cursor(Activity activity){
 	
 }
 
-bool Screen::Print_Step_Value(Activity activity){
+bool Screen::Print_Step_Value(){
 	if (activity.Statment != SCREEN_ADJUST ){return false;}
 	float step = activity.get_val_step();
 	Lcd_printf(5, 1, FONT_1X, step , 2);

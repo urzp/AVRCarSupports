@@ -20,6 +20,8 @@ class Screen
 {
 //variables
 public:
+	Activity activity;
+	Carrage carrage;
 protected:
 private:
 	
@@ -27,15 +29,16 @@ private:
 public:
 	Screen();
 	void Init();
-	void Render(Activity activity, Carrage carrage);
+	void Render(Activity _activity, Carrage _carrage);
+	void Render_main();
 protected:
 private:
 	void Draw_icon_menu();
-	void Draw_Carrage(Carrage carrage);
+	void Draw_Carrage();
 	void Draw_Wheel(Wheel wheel);
-	void Draw_adjustment_carrage(int statment);
-	bool Draw_Cursor(Activity activity);
-	bool Print_Step_Value(Activity activity);
+	void Draw_adjustment_carrage();
+	bool Draw_Cursor();
+	bool Print_Step_Value();
 }; //Main_Screen
 
 #endif //__MAIN_SCREEN_H__
