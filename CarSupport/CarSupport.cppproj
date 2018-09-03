@@ -196,10 +196,10 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Main_Screen.cpp">
+    <Compile Include="Screen.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Main_Screen.h">
+    <Compile Include="Screen.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Output.cpp">

@@ -17,7 +17,7 @@
 #include "LCDn5110.h"
 #include "Wheel.h"
 #include "Carrage.h"
-#include "Main_Screen.h"
+#include "Screen.h"
 #include "Activity.h"
 
 #define I2C_ADR_PCF8574 0x27
@@ -29,14 +29,14 @@ int main(void)
 {	
 
 	Initialisation();
-	mainScreen.Render(activity, carrage);
+	screen.Render(activity, carrage);
 
 	
     while (1) 
     {	
 		
 		activity.Cursor_Action(panel, carrage);
-		mainScreen.Render(activity, carrage);
+		screen.Render(activity, carrage);
 		//test_out_timer(rightButton,suppot_1);
 		//test_Out_Set(downButton,suppot_1);
 		//test_panel(panel,suppot_1);

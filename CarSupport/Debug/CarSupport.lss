@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00001e06  00000000  00000000  0000c069  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000213e  00000000  00000000  0000de6f  2**0
+  8 .debug_line   00002105  00000000  00000000  0000de6f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000cb4  00000000  00000000  0000ffb0  2**2
+  9 .debug_frame  00000cb4  00000000  00000000  0000ff74  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00001474  00000000  00000000  00010c64  2**0
+ 10 .debug_str    000013fd  00000000  00000000  00010c28  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00003c91  00000000  00000000  000120d8  2**0
+ 11 .debug_loc    00003c91  00000000  00000000  00012025  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000310  00000000  00000000  00015d69  2**0
+ 12 .debug_ranges 00000310  00000000  00000000  00015cb6  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -802,6 +802,9 @@ void Activity::Init(){
      976:	ff 4f       	sbci	r31, 0xFF	; 255
      978:	91 83       	std	Z+1, r25	; 0x01
      97a:	80 83       	st	Z, r24
+	
+	//Menu_Screen_cursor_pathes
+	
 }
      97c:	df 91       	pop	r29
      97e:	cf 91       	pop	r28
@@ -1218,9 +1221,9 @@ bool Activity::Adjusting_Carrage(Panel panel, Carrage &carrage){
      c16:	08 95       	ret
 
 00000c18 <_ZN8Activity13Cursor_ActionE5PanelR7Carrage>:
-	Main_Screen_cursor_pathes[RIGHTUP][B_UP___] = RIGHTUP;
-	Main_Screen_cursor_pathes[RIGHTUP][B_DOWN_] = RIGHTDOWN;
-	Main_Screen_cursor_pathes[RIGHTUP][B_OK___] = ACTION_WHEEL;
+	
+	//Menu_Screen_cursor_pathes
+	
 }
 
 bool Activity::Cursor_Action(Panel panel, Carrage &carrage){
@@ -3932,7 +3935,7 @@ int main(void)
 
 	Initialisation();
     1f44:	0e 94 cf 0e 	call	0x1d9e	; 0x1d9e <_Z14Initialisationv>
-	mainScreen.Render(activity, carrage);
+	screen.Render(activity, carrage);
     1f48:	8d b7       	in	r24, 0x3d	; 61
     1f4a:	9e b7       	in	r25, 0x3e	; 62
     1f4c:	8a 58       	subi	r24, 0x8A	; 138
@@ -3973,7 +3976,7 @@ int main(void)
     1f92:	e1 f7       	brne	.-8      	; 0x1f8c <main+0x48>
     1f94:	8c ea       	ldi	r24, 0xAC	; 172
     1f96:	93 e0       	ldi	r25, 0x03	; 3
-    1f98:	0e 94 9d 12 	call	0x253a	; 0x253a <_ZN11Main_Screen6RenderE8Activity7Carrage>
+    1f98:	0e 94 9d 12 	call	0x253a	; 0x253a <_ZN6Screen6RenderE8Activity7Carrage>
     1f9c:	8d b7       	in	r24, 0x3d	; 61
     1f9e:	9e b7       	in	r25, 0x3e	; 62
     1fa0:	88 5d       	subi	r24, 0xD8	; 216
@@ -4011,7 +4014,7 @@ int main(void)
     1ff2:	8e e0       	ldi	r24, 0x0E	; 14
     1ff4:	93 e0       	ldi	r25, 0x03	; 3
     1ff6:	0e 94 0c 06 	call	0xc18	; 0xc18 <_ZN8Activity13Cursor_ActionE5PanelR7Carrage>
-		mainScreen.Render(activity, carrage);
+		screen.Render(activity, carrage);
     1ffa:	8d b7       	in	r24, 0x3d	; 61
     1ffc:	9e b7       	in	r25, 0x3e	; 62
     1ffe:	8a 58       	subi	r24, 0x8A	; 138
@@ -4051,7 +4054,7 @@ int main(void)
     2042:	e1 f7       	brne	.-8      	; 0x203c <main+0xf8>
     2044:	8c ea       	ldi	r24, 0xAC	; 172
     2046:	93 e0       	ldi	r25, 0x03	; 3
-    2048:	0e 94 9d 12 	call	0x253a	; 0x253a <_ZN11Main_Screen6RenderE8Activity7Carrage>
+    2048:	0e 94 9d 12 	call	0x253a	; 0x253a <_ZN6Screen6RenderE8Activity7Carrage>
     204c:	8d b7       	in	r24, 0x3d	; 61
     204e:	9e b7       	in	r25, 0x3e	; 62
     2050:	86 5d       	subi	r24, 0xD6	; 214
@@ -4123,10 +4126,10 @@ Output suppot_1;
     20bc:	0e 94 09 13 	call	0x2612	; 0x2612 <_ZN6OutputC1Ev>
 
 
-Main_Screen mainScreen;
+Screen screen;
     20c0:	8c ea       	ldi	r24, 0xAC	; 172
     20c2:	93 e0       	ldi	r25, 0x03	; 3
-    20c4:	0e 94 69 10 	call	0x20d2	; 0x20d2 <_ZN11Main_ScreenC1Ev>
+    20c4:	0e 94 69 10 	call	0x20d2	; 0x20d2 <_ZN6ScreenC1Ev>
 
 Activity activity;
     20c8:	8e e0       	ldi	r24, 0x0E	; 14
@@ -4134,21 +4137,21 @@ Activity activity;
     20cc:	0e 94 87 03 	call	0x70e	; 0x70e <_ZN8ActivityC1Ev>
     20d0:	08 95       	ret
 
-000020d2 <_ZN11Main_ScreenC1Ev>:
+000020d2 <_ZN6ScreenC1Ev>:
 // default constructor
-Main_Screen::Main_Screen()
+Screen::Screen()
 {
 } //Main_Screen
 
-void Main_Screen::Init(){
+void Screen::Init(){
     20d2:	08 95       	ret
 
-000020d4 <_ZN11Main_Screen9Draw_menuEv>:
-	Lcd_update();
+000020d4 <_ZN6Screen14Draw_icon_menuEv>:
 	
 }
 
-void Main_Screen::Draw_menu(){
+
+void Screen::Draw_icon_menu(){
 	LcdGotoXY(6,0);
     20d4:	60 e0       	ldi	r22, 0x00	; 0
     20d6:	86 e0       	ldi	r24, 0x06	; 6
@@ -4165,13 +4168,13 @@ void Main_Screen::Draw_menu(){
     20ec:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <_Z11LcdChr_fullh>
     20f0:	08 95       	ret
 
-000020f2 <_ZN11Main_Screen10Draw_WheelE5Wheel>:
+000020f2 <_ZN6Screen10Draw_WheelE5Wheel>:
 	Draw_Wheel(carrage.Wheel_2);
 	Draw_Wheel(carrage.Wheel_3);
 	Draw_Wheel(carrage.Wheel_4);
 }
 
-void Main_Screen::Draw_Wheel(Wheel wheel){
+void Screen::Draw_Wheel(Wheel wheel){
     20f2:	af 92       	push	r10
     20f4:	bf 92       	push	r11
     20f6:	cf 92       	push	r12
@@ -4200,17 +4203,17 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
     2118:	9a 8d       	ldd	r25, Y+26	; 0x1a
     211a:	82 30       	cpi	r24, 0x02	; 2
     211c:	91 05       	cpc	r25, r1
-    211e:	99 f0       	breq	.+38     	; 0x2146 <_ZN11Main_Screen10Draw_WheelE5Wheel+0x54>
-    2120:	1c f4       	brge	.+6      	; 0x2128 <_ZN11Main_Screen10Draw_WheelE5Wheel+0x36>
+    211e:	99 f0       	breq	.+38     	; 0x2146 <_ZN6Screen10Draw_WheelE5Wheel+0x54>
+    2120:	1c f4       	brge	.+6      	; 0x2128 <_ZN6Screen10Draw_WheelE5Wheel+0x36>
     2122:	01 97       	sbiw	r24, 0x01	; 1
-    2124:	39 f0       	breq	.+14     	; 0x2134 <_ZN11Main_Screen10Draw_WheelE5Wheel+0x42>
-    2126:	31 c0       	rjmp	.+98     	; 0x218a <_ZN11Main_Screen10Draw_WheelE5Wheel+0x98>
+    2124:	39 f0       	breq	.+14     	; 0x2134 <_ZN6Screen10Draw_WheelE5Wheel+0x42>
+    2126:	31 c0       	rjmp	.+98     	; 0x218a <_ZN6Screen10Draw_WheelE5Wheel+0x98>
     2128:	83 30       	cpi	r24, 0x03	; 3
     212a:	91 05       	cpc	r25, r1
-    212c:	c1 f0       	breq	.+48     	; 0x215e <_ZN11Main_Screen10Draw_WheelE5Wheel+0x6c>
+    212c:	c1 f0       	breq	.+48     	; 0x215e <_ZN6Screen10Draw_WheelE5Wheel+0x6c>
     212e:	04 97       	sbiw	r24, 0x04	; 4
-    2130:	19 f1       	breq	.+70     	; 0x2178 <_ZN11Main_Screen10Draw_WheelE5Wheel+0x86>
-    2132:	2b c0       	rjmp	.+86     	; 0x218a <_ZN11Main_Screen10Draw_WheelE5Wheel+0x98>
+    2130:	19 f1       	breq	.+70     	; 0x2178 <_ZN6Screen10Draw_WheelE5Wheel+0x86>
+    2132:	2b c0       	rjmp	.+86     	; 0x218a <_ZN6Screen10Draw_WheelE5Wheel+0x98>
 		case 1:pos_x  = 3;pos_y = 0; hight_pos_x = 0; hight_pos_y = 1 ; break;
     2134:	cc 24       	eor	r12, r12
     2136:	c3 94       	inc	r12
@@ -4220,7 +4223,7 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
     213e:	f3 e0       	ldi	r31, 0x03	; 3
     2140:	df 2e       	mov	r13, r31
     2142:	f0 2d       	mov	r31, r0
-    2144:	22 c0       	rjmp	.+68     	; 0x218a <_ZN11Main_Screen10Draw_WheelE5Wheel+0x98>
+    2144:	22 c0       	rjmp	.+68     	; 0x218a <_ZN6Screen10Draw_WheelE5Wheel+0x98>
 		case 2:pos_x  = 9;pos_y = 0; hight_pos_x = 11; hight_pos_y = 1 ;break;
     2146:	cc 24       	eor	r12, r12
     2148:	c3 94       	inc	r12
@@ -4233,7 +4236,7 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
     2156:	f9 e0       	ldi	r31, 0x09	; 9
     2158:	df 2e       	mov	r13, r31
     215a:	f0 2d       	mov	r31, r0
-    215c:	16 c0       	rjmp	.+44     	; 0x218a <_ZN11Main_Screen10Draw_WheelE5Wheel+0x98>
+    215c:	16 c0       	rjmp	.+44     	; 0x218a <_ZN6Screen10Draw_WheelE5Wheel+0x98>
 		case 3:pos_x  = 9;pos_y = 3; hight_pos_x = 11; hight_pos_y = 4 ;break;
     215e:	68 94       	set
     2160:	cc 24       	eor	r12, r12
@@ -4247,7 +4250,7 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
     2170:	f9 e0       	ldi	r31, 0x09	; 9
     2172:	df 2e       	mov	r13, r31
     2174:	f0 2d       	mov	r31, r0
-    2176:	09 c0       	rjmp	.+18     	; 0x218a <_ZN11Main_Screen10Draw_WheelE5Wheel+0x98>
+    2176:	09 c0       	rjmp	.+18     	; 0x218a <_ZN6Screen10Draw_WheelE5Wheel+0x98>
 		case 4:pos_x  = 3;pos_y = 3; hight_pos_x = 0; hight_pos_y = 4 ;break;
     2178:	68 94       	set
     217a:	cc 24       	eor	r12, r12
@@ -4263,7 +4266,7 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
 	if(wheel.malfuction){
     218a:	88 a5       	ldd	r24, Y+40	; 0x28
     218c:	88 23       	and	r24, r24
-    218e:	c9 f0       	breq	.+50     	; 0x21c2 <_ZN11Main_Screen10Draw_WheelE5Wheel+0xd0>
+    218e:	c9 f0       	breq	.+50     	; 0x21c2 <_ZN6Screen10Draw_WheelE5Wheel+0xd0>
 		Char_wheel[0] = 0x8C;
     2190:	8c e8       	ldi	r24, 0x8C	; 140
     2192:	90 e0       	ldi	r25, 0x00	; 0
@@ -4294,11 +4297,11 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
     21ba:	90 e0       	ldi	r25, 0x00	; 0
     21bc:	9c 87       	std	Y+12, r25	; 0x0c
     21be:	8b 87       	std	Y+11, r24	; 0x0b
-    21c0:	63 c0       	rjmp	.+198    	; 0x2288 <_ZN11Main_Screen10Draw_WheelE5Wheel+0x196>
+    21c0:	63 c0       	rjmp	.+198    	; 0x2288 <_ZN6Screen10Draw_WheelE5Wheel+0x196>
 	} else if (wheel.selected){
     21c2:	8f a1       	ldd	r24, Y+39	; 0x27
     21c4:	88 23       	and	r24, r24
-    21c6:	c9 f0       	breq	.+50     	; 0x21fa <_ZN11Main_Screen10Draw_WheelE5Wheel+0x108>
+    21c6:	c9 f0       	breq	.+50     	; 0x21fa <_ZN6Screen10Draw_WheelE5Wheel+0x108>
 		Char_wheel[0] = 0x80;
     21c8:	80 e8       	ldi	r24, 0x80	; 128
     21ca:	90 e0       	ldi	r25, 0x00	; 0
@@ -4329,7 +4332,7 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
     21f2:	90 e0       	ldi	r25, 0x00	; 0
     21f4:	9c 87       	std	Y+12, r25	; 0x0c
     21f6:	8b 87       	std	Y+11, r24	; 0x0b
-    21f8:	47 c0       	rjmp	.+142    	; 0x2288 <_ZN11Main_Screen10Draw_WheelE5Wheel+0x196>
+    21f8:	47 c0       	rjmp	.+142    	; 0x2288 <_ZN6Screen10Draw_WheelE5Wheel+0x196>
 	} else {
 		Char_wheel[0] = 0x86;
     21fa:	86 e8       	ldi	r24, 0x86	; 134
@@ -4361,7 +4364,7 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
     2224:	90 e0       	ldi	r25, 0x00	; 0
     2226:	9c 87       	std	Y+12, r25	; 0x0c
     2228:	8b 87       	std	Y+11, r24	; 0x0b
-    222a:	2e c0       	rjmp	.+92     	; 0x2288 <_ZN11Main_Screen10Draw_WheelE5Wheel+0x196>
+    222a:	2e c0       	rjmp	.+92     	; 0x2288 <_ZN6Screen10Draw_WheelE5Wheel+0x196>
 	}
 
 	//draw wheel 2 symbols for cycle 
@@ -4393,7 +4396,7 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
 	//draw wheel 2 symbols for cycle 
 	for ( i = 0; i <= 4; i = i + 2 ){
     2254:	10 13       	cpse	r17, r16
-    2256:	ea cf       	rjmp	.-44     	; 0x222c <_ZN11Main_Screen10Draw_WheelE5Wheel+0x13a>
+    2256:	ea cf       	rjmp	.-44     	; 0x222c <_ZN6Screen10Draw_WheelE5Wheel+0x13a>
 		LcdGotoXY(pos_x + 1, pos_y);
 		LcdChr_full(Char_wheel[i+1]); 
 		pos_y ++;
@@ -4424,7 +4427,7 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
     2280:	80 ea       	ldi	r24, 0xA0	; 160
     2282:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <_Z11LcdChr_fullh>
 }
-    2286:	09 c0       	rjmp	.+18     	; 0x229a <_ZN11Main_Screen10Draw_WheelE5Wheel+0x1a8>
+    2286:	09 c0       	rjmp	.+18     	; 0x229a <_ZN6Screen10Draw_WheelE5Wheel+0x1a8>
     2288:	10 2f       	mov	r17, r16
     228a:	ce 01       	movw	r24, r28
     228c:	01 96       	adiw	r24, 0x01	; 1
@@ -4439,7 +4442,7 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
     2292:	bb 24       	eor	r11, r11
     2294:	b3 94       	inc	r11
     2296:	bd 0c       	add	r11, r13
-    2298:	c9 cf       	rjmp	.-110    	; 0x222c <_ZN11Main_Screen10Draw_WheelE5Wheel+0x13a>
+    2298:	c9 cf       	rjmp	.-110    	; 0x222c <_ZN6Screen10Draw_WheelE5Wheel+0x13a>
 	float hight = wheel.get_hight();	
 	Lcd_printf2(hight_pos_x, hight_pos_y, FONT_1X, hight, 2);	
 	//print point
@@ -4464,13 +4467,13 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
     22b8:	af 90       	pop	r10
     22ba:	08 95       	ret
 
-000022bc <_ZN11Main_Screen12Draw_CarrageE7Carrage>:
+000022bc <_ZN6Screen12Draw_CarrageE7Carrage>:
 	LcdChr_full(0x9E);
 	LcdGotoXY(7,0);
 	LcdChr_full(0x9F);
 }
 
-void Main_Screen::Draw_Carrage(Carrage carrage){
+void Screen::Draw_Carrage(Carrage carrage){
     22bc:	0f 93       	push	r16
     22be:	1f 93       	push	r17
     22c0:	cf 93       	push	r28
@@ -4496,9 +4499,9 @@ void Main_Screen::Draw_Carrage(Carrage carrage){
     22e6:	01 90       	ld	r0, Z+
     22e8:	0d 92       	st	X+, r0
     22ea:	8a 95       	dec	r24
-    22ec:	e1 f7       	brne	.-8      	; 0x22e6 <_ZN11Main_Screen12Draw_CarrageE7Carrage+0x2a>
+    22ec:	e1 f7       	brne	.-8      	; 0x22e6 <_ZN6Screen12Draw_CarrageE7Carrage+0x2a>
     22ee:	c8 01       	movw	r24, r16
-    22f0:	0e 94 79 10 	call	0x20f2	; 0x20f2 <_ZN11Main_Screen10Draw_WheelE5Wheel>
+    22f0:	0e 94 79 10 	call	0x20f2	; 0x20f2 <_ZN6Screen10Draw_WheelE5Wheel>
 	Draw_Wheel(carrage.Wheel_2);
     22f4:	8d b7       	in	r24, 0x3d	; 61
     22f6:	9e b7       	in	r25, 0x3e	; 62
@@ -4517,9 +4520,9 @@ void Main_Screen::Draw_Carrage(Carrage carrage){
     2310:	01 90       	ld	r0, Z+
     2312:	0d 92       	st	X+, r0
     2314:	8a 95       	dec	r24
-    2316:	e1 f7       	brne	.-8      	; 0x2310 <_ZN11Main_Screen12Draw_CarrageE7Carrage+0x54>
+    2316:	e1 f7       	brne	.-8      	; 0x2310 <_ZN6Screen12Draw_CarrageE7Carrage+0x54>
     2318:	c8 01       	movw	r24, r16
-    231a:	0e 94 79 10 	call	0x20f2	; 0x20f2 <_ZN11Main_Screen10Draw_WheelE5Wheel>
+    231a:	0e 94 79 10 	call	0x20f2	; 0x20f2 <_ZN6Screen10Draw_WheelE5Wheel>
 	Draw_Wheel(carrage.Wheel_3);
     231e:	8d b7       	in	r24, 0x3d	; 61
     2320:	9e b7       	in	r25, 0x3e	; 62
@@ -4544,9 +4547,9 @@ void Main_Screen::Draw_Carrage(Carrage carrage){
     2346:	01 90       	ld	r0, Z+
     2348:	0d 92       	st	X+, r0
     234a:	8a 95       	dec	r24
-    234c:	e1 f7       	brne	.-8      	; 0x2346 <_ZN11Main_Screen12Draw_CarrageE7Carrage+0x8a>
+    234c:	e1 f7       	brne	.-8      	; 0x2346 <_ZN6Screen12Draw_CarrageE7Carrage+0x8a>
     234e:	c8 01       	movw	r24, r16
-    2350:	0e 94 79 10 	call	0x20f2	; 0x20f2 <_ZN11Main_Screen10Draw_WheelE5Wheel>
+    2350:	0e 94 79 10 	call	0x20f2	; 0x20f2 <_ZN6Screen10Draw_WheelE5Wheel>
 	Draw_Wheel(carrage.Wheel_4);
     2354:	8d b7       	in	r24, 0x3d	; 61
     2356:	9e b7       	in	r25, 0x3e	; 62
@@ -4566,9 +4569,9 @@ void Main_Screen::Draw_Carrage(Carrage carrage){
     2372:	01 90       	ld	r0, Z+
     2374:	0d 92       	st	X+, r0
     2376:	8a 95       	dec	r24
-    2378:	e1 f7       	brne	.-8      	; 0x2372 <_ZN11Main_Screen12Draw_CarrageE7Carrage+0xb6>
+    2378:	e1 f7       	brne	.-8      	; 0x2372 <_ZN6Screen12Draw_CarrageE7Carrage+0xb6>
     237a:	c8 01       	movw	r24, r16
-    237c:	0e 94 79 10 	call	0x20f2	; 0x20f2 <_ZN11Main_Screen10Draw_WheelE5Wheel>
+    237c:	0e 94 79 10 	call	0x20f2	; 0x20f2 <_ZN6Screen10Draw_WheelE5Wheel>
 }
     2380:	0f b6       	in	r0, 0x3f	; 63
     2382:	f8 94       	cli
@@ -4581,16 +4584,16 @@ void Main_Screen::Draw_Carrage(Carrage carrage){
     2390:	0f 91       	pop	r16
     2392:	08 95       	ret
 
-00002394 <_ZN11Main_Screen23Draw_adjustment_carrageEi>:
+00002394 <_ZN6Screen23Draw_adjustment_carrageEi>:
 	LcdGotoXY(hight_pos_x , hight_pos_y + 1 );
 	LcdChr_full(0xA0);	
 }
 
-void Main_Screen::Draw_adjustment_carrage(int statment){
+void Screen::Draw_adjustment_carrage(int statment){
 	if (statment == SCREEN_ADJUST){
     2394:	62 30       	cpi	r22, 0x02	; 2
     2396:	71 05       	cpc	r23, r1
-    2398:	e9 f4       	brne	.+58     	; 0x23d4 <_ZN11Main_Screen23Draw_adjustment_carrageEi+0x40>
+    2398:	e9 f4       	brne	.+58     	; 0x23d4 <_ZN6Screen23Draw_adjustment_carrageEi+0x40>
 		LcdGotoXY(6,2);
     239a:	62 e0       	ldi	r22, 0x02	; 2
     239c:	86 e0       	ldi	r24, 0x06	; 6
@@ -4651,12 +4654,12 @@ void Main_Screen::Draw_adjustment_carrage(int statment){
     2408:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <_Z11LcdChr_fullh>
     240c:	08 95       	ret
 
-0000240e <_ZN11Main_Screen11Draw_CursorE8Activity>:
+0000240e <_ZN6Screen11Draw_CursorE8Activity>:
 	}
 
 }	
 
-bool Main_Screen::Draw_Cursor(Activity activity){
+bool Screen::Draw_Cursor(Activity activity){
     240e:	cf 93       	push	r28
     2410:	df 93       	push	r29
     2412:	cd b7       	in	r28, 0x3d	; 61
@@ -4666,9 +4669,9 @@ bool Main_Screen::Draw_Cursor(Activity activity){
     2416:	8d 81       	ldd	r24, Y+5	; 0x05
     2418:	9e 81       	ldd	r25, Y+6	; 0x06
     241a:	02 97       	sbiw	r24, 0x02	; 2
-    241c:	11 f4       	brne	.+4      	; 0x2422 <_ZN11Main_Screen11Draw_CursorE8Activity+0x14>
+    241c:	11 f4       	brne	.+4      	; 0x2422 <_ZN6Screen11Draw_CursorE8Activity+0x14>
     241e:	80 e0       	ldi	r24, 0x00	; 0
-    2420:	5c c0       	rjmp	.+184    	; 0x24da <_ZN11Main_Screen11Draw_CursorE8Activity+0xcc>
+    2420:	5c c0       	rjmp	.+184    	; 0x24da <_ZN6Screen11Draw_CursorE8Activity+0xcc>
 	int Char_cursor[2];
 	int position = activity.Cursor;
     2422:	6b 96       	adiw	r28, 0x1b	; 27
@@ -4679,23 +4682,23 @@ bool Main_Screen::Draw_Cursor(Activity activity){
 	switch(position){
     242a:	82 30       	cpi	r24, 0x02	; 2
     242c:	91 05       	cpc	r25, r1
-    242e:	09 f4       	brne	.+2      	; 0x2432 <_ZN11Main_Screen11Draw_CursorE8Activity+0x24>
-    2430:	45 c0       	rjmp	.+138    	; 0x24bc <_ZN11Main_Screen11Draw_CursorE8Activity+0xae>
-    2432:	34 f4       	brge	.+12     	; 0x2440 <_ZN11Main_Screen11Draw_CursorE8Activity+0x32>
+    242e:	09 f4       	brne	.+2      	; 0x2432 <_ZN6Screen11Draw_CursorE8Activity+0x24>
+    2430:	45 c0       	rjmp	.+138    	; 0x24bc <_ZN6Screen11Draw_CursorE8Activity+0xae>
+    2432:	34 f4       	brge	.+12     	; 0x2440 <_ZN6Screen11Draw_CursorE8Activity+0x32>
     2434:	00 97       	sbiw	r24, 0x00	; 0
-    2436:	e1 f0       	breq	.+56     	; 0x2470 <_ZN11Main_Screen11Draw_CursorE8Activity+0x62>
+    2436:	e1 f0       	breq	.+56     	; 0x2470 <_ZN6Screen11Draw_CursorE8Activity+0x62>
     2438:	81 30       	cpi	r24, 0x01	; 1
     243a:	91 05       	cpc	r25, r1
-    243c:	79 f1       	breq	.+94     	; 0x249c <_ZN11Main_Screen11Draw_CursorE8Activity+0x8e>
-    243e:	08 c0       	rjmp	.+16     	; 0x2450 <_ZN11Main_Screen11Draw_CursorE8Activity+0x42>
+    243c:	79 f1       	breq	.+94     	; 0x249c <_ZN6Screen11Draw_CursorE8Activity+0x8e>
+    243e:	08 c0       	rjmp	.+16     	; 0x2450 <_ZN6Screen11Draw_CursorE8Activity+0x42>
     2440:	84 30       	cpi	r24, 0x04	; 4
     2442:	91 05       	cpc	r25, r1
-    2444:	99 f1       	breq	.+102    	; 0x24ac <_ZN11Main_Screen11Draw_CursorE8Activity+0x9e>
-    2446:	0c f4       	brge	.+2      	; 0x244a <_ZN11Main_Screen11Draw_CursorE8Activity+0x3c>
-    2448:	41 c0       	rjmp	.+130    	; 0x24cc <_ZN11Main_Screen11Draw_CursorE8Activity+0xbe>
+    2444:	99 f1       	breq	.+102    	; 0x24ac <_ZN6Screen11Draw_CursorE8Activity+0x9e>
+    2446:	0c f4       	brge	.+2      	; 0x244a <_ZN6Screen11Draw_CursorE8Activity+0x3c>
+    2448:	41 c0       	rjmp	.+130    	; 0x24cc <_ZN6Screen11Draw_CursorE8Activity+0xbe>
     244a:	85 30       	cpi	r24, 0x05	; 5
     244c:	91 05       	cpc	r25, r1
-    244e:	d9 f0       	breq	.+54     	; 0x2486 <_ZN11Main_Screen11Draw_CursorE8Activity+0x78>
+    244e:	d9 f0       	breq	.+54     	; 0x2486 <_ZN6Screen11Draw_CursorE8Activity+0x78>
 		case(LEFTDOWN):Char_cursor[0]=0x9A;break;
 		case(RIGHTUP):Char_cursor[0]=0x9B;break;
 		case(RIGHTDOWN):Char_cursor[0]=0x9B;break;
@@ -4704,20 +4707,20 @@ bool Main_Screen::Draw_Cursor(Activity activity){
 	switch(position){
     2450:	82 30       	cpi	r24, 0x02	; 2
     2452:	91 05       	cpc	r25, r1
-    2454:	99 f1       	breq	.+102    	; 0x24bc <_ZN11Main_Screen11Draw_CursorE8Activity+0xae>
-    2456:	2c f4       	brge	.+10     	; 0x2462 <_ZN11Main_Screen11Draw_CursorE8Activity+0x54>
+    2454:	99 f1       	breq	.+102    	; 0x24bc <_ZN6Screen11Draw_CursorE8Activity+0xae>
+    2456:	2c f4       	brge	.+10     	; 0x2462 <_ZN6Screen11Draw_CursorE8Activity+0x54>
     2458:	00 97       	sbiw	r24, 0x00	; 0
-    245a:	51 f0       	breq	.+20     	; 0x2470 <_ZN11Main_Screen11Draw_CursorE8Activity+0x62>
+    245a:	51 f0       	breq	.+20     	; 0x2470 <_ZN6Screen11Draw_CursorE8Activity+0x62>
     245c:	01 97       	sbiw	r24, 0x01	; 1
-    245e:	e9 f5       	brne	.+122    	; 0x24da <_ZN11Main_Screen11Draw_CursorE8Activity+0xcc>
-    2460:	1d c0       	rjmp	.+58     	; 0x249c <_ZN11Main_Screen11Draw_CursorE8Activity+0x8e>
+    245e:	e9 f5       	brne	.+122    	; 0x24da <_ZN6Screen11Draw_CursorE8Activity+0xcc>
+    2460:	1d c0       	rjmp	.+58     	; 0x249c <_ZN6Screen11Draw_CursorE8Activity+0x8e>
     2462:	84 30       	cpi	r24, 0x04	; 4
     2464:	91 05       	cpc	r25, r1
-    2466:	11 f1       	breq	.+68     	; 0x24ac <_ZN11Main_Screen11Draw_CursorE8Activity+0x9e>
-    2468:	8c f1       	brlt	.+98     	; 0x24cc <_ZN11Main_Screen11Draw_CursorE8Activity+0xbe>
+    2466:	11 f1       	breq	.+68     	; 0x24ac <_ZN6Screen11Draw_CursorE8Activity+0x9e>
+    2468:	8c f1       	brlt	.+98     	; 0x24cc <_ZN6Screen11Draw_CursorE8Activity+0xbe>
     246a:	05 97       	sbiw	r24, 0x05	; 5
-    246c:	b1 f5       	brne	.+108    	; 0x24da <_ZN11Main_Screen11Draw_CursorE8Activity+0xcc>
-    246e:	0b c0       	rjmp	.+22     	; 0x2486 <_ZN11Main_Screen11Draw_CursorE8Activity+0x78>
+    246c:	b1 f5       	brne	.+108    	; 0x24da <_ZN6Screen11Draw_CursorE8Activity+0xcc>
+    246e:	0b c0       	rjmp	.+22     	; 0x2486 <_ZN6Screen11Draw_CursorE8Activity+0x78>
 		case(MENU):LcdGotoXY(6,1);LcdChr_full(Char_cursor[0]);LcdChr_full(Char_cursor[1]);break;
     2470:	61 e0       	ldi	r22, 0x01	; 1
     2472:	86 e0       	ldi	r24, 0x06	; 6
@@ -4726,7 +4729,7 @@ bool Main_Screen::Draw_Cursor(Activity activity){
     247a:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <_Z11LcdChr_fullh>
     247e:	8d e9       	ldi	r24, 0x9D	; 157
     2480:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <_Z11LcdChr_fullh>
-    2484:	2a c0       	rjmp	.+84     	; 0x24da <_ZN11Main_Screen11Draw_CursorE8Activity+0xcc>
+    2484:	2a c0       	rjmp	.+84     	; 0x24da <_ZN6Screen11Draw_CursorE8Activity+0xcc>
 		case(ADJUST):LcdGotoXY(6,4);LcdChr_full(Char_cursor[0]);LcdChr_full(Char_cursor[1]);break;
     2486:	64 e0       	ldi	r22, 0x04	; 4
     2488:	86 e0       	ldi	r24, 0x06	; 6
@@ -4735,28 +4738,28 @@ bool Main_Screen::Draw_Cursor(Activity activity){
     2490:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <_Z11LcdChr_fullh>
     2494:	8d e9       	ldi	r24, 0x9D	; 157
     2496:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <_Z11LcdChr_fullh>
-    249a:	1f c0       	rjmp	.+62     	; 0x24da <_ZN11Main_Screen11Draw_CursorE8Activity+0xcc>
+    249a:	1f c0       	rjmp	.+62     	; 0x24da <_ZN6Screen11Draw_CursorE8Activity+0xcc>
 		case(LEFTUP):LcdGotoXY(5,1);LcdChr_full(Char_cursor[0]);break;
     249c:	61 e0       	ldi	r22, 0x01	; 1
     249e:	85 e0       	ldi	r24, 0x05	; 5
     24a0:	0e 94 03 0d 	call	0x1a06	; 0x1a06 <_Z9LcdGotoXYhh>
     24a4:	8a e9       	ldi	r24, 0x9A	; 154
     24a6:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <_Z11LcdChr_fullh>
-    24aa:	17 c0       	rjmp	.+46     	; 0x24da <_ZN11Main_Screen11Draw_CursorE8Activity+0xcc>
+    24aa:	17 c0       	rjmp	.+46     	; 0x24da <_ZN6Screen11Draw_CursorE8Activity+0xcc>
 		case(LEFTDOWN):LcdGotoXY(5,4);LcdChr_full(Char_cursor[0]);break;
     24ac:	64 e0       	ldi	r22, 0x04	; 4
     24ae:	85 e0       	ldi	r24, 0x05	; 5
     24b0:	0e 94 03 0d 	call	0x1a06	; 0x1a06 <_Z9LcdGotoXYhh>
     24b4:	8a e9       	ldi	r24, 0x9A	; 154
     24b6:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <_Z11LcdChr_fullh>
-    24ba:	0f c0       	rjmp	.+30     	; 0x24da <_ZN11Main_Screen11Draw_CursorE8Activity+0xcc>
+    24ba:	0f c0       	rjmp	.+30     	; 0x24da <_ZN6Screen11Draw_CursorE8Activity+0xcc>
 		case(RIGHTUP):LcdGotoXY(8,1);LcdChr_full(Char_cursor[0]);break;
     24bc:	61 e0       	ldi	r22, 0x01	; 1
     24be:	88 e0       	ldi	r24, 0x08	; 8
     24c0:	0e 94 03 0d 	call	0x1a06	; 0x1a06 <_Z9LcdGotoXYhh>
     24c4:	8b e9       	ldi	r24, 0x9B	; 155
     24c6:	0e 94 1e 0d 	call	0x1a3c	; 0x1a3c <_Z11LcdChr_fullh>
-    24ca:	07 c0       	rjmp	.+14     	; 0x24da <_ZN11Main_Screen11Draw_CursorE8Activity+0xcc>
+    24ca:	07 c0       	rjmp	.+14     	; 0x24da <_ZN6Screen11Draw_CursorE8Activity+0xcc>
 		case(RIGHTDOWN):LcdGotoXY(8,4);LcdChr_full(Char_cursor[0]);break;
     24cc:	64 e0       	ldi	r22, 0x04	; 4
     24ce:	88 e0       	ldi	r24, 0x08	; 8
@@ -4770,9 +4773,9 @@ bool Main_Screen::Draw_Cursor(Activity activity){
     24dc:	cf 91       	pop	r28
     24de:	08 95       	ret
 
-000024e0 <_ZN11Main_Screen16Print_Step_ValueE8Activity>:
+000024e0 <_ZN6Screen16Print_Step_ValueE8Activity>:
 
-bool Main_Screen::Print_Step_Value(Activity activity){
+bool Screen::Print_Step_Value(Activity activity){
     24e0:	ef 92       	push	r14
     24e2:	ff 92       	push	r15
     24e4:	0f 93       	push	r16
@@ -4785,9 +4788,9 @@ bool Main_Screen::Print_Step_Value(Activity activity){
     24f0:	89 85       	ldd	r24, Y+9	; 0x09
     24f2:	9a 85       	ldd	r25, Y+10	; 0x0a
     24f4:	02 97       	sbiw	r24, 0x02	; 2
-    24f6:	11 f0       	breq	.+4      	; 0x24fc <_ZN11Main_Screen16Print_Step_ValueE8Activity+0x1c>
+    24f6:	11 f0       	breq	.+4      	; 0x24fc <_ZN6Screen16Print_Step_ValueE8Activity+0x1c>
     24f8:	80 e0       	ldi	r24, 0x00	; 0
-    24fa:	18 c0       	rjmp	.+48     	; 0x252c <_ZN11Main_Screen16Print_Step_ValueE8Activity+0x4c>
+    24fa:	18 c0       	rjmp	.+48     	; 0x252c <_ZN6Screen16Print_Step_ValueE8Activity+0x4c>
 	float step = activity.get_val_step();
     24fc:	ce 01       	movw	r24, r28
     24fe:	09 96       	adiw	r24, 0x09	; 9
@@ -4822,13 +4825,13 @@ bool Main_Screen::Print_Step_Value(Activity activity){
     2536:	ef 90       	pop	r14
     2538:	08 95       	ret
 
-0000253a <_ZN11Main_Screen6RenderE8Activity7Carrage>:
+0000253a <_ZN6Screen6RenderE8Activity7Carrage>:
 
-void Main_Screen::Init(){
+void Screen::Init(){
 	 
 }
 
-void Main_Screen::Render(Activity activity, Carrage carrage){
+void Screen::Render(Activity activity, Carrage carrage){
     253a:	0f 93       	push	r16
     253c:	1f 93       	push	r17
     253e:	cf 93       	push	r28
@@ -4838,9 +4841,9 @@ void Main_Screen::Render(Activity activity, Carrage carrage){
     2546:	8c 01       	movw	r16, r24
 	Lcd_clear();
     2548:	0e 94 88 0c 	call	0x1910	; 0x1910 <_Z9Lcd_clearv>
-	Draw_menu();
+	Draw_icon_menu();
     254c:	c8 01       	movw	r24, r16
-    254e:	0e 94 6a 10 	call	0x20d4	; 0x20d4 <_ZN11Main_Screen9Draw_menuEv>
+    254e:	0e 94 6a 10 	call	0x20d4	; 0x20d4 <_ZN6Screen14Draw_icon_menuEv>
 	Draw_Carrage(carrage);
     2552:	8d b7       	in	r24, 0x3d	; 61
     2554:	9e b7       	in	r25, 0x3e	; 62
@@ -4861,9 +4864,9 @@ void Main_Screen::Render(Activity activity, Carrage carrage){
     2572:	01 90       	ld	r0, Z+
     2574:	0d 92       	st	X+, r0
     2576:	8a 95       	dec	r24
-    2578:	e1 f7       	brne	.-8      	; 0x2572 <_ZN11Main_Screen6RenderE8Activity7Carrage+0x38>
+    2578:	e1 f7       	brne	.-8      	; 0x2572 <_ZN6Screen6RenderE8Activity7Carrage+0x38>
     257a:	c8 01       	movw	r24, r16
-    257c:	0e 94 5e 11 	call	0x22bc	; 0x22bc <_ZN11Main_Screen12Draw_CarrageE7Carrage>
+    257c:	0e 94 5e 11 	call	0x22bc	; 0x22bc <_ZN6Screen12Draw_CarrageE7Carrage>
 	Draw_adjustment_carrage(activity.Statment);
     2580:	0f b6       	in	r0, 0x3f	; 63
     2582:	f8 94       	cli
@@ -4873,7 +4876,7 @@ void Main_Screen::Render(Activity activity, Carrage carrage){
     258a:	6f 81       	ldd	r22, Y+7	; 0x07
     258c:	78 85       	ldd	r23, Y+8	; 0x08
     258e:	c8 01       	movw	r24, r16
-    2590:	0e 94 ca 11 	call	0x2394	; 0x2394 <_ZN11Main_Screen23Draw_adjustment_carrageEi>
+    2590:	0e 94 ca 11 	call	0x2394	; 0x2394 <_ZN6Screen23Draw_adjustment_carrageEi>
 	Draw_Cursor(activity);	
     2594:	8d b7       	in	r24, 0x3d	; 61
     2596:	9e b7       	in	r25, 0x3e	; 62
@@ -4893,9 +4896,9 @@ void Main_Screen::Render(Activity activity, Carrage carrage){
     25b2:	01 90       	ld	r0, Z+
     25b4:	0d 92       	st	X+, r0
     25b6:	8a 95       	dec	r24
-    25b8:	e1 f7       	brne	.-8      	; 0x25b2 <_ZN11Main_Screen6RenderE8Activity7Carrage+0x78>
+    25b8:	e1 f7       	brne	.-8      	; 0x25b2 <_ZN6Screen6RenderE8Activity7Carrage+0x78>
     25ba:	c8 01       	movw	r24, r16
-    25bc:	0e 94 07 12 	call	0x240e	; 0x240e <_ZN11Main_Screen11Draw_CursorE8Activity>
+    25bc:	0e 94 07 12 	call	0x240e	; 0x240e <_ZN6Screen11Draw_CursorE8Activity>
 	Print_Step_Value(activity);
     25c0:	8d b7       	in	r24, 0x3d	; 61
     25c2:	9e b7       	in	r25, 0x3e	; 62
@@ -4922,9 +4925,9 @@ void Main_Screen::Render(Activity activity, Carrage carrage){
     25ec:	01 90       	ld	r0, Z+
     25ee:	0d 92       	st	X+, r0
     25f0:	8a 95       	dec	r24
-    25f2:	e1 f7       	brne	.-8      	; 0x25ec <_ZN11Main_Screen6RenderE8Activity7Carrage+0xb2>
+    25f2:	e1 f7       	brne	.-8      	; 0x25ec <_ZN6Screen6RenderE8Activity7Carrage+0xb2>
     25f4:	c8 01       	movw	r24, r16
-    25f6:	0e 94 70 12 	call	0x24e0	; 0x24e0 <_ZN11Main_Screen16Print_Step_ValueE8Activity>
+    25f6:	0e 94 70 12 	call	0x24e0	; 0x24e0 <_ZN6Screen16Print_Step_ValueE8Activity>
 	Lcd_update();
     25fa:	0f b6       	in	r0, 0x3f	; 63
     25fc:	f8 94       	cli
@@ -5006,6 +5009,12 @@ void Output::Init(char port, int pin){
     2668:	08 95       	ret
 
 0000266a <_ZN5PanelC1Ev>:
+const int B_NOTHING = -1;
+
+#include "Panel.h"
+
+// default constructor
+Panel::Panel()
     266a:	cf 93       	push	r28
     266c:	df 93       	push	r29
     266e:	ec 01       	movw	r28, r24
@@ -5022,11 +5031,15 @@ void Output::Init(char port, int pin){
     268c:	ce 01       	movw	r24, r28
     268e:	0c 96       	adiw	r24, 0x0c	; 12
     2690:	0e 94 8a 06 	call	0xd14	; 0xd14 <_ZN6ButtonC1Ev>
+{
+} 
     2694:	df 91       	pop	r29
     2696:	cf 91       	pop	r28
     2698:	08 95       	ret
 
 0000269a <_ZN5Panel4InitE6ButtonS0_S0_S0_S0_>:
+
+void Panel::Init(Button ok, Button up, Button down, Button left, Button rigit ){
     269a:	8f 92       	push	r8
     269c:	9f 92       	push	r9
     269e:	af 92       	push	r10
@@ -5040,24 +5053,30 @@ void Output::Init(char port, int pin){
     26ae:	cd b7       	in	r28, 0x3d	; 61
     26b0:	de b7       	in	r29, 0x3e	; 62
     26b2:	fc 01       	movw	r30, r24
+	bat_ok = ok;
     26b4:	40 83       	st	Z, r20
     26b6:	51 83       	std	Z+1, r21	; 0x01
     26b8:	62 83       	std	Z+2, r22	; 0x02
+	bat_up = up;
     26ba:	03 83       	std	Z+3, r16	; 0x03
     26bc:	14 83       	std	Z+4, r17	; 0x04
     26be:	25 83       	std	Z+5, r18	; 0x05
+	bat_down = down;
     26c0:	c6 82       	std	Z+6, r12	; 0x06
     26c2:	d7 82       	std	Z+7, r13	; 0x07
     26c4:	e0 86       	std	Z+8, r14	; 0x08
+	bat_right = rigit;
     26c6:	8d 85       	ldd	r24, Y+13	; 0x0d
     26c8:	9e 85       	ldd	r25, Y+14	; 0x0e
     26ca:	af 85       	ldd	r26, Y+15	; 0x0f
     26cc:	84 87       	std	Z+12, r24	; 0x0c
     26ce:	95 87       	std	Z+13, r25	; 0x0d
     26d0:	a6 87       	std	Z+14, r26	; 0x0e
+	bat_left = left;
     26d2:	81 86       	std	Z+9, r8	; 0x09
     26d4:	92 86       	std	Z+10, r9	; 0x0a
     26d6:	a3 86       	std	Z+11, r10	; 0x0b
+}
     26d8:	df 91       	pop	r29
     26da:	cf 91       	pop	r28
     26dc:	1f 91       	pop	r17
@@ -5071,56 +5090,75 @@ void Output::Init(char port, int pin){
     26ec:	08 95       	ret
 
 000026ee <_ZN5Panel7PressedEi>:
+
+int Panel::Pressed(int debounse){
     26ee:	0f 93       	push	r16
     26f0:	1f 93       	push	r17
     26f2:	cf 93       	push	r28
     26f4:	df 93       	push	r29
     26f6:	ec 01       	movw	r28, r24
     26f8:	8b 01       	movw	r16, r22
+	if (bat_ok.Pressed(debounse)){ return B_OK ;}
     26fa:	0e 94 c5 06 	call	0xd8a	; 0xd8a <_ZN6Button7PressedEi>
     26fe:	81 11       	cpse	r24, r1
     2700:	1f c0       	rjmp	.+62     	; 0x2740 <_ZN5Panel7PressedEi+0x52>
+	if (bat_up.Pressed(debounse)){ return  B_UP;}
     2702:	b8 01       	movw	r22, r16
     2704:	ce 01       	movw	r24, r28
     2706:	03 96       	adiw	r24, 0x03	; 3
     2708:	0e 94 c5 06 	call	0xd8a	; 0xd8a <_ZN6Button7PressedEi>
     270c:	81 11       	cpse	r24, r1
     270e:	1b c0       	rjmp	.+54     	; 0x2746 <_ZN5Panel7PressedEi+0x58>
+	if (bat_down.Pressed(debounse)){ return B_DOWN ;}
     2710:	b8 01       	movw	r22, r16
     2712:	ce 01       	movw	r24, r28
     2714:	06 96       	adiw	r24, 0x06	; 6
     2716:	0e 94 c5 06 	call	0xd8a	; 0xd8a <_ZN6Button7PressedEi>
     271a:	81 11       	cpse	r24, r1
     271c:	17 c0       	rjmp	.+46     	; 0x274c <_ZN5Panel7PressedEi+0x5e>
+	if (bat_right.Pressed(debounse)){ return B_RIGHT;}
     271e:	b8 01       	movw	r22, r16
     2720:	ce 01       	movw	r24, r28
     2722:	0c 96       	adiw	r24, 0x0c	; 12
     2724:	0e 94 c5 06 	call	0xd8a	; 0xd8a <_ZN6Button7PressedEi>
     2728:	81 11       	cpse	r24, r1
     272a:	13 c0       	rjmp	.+38     	; 0x2752 <_ZN5Panel7PressedEi+0x64>
+	if (bat_left.Pressed(debounse)) {return B_LEFT;}	
     272c:	b8 01       	movw	r22, r16
     272e:	ce 01       	movw	r24, r28
     2730:	09 96       	adiw	r24, 0x09	; 9
     2732:	0e 94 c5 06 	call	0xd8a	; 0xd8a <_ZN6Button7PressedEi>
     2736:	81 11       	cpse	r24, r1
     2738:	0f c0       	rjmp	.+30     	; 0x2758 <_ZN5Panel7PressedEi+0x6a>
+	return B_NOTHING ;
     273a:	8f ef       	ldi	r24, 0xFF	; 255
     273c:	9f ef       	ldi	r25, 0xFF	; 255
     273e:	0e c0       	rjmp	.+28     	; 0x275c <_ZN5Panel7PressedEi+0x6e>
+	bat_right = rigit;
+	bat_left = left;
+}
+
+int Panel::Pressed(int debounse){
+	if (bat_ok.Pressed(debounse)){ return B_OK ;}
     2740:	80 e0       	ldi	r24, 0x00	; 0
     2742:	90 e0       	ldi	r25, 0x00	; 0
     2744:	0b c0       	rjmp	.+22     	; 0x275c <_ZN5Panel7PressedEi+0x6e>
+	if (bat_up.Pressed(debounse)){ return  B_UP;}
     2746:	81 e0       	ldi	r24, 0x01	; 1
     2748:	90 e0       	ldi	r25, 0x00	; 0
     274a:	08 c0       	rjmp	.+16     	; 0x275c <_ZN5Panel7PressedEi+0x6e>
+	if (bat_down.Pressed(debounse)){ return B_DOWN ;}
     274c:	82 e0       	ldi	r24, 0x02	; 2
     274e:	90 e0       	ldi	r25, 0x00	; 0
     2750:	05 c0       	rjmp	.+10     	; 0x275c <_ZN5Panel7PressedEi+0x6e>
+	if (bat_right.Pressed(debounse)){ return B_RIGHT;}
     2752:	84 e0       	ldi	r24, 0x04	; 4
     2754:	90 e0       	ldi	r25, 0x00	; 0
     2756:	02 c0       	rjmp	.+4      	; 0x275c <_ZN5Panel7PressedEi+0x6e>
+	if (bat_left.Pressed(debounse)) {return B_LEFT;}	
     2758:	83 e0       	ldi	r24, 0x03	; 3
     275a:	90 e0       	ldi	r25, 0x00	; 0
+	return B_NOTHING ;
     275c:	df 91       	pop	r29
     275e:	cf 91       	pop	r28
     2760:	1f 91       	pop	r17

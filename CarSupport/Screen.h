@@ -12,11 +12,11 @@
 #include <avr/pgmspace.h>
 
 
-#ifndef __MAIN_SCREEN_H__
-#define __MAIN_SCREEN_H__
+#ifndef __SCREEN_H__
+#define __SCREEN_H__
 
 
-class Main_Screen
+class Screen
 {
 //variables
 public:
@@ -25,12 +25,12 @@ private:
 	
 //functions
 public:
-	Main_Screen();
+	Screen();
 	void Init();
 	void Render(Activity activity, Carrage carrage);
 protected:
 private:
-	void Draw_menu();
+	void Draw_icon_menu();
 	void Draw_Carrage(Carrage carrage);
 	void Draw_Wheel(Wheel wheel);
 	void Draw_adjustment_carrage(int statment);

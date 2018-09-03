@@ -6,7 +6,7 @@
 */
 
 
-#include "Main_Screen.h"
+#include "Screen.h"
 
 const int MENU = 0;
 const int LEFTUP = 1;
@@ -20,17 +20,17 @@ const int SCREEN_MENU = 1;
 const int SCREEN_ADJUST = 2;
 
 // default constructor
-Main_Screen::Main_Screen()
+Screen::Screen()
 {
 } //Main_Screen
 
-void Main_Screen::Init(){
+void Screen::Init(){
 	 
 }
 
-void Main_Screen::Render(Activity activity, Carrage carrage){
+void Screen::Render(Activity activity, Carrage carrage){
 	Lcd_clear();
-	Draw_menu();
+	Draw_icon_menu();
 	Draw_Carrage(carrage);
 	Draw_adjustment_carrage(activity.Statment);
 	Draw_Cursor(activity);	
@@ -39,21 +39,22 @@ void Main_Screen::Render(Activity activity, Carrage carrage){
 	
 }
 
-void Main_Screen::Draw_menu(){
+
+void Screen::Draw_icon_menu(){
 	LcdGotoXY(6,0);
 	LcdChr_full(0x9E);
 	LcdGotoXY(7,0);
 	LcdChr_full(0x9F);
 }
 
-void Main_Screen::Draw_Carrage(Carrage carrage){
+void Screen::Draw_Carrage(Carrage carrage){
 	Draw_Wheel(carrage.Wheel_1);
 	Draw_Wheel(carrage.Wheel_2);
 	Draw_Wheel(carrage.Wheel_3);
 	Draw_Wheel(carrage.Wheel_4);
 }
 
-void Main_Screen::Draw_Wheel(Wheel wheel){
+void Screen::Draw_Wheel(Wheel wheel){
 	int i;
 	int pos_x;
 	int pos_y;
@@ -108,7 +109,7 @@ void Main_Screen::Draw_Wheel(Wheel wheel){
 	LcdChr_full(0xA0);	
 }
 
-void Main_Screen::Draw_adjustment_carrage(int statment){
+void Screen::Draw_adjustment_carrage(int statment){
 	if (statment == SCREEN_ADJUST){
 		LcdGotoXY(6,2);
 		LcdChr_full(0x96);
@@ -131,7 +132,7 @@ void Main_Screen::Draw_adjustment_carrage(int statment){
 
 }	
 
-bool Main_Screen::Draw_Cursor(Activity activity){
+bool Screen::Draw_Cursor(Activity activity){
 	
 	if (activity.Statment == SCREEN_ADJUST ){return false;};
 	int Char_cursor[2];
@@ -157,7 +158,7 @@ bool Main_Screen::Draw_Cursor(Activity activity){
 	
 }
 
-bool Main_Screen::Print_Step_Value(Activity activity){
+bool Screen::Print_Step_Value(Activity activity){
 	if (activity.Statment != SCREEN_ADJUST ){return false;}
 	float step = activity.get_val_step();
 	Lcd_printf(5, 1, FONT_1X, step , 2);

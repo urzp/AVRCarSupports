@@ -101,6 +101,9 @@ void Activity::Init(){
 	Main_Screen_cursor_pathes[RIGHTUP][B_UP___] = RIGHTUP;
 	Main_Screen_cursor_pathes[RIGHTUP][B_DOWN_] = RIGHTDOWN;
 	Main_Screen_cursor_pathes[RIGHTUP][B_OK___] = ACTION_WHEEL;
+	
+	//Menu_Screen_cursor_pathes
+	
 }
 
 bool Activity::Cursor_Action(Panel panel, Carrage &carrage){

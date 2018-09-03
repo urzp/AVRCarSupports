@@ -12,7 +12,7 @@ LCDn5110.cpp
 
 main.cpp
 
-Main_Screen.cpp
+Screen.cpp
 
 Output.cpp
 

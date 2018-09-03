@@ -17,7 +17,7 @@
 #include "LCDn5110.h"
 #include "Wheel.h"
 #include "Carrage.h"
-#include "Main_Screen.h"
+#include "Screen.h"
 #include "Activity.h"
 
 
@@ -44,7 +44,7 @@ Panel panel;
 Output suppot_1;
 
 
-Main_Screen mainScreen;
+Screen screen;
 
 Activity activity;
 
