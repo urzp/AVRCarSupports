@@ -8,6 +8,7 @@
 #include "Wheel.h"
 #include "Support.h"
 #include "LCDn5110.h"
+#include <avr/eeprom.h>
 
 #ifndef __CARRAGE_H__
 #define __CARRAGE_H__
@@ -22,6 +23,7 @@ public:
 	Wheel Wheel_3;
 	Wheel Wheel_4;
 	Support support;
+	//float SavedPositions[3][5];
 protected:
 private:
 	int sort_array[4];
@@ -42,6 +44,7 @@ public:
 	bool chechWheelsBefore();
 	void Fast_print_LSD_hight(Wheel wheel);
 	int getStep();
+	void Save(int State);
 protected:
 private:
 

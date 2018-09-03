@@ -14,6 +14,10 @@ const int NORMAL=0;
 const int UP=1;
 const int DOWN=2;
 
+const int PARKING = 0;
+const int HIGHTPOSITION = 1;
+const int LOWPOSITION = 2;
+
 // default constructor
 Carrage::Carrage()
 {
@@ -158,4 +162,11 @@ void Carrage::Fast_print_LSD_hight(Wheel wheel){
 	float hight = wheel.get_hight();
 	Lcd_printf2(hight_pos_x, hight_pos_y, FONT_1X, hight, 2);
 	Lcd_update();
+}
+
+void Carrage::Save(int State){
+	//SavedPositions[State][1] = Wheel_1.hight;
+	//SavedPositions[State][2] = Wheel_2.hight;
+	//SavedPositions[State][3] = Wheel_2.hight;
+	//SavedPositions[State][4] = Wheel_2.hight;
 }

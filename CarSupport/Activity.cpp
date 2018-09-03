@@ -53,7 +53,7 @@ const int HIGHTPOSITION_SET = 9;
 const int LOWPOSITION_SET = 10;
 const int EXIT_SET = 11;
 
-
+const int SETTINGS_SET = 12;
 
 // default constructor
 Activity::Activity()
@@ -144,10 +144,10 @@ void Activity::Init(){
 	Menu_Screen_cursor_pathes[SETPOSITION][B_OK___] = PARKING_SET;
 	
 	Menu_Screen_cursor_pathes[SETTINGS][B_LEFT_] = ACTION_MENU_EXIT;
-	Menu_Screen_cursor_pathes[SETTINGS][B_RIGHT] = PARKING_SET;
+	Menu_Screen_cursor_pathes[SETTINGS][B_RIGHT] = SETTINGS_SET;
 	Menu_Screen_cursor_pathes[SETTINGS][B_UP___] = SETPOSITION;
 	Menu_Screen_cursor_pathes[SETTINGS][B_DOWN_] = EXIT_1;
-	Menu_Screen_cursor_pathes[SETTINGS][B_OK___] = PARKING_SET;
+	Menu_Screen_cursor_pathes[SETTINGS][B_OK___] = SETTINGS_SET;
 	
 	Menu_Screen_cursor_pathes[EXIT_1][B_LEFT_] = ACTION_MENU_EXIT;
 	Menu_Screen_cursor_pathes[EXIT_1][B_RIGHT] = ACTION_MENU_EXIT;

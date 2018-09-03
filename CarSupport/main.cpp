@@ -8,6 +8,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
+#include <avr/eeprom.h>
 #include <stdio.h>
 #include "Button.h"
 #include "Panel.h"
@@ -19,6 +20,7 @@
 #include "Carrage.h"
 #include "Screen.h"
 #include "Activity.h"
+
 
 #define I2C_ADR_PCF8574 0x27
 

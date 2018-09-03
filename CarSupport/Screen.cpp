@@ -34,6 +34,8 @@ const int HIGHTPOSITION_SET = 9;
 const int LOWPOSITION_SET = 10;
 const int EXIT_SET = 11;
 
+const int SETTINGS_SET = 12;
+
 // default constructor
 Screen::Screen()
 {
@@ -74,12 +76,16 @@ void Screen::PrintTitle(){
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
 		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
 		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
-	}else{
+	}else if (activity.Cursor < SETTINGS_SET ){
 		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Установить");
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
 		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
 		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
+	}else{
+		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Настройки");
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Калибровка");
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Выход");
 	}
 	
 	
