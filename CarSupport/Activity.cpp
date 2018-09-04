@@ -27,11 +27,11 @@ const int ACTION_ADJUST = 11;
 const int ACTION_MENU = 12;
 const int ACTION_MENU_EXIT = 13;
 const int ACTION_PARKING_SAVE =14;
-const int ACTION_HIGHTPOSITION_SAVE =14;
-const int ACTION_LOWPOSITION_SAVE =15;
-const int ACTION_PARKING_SET =16;
-const int ACTION_HIGHTPOSITION_SET =17;
-const int ACTION_LOWPOSITION_SET =18;
+const int ACTION_HIGHTPOSITION_SAVE =15;
+const int ACTION_LOWPOSITION_SAVE =16;
+const int ACTION_PARKING_SET =17;
+const int ACTION_HIGHTPOSITION_SET =18;
+const int ACTION_LOWPOSITION_SET =19;
 
 
 const int SCREEN_MAIN = 0;
@@ -226,7 +226,11 @@ bool Activity::Menu_Screen_Move(Panel panel, Carrage &carrage){
 		switch(next){
 			case (ACTION_MENU_EXIT):Statment=SCREEN_MAIN;Cursor = MENU;break;
 			case (ACTION_PARKING_SAVE):Save();break;
+			case (ACTION_HIGHTPOSITION_SAVE):Save();break;
+			case (ACTION_LOWPOSITION_SAVE):Save();break;
 			case (ACTION_PARKING_SET):Set();break;
+			case (ACTION_HIGHTPOSITION_SET):Set();break;
+			case (ACTION_LOWPOSITION_SET):Set();break;
 			default: Cursor = next;break;
 		}
 		return true;
@@ -246,6 +250,11 @@ void Activity::Save(){
 
 void  Activity::Set(){
 	SetFlag = true;
+	switch(Cursor){
+		case(PARKING_SET):SavePosition = 0;break;
+		case(HIGHTPOSITION_SET):SavePosition = 1;break;
+		case(LOWPOSITION_SET):SavePosition = 2;break;
+	}
 	Statment=SCREEN_ADJUST;
 	Cursor = MENU;
 }
