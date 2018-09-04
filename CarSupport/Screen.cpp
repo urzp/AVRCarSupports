@@ -45,7 +45,7 @@ void Screen::Init(){
 	 
 }
 
-void Screen::Render(Activity _activity, Carrage _carrage){
+void Screen::Render(Activity &_activity, Carrage &_carrage){
 	activity = _activity;
 	carrage = _carrage;
 	Lcd_clear();

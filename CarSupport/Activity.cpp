@@ -62,7 +62,8 @@ Activity::Activity()
 } //Activity
 
 void Activity::Init(){
-	
+	SaveFlag = false;
+	SetFlag = false;
 	Step = 9;
 	
 	Steps[0]=0.01;
@@ -224,10 +225,29 @@ bool Activity::Menu_Screen_Move(Panel panel, Carrage &carrage){
 		next = Menu_Screen_cursor_pathes[Cursor][move];
 		switch(next){
 			case (ACTION_MENU_EXIT):Statment=SCREEN_MAIN;Cursor = MENU;break;
+			case (ACTION_PARKING_SAVE):Save();break;
+			case (ACTION_PARKING_SET):Set();break;
 			default: Cursor = next;break;
 		}
 		return true;
 			
+}
+
+void Activity::Save(){
+	SaveFlag = true; 
+	switch(Cursor){
+		case(PARKING_SAVE):SavePosition = 0;break;
+		case(HIGHTPOSITION_SAVE):SavePosition = 1;break;
+		case(LOWPOSITION_SAVE):SavePosition = 2;break;
+	}
+	Statment=SCREEN_MAIN;
+	Cursor = MENU;
+}
+
+void  Activity::Set(){
+	SetFlag = true;
+	Statment=SCREEN_ADJUST;
+	Cursor = MENU;
 }
 
 bool Activity::Main_Screen_Move(Panel panel, Carrage &carrage){

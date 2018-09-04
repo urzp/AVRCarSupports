@@ -22,6 +22,9 @@ public:
 	int Cursor;
 	int Main_Screen_cursor_pathes[6][6];
 	int Menu_Screen_cursor_pathes[15][5];
+	bool SaveFlag;
+	bool SetFlag;
+	int SavePosition;
 protected:
 private:
 	
@@ -35,6 +38,8 @@ public:
 	void SelectWheel(Carrage &carrage);
 	bool Adjusting_Carrage(Panel panel, Carrage &carrage);
 	float get_val_step();
+	void Save();
+	void Set();
 protected:
 private:
 
