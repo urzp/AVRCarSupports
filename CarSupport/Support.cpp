@@ -54,12 +54,6 @@ Support::Support()
 
 void Support::Init(){
 	write_i2c((I2C_ADR_PCF8574<<1), 0x00);
-	//TWBR = (F_CPU / 100000UL - 16)/2; // TWI bitrate
-	//TCCR1B |= (1<<WGM12);
-	
-	//TIMSK1|=(1<<TOIE1);
-	//TCCR1B |= (1<<CS12);
-	//sei();
 } 
 
 void Support::Down(int ms_time, bool support_1, bool support_2, bool support_3, bool support_4 ){

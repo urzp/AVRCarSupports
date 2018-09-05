@@ -19,10 +19,10 @@ main.d main.o: .././main.cpp \
  c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
- .././Button.h .././Panel.h .././Output.h .././test.h .././LCDn5110.h \
+ .././Button.h .././Panel.h .././test.h .././Output.h .././LCDn5110.h \
  c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
  .././Carrage.h .././Wheel.h .././SensorsWheels.h .././Support.h \
- .././Initialisation.h .././Screen.h .././Activity.h
+ .././Initialisation.h .././Screen.h .././Activity.h .././CarSatates.h
 
 c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -68,9 +68,9 @@ c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr
 
 .././Panel.h:
 
-.././Output.h:
-
 .././test.h:
+
+.././Output.h:
 
 .././LCDn5110.h:
 
@@ -89,3 +89,5 @@ c:\program\ files\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include
 .././Screen.h:
 
 .././Activity.h:
+
+.././CarSatates.h:

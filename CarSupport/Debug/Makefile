@@ -43,7 +43,6 @@ C_SRCS +=  \
 ../LCDn5110.cpp \
 ../main.cpp \
 ../Screen.cpp \
-../Output.cpp \
 ../Panel.cpp \
 ../SensorsWheels.cpp \
 ../Support.cpp \
@@ -63,7 +62,6 @@ Carrage.o \
 LCDn5110.o \
 main.o \
 Screen.o \
-Output.o \
 Panel.o \
 SensorsWheels.o \
 Support.o \
@@ -76,7 +74,6 @@ Carrage.o \
 LCDn5110.o \
 main.o \
 Screen.o \
-Output.o \
 Panel.o \
 SensorsWheels.o \
 Support.o \
@@ -89,7 +86,6 @@ Carrage.d \
 LCDn5110.d \
 main.d \
 Screen.d \
-Output.d \
 Panel.d \
 SensorsWheels.d \
 Support.d \
@@ -102,7 +98,6 @@ Carrage.d \
 LCDn5110.d \
 main.d \
 Screen.d \
-Output.d \
 Panel.d \
 SensorsWheels.d \
 Support.d \
@@ -158,13 +153,6 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./Screen.o: .././Screen.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328 -B "C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega328" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-./Output.o: .././Output.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328 -B "C:\Program Files\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega328" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -14,8 +14,6 @@ main.cpp
 
 Screen.cpp
 
-Output.cpp
-
 Panel.cpp
 
 SensorsWheels.cpp

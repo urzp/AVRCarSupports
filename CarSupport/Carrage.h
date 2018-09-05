@@ -23,7 +23,6 @@ public:
 	Wheel Wheel_3;
 	Wheel Wheel_4;
 	Support support;
-	//float SavedPositions[3][5];
 protected:
 private:
 	int sort_array[4];
@@ -34,7 +33,7 @@ private:
 //functions
 public:
 	Carrage();
-	void Init(Wheel _Wheel_1, Wheel _Wheel_2, Wheel _Wheel_3, Wheel _Wheel_4);
+	void Init(Wheel &_Wheel_1, Wheel &_Wheel_2, Wheel &_Wheel_3, Wheel &_Wheel_4);
 	void beforeAdjast();
 	void Up(float step);
 	void Down(float step);

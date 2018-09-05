@@ -96,7 +96,7 @@ byte Lcd_pixel      ( byte x, byte y, LcdPixelMode mode );   // Точка
 /*
  * Таблица для отображения символов (ASCII[0x20-0x7F] + CP1251[0xC0-0xFF] = всего 160 символов)
  */
-static const byte FontLookup [][6] PROGMEM=
+static const byte FontLookup [][7] PROGMEM=
 {
    { 0x00, 0x00, 0x00, 0x00, 0x00 },   //   0x20  32
    { 0x00, 0x00, 0x5F, 0x00, 0x00 },   // ! 0x21  33
