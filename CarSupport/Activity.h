@@ -6,6 +6,7 @@
 */
 #include "Panel.h"
 #include "Carrage.h"
+#include <avr/pgmspace.h>
 
 
 #ifndef __ACTIVITY_H__
@@ -17,14 +18,15 @@ class Activity
 //variables
 public:
 	int Statment;
-	float Steps[20];
+	
 	int Step;
 	int Cursor;
-	int Main_Screen_cursor_pathes[6][6];
-	int Menu_Screen_cursor_pathes[15][5];
+	byte Main_Screen_cursor_pathes[6][6];
+	byte Menu_Screen_cursor_pathes[20][5];
 	bool SaveFlag;
 	bool SetFlag;
-	int SavePosition;
+	bool SavePosition;
+	
 protected:
 private:
 	

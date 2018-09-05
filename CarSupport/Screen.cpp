@@ -35,6 +35,11 @@ const int LOWPOSITION_SET = 10;
 const int EXIT_SET = 11;
 
 const int SETTINGS_SET = 12;
+const int TUNING = 13;
+const int LIMITS = 14;
+const int TEST_MALFACTION = 15;
+const int RESET_ERRORS = 16;
+
 
 // default constructor
 Screen::Screen()
@@ -56,6 +61,11 @@ void Screen::Render(Activity &_activity, Carrage &_carrage){
 	}
 	Lcd_update();
 }
+
+
+//******************
+//*  MENU SCREEN  *
+//*****************
 
 void Screen::Render_menu(){
 	PrintTitle();
@@ -87,7 +97,8 @@ void Screen::PrintTitle(){
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Калибровка");
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Ограничения");
 		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Тест исп-ти");
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Сброс ошибок");
+		Lcd_print(2, 5, FONT_1X,(unsigned char *)"Выход");
 	}
 	
 	

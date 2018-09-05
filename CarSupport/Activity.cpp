@@ -8,7 +8,7 @@
 
 #include "Activity.h"
 
-const int MENU = 0;
+const int MENU  = 0;
 const int LEFTUP = 1;
 const int RIGHTUP = 2;
 const int RIGHTDOWN = 3;
@@ -55,6 +55,13 @@ const int EXIT_SET = 11;
 
 const int SETTINGS_SET = 12;
 
+static const float Steps[] PROGMEM={
+	0.01, 0.02, 0.03, 0.04, 0.05,
+	0.06, 0.07, 0.08, 0.09, 0.10,
+	0.12, 0.15, 0.20, 0.30, 0.50,
+	0.75, 1.00, 1.50, 2.00, 3.00 };
+
+
 // default constructor
 Activity::Activity()
 {
@@ -64,29 +71,7 @@ Activity::Activity()
 void Activity::Init(){
 	SaveFlag = false;
 	SetFlag = false;
-	Step = 9;
-	
-	Steps[0]=0.01;
-	Steps[1]=0.02;
-	Steps[2]=0.03;
-	Steps[3]=0.04;
-	Steps[4]=0.05;
-	Steps[5]=0.06;
-	Steps[6]=0.07;
-	Steps[7]=0.08;
-	Steps[8]=0.09;
-	Steps[9]=0.10;
-	Steps[10]=0.12;
-	Steps[11]=0.15;
-	Steps[12]=0.20;
-	Steps[13]=0.30;
-	Steps[14]=0.50;
-	Steps[15]=0.75;
-	Steps[16]=1.00;
-	Steps[17]=1.50;
-	Steps[18]=2.00;
-	Steps[19]=3.00;
-	
+	Step = 9;	
 	
 	Cursor = MENU;
 	
@@ -290,8 +275,8 @@ bool Activity::Adjusting_Carrage(Panel panel, Carrage &carrage){
 		if (pressed == B_NOTHING ){return false;}
 		switch(pressed){
 			case(B_OK___):Statment = SCREEN_MAIN; break;
-			case(B_UP___):carrage.Up(Steps[Step]); break;
-			case(B_DOWN_):carrage.Down(Steps[Step]); break;
+			case(B_UP___):carrage.Up(get_val_step()); break;
+			case(B_DOWN_):carrage.Down(get_val_step()); break;
 			case(B_LEFT_):Step--; break;
 			case(B_RIGHT):Step++; break;
 		}
@@ -300,5 +285,5 @@ bool Activity::Adjusting_Carrage(Panel panel, Carrage &carrage){
 }
 
 float Activity::get_val_step(){
-	return Steps[Step];
+	return pgm_read_float (&(Steps[Step]));
 }
