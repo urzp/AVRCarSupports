@@ -130,7 +130,7 @@ void Screen::Draw_CursorMenuScreen(){
 		case(SETTINGS_LIMITS):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
 		case(SETTINGS_TEST_MALFACTION):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
 		case(SETTINGS_RESET_ERRORS):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
-		case(SETTINGS_EXIT):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(SETTINGS_EXIT):LcdGotoXY(0,5);LcdChr_full(0x9B);break;
 	}
 }
 

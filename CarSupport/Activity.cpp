@@ -22,16 +22,16 @@ const int B_LEFT_ = 3;
 const int B_RIGHT = 4;
 const int B_NOTHING = -1;
 
-const int ACTION_WHEEL = 10;
-const int ACTION_ADJUST = 11;
-const int ACTION_MENU = 12;
-const int ACTION_MENU_EXIT = 13;
-const int ACTION_PARKING_SAVE =14;
-const int ACTION_HIGHTPOSITION_SAVE =15;
-const int ACTION_LOWPOSITION_SAVE =16;
-const int ACTION_PARKING_SET =17;
-const int ACTION_HIGHTPOSITION_SET =18;
-const int ACTION_LOWPOSITION_SET =19;
+const int ACTION_WHEEL = 100;
+const int ACTION_ADJUST = 101;
+const int ACTION_MENU = 102;
+const int ACTION_MENU_EXIT = 103;
+const int ACTION_PARKING_SAVE =104;
+const int ACTION_HIGHTPOSITION_SAVE =105;
+const int ACTION_LOWPOSITION_SAVE =106;
+const int ACTION_PARKING_SET =107;
+const int ACTION_HIGHTPOSITION_SET =108;
+const int ACTION_LOWPOSITION_SET =109;
 
 
 const int SCREEN_MAIN = 0;
@@ -199,7 +199,36 @@ void Activity::Init(){
 	//*************
 	//* SETTINGS  *
 	//*************
+	Menu_Screen_cursor_pathes[SETTINGS_TUNING][B_LEFT_] = SETTINGS;
+	Menu_Screen_cursor_pathes[SETTINGS_TUNING][B_RIGHT] = SETTINGS_TUNING;
+	Menu_Screen_cursor_pathes[SETTINGS_TUNING][B_UP___] = SETTINGS_TUNING;
+	Menu_Screen_cursor_pathes[SETTINGS_TUNING][B_DOWN_] = SETTINGS_LIMITS;
+	Menu_Screen_cursor_pathes[SETTINGS_TUNING][B_OK___] = SETTINGS_TUNING;	
 	
+	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_LEFT_] = SETTINGS;
+	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_RIGHT] = SETTINGS_LIMITS;
+	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_UP___] = SETTINGS_TUNING;
+	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_DOWN_] = SETTINGS_TEST_MALFACTION;
+	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_OK___] = SETTINGS_LIMITS;	
+	
+	Menu_Screen_cursor_pathes[SETTINGS_TEST_MALFACTION][B_LEFT_] = SETTINGS;
+	Menu_Screen_cursor_pathes[SETTINGS_TEST_MALFACTION][B_RIGHT] = SETTINGS_TEST_MALFACTION;
+	Menu_Screen_cursor_pathes[SETTINGS_TEST_MALFACTION][B_UP___] = SETTINGS_LIMITS;
+	Menu_Screen_cursor_pathes[SETTINGS_TEST_MALFACTION][B_DOWN_] = SETTINGS_RESET_ERRORS;
+	Menu_Screen_cursor_pathes[SETTINGS_TEST_MALFACTION][B_OK___] = SETTINGS_TEST_MALFACTION;
+	
+	
+	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_LEFT_] = SETTINGS;
+	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_RIGHT] = SETTINGS_RESET_ERRORS;
+	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_UP___] = SETTINGS_LIMITS;
+	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_DOWN_] = SETTINGS_EXIT;
+	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_OK___] = SETTINGS_RESET_ERRORS;
+	
+	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_LEFT_] = SETTINGS;
+	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_RIGHT] = SETTINGS;
+	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_UP___] = SETTINGS_RESET_ERRORS;
+	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_DOWN_] = SETTINGS_EXIT;
+	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_OK___] = SETTINGS;
 }
 
 bool Activity::Cursor_Action(Panel panel, Carrage &carrage){
