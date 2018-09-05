@@ -53,7 +53,11 @@ const int HIGHTPOSITION_SET = 9;
 const int LOWPOSITION_SET = 10;
 const int EXIT_SET = 11;
 
-const int SETTINGS_SET = 12;
+const int SETTINGS_TUNING = 12;
+const int SETTINGS_LIMITS= 13;
+const int SETTINGS_TEST_MALFACTION = 14;
+const int SETTINGS_RESET_ERRORS = 15;
+const int SETTINGS_EXIT = 16;
 
 static const float Steps[] PROGMEM={
 	0.01, 0.02, 0.03, 0.04, 0.05,
@@ -130,10 +134,10 @@ void Activity::Init(){
 	Menu_Screen_cursor_pathes[SETPOSITION][B_OK___] = PARKING_SET;
 	
 	Menu_Screen_cursor_pathes[SETTINGS][B_LEFT_] = ACTION_MENU_EXIT;
-	Menu_Screen_cursor_pathes[SETTINGS][B_RIGHT] = SETTINGS_SET;
+	Menu_Screen_cursor_pathes[SETTINGS][B_RIGHT] = SETTINGS_TUNING;
 	Menu_Screen_cursor_pathes[SETTINGS][B_UP___] = SETPOSITION;
 	Menu_Screen_cursor_pathes[SETTINGS][B_DOWN_] = EXIT_1;
-	Menu_Screen_cursor_pathes[SETTINGS][B_OK___] = SETTINGS_SET;
+	Menu_Screen_cursor_pathes[SETTINGS][B_OK___] = SETTINGS_TUNING;
 	
 	Menu_Screen_cursor_pathes[EXIT_1][B_LEFT_] = ACTION_MENU_EXIT;
 	Menu_Screen_cursor_pathes[EXIT_1][B_RIGHT] = ACTION_MENU_EXIT;
@@ -192,6 +196,10 @@ void Activity::Init(){
 	Menu_Screen_cursor_pathes[EXIT_SET][B_UP___] = LOWPOSITION_SET;
 	Menu_Screen_cursor_pathes[EXIT_SET][B_DOWN_] = EXIT_SET;
 	Menu_Screen_cursor_pathes[EXIT_SET][B_OK___] = ACTION_MENU_EXIT;
+	//*************
+	//* SETTINGS  *
+	//*************
+	
 }
 
 bool Activity::Cursor_Action(Panel panel, Carrage &carrage){

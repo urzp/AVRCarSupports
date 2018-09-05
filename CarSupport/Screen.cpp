@@ -34,11 +34,11 @@ const int HIGHTPOSITION_SET = 9;
 const int LOWPOSITION_SET = 10;
 const int EXIT_SET = 11;
 
-const int SETTINGS_SET = 12;
-const int TUNING = 13;
-const int LIMITS = 14;
-const int TEST_MALFACTION = 15;
-const int RESET_ERRORS = 16;
+const int SETTINGS_TUNING = 12;
+const int SETTINGS_LIMITS= 13;
+const int SETTINGS_TEST_MALFACTION = 14;
+const int SETTINGS_RESET_ERRORS = 15;
+const int SETTINGS_EXIT = 16;
 
 
 // default constructor
@@ -86,7 +86,7 @@ void Screen::PrintTitle(){
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
 		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
 		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
-	}else if (activity.Cursor < SETTINGS_SET ){
+	}else if (activity.Cursor < SETTINGS_TUNING ){
 		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Установить");
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
@@ -114,15 +114,23 @@ void Screen::Draw_CursorMenuScreen(){
 		case(SAVE):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
 		case(SETPOSITION):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
 		case(SETTINGS):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
-		case(EXIT_1):LcdGotoXY(0,4);LcdChr_full(0x9B);break;	
+		case(EXIT_1):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
+			
 		case(PARKING_SAVE):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
 		case(HIGHTPOSITION_SAVE):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
 		case(EXIT_SAVE):LcdGotoXY(0,4);LcdChr_full(0x9B);break;	
 		case(LOWPOSITION_SAVE):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
+		
 		case(PARKING_SET):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
 		case(HIGHTPOSITION_SET):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
 		case(LOWPOSITION_SET):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
 		case(EXIT_SET):LcdGotoXY(0,4);LcdChr_full(0x9B);break;	
+		
+		case(SETTINGS_TUNING):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
+		case(SETTINGS_LIMITS):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(SETTINGS_TEST_MALFACTION):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
+		case(SETTINGS_RESET_ERRORS):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
+		case(SETTINGS_EXIT):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
 	}
 }
 

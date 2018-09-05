@@ -25,7 +25,7 @@ public:
 	byte Menu_Screen_cursor_pathes[20][5];
 	bool SaveFlag;
 	bool SetFlag;
-	bool SavePosition;
+	int SavePosition;
 	
 protected:
 private:

@@ -26,7 +26,7 @@ public:
 protected:
 private:
 	int sort_array[4];
-	int derWheel[5];
+	byte derWheel[5];
 	int checked[5];
 	int finish;
 	int _step;
