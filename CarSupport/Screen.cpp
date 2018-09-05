@@ -85,7 +85,9 @@ void Screen::PrintTitle(){
 	}else{
 		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Настройки");
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Калибровка");
-		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Выход");
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Ограничения");
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Тест исп-ти");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
 	}
 	
 	

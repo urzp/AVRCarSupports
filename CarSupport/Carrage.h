@@ -44,7 +44,7 @@ public:
 	bool chechWheelsBefore();
 	void Fast_print_LSD_hight(Wheel wheel);
 	int getStep();
-	void Save(int State);
+	void ControlMalfinction();
 protected:
 private:
 

@@ -218,7 +218,7 @@ bool Activity::Cursor_Action(Panel panel, Carrage &carrage){
 }
 
 bool Activity::Menu_Screen_Move(Panel panel, Carrage &carrage){
-		
+		carrage.ControlMalfinction();
 		int move = panel.Pressed(10);
 		int next;
 		if (move == B_NOTHING ){return false;}
@@ -260,7 +260,7 @@ void  Activity::Set(){
 }
 
 bool Activity::Main_Screen_Move(Panel panel, Carrage &carrage){
-	
+		carrage.ControlMalfinction();
 		int move = panel.Pressed(10);
 		int next;
 		

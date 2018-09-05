@@ -164,9 +164,17 @@ void Carrage::Fast_print_LSD_hight(Wheel wheel){
 	Lcd_update();
 }
 
-void Carrage::Save(int State){
-	//SavedPositions[State][1] = Wheel_1.hight;
-	//SavedPositions[State][2] = Wheel_2.hight;
-	//SavedPositions[State][3] = Wheel_2.hight;
-	//SavedPositions[State][4] = Wheel_2.hight;
+void Carrage::ControlMalfinction(){
+	Wheel_1.IsChanchedHight();
+	Wheel_2.IsChanchedHight();
+	Wheel_3.IsChanchedHight();
+	Wheel_4.IsChanchedHight();
+	bool caragemove = (Wheel_1.move|Wheel_2.move|Wheel_3.move|Wheel_4.move);
+	if (caragemove){
+		Wheel_1.ControlMalfinction();
+		Wheel_2.ControlMalfinction();
+		Wheel_3.ControlMalfinction();
+		Wheel_4.ControlMalfinction();
+	}
+
 }

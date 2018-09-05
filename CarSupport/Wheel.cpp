@@ -21,7 +21,11 @@ Wheel::Wheel()
 void Wheel::Init(int _number){
 	sensorWheels.Init();
 	number =  _number;
-	sethight = 2.50;
+	maxHight = 5.00;
+	minHight = 0.01;
+	oldHigit = get_hight();
+	countToMalfunction = 0;
+	countToMalfunctionLimit = 100;
 	
 }
 
@@ -62,12 +66,26 @@ bool Wheel::Check(){
 	}
 }
 
-void Wheel::set_hight(){
-	
+void Wheel::ControlMalfinction(){
+	if(!move){
+		countToMalfunction++;
+		if(countToMalfunction>countToMalfunctionLimit){
+			malfuction = true;
+		}
+	}else{
+		countToMalfunction=0;
+	}
 }
 
-void Wheel::PrintLCD(){
-	
+bool Wheel::IsChanchedHight(){
+	if(oldHigit != get_hight()){
+		oldHigit = hight;
+		move = true;
+		return true;
+	}else{
+		move = false;
+		return false;		
+	}
 }
 
 void Wheel::Select(){
@@ -77,11 +95,13 @@ void Wheel::Select(){
 bool Wheel::Up(float step){
 	if (!selected){return false;}
 	sethight += step;
+	if (sethight > maxHight){sethight = maxHight;}
 	return true;
 }
 
 bool Wheel::Down(float step){
 	if (!selected){return false;}
 	sethight -= step;
+	if (sethight < minHight){sethight = minHight;}
 	return true;
 }
