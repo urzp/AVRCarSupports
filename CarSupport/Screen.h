@@ -33,6 +33,7 @@ public:
 	void Render_main();
 	void Render_menu();
 	void Render_tunning();
+	void Render_limits();
 	void PtintItems();
 protected:
 private:

@@ -24,6 +24,7 @@ public:
 	Wheel Wheel_4;
 	Support support;
 	float tunning;
+	float min,max;
 protected:
 private:
 	int sort_array[4];

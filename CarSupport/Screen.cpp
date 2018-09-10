@@ -19,6 +19,7 @@ const int SCREEN_MAIN = 0;
 const int SCREEN_MENU = 1;
 const int SCREEN_ADJUST = 2;
 const int SCREEN_TUNNING = 3;
+const int SCREEN_LIMITS = 4;
 
 const int SAVE = 0;
 const int SETPOSITION = 1;
@@ -41,6 +42,8 @@ const int SETTINGS_TEST_MALFACTION = 14;
 const int SETTINGS_RESET_ERRORS = 15;
 const int SETTINGS_EXIT = 16;
 const int TUNING = 17;
+const int LIMITS_MIN = 18;
+const int LIMITS_MAX = 19;
 
 // default constructor
 Screen::Screen()
@@ -60,25 +63,43 @@ void Screen::Render(Activity &_activity, Carrage &_carrage){
 		case(SCREEN_ADJUST):Render_main();break;
 		case(SCREEN_MENU):Render_menu();break;
 		case(SCREEN_TUNNING):Render_tunning();break;
+		case(SCREEN_LIMITS):Render_limits();break;
 	}
 	Lcd_update();
 }
-//**********************
-//*  MENU SCREEN TUNING *
-//**********************
+
+//	***********************
+//	*  MENU SCREEN LIMITS *
+//	***********************
+
+void Screen::Render_limits(){
+	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Ограничения");
+	Lcd_print(2, 2, FONT_1X,(unsigned char *)"min");
+	Lcd_printf(8, 2, FONT_1X, carrage.min , 2);
+	Lcd_print(2, 4, FONT_1X,(unsigned char *)"max");
+	Lcd_printf(8, 4, FONT_1X, carrage.max , 2);
+	switch(activity.Cursor){
+		case(LIMITS_MIN):LcdGotoXY(6,2);LcdChr_full(0x9A);LcdGotoXY(13,2);LcdChr_full(0x9B);break;
+		case(LIMITS_MAX):LcdGotoXY(6,4);LcdChr_full(0x9A);LcdGotoXY(13,4);LcdChr_full(0x9B);break;
+	}
+}
+
+//	***********************
+//	*  MENU SCREEN TUNING *
+//	***********************
 
 void Screen::Render_tunning(){
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Калибровка");
-	LcdGotoXY(3,2);
+	LcdGotoXY(3,3);
 	LcdChr_full(0x9A);
-	Lcd_printf(5, 2, FONT_1X, carrage.tunning , 2);
-	LcdGotoXY(10,2);
+	Lcd_printf(5, 3, FONT_1X, carrage.tunning , 2);
+	LcdGotoXY(10,3);
 	LcdChr_full(0x9B);
 }
 
-//******************
-//*  MENU SCREEN  *
-//*****************
+//	*****************
+//	*  MENU SCREEN  *
+//	*****************
 
 void Screen::Render_menu(){
 	PrintTitle();

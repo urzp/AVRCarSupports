@@ -33,12 +33,14 @@ const int ACTION_PARKING_SET =107;
 const int ACTION_HIGHTPOSITION_SET =108;
 const int ACTION_LOWPOSITION_SET =109;
 const int ACTION_TUNING_SET = 110;
+const int ACTION_LIMITS_SET = 111;
 
 
 const int SCREEN_MAIN = 0;
 const int SCREEN_MENU = 1;
 const int SCREEN_ADJUST = 2;
 const int SCREEN_TUNNING = 3;
+const int SCREEN_LIMITS = 4;
 
 const int SAVE = 0;
 const int SETPOSITION = 1;
@@ -60,6 +62,10 @@ const int SETTINGS_LIMITS= 13;
 const int SETTINGS_TEST_MALFACTION = 14;
 const int SETTINGS_RESET_ERRORS = 15;
 const int SETTINGS_EXIT = 16;
+const int TUNING = 17;
+const int LIMITS_MIN = 18;
+const int LIMITS_MAX = 19;
+
 
 
 static const float Steps[] PROGMEM={
@@ -209,17 +215,16 @@ void Activity::Init(){
 	Menu_Screen_cursor_pathes[SETTINGS_TUNING][B_OK___] = ACTION_TUNING_SET;	
 	
 	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_LEFT_] = SETTINGS;
-	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_RIGHT] = SETTINGS_LIMITS;
+	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_RIGHT] = ACTION_LIMITS_SET;
 	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_UP___] = SETTINGS_TUNING;
 	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_DOWN_] = SETTINGS_TEST_MALFACTION;
-	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_OK___] = SETTINGS_LIMITS;	
+	Menu_Screen_cursor_pathes[SETTINGS_LIMITS][B_OK___] = ACTION_LIMITS_SET;	
 	
 	Menu_Screen_cursor_pathes[SETTINGS_TEST_MALFACTION][B_LEFT_] = SETTINGS;
 	Menu_Screen_cursor_pathes[SETTINGS_TEST_MALFACTION][B_RIGHT] = SETTINGS_TEST_MALFACTION;
 	Menu_Screen_cursor_pathes[SETTINGS_TEST_MALFACTION][B_UP___] = SETTINGS_LIMITS;
 	Menu_Screen_cursor_pathes[SETTINGS_TEST_MALFACTION][B_DOWN_] = SETTINGS_RESET_ERRORS;
 	Menu_Screen_cursor_pathes[SETTINGS_TEST_MALFACTION][B_OK___] = SETTINGS_TEST_MALFACTION;
-	
 	
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_LEFT_] = SETTINGS;
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_RIGHT] = SETTINGS_RESET_ERRORS;
@@ -240,6 +245,7 @@ bool Activity::Cursor_Action(Panel &panel, Carrage &carrage){
 		case(SCREEN_MENU):Menu_Screen_Move(panel,carrage);break;
 		case(SCREEN_ADJUST):Adjusting_Carrage(panel,carrage);break;
 		case(SCREEN_TUNNING):Tunning_rate(panel,carrage);break;
+		case(SCREEN_LIMITS):Limits_set(panel,carrage);break;
 	}
 }
 
@@ -258,6 +264,7 @@ bool Activity::Menu_Screen_Move(Panel &panel, Carrage &carrage){
 			case (ACTION_HIGHTPOSITION_SET):Set();break;
 			case (ACTION_LOWPOSITION_SET):Set();break;
 			case (ACTION_TUNING_SET):Statment = SCREEN_TUNNING;Cursor = SETTINGS_TUNING;break;
+			case (ACTION_LIMITS_SET):Statment = SCREEN_LIMITS;Cursor = LIMITS_MIN;break;
 			default: Cursor = next;break;
 		}
 		return true;
@@ -327,16 +334,35 @@ bool Activity::Adjusting_Carrage(Panel &panel, Carrage &carrage){
 }
 
 bool Activity::Tunning_rate(Panel &panel, Carrage &carrage){
-		int pressed = panel.Pressed(100);
-		if (pressed == B_NOTHING ){button_step=0;return false;}
-		switch(pressed){
-			case(B_OK___):Statment = SCREEN_MENU; break;
-			case(B_LEFT_):carrage.tunning-=(0.01+button_step);button_step=0.1; break;
-			case(B_RIGHT):carrage.tunning+=(0.01+button_step);button_step=0.1; break;
-			
-		}
-		if (carrage.tunning <= 0){carrage.tunning = 0.01;}
-		if (carrage.tunning >= 3){carrage.tunning = 3.00;}
+	int pressed = panel.Pressed(100);
+	if (pressed == B_NOTHING ){button_step=0;return false;}
+	switch(pressed){
+		case(B_OK___):Statment = SCREEN_MENU;SettingsSaveFlag = true; break;
+		case(B_LEFT_):carrage.tunning-=(0.01+button_step);button_step=0.1; break;
+		case(B_RIGHT):carrage.tunning+=(0.01+button_step);button_step=0.1; break;
+	}
+	if (carrage.tunning <= 0){carrage.tunning = 0.01;}
+	if (carrage.tunning >= 3){carrage.tunning = 3.00;}
+}
+
+
+bool Activity::Limits_set(Panel &panel, Carrage &carrage){
+	int pressed = panel.Pressed(100);
+	if (pressed == B_NOTHING ){button_step=0;return false;}
+	switch(pressed){
+		case(B_OK___):Statment = SCREEN_MENU;SettingsSaveFlag = true; break;
+		case(B_LEFT_):if(Cursor==LIMITS_MIN){carrage.min-=(0.01+button_step);}else{carrage.max-=(0.01+button_step);};button_step=0.1; break;
+		case(B_RIGHT):if(Cursor==LIMITS_MIN){carrage.min+=(0.01+button_step);}else{carrage.max+=(0.01+button_step);};button_step=0.1; break;
+		case(B_DOWN_):Cursor = LIMITS_MAX;break;
+		case(B_UP___):Cursor = LIMITS_MIN;break;
+	}
+	if (carrage.min <= 0){carrage.min = 0.00;}
+	if (carrage.max >= 5){carrage.max = 5.00;}
+	switch(Cursor){
+		case(LIMITS_MIN):if (carrage.min >= carrage.max){carrage.min = carrage.max;};break;
+		case(LIMITS_MAX):if (carrage.max <= carrage.min){carrage.max = carrage.min;};break;
+	}
+
 }
 
 float Activity::get_val_step(){

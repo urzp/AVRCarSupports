@@ -31,6 +31,8 @@ void Carrage::Init(Wheel &_Wheel_1, Wheel &_Wheel_2, Wheel &_Wheel_3, Wheel &_Wh
 	support.Init();
 	_step =1;
 	chechAll();
+	min = 0.10;
+	max = 4.50;
 }
 
 void Carrage::beforeAdjast(){

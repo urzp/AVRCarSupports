@@ -33,6 +33,7 @@ int main(void)
 		screen.Render(activity, carrage);
 		IFCarrageSaveStateToEEMEM(activity.SavePosition);
 		IFCarrageSetStateToEEMEM(activity.SavePosition);
+		SettingsSave(activity.SettingsSaveFlag);
     }
 }
 

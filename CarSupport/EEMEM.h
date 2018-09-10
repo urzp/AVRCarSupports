@@ -12,7 +12,11 @@
 
 
 
-
+void SettingsSave(bool SettingSave){
+	if (SettingSave){
+		eeprom_write_float (&Tunning_rate, carrage.tunning);
+	}
+}
 
 
 void IFCarrageSaveStateToEEMEM( int position){

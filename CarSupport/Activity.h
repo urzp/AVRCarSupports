@@ -26,6 +26,7 @@ public:
 	byte Menu_Screen_cursor_pathes[20][5];
 	bool SaveFlag;
 	bool SetFlag;
+	bool SettingsSaveFlag;
 	int SavePosition;
 	
 protected:
@@ -41,6 +42,7 @@ public:
 	void SelectWheel(Carrage &carrage);
 	bool Adjusting_Carrage(Panel &panel, Carrage &carrage);
 	bool Tunning_rate(Panel &panel, Carrage &carrage);
+	bool Limits_set(Panel &panel, Carrage &carrage);
 	float get_val_step();
 	void Save();
 	void Set();
