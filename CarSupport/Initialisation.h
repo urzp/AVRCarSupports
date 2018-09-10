@@ -10,6 +10,7 @@
 #define F_CPU 16000000
 #include <avr/io.h>
 #include <util/delay.h>
+#include <avr/eeprom.h>
 #include "Button.h"
 #include "Panel.h"
 #include "test.h"
@@ -25,7 +26,8 @@
 #ifndef INITIALISATION_H_
 #define INITIALISATION_H_
 
-
+float Tunning_rate EEMEM;
+float PositionsStates[3][5] EEMEM;
 
 Button okButton;
 Button upButton;
@@ -43,6 +45,7 @@ Panel panel;
 Screen screen;
 Activity activity;
 
+
 void Initialisation(){
 	okButton.Init('D', 2);
 	upButton.Init('D', 3);
@@ -58,6 +61,11 @@ void Initialisation(){
 	carrage.Init(wheel_lf,wheel_rf,wheel_rr,wheel_lr);
 	activity.Init();
 	screen.Render(activity, carrage);
+	
+	if(!(eeprom_read_float(&Tunning_rate)>0||eeprom_read_float(&Tunning_rate)<3)){
+		eeprom_write_float (&Tunning_rate, 1.00);
+	}
+	carrage.tunning = eeprom_read_float(&Tunning_rate);
 }
 
 #endif /* INITIALISATION_H_ */

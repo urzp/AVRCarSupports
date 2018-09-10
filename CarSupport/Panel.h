@@ -28,7 +28,7 @@ class Panel
 	//functions
 	public:
 		Panel();
-		void Init(Button ok, Button up, Button down, Button left, Button rigit);
+		void Init(Button &ok, Button &up, Button &down, Button &left, Button &rigit);
 		int Pressed(int debounse);
 	protected:
 	private:

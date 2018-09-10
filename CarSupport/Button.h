@@ -17,9 +17,11 @@ class Button
 	public:
 		char _port;
 		int _pin;
+		int slice;	
+		int slice_limit;
 	protected:
 	private:
-	
+		
 	
 
 	//functions

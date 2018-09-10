@@ -18,6 +18,7 @@ const int ADJUST = 5;
 const int SCREEN_MAIN = 0;
 const int SCREEN_MENU = 1;
 const int SCREEN_ADJUST = 2;
+const int SCREEN_TUNNING = 3;
 
 const int SAVE = 0;
 const int SETPOSITION = 1;
@@ -39,7 +40,7 @@ const int SETTINGS_LIMITS= 13;
 const int SETTINGS_TEST_MALFACTION = 14;
 const int SETTINGS_RESET_ERRORS = 15;
 const int SETTINGS_EXIT = 16;
-
+const int TUNING = 17;
 
 // default constructor
 Screen::Screen()
@@ -58,10 +59,22 @@ void Screen::Render(Activity &_activity, Carrage &_carrage){
 		case(SCREEN_MAIN):Render_main();break;
 		case(SCREEN_ADJUST):Render_main();break;
 		case(SCREEN_MENU):Render_menu();break;
+		case(SCREEN_TUNNING):Render_tunning();break;
 	}
 	Lcd_update();
 }
+//**********************
+//*  MENU SCREEN TUNING *
+//**********************
 
+void Screen::Render_tunning(){
+	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Калибровка");
+	LcdGotoXY(3,2);
+	LcdChr_full(0x9A);
+	Lcd_printf(5, 2, FONT_1X, carrage.tunning , 2);
+	LcdGotoXY(10,2);
+	LcdChr_full(0x9B);
+}
 
 //******************
 //*  MENU SCREEN  *
@@ -96,7 +109,7 @@ void Screen::PrintTitle(){
 		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Настройки");
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Калибровка");
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Ограничения");
-		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Тест исп-ти");
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Диагностика");
 		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Сброс ошибок");
 		Lcd_print(2, 5, FONT_1X,(unsigned char *)"Выход");
 	}

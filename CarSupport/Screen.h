@@ -32,6 +32,7 @@ public:
 	void Render(Activity &_activity, Carrage &_carrage);
 	void Render_main();
 	void Render_menu();
+	void Render_tunning();
 	void PtintItems();
 protected:
 private:

@@ -1,5 +1,5 @@
 /*
- * CarSatates.h
+ * EEMEM.h
  *
  * Created: 05.09.2018 13:39:58
  *  Author: user
@@ -10,7 +10,10 @@
 #define CARSATATES_H_
 
 
-float PositionsStates[3][5] EEMEM;
+
+
+
+
 
 void IFCarrageSaveStateToEEMEM( int position){
 	

@@ -18,19 +18,20 @@ Panel::Panel()
 {
 } 
 
-void Panel::Init(Button ok, Button up, Button down, Button left, Button rigit ){
+void Panel::Init(Button &ok, Button &up, Button &down, Button &left, Button &rigit ){
 	bat_ok = ok;
 	bat_up = up;
 	bat_down = down;
 	bat_right = rigit;
 	bat_left = left;
+
 }
 
 int Panel::Pressed(int debounse){
-	if (bat_ok.Pressed(debounse)){ return B_OK ;}
-	if (bat_up.Pressed(debounse)){ return  B_UP;}
-	if (bat_down.Pressed(debounse)){ return B_DOWN ;}
-	if (bat_right.Pressed(debounse)){ return B_RIGHT;}
+	if (bat_ok.Pressed(debounse)){return B_OK ;}
+	if (bat_up.Pressed(debounse)){return  B_UP;}
+	if (bat_down.Pressed(debounse)){return B_DOWN ;}
+	if (bat_right.Pressed(debounse)){return B_RIGHT;}
 	if (bat_left.Pressed(debounse)) {return B_LEFT;}	
 	return B_NOTHING ;
 }

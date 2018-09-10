@@ -9,7 +9,6 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <avr/eeprom.h>
-#include <avr/eeprom.h>
 #include <stdio.h>
 #include "Button.h"
 #include "Panel.h"
@@ -20,12 +19,13 @@
 #include "Carrage.h"
 #include "Screen.h"
 #include "Activity.h"
-#include "CarSatates.h"
+#include "EEMEM.h"
 
 
 
 int main(void)
 {	
+	
 	Initialisation();
     while (1) 
     {		
