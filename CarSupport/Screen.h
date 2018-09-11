@@ -35,6 +35,9 @@ public:
 	void Render_tunning();
 	void Render_limits();
 	void Render_maltifaction();
+	void Render_ERRORS();
+	void Render_ERROR();
+	void PrintError(Wheel wheel);
 	void PtintItems();
 protected:
 private:

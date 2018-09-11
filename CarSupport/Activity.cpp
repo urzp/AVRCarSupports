@@ -35,6 +35,8 @@ const int ACTION_LOWPOSITION_SET =109;
 const int ACTION_TUNING_SET = 110;
 const int ACTION_LIMITS_SET = 111;
 const int ACTION_TEST_MALFACTION = 112;
+const int ACTION_ERRORS = 113;
+
 
 
 const int SCREEN_MAIN = 0;
@@ -43,6 +45,8 @@ const int SCREEN_ADJUST = 2;
 const int SCREEN_TUNNING = 3;
 const int SCREEN_LIMITS = 4;
 const int SCREEN_SET_MALFACTION = 5;
+const int SCREEN_SET_ERRORS = 6;
+const int SCREEN_ERROR_WHEEL = 7;
 
 const int SAVE = 0;
 const int SETPOSITION = 1;
@@ -70,6 +74,11 @@ const int LIMITS_MAX = 19;
 const int ONOF_MALFACTION =20;
 const int TIME_MALFACTION =21;
 
+const int ERRORS_WHEEL1 = 23;
+const int ERRORS_WHEEL2 = 24;
+const int ERRORS_WHEEL3 = 25;
+const int ERRORS_WHEEL4 = 26;
+const int ERRORS_RESET = 27;
 
 
 static const float Steps[] PROGMEM={
@@ -231,10 +240,10 @@ void Activity::Init(){
 	Menu_Screen_cursor_pathes[SETTINGS_TEST_MALFACTION][B_OK___] = ACTION_TEST_MALFACTION;
 	
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_LEFT_] = SETTINGS;
-	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_RIGHT] = SETTINGS_RESET_ERRORS;
+	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_RIGHT] = ACTION_ERRORS;
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_UP___] = SETTINGS_LIMITS;
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_DOWN_] = SETTINGS_EXIT;
-	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_OK___] = SETTINGS_RESET_ERRORS;
+	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_OK___] = ACTION_ERRORS;
 	
 	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_LEFT_] = SETTINGS;
 	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_RIGHT] = SETTINGS;
@@ -251,6 +260,8 @@ bool Activity::Cursor_Action(Panel &panel, Carrage &carrage){
 		case(SCREEN_TUNNING):Tunning_rate(panel,carrage);break;
 		case(SCREEN_LIMITS):Limits_set(panel,carrage);break;
 		case(SCREEN_SET_MALFACTION):malfaction_set(panel,carrage);break;
+		case(SCREEN_SET_ERRORS):errors(panel,carrage);break;
+		case(SCREEN_ERROR_WHEEL):error(panel,carrage);break;
 	}
 }
 
@@ -271,6 +282,7 @@ bool Activity::Menu_Screen_Move(Panel &panel, Carrage &carrage){
 			case (ACTION_TUNING_SET):Statment = SCREEN_TUNNING;Cursor = SETTINGS_TUNING;break;
 			case (ACTION_LIMITS_SET):Statment = SCREEN_LIMITS;Cursor = LIMITS_MIN;break;
 			case (ACTION_TEST_MALFACTION):Statment = SCREEN_SET_MALFACTION;Cursor = ONOF_MALFACTION;break;
+			case (ACTION_ERRORS):Statment = SCREEN_SET_ERRORS;Cursor = ERRORS_RESET;break;
 			default: Cursor = next;break;
 		}
 		return true;
@@ -392,6 +404,30 @@ bool Activity::malfaction_set(Panel &panel, Carrage &carrage){
 	}
 	if (carrage.countToMalfunctionLimit <= 5){carrage.countToMalfunctionLimit = 5;}
 	if (carrage.countToMalfunctionLimit >= 999){carrage.countToMalfunctionLimit = 999;}
+}
+
+bool Activity::errors(Panel &panel, Carrage &carrage){
+	int pressed = panel.Pressed(100);
+	if (pressed == B_NOTHING ){return false;}
+	if(pressed == B_OK___&&Cursor==ERRORS_RESET){carrage.errorsReset();return false;}
+	switch(pressed){
+		case(B_OK___):Statment=SCREEN_ERROR_WHEEL; break;
+		case(B_LEFT_):Statment = SCREEN_MENU;Cursor=SETTINGS_RESET_ERRORS; break;
+		case(B_RIGHT):; break;
+		case(B_DOWN_):Cursor++;break;
+		case(B_UP___):Cursor--;break;
+	}
+	
+	if(Cursor<=ERRORS_WHEEL1){Cursor = ERRORS_WHEEL1;};
+	if(Cursor>=ERRORS_RESET){Cursor = ERRORS_RESET;};
+
+}
+
+bool Activity::error(Panel &panel, Carrage &carrage){
+		int pressed = panel.Pressed(100);
+		if (pressed == B_NOTHING ){return false;
+		}else{Statment=SCREEN_SET_ERRORS;}
+				
 }
 
 float Activity::get_val_step(){

@@ -25,6 +25,7 @@ public:
 	bool malfuction;
 	bool adjusted;
 	bool move;
+	int Error;
 	int countToMalfunction;
 	int step;
 	SensorsWheels sensorWheels;

@@ -21,6 +21,8 @@ const int SCREEN_ADJUST = 2;
 const int SCREEN_TUNNING = 3;
 const int SCREEN_LIMITS = 4;
 const int SCREEN_SET_MALFACTION = 5;
+const int SCREEN_SET_ERRORS = 6;
+const int SCREEN_ERROR_WHEEL = 7;
 
 const int SAVE = 0;
 const int SETPOSITION = 1;
@@ -48,6 +50,12 @@ const int LIMITS_MAX = 19;
 const int ONOF_MALFACTION =20;
 const int TIME_MALFACTION =21;
 
+const int ERRORS_WHEEL1 = 23;
+const int ERRORS_WHEEL2 = 24;
+const int ERRORS_WHEEL3 = 25;
+const int ERRORS_WHEEL4 = 26;
+const int ERRORS_RESET = 27;
+
 // default constructor
 Screen::Screen()
 {
@@ -68,6 +76,8 @@ void Screen::Render(Activity &_activity, Carrage &_carrage){
 		case(SCREEN_TUNNING):Render_tunning();break;
 		case(SCREEN_LIMITS):Render_limits();break;
 		case(SCREEN_SET_MALFACTION):Render_maltifaction();break;
+		case(SCREEN_SET_ERRORS):Render_ERRORS();break;
+		case(SCREEN_ERROR_WHEEL):Render_ERROR();break;
 	}
 	Lcd_update();
 }
@@ -91,6 +101,64 @@ void Screen::Render_maltifaction(){
 	}
 }
 
+//	***********************
+//	*  MENU SCREEN  ERROR *
+//	***********************
+void Screen::Render_ERROR(){
+	switch(activity.Cursor){
+		case(ERRORS_WHEEL1):Lcd_print(3, 0, FONT_1X,(unsigned char *)"1 Стойка");PrintError(carrage.Wheel_1);break;
+		case(ERRORS_WHEEL2):Lcd_print(3, 0, FONT_1X,(unsigned char *)"2 Стойка");PrintError(carrage.Wheel_2);break;
+		case(ERRORS_WHEEL3):Lcd_print(3, 0, FONT_1X,(unsigned char *)"3 Стойка");PrintError(carrage.Wheel_3);break;
+		case(ERRORS_WHEEL4):Lcd_print(3, 0, FONT_1X,(unsigned char *)"4 Стойка");PrintError(carrage.Wheel_4);break;
+	}
+
+}
+
+void Screen::PrintError(Wheel wheel){
+	if(wheel.Error == 0){
+		Lcd_print(1, 2, FONT_1X,(unsigned char *)"Ошибок нет");
+	}else{
+		Lcd_print(1, 1, FONT_1X,(unsigned char *)"Ошибка Е");
+		Lcd_printf(9, 1, FONT_1X, wheel.Error , 0);
+		switch(wheel.Error){ 
+			case(1):Lcd_print(0, 2, FONT_1X,(unsigned char *)"нет ответа стойки при попытке изменить ее положение");break;//"нет ответа стойки при попытке изменить ее положение"
+			case(2):Lcd_print(0, 2, FONT_1X,(unsigned char *)"невозжможно выставить заданное положение");break;//"невозжможно выставить заданное положение"
+			case(3):Lcd_print(0, 2, FONT_1X,(unsigned char *)"зависание датчика положения во время движения");break; //"зависание датчика положения во время движения"
+		}
+	}
+}
+
+
+//	***********************
+//	*  MENU SCREEN  ERRORS*
+//	***********************
+
+void Screen::Render_ERRORS(){
+	Lcd_print(4, 0, FONT_1X,(unsigned char *)"Ошибки");
+	Lcd_print(2, 1, FONT_1X,(unsigned char *)"1 Стойка");
+	Lcd_print(2, 2, FONT_1X,(unsigned char *)"2 Стойка");
+	Lcd_print(2, 3, FONT_1X,(unsigned char *)"3 Стойка");
+	Lcd_print(2, 4, FONT_1X,(unsigned char *)"4 Стойка");
+	Lcd_print(2, 5, FONT_1X,(unsigned char *)"Сброс");
+	
+	Lcd_print(11, 1, FONT_1X,(unsigned char *)"--");
+	Lcd_print(11, 2, FONT_1X,(unsigned char *)"--");
+	Lcd_print(11, 3, FONT_1X,(unsigned char *)"--");
+	Lcd_print(11, 4, FONT_1X,(unsigned char *)"--");
+		
+	if(carrage.Wheel_1.Error>0){Lcd_print(11, 1, FONT_1X,(unsigned char *)"E");Lcd_printf(12, 1, FONT_1X, carrage.Wheel_1.Error , 0);}
+	if(carrage.Wheel_2.Error>0){Lcd_print(11, 2, FONT_1X,(unsigned char *)"E");Lcd_printf(12, 2, FONT_1X, carrage.Wheel_2.Error , 0);}
+	if(carrage.Wheel_3.Error>0){Lcd_print(11, 3, FONT_1X,(unsigned char *)"E");Lcd_printf(12, 3, FONT_1X, carrage.Wheel_3.Error , 0);}
+	if(carrage.Wheel_4.Error>0){Lcd_print(11, 4, FONT_1X,(unsigned char *)"E");Lcd_printf(12, 4, FONT_1X, carrage.Wheel_4.Error , 0);}
+		
+	switch(activity.Cursor){
+		case(ERRORS_WHEEL1):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
+		case(ERRORS_WHEEL2):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(ERRORS_WHEEL3):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
+		case(ERRORS_WHEEL4):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
+		case(ERRORS_RESET):LcdGotoXY(0,5);LcdChr_full(0x9B);break;
+	}
+}
 
 //	***********************
 //	*  MENU SCREEN LIMITS *

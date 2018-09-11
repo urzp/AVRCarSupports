@@ -96,10 +96,10 @@ void Carrage::Ajustment(){
 		}
 	
 		if(i>=100){
-			if(derWheel[1]>0){Wheel_1.malfuction = true;}
-			if(derWheel[2]>0){Wheel_2.malfuction = true;}
-			if(derWheel[3]>0){Wheel_3.malfuction = true;}
-			if(derWheel[4]>0){Wheel_4.malfuction = true;}
+			if(derWheel[1]>0){Wheel_1.malfuction = true;Wheel_1.Error = 2;}
+			if(derWheel[2]>0){Wheel_2.malfuction = true;Wheel_2.Error = 2;}
+			if(derWheel[3]>0){Wheel_3.malfuction = true;Wheel_3.Error = 2;}
+			if(derWheel[4]>0){Wheel_4.malfuction = true;Wheel_4.Error = 2;}
 		}
 	}
 }
@@ -202,4 +202,15 @@ void Carrage::ControlMalfinction(){
 
 void Carrage::switch_malfaction(){
 	OnOffMalfunction = !OnOffMalfunction;
+}
+
+void Carrage::errorsReset(){
+	Wheel_1.malfuction = false;
+	Wheel_1.Error = 0;
+	Wheel_2.malfuction = false;
+	Wheel_2.Error = 0;
+	Wheel_3.malfuction = false;
+	Wheel_3.Error = 0;
+	Wheel_4.malfuction = false;
+	Wheel_4.Error = 0;
 }

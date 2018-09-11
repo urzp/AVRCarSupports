@@ -25,7 +25,7 @@ void Wheel::Init(int _number){
 	minHight = 0.01;
 	oldHigit = get_hight();
 	countToMalfunction = 0;
-	
+	Error = 0;
 }
 
 float Wheel::get_hight(){
@@ -58,6 +58,7 @@ bool Wheel::Check(){
 	hight = get_hight();
 	if (checkhight == hight){
 		malfuction = true;
+		Error = 1;
 		return false;
 	} else{
 		malfuction = false;
@@ -70,6 +71,7 @@ void Wheel::ControlMalfinction(int countToMalfunctionLimit ){
 		countToMalfunction++;
 		if(countToMalfunction>countToMalfunctionLimit){
 			malfuction = true;
+			Error = 3;
 		}
 	}else{
 		countToMalfunction=0;

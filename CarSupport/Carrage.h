@@ -51,6 +51,7 @@ public:
 	int getStep();
 	void ControlMalfinction();
 	void switch_malfaction();
+	void errorsReset();
 protected:
 private:
 
