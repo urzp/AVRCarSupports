@@ -77,6 +77,11 @@ void Wheel::ControlMalfinction(){
 	}
 }
 
+void Wheel::SetLimitsSetHight(){
+	if(sethight>=maxHight){sethight=maxHight;}
+	if(sethight<=minHight){sethight=minHight;}
+}
+
 bool Wheel::IsChanchedHight(){
 	if(oldHigit != get_hight()){
 		oldHigit = hight;

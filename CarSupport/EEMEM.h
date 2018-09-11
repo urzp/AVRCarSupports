@@ -15,6 +15,9 @@
 void SettingsSave(bool SettingSave){
 	if (SettingSave){
 		eeprom_write_float (&Tunning_rate, carrage.tunning);
+		eeprom_write_float(&CarrajeMin, carrage.min);
+		eeprom_write_float(&CarrajeMax, carrage.max);
+		carrage.SetLimits();
 	}
 }
 

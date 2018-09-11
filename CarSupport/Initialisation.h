@@ -27,6 +27,8 @@
 #define INITIALISATION_H_
 
 float Tunning_rate EEMEM;
+float CarrajeMin EEMEM;
+float CarrajeMax EEMEM;
 float PositionsStates[3][5] EEMEM;
 
 Button okButton;
@@ -62,10 +64,23 @@ void Initialisation(){
 	activity.Init();
 	screen.Render(activity, carrage);
 	
+	// initilisation null EEMEM
 	if(!(eeprom_read_float(&Tunning_rate)>0||eeprom_read_float(&Tunning_rate)<3)){
 		eeprom_write_float (&Tunning_rate, 1.00);
 	}
 	carrage.tunning = eeprom_read_float(&Tunning_rate);
+	
+	if (!(eeprom_read_float(&CarrajeMin)>=0||eeprom_read_float(&CarrajeMin)<=5)){
+		eeprom_write_float (&CarrajeMin, 0.00);
+	}
+	carrage.min =  eeprom_read_float(&CarrajeMin);
+	
+	if (!(eeprom_read_float(&CarrajeMax)>=0||eeprom_read_float(&CarrajeMax)<=5)){
+		eeprom_write_float (&CarrajeMax, 5.00);
+	}
+	carrage.max =  eeprom_read_float(&CarrajeMax);
+	
+	carrage.SetLimits();
 }
 
 #endif /* INITIALISATION_H_ */

@@ -39,6 +39,8 @@ public:
 	void beforeAdjast();
 	void Up(float step);
 	void Down(float step);
+	void SetLimits();
+	void CheckLimitsSetHight();
 	void Ajustment();
 	void test();
 	bool chechAll();

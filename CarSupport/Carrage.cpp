@@ -31,8 +31,6 @@ void Carrage::Init(Wheel &_Wheel_1, Wheel &_Wheel_2, Wheel &_Wheel_3, Wheel &_Wh
 	support.Init();
 	_step =1;
 	chechAll();
-	min = 0.10;
-	max = 4.50;
 }
 
 void Carrage::beforeAdjast(){
@@ -58,8 +56,27 @@ void Carrage::Down(float step){
 	Ajustment();
 }
 
-void Carrage::Ajustment(){
+void Carrage::SetLimits(){
+	Wheel_1.maxHight = max;
+	Wheel_2.maxHight = max;
+	Wheel_3.maxHight = max;
+	Wheel_4.maxHight = max;
 	
+	Wheel_1.minHight = min;
+	Wheel_2.minHight = min;
+	Wheel_3.minHight = min;
+	Wheel_4.minHight = min;
+}
+
+void Carrage::CheckLimitsSetHight(){
+	Wheel_1.SetLimitsSetHight();
+	Wheel_2.SetLimitsSetHight();
+	Wheel_3.SetLimitsSetHight();
+	Wheel_4.SetLimitsSetHight();
+}
+
+void Carrage::Ajustment(){
+	CheckLimitsSetHight();
 	finish=1;
 	int i=0;
 	if (chechWheelsBefore()){

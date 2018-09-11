@@ -40,6 +40,7 @@ public:
 	void Init(int _number);
 	float get_hight();
 	void ControlMalfinction();
+	void SetLimitsSetHight();
 	bool Up(float step);
 	bool Down(float step);
 	bool IsChanchedHight();

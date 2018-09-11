@@ -272,7 +272,7 @@ bool Activity::Menu_Screen_Move(Panel &panel, Carrage &carrage){
 }
 
 void Activity::Save(){
-	SaveFlag = true; 
+	SaveFlag = true; //For set position in EEMEM
 	switch(Cursor){
 		case(PARKING_SAVE):SavePosition = 0;break;
 		case(HIGHTPOSITION_SAVE):SavePosition = 1;break;
@@ -283,7 +283,7 @@ void Activity::Save(){
 }
 
 void  Activity::Set(){
-	SetFlag = true;
+	SetFlag = true; //For set position in EEMEM and start adjastment there.
 	switch(Cursor){
 		case(PARKING_SET):SavePosition = 0;break;
 		case(HIGHTPOSITION_SET):SavePosition = 1;break;
@@ -350,7 +350,7 @@ bool Activity::Limits_set(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
 	if (pressed == B_NOTHING ){button_step=0;return false;}
 	switch(pressed){
-		case(B_OK___):Statment = SCREEN_MENU;SettingsSaveFlag = true; break;
+		case(B_OK___):Statment = SCREEN_MENU;Cursor=SETTINGS_LIMITS;SettingsSaveFlag = true; break;
 		case(B_LEFT_):if(Cursor==LIMITS_MIN){carrage.min-=(0.01+button_step);}else{carrage.max-=(0.01+button_step);};button_step=0.1; break;
 		case(B_RIGHT):if(Cursor==LIMITS_MIN){carrage.min+=(0.01+button_step);}else{carrage.max+=(0.01+button_step);};button_step=0.1; break;
 		case(B_DOWN_):Cursor = LIMITS_MAX;break;
