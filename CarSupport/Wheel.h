@@ -26,7 +26,6 @@ public:
 	bool adjusted;
 	bool move;
 	int countToMalfunction;
-	int countToMalfunctionLimit;
 	int step;
 	SensorsWheels sensorWheels;
 protected:
@@ -39,7 +38,7 @@ public:
 	Wheel();
 	void Init(int _number);
 	float get_hight();
-	void ControlMalfinction();
+	void ControlMalfinction(int countToMalfunctionLimit);
 	void SetLimitsSetHight();
 	bool Up(float step);
 	bool Down(float step);

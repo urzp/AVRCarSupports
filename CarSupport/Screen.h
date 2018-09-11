@@ -34,6 +34,7 @@ public:
 	void Render_menu();
 	void Render_tunning();
 	void Render_limits();
+	void Render_maltifaction();
 	void PtintItems();
 protected:
 private:

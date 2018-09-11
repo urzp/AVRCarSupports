@@ -25,7 +25,6 @@ void Wheel::Init(int _number){
 	minHight = 0.01;
 	oldHigit = get_hight();
 	countToMalfunction = 0;
-	countToMalfunctionLimit = 100;
 	
 }
 
@@ -66,7 +65,7 @@ bool Wheel::Check(){
 	}
 }
 
-void Wheel::ControlMalfinction(){
+void Wheel::ControlMalfinction(int countToMalfunctionLimit ){
 	if(!move){
 		countToMalfunction++;
 		if(countToMalfunction>countToMalfunctionLimit){

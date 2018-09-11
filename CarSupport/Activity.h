@@ -43,6 +43,7 @@ public:
 	bool Adjusting_Carrage(Panel &panel, Carrage &carrage);
 	bool Tunning_rate(Panel &panel, Carrage &carrage);
 	bool Limits_set(Panel &panel, Carrage &carrage);
+	bool malfaction_set(Panel &panel, Carrage &carrage);
 	float get_val_step();
 	void Save();
 	void Set();

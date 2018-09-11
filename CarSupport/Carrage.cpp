@@ -184,16 +184,22 @@ void Carrage::Fast_print_LSD_hight(Wheel wheel){
 }
 
 void Carrage::ControlMalfinction(){
-	Wheel_1.IsChanchedHight();
-	Wheel_2.IsChanchedHight();
-	Wheel_3.IsChanchedHight();
-	Wheel_4.IsChanchedHight();
-	bool caragemove = (Wheel_1.move|Wheel_2.move|Wheel_3.move|Wheel_4.move);
-	if (caragemove){
-		Wheel_1.ControlMalfinction();
-		Wheel_2.ControlMalfinction();
-		Wheel_3.ControlMalfinction();
-		Wheel_4.ControlMalfinction();
+	if (OnOffMalfunction){
+		Wheel_1.IsChanchedHight();
+		Wheel_2.IsChanchedHight();
+		Wheel_3.IsChanchedHight();
+		Wheel_4.IsChanchedHight();
+		bool caragemove = (Wheel_1.move|Wheel_2.move|Wheel_3.move|Wheel_4.move);
+		if (caragemove){
+			Wheel_1.ControlMalfinction(countToMalfunctionLimit);
+			Wheel_2.ControlMalfinction(countToMalfunctionLimit);
+			Wheel_3.ControlMalfinction(countToMalfunctionLimit);
+			Wheel_4.ControlMalfinction(countToMalfunctionLimit);
+		}
 	}
+}
 
+
+void Carrage::switch_malfaction(){
+	OnOffMalfunction = !OnOffMalfunction;
 }

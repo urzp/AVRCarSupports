@@ -25,6 +25,8 @@ public:
 	Support support;
 	float tunning;
 	float min,max;
+	int countToMalfunctionLimit;
+	bool OnOffMalfunction;
 protected:
 private:
 	int sort_array[4];
@@ -48,6 +50,7 @@ public:
 	void Fast_print_LSD_hight(Wheel wheel);
 	int getStep();
 	void ControlMalfinction();
+	void switch_malfaction();
 protected:
 private:
 

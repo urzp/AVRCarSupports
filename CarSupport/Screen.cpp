@@ -20,6 +20,7 @@ const int SCREEN_MENU = 1;
 const int SCREEN_ADJUST = 2;
 const int SCREEN_TUNNING = 3;
 const int SCREEN_LIMITS = 4;
+const int SCREEN_SET_MALFACTION = 5;
 
 const int SAVE = 0;
 const int SETPOSITION = 1;
@@ -44,6 +45,8 @@ const int SETTINGS_EXIT = 16;
 const int TUNING = 17;
 const int LIMITS_MIN = 18;
 const int LIMITS_MAX = 19;
+const int ONOF_MALFACTION =20;
+const int TIME_MALFACTION =21;
 
 // default constructor
 Screen::Screen()
@@ -64,9 +67,30 @@ void Screen::Render(Activity &_activity, Carrage &_carrage){
 		case(SCREEN_MENU):Render_menu();break;
 		case(SCREEN_TUNNING):Render_tunning();break;
 		case(SCREEN_LIMITS):Render_limits();break;
+		case(SCREEN_SET_MALFACTION):Render_maltifaction();break;
 	}
 	Lcd_update();
 }
+
+//	**********************************
+//	*  MENU SCREEN TEST MALTIFACTION *
+//	**********************************
+
+void Screen::Render_maltifaction(){
+	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Диагностика");
+	Lcd_print(2, 2, FONT_1X,(unsigned char *)"вкл/откл");
+	Lcd_print(2, 4, FONT_1X,(unsigned char *)"длите-ть");
+	Lcd_printf(11, 4, FONT_1X, carrage.countToMalfunctionLimit  , 0);
+	switch(carrage.OnOffMalfunction){
+		case(false):Lcd_print(11, 2, FONT_1X,(unsigned char *)"вык");break;
+		case(true):Lcd_print(11, 2, FONT_1X,(unsigned char *)"вкл");break;
+	}
+	switch(activity.Cursor){
+		case(ONOF_MALFACTION):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(TIME_MALFACTION):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
+	}
+}
+
 
 //	***********************
 //	*  MENU SCREEN LIMITS *

@@ -18,6 +18,8 @@ void SettingsSave(bool SettingSave){
 		eeprom_write_float(&CarrajeMin, carrage.min);
 		eeprom_write_float(&CarrajeMax, carrage.max);
 		carrage.SetLimits();
+		eeprom_write_float (&countToMalfunctionLimit, carrage.countToMalfunctionLimit);
+		eeprom_write_byte(&OnOffMalfunction,carrage.OnOffMalfunction); 
 	}
 }
 

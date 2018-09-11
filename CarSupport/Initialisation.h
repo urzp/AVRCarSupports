@@ -29,6 +29,8 @@
 float Tunning_rate EEMEM;
 float CarrajeMin EEMEM;
 float CarrajeMax EEMEM;
+uint8_t OnOffMalfunction EEMEM;
+float countToMalfunctionLimit EEMEM;
 float PositionsStates[3][5] EEMEM;
 
 Button okButton;
@@ -81,6 +83,14 @@ void Initialisation(){
 	carrage.max =  eeprom_read_float(&CarrajeMax);
 	
 	carrage.SetLimits();
+	
+	if (!(eeprom_read_float(&countToMalfunctionLimit)>=0||eeprom_read_float(&countToMalfunctionLimit)<=999)){
+		eeprom_write_float (&countToMalfunctionLimit, 50.0); 
+		eeprom_write_byte(&OnOffMalfunction,true);
+		
+	}
+	carrage.countToMalfunctionLimit = eeprom_read_float(&countToMalfunctionLimit);
+	carrage.OnOffMalfunction = eeprom_read_byte(&OnOffMalfunction);
 }
 
 #endif /* INITIALISATION_H_ */
