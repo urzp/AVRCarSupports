@@ -18,6 +18,7 @@ const int RIGHTUP = 2;
 const int RIGHTDOWN = 3;
 const int LEFTDOWN = 4;
 const int ADJUST = 5;
+const int ALLWHEEL = 6;
 
 const int B_OK___ = 0;
 const int B_UP___ = 1;
@@ -27,6 +28,7 @@ const int B_RIGHT = 4;
 const int B_NOTHING = -1;
 
 const int ACTION_WHEEL = 100;
+const int ACTION_ALL_WHEEL = 114;
 const int ACTION_ADJUST = 101;
 const int ACTION_MENU = 102;
 const int ACTION_MENU_EXIT = 103;
@@ -104,7 +106,7 @@ public:
 	int Step;
 	float button_step;
 	int Cursor;
-	byte Main_Screen_cursor_pathes[6][6];
+	byte Main_Screen_cursor_pathes[7][6];
 	byte Menu_Screen_cursor_pathes[20][5];
 	bool SaveFlag;
 	bool SetFlag;

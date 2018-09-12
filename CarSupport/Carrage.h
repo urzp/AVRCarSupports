@@ -54,6 +54,7 @@ public:
 	void errorsReset();
 	void SelectAllWheel();
 	void DiSelectAllWheel();
+	void SwitchAllWheel();
 protected:
 private:
 

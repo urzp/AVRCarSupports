@@ -49,6 +49,7 @@ private:
 	bool Draw_CursorMainScreen();
 	void Draw_CursorMenuScreen();
 	bool Print_Step_Value();
+	bool Draw_all_cursor_wheel();
 }; //Main_Screen
 
 #endif //__MAIN_SCREEN_H__

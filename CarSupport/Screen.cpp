@@ -293,11 +293,12 @@ bool Screen::Draw_CursorMainScreen(){
 	
 	switch(position){
 		case(MENU):LcdGotoXY(6,1);LcdChr_full(Char_cursor[0]);LcdChr_full(Char_cursor[1]);break;
-		case(ADJUST):LcdGotoXY(6,4);LcdChr_full(Char_cursor[0]);LcdChr_full(Char_cursor[1]);break;
+		case(ADJUST):LcdGotoXY(6,4);LcdChr_full(Char_cursor[0]);LcdChr_full(Char_cursor[1]);LcdGotoXY(6,5);LcdChr_full(0xA3);LcdChr_full(0xA4);break;
 		case(LEFTUP):LcdGotoXY(5,1);LcdChr_full(Char_cursor[0]);break;
 		case(LEFTDOWN):LcdGotoXY(5,4);LcdChr_full(Char_cursor[0]);break;
 		case(RIGHTUP):LcdGotoXY(8,1);LcdChr_full(Char_cursor[0]);break;
 		case(RIGHTDOWN):LcdGotoXY(8,4);LcdChr_full(Char_cursor[0]);break;
+		case(ALLWHEEL):Draw_all_cursor_wheel();break;
 	}	
 	
 }
@@ -336,4 +337,11 @@ bool Screen::Print_Step_Value(){
 	LcdGotoXY(5 , 4 );
 	LcdStepLevel(activity.Step);
 	
+}
+
+bool Screen::Draw_all_cursor_wheel(){
+	LcdGotoXY(5,1);LcdChr_full(0x9A);
+	LcdGotoXY(5,4);LcdChr_full(0x9A);
+	LcdGotoXY(8,1);LcdChr_full(0x9B);
+	LcdGotoXY(8,4);LcdChr_full(0x9B);
 }

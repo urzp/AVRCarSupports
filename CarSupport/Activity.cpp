@@ -39,6 +39,7 @@ bool Activity::Main_Screen_Move(Panel &panel, Carrage &carrage){
 	next = Main_Screen_cursor_pathes[Cursor][move];
 	switch(next){
 		case (ACTION_WHEEL):SelectWheel(carrage);break;
+		case (ACTION_ALL_WHEEL):carrage.SwitchAllWheel();break;
 		case (ACTION_ADJUST):Statment = SCREEN_ADJUST; carrage.beforeAdjast() ;break;
 		case (ACTION_MENU):Statment = SCREEN_MENU;Cursor = SAVE;break;
 		default: Cursor = next;break;
@@ -212,7 +213,7 @@ void Activity::Init(){
 	Main_Screen_cursor_pathes[ADJUST][B_LEFT_] = LEFTDOWN;
 	Main_Screen_cursor_pathes[ADJUST][B_RIGHT] = RIGHTDOWN;
 	Main_Screen_cursor_pathes[ADJUST][B_UP___] = MENU;
-	Main_Screen_cursor_pathes[ADJUST][B_DOWN_] = ADJUST;
+	Main_Screen_cursor_pathes[ADJUST][B_DOWN_] = ALLWHEEL;
 	Main_Screen_cursor_pathes[ADJUST][B_OK___] = ACTION_ADJUST;
 	
 	Main_Screen_cursor_pathes[RIGHTDOWN][B_LEFT_] = ADJUST;
@@ -226,6 +227,12 @@ void Activity::Init(){
 	Main_Screen_cursor_pathes[RIGHTUP][B_UP___] = RIGHTUP;
 	Main_Screen_cursor_pathes[RIGHTUP][B_DOWN_] = RIGHTDOWN;
 	Main_Screen_cursor_pathes[RIGHTUP][B_OK___] = ACTION_WHEEL;
+	
+	Main_Screen_cursor_pathes[ALLWHEEL][B_LEFT_] = LEFTDOWN;
+	Main_Screen_cursor_pathes[ALLWHEEL][B_RIGHT] = RIGHTDOWN;
+	Main_Screen_cursor_pathes[ALLWHEEL][B_UP___] = ADJUST;
+	Main_Screen_cursor_pathes[ALLWHEEL][B_DOWN_] = ALLWHEEL;
+	Main_Screen_cursor_pathes[ALLWHEEL][B_OK___] = ACTION_ALL_WHEEL;
 	
 	//******************************
 	//   Menu_Screen_cursor_pathes *

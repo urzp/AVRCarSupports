@@ -228,3 +228,11 @@ void Carrage::DiSelectAllWheel(){
 	Wheel_3.selected = false;
 	Wheel_4.selected = false;
 }
+
+void Carrage::SwitchAllWheel(){
+	if(Wheel_1.selected&&Wheel_2.selected&&Wheel_3.selected&&Wheel_4.selected){
+		DiSelectAllWheel();
+	}else{
+		Carrage::SelectAllWheel();
+	}
+}
