@@ -13,6 +13,7 @@
 #define __ACTIVITY_H__
 
 
+
 class Activity 
 {
 //variables

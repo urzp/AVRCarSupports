@@ -25,7 +25,7 @@ public:
 	Support support;
 	float tunning;
 	float min,max;
-	int countToMalfunctionLimit;
+	float countToMalfunctionLimit;
 	bool OnOffMalfunction;
 protected:
 private:
@@ -52,6 +52,8 @@ public:
 	void ControlMalfinction();
 	void switch_malfaction();
 	void errorsReset();
+	void SelectAllWheel();
+	void DiSelectAllWheel();
 protected:
 private:
 

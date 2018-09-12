@@ -19,7 +19,7 @@ void Button::Init(char port, int pin)
 {
 	_port = port;
 	_pin = pin;
-	slice_limit = 1000;
+	slice_limit = 500;
 	switch (_port){
 		case 'B': DDRB &= ~(1<<(pin)); PORTB |= (1<<(pin)); break;
 		case 'C': DDRC &= ~(1<<(pin)); PORTC |= (1<<(pin)); break;
@@ -42,7 +42,7 @@ bool Button::Pressed(int debounce){
 		}
 		
 		if (read_pin){
-			slice_limit = 1000;
+			slice_limit = 500;
 			return false;
 			}else{
 			debounce--;

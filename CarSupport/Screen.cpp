@@ -8,53 +8,7 @@
 
 #include "Screen.h"
 
-const int MENU = 0;
-const int LEFTUP = 1;
-const int RIGHTUP = 2;
-const int RIGHTDOWN = 3;
-const int LEFTDOWN = 4;
-const int ADJUST = 5;
 
-const int SCREEN_MAIN = 0;
-const int SCREEN_MENU = 1;
-const int SCREEN_ADJUST = 2;
-const int SCREEN_TUNNING = 3;
-const int SCREEN_LIMITS = 4;
-const int SCREEN_SET_MALFACTION = 5;
-const int SCREEN_SET_ERRORS = 6;
-const int SCREEN_ERROR_WHEEL = 7;
-
-const int SAVE = 0;
-const int SETPOSITION = 1;
-const int SETTINGS = 2;
-const int EXIT_1 = 3;
-
-const int PARKING_SAVE = 4;
-const int HIGHTPOSITION_SAVE = 5;
-const int LOWPOSITION_SAVE = 6;
-const int EXIT_SAVE = 7;
-
-const int PARKING_SET = 8;
-const int HIGHTPOSITION_SET = 9;
-const int LOWPOSITION_SET = 10;
-const int EXIT_SET = 11;
-
-const int SETTINGS_TUNING = 12;
-const int SETTINGS_LIMITS= 13;
-const int SETTINGS_TEST_MALFACTION = 14;
-const int SETTINGS_RESET_ERRORS = 15;
-const int SETTINGS_EXIT = 16;
-const int TUNING = 17;
-const int LIMITS_MIN = 18;
-const int LIMITS_MAX = 19;
-const int ONOF_MALFACTION =20;
-const int TIME_MALFACTION =21;
-
-const int ERRORS_WHEEL1 = 23;
-const int ERRORS_WHEEL2 = 24;
-const int ERRORS_WHEEL3 = 25;
-const int ERRORS_WHEEL4 = 26;
-const int ERRORS_RESET = 27;
 
 // default constructor
 Screen::Screen()
@@ -88,17 +42,22 @@ void Screen::Render(Activity &_activity, Carrage &_carrage){
 
 void Screen::Render_maltifaction(){
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Диагностика");
-	Lcd_print(2, 2, FONT_1X,(unsigned char *)"вкл/откл");
-	Lcd_print(2, 4, FONT_1X,(unsigned char *)"длите-ть");
-	Lcd_printf(11, 4, FONT_1X, carrage.countToMalfunctionLimit  , 0);
+	Lcd_print(0, 1, FONT_1X,(unsigned char *)"Длительность");
+	Lcd_print(0, 2, FONT_1X,(unsigned char *)"процесса");
+	Lcd_printf2(10, 2, FONT_1X, carrage.countToMalfunctionLimit/100 , 2);
+	
+	Lcd_print(0, 3, FONT_1X,(unsigned char *)"Включить");
 	switch(carrage.OnOffMalfunction){
-		case(false):Lcd_print(11, 2, FONT_1X,(unsigned char *)"вык");break;
-		case(true):Lcd_print(11, 2, FONT_1X,(unsigned char *)"вкл");break;
+		case(false):Lcd_print(10, 3, FONT_1X,(unsigned char *)"отк");break;
+		case(true):Lcd_print(10, 3, FONT_1X,(unsigned char *)"вкл");break;
 	}
+	
 	switch(activity.Cursor){
-		case(ONOF_MALFACTION):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
-		case(TIME_MALFACTION):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
+		case(ONOF_MALFACTION):LcdGotoXY(9,3);LcdChr_full(0xA2);break;
+		case(TIME_MALFACTION):LcdGotoXY(9,2);LcdChr_full(0x9A);LcdGotoXY(13,2);LcdChr_full(0x9B);break;
+		case(EXIT_MALFACTION):LcdGotoXY(1,5);LcdChr_full(0x9B);break;
 	}
+	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Сохранить");
 }
 
 //	***********************
@@ -135,11 +94,12 @@ void Screen::PrintError(Wheel wheel){
 
 void Screen::Render_ERRORS(){
 	Lcd_print(4, 0, FONT_1X,(unsigned char *)"Ошибки");
-	Lcd_print(2, 1, FONT_1X,(unsigned char *)"1 Стойка");
-	Lcd_print(2, 2, FONT_1X,(unsigned char *)"2 Стойка");
-	Lcd_print(2, 3, FONT_1X,(unsigned char *)"3 Стойка");
-	Lcd_print(2, 4, FONT_1X,(unsigned char *)"4 Стойка");
+	Lcd_print(2, 1, FONT_1X,(unsigned char *)"1.Стойка");
+	Lcd_print(2, 2, FONT_1X,(unsigned char *)"2.Стойка");
+	Lcd_print(2, 3, FONT_1X,(unsigned char *)"3.Стойка");
+	Lcd_print(2, 4, FONT_1X,(unsigned char *)"4.Стойка");
 	Lcd_print(2, 5, FONT_1X,(unsigned char *)"Сброс");
+	Lcd_print(9, 5, FONT_1X,(unsigned char *)"Выход");
 	
 	Lcd_print(11, 1, FONT_1X,(unsigned char *)"--");
 	Lcd_print(11, 2, FONT_1X,(unsigned char *)"--");
@@ -157,6 +117,7 @@ void Screen::Render_ERRORS(){
 		case(ERRORS_WHEEL3):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
 		case(ERRORS_WHEEL4):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
 		case(ERRORS_RESET):LcdGotoXY(0,5);LcdChr_full(0x9B);break;
+		case(ERRORS_EXIT):LcdGotoXY(7,5);LcdChr_full(0x9B);break;
 	}
 }
 
@@ -168,12 +129,14 @@ void Screen::Render_limits(){
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Ограничения");
 	Lcd_print(2, 2, FONT_1X,(unsigned char *)"min");
 	Lcd_printf(8, 2, FONT_1X, carrage.min , 2);
-	Lcd_print(2, 4, FONT_1X,(unsigned char *)"max");
-	Lcd_printf(8, 4, FONT_1X, carrage.max , 2);
+	Lcd_print(2, 3, FONT_1X,(unsigned char *)"max");
+	Lcd_printf(8, 3, FONT_1X, carrage.max , 2);
 	switch(activity.Cursor){
-		case(LIMITS_MIN):LcdGotoXY(6,2);LcdChr_full(0x9A);LcdGotoXY(13,2);LcdChr_full(0x9B);break;
-		case(LIMITS_MAX):LcdGotoXY(6,4);LcdChr_full(0x9A);LcdGotoXY(13,4);LcdChr_full(0x9B);break;
+		case(LIMITS_MIN):LcdGotoXY(7,2);LcdChr_full(0x9A);LcdGotoXY(12,2);LcdChr_full(0xA2);break;
+		case(LIMITS_MAX):LcdGotoXY(7,3);LcdChr_full(0x9A);LcdGotoXY(12,3);LcdChr_full(0xA2);break;
+		case(EXIT_LIMITS):LcdGotoXY(1,5);LcdChr_full(0x9B);break;
 	}
+	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Сохранить");
 }
 
 //	***********************
@@ -181,12 +144,14 @@ void Screen::Render_limits(){
 //	***********************
 
 void Screen::Render_tunning(){
-	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Калибровка");
-	LcdGotoXY(3,3);
-	LcdChr_full(0x9A);
-	Lcd_printf(5, 3, FONT_1X, carrage.tunning , 2);
-	LcdGotoXY(10,3);
-	LcdChr_full(0x9B);
+	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Калибровка");	
+	Lcd_printf(5, 2, FONT_1X, carrage.tunning , 2);
+	Lcd_print(3, 4, FONT_1X,(unsigned char *)"Сохранить");
+	
+	switch(activity.Cursor){
+		case(TUNING):LcdGotoXY(4,2);LcdChr_full(0x9A);LcdGotoXY(9,2);LcdChr_full(0x9B);break;
+		case(EXIT_TUNING):LcdGotoXY(1,4);LcdChr_full(0x9B);break;
+	}
 }
 
 //	*****************
@@ -223,7 +188,7 @@ void Screen::PrintTitle(){
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Калибровка");
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Ограничения");
 		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Диагностика");
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Сброс ошибок");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Ошибки");
 		Lcd_print(2, 5, FONT_1X,(unsigned char *)"Выход");
 	}
 	

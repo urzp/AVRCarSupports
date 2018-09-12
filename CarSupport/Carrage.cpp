@@ -80,7 +80,7 @@ void Carrage::Ajustment(){
 	finish=1;
 	int i=0;
 	if (chechWheelsBefore()){
-		while(finish>0&&i<100){
+		while(finish>0&&i<200){
 			derWheel[1] = Wheel_1.takeDerection();
 			Fast_print_LSD_hight(Wheel_1);
 			derWheel[2] = Wheel_2.takeDerection();
@@ -163,7 +163,7 @@ int Carrage::getStep(){
 	//step = sort_array[0];
 	step=step;
 	if (step>50){step = 50;}
-	return step;
+	return step*tunning;
 } 
 
 void Carrage::Fast_print_LSD_hight(Wheel wheel){
@@ -213,4 +213,18 @@ void Carrage::errorsReset(){
 	Wheel_3.Error = 0;
 	Wheel_4.malfuction = false;
 	Wheel_4.Error = 0;
+}
+
+void Carrage::SelectAllWheel(){
+	Wheel_1.selected = true;
+	Wheel_2.selected = true;
+	Wheel_3.selected = true;
+	Wheel_4.selected = true;
+}
+
+void Carrage::DiSelectAllWheel(){
+	Wheel_1.selected = false;
+	Wheel_2.selected = false;
+	Wheel_3.selected = false;
+	Wheel_4.selected = false;
 }

@@ -42,6 +42,7 @@ int Wheel::takeDerection(){
 	if (!selected) return NORMAL;
 	if (malfuction) return 0;
 	hight = get_hight();
+	if(sethight==0){sethight=0.01;}//correcting
 	diff = sethight*300 - hight*300;
 	step = diff;
 	_diff = diff;

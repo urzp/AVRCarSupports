@@ -37,8 +37,6 @@ const int ACTION_LIMITS_SET = 111;
 const int ACTION_TEST_MALFACTION = 112;
 const int ACTION_ERRORS = 113;
 
-
-
 const int SCREEN_MAIN = 0;
 const int SCREEN_MENU = 1;
 const int SCREEN_ADJUST = 2;
@@ -68,18 +66,24 @@ const int SETTINGS_LIMITS= 13;
 const int SETTINGS_TEST_MALFACTION = 14;
 const int SETTINGS_RESET_ERRORS = 15;
 const int SETTINGS_EXIT = 16;
+
 const int TUNING = 17;
-const int LIMITS_MIN = 18;
-const int LIMITS_MAX = 19;
-const int ONOF_MALFACTION =20;
-const int TIME_MALFACTION =21;
+const int EXIT_TUNING =18;
 
-const int ERRORS_WHEEL1 = 23;
-const int ERRORS_WHEEL2 = 24;
-const int ERRORS_WHEEL3 = 25;
-const int ERRORS_WHEEL4 = 26;
-const int ERRORS_RESET = 27;
+const int LIMITS_MIN = 19;
+const int LIMITS_MAX = 20;
+const int EXIT_LIMITS =21;
 
+const int TIME_MALFACTION =22;
+const int ONOF_MALFACTION =23;
+const int EXIT_MALFACTION =24;
+
+const int ERRORS_WHEEL1 = 25;
+const int ERRORS_WHEEL2 = 26;
+const int ERRORS_WHEEL3 = 27;
+const int ERRORS_WHEEL4 = 28;
+const int ERRORS_RESET = 29;
+const int ERRORS_EXIT = 30;
 
 static const float Steps[] PROGMEM={
 	0.01, 0.02, 0.03, 0.04, 0.05,
@@ -241,15 +245,15 @@ void Activity::Init(){
 	
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_LEFT_] = SETTINGS;
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_RIGHT] = ACTION_ERRORS;
-	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_UP___] = SETTINGS_LIMITS;
+	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_UP___] = SETTINGS_TEST_MALFACTION;
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_DOWN_] = SETTINGS_EXIT;
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_OK___] = ACTION_ERRORS;
 	
 	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_LEFT_] = SETTINGS;
-	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_RIGHT] = SETTINGS;
+	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_RIGHT] = ACTION_MENU_EXIT;
 	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_UP___] = SETTINGS_RESET_ERRORS;
 	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_DOWN_] = SETTINGS_EXIT;
-	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_OK___] = SETTINGS;
+	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_OK___] = ACTION_MENU_EXIT;
 }
 
 bool Activity::Cursor_Action(Panel &panel, Carrage &carrage){
@@ -279,9 +283,9 @@ bool Activity::Menu_Screen_Move(Panel &panel, Carrage &carrage){
 			case (ACTION_PARKING_SET):Set();break;
 			case (ACTION_HIGHTPOSITION_SET):Set();break;
 			case (ACTION_LOWPOSITION_SET):Set();break;
-			case (ACTION_TUNING_SET):Statment = SCREEN_TUNNING;Cursor = SETTINGS_TUNING;break;
+			case (ACTION_TUNING_SET):Statment = SCREEN_TUNNING;Cursor = TUNING;break;
 			case (ACTION_LIMITS_SET):Statment = SCREEN_LIMITS;Cursor = LIMITS_MIN;break;
-			case (ACTION_TEST_MALFACTION):Statment = SCREEN_SET_MALFACTION;Cursor = ONOF_MALFACTION;break;
+			case (ACTION_TEST_MALFACTION):Statment = SCREEN_SET_MALFACTION;Cursor = TIME_MALFACTION;break;
 			case (ACTION_ERRORS):Statment = SCREEN_SET_ERRORS;Cursor = ERRORS_RESET;break;
 			default: Cursor = next;break;
 		}
@@ -354,11 +358,16 @@ bool Activity::Adjusting_Carrage(Panel &panel, Carrage &carrage){
 bool Activity::Tunning_rate(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
 	if (pressed == B_NOTHING ){button_step=0;return false;}
+	if(Cursor==EXIT_TUNING&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_TUNING;SettingsSaveFlag = true;return false;}
 	switch(pressed){
-		case(B_OK___):Statment = SCREEN_MENU;SettingsSaveFlag = true; break;
-		case(B_LEFT_):carrage.tunning-=(0.01+button_step);button_step=0.1; break;
-		case(B_RIGHT):carrage.tunning+=(0.01+button_step);button_step=0.1; break;
+		case(B_LEFT_):carrage.tunning-=(0.01+button_step);button_step=0.09; break;
+		case(B_RIGHT):carrage.tunning+=(0.01+button_step);button_step=0.09; break;
+		case(B_DOWN_):Cursor++;break;
+		case(B_UP___):Cursor--;break;
 	}
+	
+	if(Cursor<=TUNING ){Cursor=TUNING ;}
+	if(Cursor>=EXIT_TUNING){Cursor=EXIT_TUNING ;}
 	if (carrage.tunning <= 0){carrage.tunning = 0.01;}
 	if (carrage.tunning >= 3){carrage.tunning = 3.00;}
 }
@@ -367,13 +376,15 @@ bool Activity::Tunning_rate(Panel &panel, Carrage &carrage){
 bool Activity::Limits_set(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
 	if (pressed == B_NOTHING ){button_step=0;return false;}
+	if(Cursor==EXIT_LIMITS&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_LIMITS;SettingsSaveFlag = true;return false;}
 	switch(pressed){
-		case(B_OK___):Statment = SCREEN_MENU;Cursor=SETTINGS_LIMITS;SettingsSaveFlag = true; break;
 		case(B_LEFT_):if(Cursor==LIMITS_MIN){carrage.min-=(0.01+button_step);}else{carrage.max-=(0.01+button_step);};button_step=0.09; break;
 		case(B_RIGHT):if(Cursor==LIMITS_MIN){carrage.min+=(0.01+button_step);}else{carrage.max+=(0.01+button_step);};button_step=0.09; break;
-		case(B_DOWN_):Cursor = LIMITS_MAX;break;
-		case(B_UP___):Cursor = LIMITS_MIN;break;
+		case(B_DOWN_):Cursor++;break;
+		case(B_UP___):Cursor--;break;
 	}
+	if(Cursor<=LIMITS_MIN){Cursor=LIMITS_MIN;}
+	if(Cursor>=EXIT_LIMITS){Cursor=EXIT_LIMITS;}
 	if (carrage.min <= 0){carrage.min = 0.00;}
 	if (carrage.max >= 5){carrage.max = 5.00;}
 	switch(Cursor){
@@ -387,19 +398,27 @@ bool Activity::malfaction_set(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
 	if (pressed == B_NOTHING ){button_step=0;return false;}
 	switch(pressed){
-		case(B_OK___):Statment = SCREEN_MENU;Cursor=SETTINGS_TEST_MALFACTION;SettingsSaveFlag = true; break;
-		case(B_DOWN_):Cursor=TIME_MALFACTION;break;
-		case(B_UP___):Cursor=ONOF_MALFACTION;break;
+		case(B_DOWN_):Cursor++;break;
+		case(B_UP___):Cursor--;break;
 	}
+	if(Cursor<=TIME_MALFACTION){Cursor=TIME_MALFACTION;}
+	if(Cursor>=EXIT_MALFACTION){Cursor=EXIT_MALFACTION;}	
+		
 	if(Cursor==ONOF_MALFACTION){
 		switch(pressed){
-			case(B_LEFT_):carrage.switch_malfaction(); break;
-			case(B_RIGHT):carrage.switch_malfaction(); break;
+			case(B_OK___):carrage.switch_malfaction(); break;
 		}
-	}else{
+	}
+	if(Cursor==TIME_MALFACTION){
 		switch(pressed){
 			case(B_LEFT_):carrage.countToMalfunctionLimit-=(1+button_step);button_step=9; break;
 			case(B_RIGHT):carrage.countToMalfunctionLimit+=(1+button_step);button_step=9; break;
+		}
+	}
+	if(Cursor==EXIT_MALFACTION){
+		switch(pressed){
+			case(B_OK___):Statment = SCREEN_MENU;Cursor=SETTINGS_TEST_MALFACTION;SettingsSaveFlag = true;return false; break;
+			case(B_RIGHT):Statment = SCREEN_MENU;Cursor=SETTINGS_TEST_MALFACTION;SettingsSaveFlag = true;return false; break;
 		}
 	}
 	if (carrage.countToMalfunctionLimit <= 5){carrage.countToMalfunctionLimit = 5;}
@@ -410,16 +429,22 @@ bool Activity::errors(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
 	if (pressed == B_NOTHING ){return false;}
 	if(pressed == B_OK___&&Cursor==ERRORS_RESET){carrage.errorsReset();return false;}
+	if(pressed == B_RIGHT&&Cursor==ERRORS_RESET){Cursor++;return false;}
+	if(pressed == B_DOWN_&&Cursor==ERRORS_RESET){return false;}
+	if(pressed == B_OK___&&Cursor==ERRORS_EXIT){Statment = SCREEN_MENU;Cursor=SETTINGS_RESET_ERRORS;return false;}
+	if(pressed == B_RIGHT&&Cursor==ERRORS_EXIT){return false;}
+	if(pressed == B_LEFT_&&Cursor==ERRORS_EXIT){Cursor--;return false;}
+	if(pressed == B_UP___&&Cursor==ERRORS_EXIT){Cursor-=2;return false;}
 	switch(pressed){
 		case(B_OK___):Statment=SCREEN_ERROR_WHEEL; break;
-		case(B_LEFT_):Statment = SCREEN_MENU;Cursor=SETTINGS_RESET_ERRORS; break;
-		case(B_RIGHT):; break;
+		case(B_LEFT_):Statment = SCREEN_MENU;Cursor=SETTINGS_RESET_ERRORS;return false; break;
+		case(B_RIGHT):Statment=SCREEN_ERROR_WHEEL; break;
 		case(B_DOWN_):Cursor++;break;
 		case(B_UP___):Cursor--;break;
 	}
 	
 	if(Cursor<=ERRORS_WHEEL1){Cursor = ERRORS_WHEEL1;};
-	if(Cursor>=ERRORS_RESET){Cursor = ERRORS_RESET;};
+	if(Cursor>=ERRORS_EXIT){Cursor = ERRORS_EXIT;};
 
 }
 
