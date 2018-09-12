@@ -36,9 +36,43 @@ void Screen::Render(Activity &_activity, Carrage &_carrage){
 	Lcd_update();
 }
 
-//	**********************************
-//	*  MENU SCREEN TEST MALTIFACTION *
-//	**********************************
+void Screen::Render_main(){	
+	Draw_icon_menu();
+	Draw_Carrage();
+	Draw_adjustment_carrage();
+	Draw_CursorMainScreen();	
+	Print_Step_Value();
+}
+
+void Screen::Render_menu(){
+	PrintTitle();
+	Draw_CursorMenuScreen();
+}
+
+void Screen::Render_tunning(){
+	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Калибровка");
+	Lcd_printf(5, 2, FONT_1X, carrage.tunning , 2);
+	Lcd_print(3, 4, FONT_1X,(unsigned char *)"Сохранить");
+	
+	switch(activity.Cursor){
+		case(TUNING):LcdGotoXY(4,2);LcdChr_full(0x9A);LcdGotoXY(9,2);LcdChr_full(0x9B);break;
+		case(EXIT_TUNING):LcdGotoXY(1,4);LcdChr_full(0x9B);break;
+	}
+}
+
+void Screen::Render_limits(){
+	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Ограничения");
+	Lcd_print(2, 2, FONT_1X,(unsigned char *)"min");
+	Lcd_printf(8, 2, FONT_1X, carrage.min , 2);
+	Lcd_print(2, 3, FONT_1X,(unsigned char *)"max");
+	Lcd_printf(8, 3, FONT_1X, carrage.max , 2);
+	switch(activity.Cursor){
+		case(LIMITS_MIN):LcdGotoXY(7,2);LcdChr_full(0x9A);LcdGotoXY(12,2);LcdChr_full(0xA2);break;
+		case(LIMITS_MAX):LcdGotoXY(7,3);LcdChr_full(0x9A);LcdGotoXY(12,3);LcdChr_full(0xA2);break;
+		case(EXIT_LIMITS):LcdGotoXY(1,5);LcdChr_full(0x9B);break;
+	}
+	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Сохранить");
+}
 
 void Screen::Render_maltifaction(){
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Диагностика");
@@ -59,38 +93,6 @@ void Screen::Render_maltifaction(){
 	}
 	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Сохранить");
 }
-
-//	***********************
-//	*  MENU SCREEN  ERROR *
-//	***********************
-void Screen::Render_ERROR(){
-	switch(activity.Cursor){
-		case(ERRORS_WHEEL1):Lcd_print(3, 0, FONT_1X,(unsigned char *)"1 Стойка");PrintError(carrage.Wheel_1);break;
-		case(ERRORS_WHEEL2):Lcd_print(3, 0, FONT_1X,(unsigned char *)"2 Стойка");PrintError(carrage.Wheel_2);break;
-		case(ERRORS_WHEEL3):Lcd_print(3, 0, FONT_1X,(unsigned char *)"3 Стойка");PrintError(carrage.Wheel_3);break;
-		case(ERRORS_WHEEL4):Lcd_print(3, 0, FONT_1X,(unsigned char *)"4 Стойка");PrintError(carrage.Wheel_4);break;
-	}
-
-}
-
-void Screen::PrintError(Wheel wheel){
-	if(wheel.Error == 0){
-		Lcd_print(1, 2, FONT_1X,(unsigned char *)"Ошибок нет");
-	}else{
-		Lcd_print(1, 1, FONT_1X,(unsigned char *)"Ошибка Е");
-		Lcd_printf(9, 1, FONT_1X, wheel.Error , 0);
-		switch(wheel.Error){ 
-			case(1):Lcd_print(0, 2, FONT_1X,(unsigned char *)"нет ответа стойки при попытке изменить ее положение");break;//"нет ответа стойки при попытке изменить ее положение"
-			case(2):Lcd_print(0, 2, FONT_1X,(unsigned char *)"невозжможно выставить заданное положение");break;//"невозжможно выставить заданное положение"
-			case(3):Lcd_print(0, 2, FONT_1X,(unsigned char *)"зависание датчика положения во время движения");break; //"зависание датчика положения во время движения"
-		}
-	}
-}
-
-
-//	***********************
-//	*  MENU SCREEN  ERRORS*
-//	***********************
 
 void Screen::Render_ERRORS(){
 	Lcd_print(4, 0, FONT_1X,(unsigned char *)"Ошибки");
@@ -121,47 +123,28 @@ void Screen::Render_ERRORS(){
 	}
 }
 
-//	***********************
-//	*  MENU SCREEN LIMITS *
-//	***********************
-
-void Screen::Render_limits(){
-	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Ограничения");
-	Lcd_print(2, 2, FONT_1X,(unsigned char *)"min");
-	Lcd_printf(8, 2, FONT_1X, carrage.min , 2);
-	Lcd_print(2, 3, FONT_1X,(unsigned char *)"max");
-	Lcd_printf(8, 3, FONT_1X, carrage.max , 2);
+void Screen::Render_ERROR(){
 	switch(activity.Cursor){
-		case(LIMITS_MIN):LcdGotoXY(7,2);LcdChr_full(0x9A);LcdGotoXY(12,2);LcdChr_full(0xA2);break;
-		case(LIMITS_MAX):LcdGotoXY(7,3);LcdChr_full(0x9A);LcdGotoXY(12,3);LcdChr_full(0xA2);break;
-		case(EXIT_LIMITS):LcdGotoXY(1,5);LcdChr_full(0x9B);break;
+		case(ERRORS_WHEEL1):Lcd_print(3, 0, FONT_1X,(unsigned char *)"1 Стойка");PrintError(carrage.Wheel_1);break;
+		case(ERRORS_WHEEL2):Lcd_print(3, 0, FONT_1X,(unsigned char *)"2 Стойка");PrintError(carrage.Wheel_2);break;
+		case(ERRORS_WHEEL3):Lcd_print(3, 0, FONT_1X,(unsigned char *)"3 Стойка");PrintError(carrage.Wheel_3);break;
+		case(ERRORS_WHEEL4):Lcd_print(3, 0, FONT_1X,(unsigned char *)"4 Стойка");PrintError(carrage.Wheel_4);break;
 	}
-	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Сохранить");
+
 }
 
-//	***********************
-//	*  MENU SCREEN TUNING *
-//	***********************
-
-void Screen::Render_tunning(){
-	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Калибровка");	
-	Lcd_printf(5, 2, FONT_1X, carrage.tunning , 2);
-	Lcd_print(3, 4, FONT_1X,(unsigned char *)"Сохранить");
-	
-	switch(activity.Cursor){
-		case(TUNING):LcdGotoXY(4,2);LcdChr_full(0x9A);LcdGotoXY(9,2);LcdChr_full(0x9B);break;
-		case(EXIT_TUNING):LcdGotoXY(1,4);LcdChr_full(0x9B);break;
+void Screen::PrintError(Wheel wheel){
+	if(wheel.Error == 0){
+		Lcd_print(1, 2, FONT_1X,(unsigned char *)"Ошибок нет");
+		}else{
+		Lcd_print(1, 1, FONT_1X,(unsigned char *)"Ошибка Е");
+		Lcd_printf(9, 1, FONT_1X, wheel.Error , 0);
+		switch(wheel.Error){
+			case(1):Lcd_print(0, 2, FONT_1X,(unsigned char *)"нет ответа стойки при попытке изменить ее положение");break;//"нет ответа стойки при попытке изменить ее положение"
+			case(2):Lcd_print(0, 2, FONT_1X,(unsigned char *)"невозжможно выставить заданное положение");break;//"невозжможно выставить заданное положение"
+			case(3):Lcd_print(0, 2, FONT_1X,(unsigned char *)"зависание датчика положения во время движения");break; //"зависание датчика положения во время движения"
+		}
 	}
-}
-
-//	*****************
-//	*  MENU SCREEN  *
-//	*****************
-
-void Screen::Render_menu(){
-	PrintTitle();
-
-	Draw_CursorMenuScreen();	
 }
 
 void Screen::PrintTitle(){
@@ -195,49 +178,10 @@ void Screen::PrintTitle(){
 	
 }
 
-void Screen::PtintItems(){
 
-}
-
-void Screen::Draw_CursorMenuScreen(){
-	//LcdGotoXY(0,1);LcdChr_full(0x9B);
-	switch(activity.Cursor){
-		case(SAVE):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
-		case(SETPOSITION):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
-		case(SETTINGS):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
-		case(EXIT_1):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
-			
-		case(PARKING_SAVE):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
-		case(HIGHTPOSITION_SAVE):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
-		case(EXIT_SAVE):LcdGotoXY(0,4);LcdChr_full(0x9B);break;	
-		case(LOWPOSITION_SAVE):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
-		
-		case(PARKING_SET):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
-		case(HIGHTPOSITION_SET):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
-		case(LOWPOSITION_SET):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
-		case(EXIT_SET):LcdGotoXY(0,4);LcdChr_full(0x9B);break;	
-		
-		case(SETTINGS_TUNING):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
-		case(SETTINGS_LIMITS):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
-		case(SETTINGS_TEST_MALFACTION):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
-		case(SETTINGS_RESET_ERRORS):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
-		case(SETTINGS_EXIT):LcdGotoXY(0,5);LcdChr_full(0x9B);break;
-	}
-}
-
-
-//******************
-//*  MAIN SCREEN  *
-//*****************
-
-void Screen::Render_main(){	
-	Draw_icon_menu();
-	Draw_Carrage();
-	Draw_adjustment_carrage();
-	Draw_CursorMainScreen();	
-	Print_Step_Value();
-}
-
+// ******************************************************
+//              HELPERS
+// ******************************************************
 
 void Screen::Draw_icon_menu(){
 	LcdGotoXY(6,0);
@@ -358,9 +302,35 @@ bool Screen::Draw_CursorMainScreen(){
 	
 }
 
+void Screen::Draw_CursorMenuScreen(){
+	//LcdGotoXY(0,1);LcdChr_full(0x9B);
+	switch(activity.Cursor){
+		case(SAVE):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
+		case(SETPOSITION):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(SETTINGS):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
+		case(EXIT_1):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
+		
+		case(PARKING_SAVE):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
+		case(HIGHTPOSITION_SAVE):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(EXIT_SAVE):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
+		case(LOWPOSITION_SAVE):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
+		
+		case(PARKING_SET):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
+		case(HIGHTPOSITION_SET):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(LOWPOSITION_SET):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
+		case(EXIT_SET):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
+		
+		case(SETTINGS_TUNING):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
+		case(SETTINGS_LIMITS):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(SETTINGS_TEST_MALFACTION):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
+		case(SETTINGS_RESET_ERRORS):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
+		case(SETTINGS_EXIT):LcdGotoXY(0,5);LcdChr_full(0x9B);break;
+	}
+}
+
 bool Screen::Print_Step_Value(){
 	if (activity.Statment != SCREEN_ADJUST ){return false;}
-	float step = activity.get_val_step();
+	float step = activity.Get_val_step();
 	Lcd_printf(5, 1, FONT_1X, step , 2);
 	//
 	LcdGotoXY(5 , 4 );
