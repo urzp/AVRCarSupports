@@ -51,6 +51,7 @@ const int SCREEN_LIMITS = 4;
 const int SCREEN_SET_MALFACTION = 5;
 const int SCREEN_SET_ERRORS = 6;
 const int SCREEN_ERROR_WHEEL = 7;
+const int SCREEN_MESSAGE = 8;
 
 const int SAVE = 0;
 const int SETPOSITION = 1;
@@ -102,7 +103,6 @@ class Activity
 //variables
 public:
 	int Statment;
-	
 	int Step;
 	float button_step;
 	int Cursor;
@@ -128,12 +128,14 @@ public:
 	bool Malfaction_set(Panel &panel, Carrage &carrage);
 	bool Errors(Panel &panel, Carrage &carrage);
 	bool Error(Panel &panel, Carrage &carrage);
+	bool Message(Panel &panel);
 	// HELPERS
 	void Init();
 	void SelectWheel(Carrage &carrage);
 	float Get_val_step();
 	void Save();
 	void Set();
+	
 protected:
 private:
 

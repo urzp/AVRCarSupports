@@ -27,6 +27,7 @@ bool Activity::Cursor_Action(Panel &panel, Carrage &carrage){
 		case(SCREEN_SET_MALFACTION):Malfaction_set(panel,carrage);break;
 		case(SCREEN_SET_ERRORS):Errors(panel,carrage);break;
 		case(SCREEN_ERROR_WHEEL):Error(panel,carrage);break;
+		case(SCREEN_MESSAGE):Message(panel);break;
 	}
 }
 
@@ -363,8 +364,7 @@ void Activity::Save(){
 		case(HIGHTPOSITION_SAVE):SavePosition = 1;break;
 		case(LOWPOSITION_SAVE):SavePosition = 2;break;
 	}
-	Statment=SCREEN_MAIN;
-	Cursor = MENU;
+	Statment=SCREEN_MESSAGE;
 }
 
 float Activity::Get_val_step(){
@@ -382,3 +382,8 @@ void  Activity::Set(){
 	Cursor = MENU;
 }
 
+bool Activity::Message(Panel &panel){
+	int pressed = panel.Pressed(100);
+	if (pressed == B_NOTHING ){return false;}
+	if (!(pressed == B_NOTHING)){Statment=SCREEN_MENU;Cursor = SAVE;}
+}

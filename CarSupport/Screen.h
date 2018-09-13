@@ -50,6 +50,7 @@ private:
 	void Draw_CursorMenuScreen();
 	bool Print_Step_Value();
 	bool Draw_all_cursor_wheel();
+	bool Message();
 }; //Main_Screen
 
 #endif //__MAIN_SCREEN_H__

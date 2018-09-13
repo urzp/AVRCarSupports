@@ -31,7 +31,8 @@ void Screen::Render(Activity &_activity, Carrage &_carrage){
 		case(SCREEN_LIMITS):Render_limits();break;
 		case(SCREEN_SET_MALFACTION):Render_maltifaction();break;
 		case(SCREEN_SET_ERRORS):Render_ERRORS();break;
-		case(SCREEN_ERROR_WHEEL):Render_ERROR();break;
+		case(SCREEN_ERROR_WHEEL):Render_ERROR();break;\
+		case(SCREEN_MESSAGE):Message();break;
 	}
 	Lcd_update();
 }
@@ -344,4 +345,10 @@ bool Screen::Draw_all_cursor_wheel(){
 	LcdGotoXY(5,4);LcdChr_full(0x9A);
 	LcdGotoXY(8,1);LcdChr_full(0x9B);
 	LcdGotoXY(8,4);LcdChr_full(0x9B);
+}
+
+bool Screen::Message(){
+	Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранено...");
+	LcdGotoXY(4,4);LcdChr_full(0x9B);
+	Lcd_print(6, 4, FONT_1X,(unsigned char *)"Ок");
 }
