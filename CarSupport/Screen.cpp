@@ -38,10 +38,12 @@ void Screen::Render(Activity &activity, Carrage &carrage){
 
 void Screen::Render_main(Activity &activity, Carrage &carrage){	
 	Draw_icon_menu();
+	Draw_icon_carrage(activity);
 	Draw_Carrage(carrage);
 	Draw_adjustment_carrage(activity);
 	Draw_CursorMainScreen(activity);	
 	Print_Step_Value(activity);
+	
 }
 
 void Screen::Render_menu(Activity &activity, Carrage &carrage){
@@ -190,6 +192,14 @@ void Screen::Draw_icon_menu(){
 	LcdChr_full(0x9F);
 }
 
+void Screen::Draw_icon_carrage(Activity &activity){
+	if (!(activity.Statment == SCREEN_ADJUST) ){
+		LcdGotoXY(6,5);LcdChr_full(0xA3);LcdChr_full(0xA4);
+	};
+}
+
+
+
 void Screen::Draw_Carrage(Carrage &carrage){
 	Draw_Wheel(carrage.Wheel_1);
 	Draw_Wheel(carrage.Wheel_2);
@@ -281,7 +291,8 @@ bool Screen::Draw_CursorMainScreen(Activity &activity){
 	if (activity.Statment == SCREEN_ADJUST ){return false;};
 	switch(activity.Cursor){
 		case(MENU):LcdGotoXY(6,1);LcdChr_full(0x9C);LcdChr_full(0x9D);break;
-		case(ADJUST):LcdGotoXY(6,4);LcdChr_full(0x9C);LcdChr_full(0x9D);LcdGotoXY(6,5);LcdChr_full(0xA3);LcdChr_full(0xA4);break;
+		case(ADJUST):LcdGotoXY(6,1);LcdChr_full(0xA5);LcdChr_full(0xA6);break;
+		case(CARRAGE):LcdGotoXY(6,4);LcdChr_full(0xA5);LcdChr_full(0xA6);break;
 		case(LEFTUP):LcdGotoXY(5,1);LcdChr_full(0x9A);break;
 		case(LEFTDOWN):LcdGotoXY(5,4);LcdChr_full(0x9A);break;
 		case(RIGHTUP):LcdGotoXY(8,1);LcdChr_full(0x9B);break;

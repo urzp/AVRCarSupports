@@ -207,7 +207,7 @@ void Activity::Init(){
 	Main_Screen_cursor_pathes[LEFTUP][B_OK___] = ACTION_WHEEL;
 	
 	Main_Screen_cursor_pathes[LEFTDOWN][B_LEFT_] = LEFTDOWN;
-	Main_Screen_cursor_pathes[LEFTDOWN][B_RIGHT] = ADJUST;
+	Main_Screen_cursor_pathes[LEFTDOWN][B_RIGHT] = CARRAGE;
 	Main_Screen_cursor_pathes[LEFTDOWN][B_UP___] = LEFTUP;
 	Main_Screen_cursor_pathes[LEFTDOWN][B_DOWN_] = LEFTDOWN;
 	Main_Screen_cursor_pathes[LEFTDOWN][B_OK___] = ACTION_WHEEL;
@@ -215,10 +215,10 @@ void Activity::Init(){
 	Main_Screen_cursor_pathes[ADJUST][B_LEFT_] = LEFTDOWN;
 	Main_Screen_cursor_pathes[ADJUST][B_RIGHT] = RIGHTDOWN;
 	Main_Screen_cursor_pathes[ADJUST][B_UP___] = MENU;
-	Main_Screen_cursor_pathes[ADJUST][B_DOWN_] = ALLWHEEL;
+	Main_Screen_cursor_pathes[ADJUST][B_DOWN_] = CARRAGE;
 	Main_Screen_cursor_pathes[ADJUST][B_OK___] = ACTION_ADJUST;
 	
-	Main_Screen_cursor_pathes[RIGHTDOWN][B_LEFT_] = ADJUST;
+	Main_Screen_cursor_pathes[RIGHTDOWN][B_LEFT_] = CARRAGE;
 	Main_Screen_cursor_pathes[RIGHTDOWN][B_RIGHT] = RIGHTDOWN;
 	Main_Screen_cursor_pathes[RIGHTDOWN][B_UP___] = RIGHTUP;
 	Main_Screen_cursor_pathes[RIGHTDOWN][B_DOWN_] = RIGHTDOWN;
@@ -230,11 +230,11 @@ void Activity::Init(){
 	Main_Screen_cursor_pathes[RIGHTUP][B_DOWN_] = RIGHTDOWN;
 	Main_Screen_cursor_pathes[RIGHTUP][B_OK___] = ACTION_WHEEL;
 	
-	Main_Screen_cursor_pathes[ALLWHEEL][B_LEFT_] = LEFTDOWN;
-	Main_Screen_cursor_pathes[ALLWHEEL][B_RIGHT] = RIGHTDOWN;
-	Main_Screen_cursor_pathes[ALLWHEEL][B_UP___] = ADJUST;
-	Main_Screen_cursor_pathes[ALLWHEEL][B_DOWN_] = ALLWHEEL;
-	Main_Screen_cursor_pathes[ALLWHEEL][B_OK___] = ACTION_ALL_WHEEL;
+	Main_Screen_cursor_pathes[CARRAGE][B_LEFT_] = LEFTDOWN;
+	Main_Screen_cursor_pathes[CARRAGE][B_RIGHT] = RIGHTDOWN;
+	Main_Screen_cursor_pathes[CARRAGE][B_UP___] = ADJUST;
+	Main_Screen_cursor_pathes[CARRAGE][B_DOWN_] = ACTION_ALL_WHEEL;
+	Main_Screen_cursor_pathes[CARRAGE][B_OK___] = ACTION_ALL_WHEEL;
 	
 	//******************************
 	//   Menu_Screen_cursor_pathes *

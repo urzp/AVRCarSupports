@@ -42,6 +42,7 @@ private:
 	// HELPERS
 	void PrintTitle(Activity &activity, Carrage &carrage);
 	void Draw_icon_menu();
+	void Draw_icon_carrage(Activity &activity);
 	void Draw_Carrage(Carrage &carrage);
 	void Draw_Wheel(Wheel wheel);
 	void Draw_adjustment_carrage(Activity &activity);

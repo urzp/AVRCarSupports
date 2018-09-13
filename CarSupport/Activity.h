@@ -18,7 +18,8 @@ const int RIGHTUP = 2;
 const int RIGHTDOWN = 3;
 const int LEFTDOWN = 4;
 const int ADJUST = 5;
-const int ALLWHEEL = 6;
+const int CARRAGE = 6;
+const int ALLWHEEL = 7;
 
 const int B_OK___ = 0;
 const int B_UP___ = 1;
