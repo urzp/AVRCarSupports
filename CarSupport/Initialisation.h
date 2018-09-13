@@ -33,17 +33,6 @@ uint8_t OnOffMalfunction EEMEM;
 float countToMalfunctionLimit EEMEM;
 float PositionsStates[3][5] EEMEM;
 
-Button okButton;
-Button upButton;
-Button downButton;
-Button leftButton;
-Button rightButton;
-
-Wheel wheel_lf;
-Wheel wheel_rf;
-Wheel wheel_rr;
-Wheel wheel_lr;
-
 Carrage carrage;
 Panel panel;
 Screen screen;
@@ -51,20 +40,10 @@ Activity activity;
 
 
 void Initialisation(){
-	okButton.Init('D', 2);
-	upButton.Init('D', 3);
-	downButton.Init('D', 4);
-	leftButton.Init('D',5);
-	rightButton.Init('D',6);
-	panel.Init(okButton,upButton,downButton,leftButton,rightButton);
 	Lcd_init();
-	wheel_lf.Init(1);
-	wheel_rf.Init(2);
-	wheel_rr.Init(3);
-	wheel_lr.Init(4);
-	carrage.Init(wheel_lf,wheel_rf,wheel_rr,wheel_lr);
+	panel.Init();
+	carrage.Init();
 	activity.Init();
-	screen.Render(activity, carrage);
 	
 	// initilisation null EEMEM
 	if(!(eeprom_read_float(&Tunning_rate)>0||eeprom_read_float(&Tunning_rate)<3)){

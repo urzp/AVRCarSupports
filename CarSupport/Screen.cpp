@@ -19,38 +19,37 @@ void Screen::Init(){
 	 
 }
 
-void Screen::Render(Activity &_activity, Carrage &_carrage){
-	activity = _activity;
-	carrage = _carrage;
+void Screen::Render(Activity &activity, Carrage &carrage){
+
 	Lcd_clear();
 	switch(activity.Statment){
-		case(SCREEN_MAIN):Render_main();break;
-		case(SCREEN_ADJUST):Render_main();break;
-		case(SCREEN_MENU):Render_menu();break;
-		case(SCREEN_TUNNING):Render_tunning();break;
-		case(SCREEN_LIMITS):Render_limits();break;
-		case(SCREEN_SET_MALFACTION):Render_maltifaction();break;
-		case(SCREEN_SET_ERRORS):Render_ERRORS();break;
-		case(SCREEN_ERROR_WHEEL):Render_ERROR();break;\
-		case(SCREEN_MESSAGE):Message();break;
+		case(SCREEN_MAIN):Render_main(activity,carrage);break;
+		case(SCREEN_ADJUST):Render_main(activity,carrage);break;
+		case(SCREEN_MENU):Render_menu(activity,carrage);break;
+		case(SCREEN_TUNNING):Render_tunning(activity,carrage);break;
+		case(SCREEN_LIMITS):Render_limits(activity,carrage);break;
+		case(SCREEN_SET_MALFACTION):Render_maltifaction(activity,carrage);break;
+		case(SCREEN_SET_ERRORS):Render_ERRORS(activity,carrage);break;
+		case(SCREEN_ERROR_WHEEL):Render_ERROR(activity,carrage);break;\
+		case(SCREEN_MESSAGE):Message(activity,carrage);break;
 	}
 	Lcd_update();
 }
 
-void Screen::Render_main(){	
+void Screen::Render_main(Activity &activity, Carrage &carrage){	
 	Draw_icon_menu();
-	Draw_Carrage();
-	Draw_adjustment_carrage();
-	Draw_CursorMainScreen();	
-	Print_Step_Value();
+	Draw_Carrage(carrage);
+	Draw_adjustment_carrage(activity);
+	Draw_CursorMainScreen(activity);	
+	Print_Step_Value(activity);
 }
 
-void Screen::Render_menu(){
-	PrintTitle();
-	Draw_CursorMenuScreen();
+void Screen::Render_menu(Activity &activity, Carrage &carrage){
+	PrintTitle(activity,carrage);
+	Draw_CursorMenuScreen(activity);
 }
 
-void Screen::Render_tunning(){
+void Screen::Render_tunning(Activity &activity, Carrage &carrage){
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Калибровка");
 	Lcd_printf(5, 2, FONT_1X, carrage.tunning , 2);
 	Lcd_print(3, 4, FONT_1X,(unsigned char *)"Сохранить");
@@ -61,7 +60,7 @@ void Screen::Render_tunning(){
 	}
 }
 
-void Screen::Render_limits(){
+void Screen::Render_limits(Activity &activity, Carrage &carrage){
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Ограничения");
 	Lcd_print(2, 2, FONT_1X,(unsigned char *)"min");
 	Lcd_printf(8, 2, FONT_1X, carrage.min , 2);
@@ -75,7 +74,7 @@ void Screen::Render_limits(){
 	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Сохранить");
 }
 
-void Screen::Render_maltifaction(){
+void Screen::Render_maltifaction(Activity &activity, Carrage &carrage){
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Диагностика");
 	Lcd_print(0, 1, FONT_1X,(unsigned char *)"Длительность");
 	Lcd_print(0, 2, FONT_1X,(unsigned char *)"процесса");
@@ -95,7 +94,7 @@ void Screen::Render_maltifaction(){
 	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Сохранить");
 }
 
-void Screen::Render_ERRORS(){
+void Screen::Render_ERRORS(Activity &activity, Carrage &carrage){
 	Lcd_print(4, 0, FONT_1X,(unsigned char *)"Ошибки");
 	Lcd_print(2, 1, FONT_1X,(unsigned char *)"1.Стойка");
 	Lcd_print(2, 2, FONT_1X,(unsigned char *)"2.Стойка");
@@ -124,7 +123,7 @@ void Screen::Render_ERRORS(){
 	}
 }
 
-void Screen::Render_ERROR(){
+void Screen::Render_ERROR(Activity &activity, Carrage &carrage){
 	switch(activity.Cursor){
 		case(ERRORS_WHEEL1):Lcd_print(3, 0, FONT_1X,(unsigned char *)"1 Стойка");PrintError(carrage.Wheel_1);break;
 		case(ERRORS_WHEEL2):Lcd_print(3, 0, FONT_1X,(unsigned char *)"2 Стойка");PrintError(carrage.Wheel_2);break;
@@ -148,7 +147,7 @@ void Screen::PrintError(Wheel wheel){
 	}
 }
 
-void Screen::PrintTitle(){
+void Screen::PrintTitle(Activity &activity, Carrage &carrage){
 	if(activity.Cursor < PARKING_SAVE){
 		Lcd_print(5, 0, FONT_1X,(unsigned char *)"МЕНЮ");
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Сохранить");
@@ -191,7 +190,7 @@ void Screen::Draw_icon_menu(){
 	LcdChr_full(0x9F);
 }
 
-void Screen::Draw_Carrage(){
+void Screen::Draw_Carrage(Carrage &carrage){
 	Draw_Wheel(carrage.Wheel_1);
 	Draw_Wheel(carrage.Wheel_2);
 	Draw_Wheel(carrage.Wheel_3);
@@ -253,7 +252,7 @@ void Screen::Draw_Wheel(Wheel wheel){
 	LcdChr_full(0xA0);	
 }
 
-void Screen::Draw_adjustment_carrage(){
+void Screen::Draw_adjustment_carrage(Activity &activity){
 	int statment = activity.Statment;
 	if (statment == SCREEN_ADJUST){
 		LcdGotoXY(6,2);
@@ -277,34 +276,22 @@ void Screen::Draw_adjustment_carrage(){
 
 }	
 
-bool Screen::Draw_CursorMainScreen(){
+bool Screen::Draw_CursorMainScreen(Activity &activity){
 	
 	if (activity.Statment == SCREEN_ADJUST ){return false;};
-	int Char_cursor[2];
-	int position = activity.Cursor;
-	
-	switch(position){
-		case(MENU):Char_cursor[0]=0x9C;Char_cursor[1]=0x9D;break;
-		case(ADJUST):Char_cursor[0]=0x9C;Char_cursor[1]=0x9D;break;
-		case(LEFTUP):Char_cursor[0]=0x9A;break;
-		case(LEFTDOWN):Char_cursor[0]=0x9A;break;
-		case(RIGHTUP):Char_cursor[0]=0x9B;break;
-		case(RIGHTDOWN):Char_cursor[0]=0x9B;break;
-	}
-	
-	switch(position){
-		case(MENU):LcdGotoXY(6,1);LcdChr_full(Char_cursor[0]);LcdChr_full(Char_cursor[1]);break;
-		case(ADJUST):LcdGotoXY(6,4);LcdChr_full(Char_cursor[0]);LcdChr_full(Char_cursor[1]);LcdGotoXY(6,5);LcdChr_full(0xA3);LcdChr_full(0xA4);break;
-		case(LEFTUP):LcdGotoXY(5,1);LcdChr_full(Char_cursor[0]);break;
-		case(LEFTDOWN):LcdGotoXY(5,4);LcdChr_full(Char_cursor[0]);break;
-		case(RIGHTUP):LcdGotoXY(8,1);LcdChr_full(Char_cursor[0]);break;
-		case(RIGHTDOWN):LcdGotoXY(8,4);LcdChr_full(Char_cursor[0]);break;
+	switch(activity.Cursor){
+		case(MENU):LcdGotoXY(6,1);LcdChr_full(0x9C);LcdChr_full(0x9D);break;
+		case(ADJUST):LcdGotoXY(6,4);LcdChr_full(0x9C);LcdChr_full(0x9D);LcdGotoXY(6,5);LcdChr_full(0xA3);LcdChr_full(0xA4);break;
+		case(LEFTUP):LcdGotoXY(5,1);LcdChr_full(0x9A);break;
+		case(LEFTDOWN):LcdGotoXY(5,4);LcdChr_full(0x9A);break;
+		case(RIGHTUP):LcdGotoXY(8,1);LcdChr_full(0x9B);break;
+		case(RIGHTDOWN):LcdGotoXY(8,4);LcdChr_full(0x9B);break;
 		case(ALLWHEEL):Draw_all_cursor_wheel();break;
 	}	
 	
 }
 
-void Screen::Draw_CursorMenuScreen(){
+void Screen::Draw_CursorMenuScreen(Activity &activity){
 	//LcdGotoXY(0,1);LcdChr_full(0x9B);
 	switch(activity.Cursor){
 		case(SAVE):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
@@ -330,7 +317,7 @@ void Screen::Draw_CursorMenuScreen(){
 	}
 }
 
-bool Screen::Print_Step_Value(){
+bool Screen::Print_Step_Value(Activity &activity){
 	if (activity.Statment != SCREEN_ADJUST ){return false;}
 	float step = activity.Get_val_step();
 	Lcd_printf(5, 1, FONT_1X, step , 2);
@@ -347,7 +334,7 @@ bool Screen::Draw_all_cursor_wheel(){
 	LcdGotoXY(8,4);LcdChr_full(0x9B);
 }
 
-bool Screen::Message(){
+bool Screen::Message(Activity &activity, Carrage &carrage){
 	Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранено...");
 	LcdGotoXY(4,4);LcdChr_full(0x9B);
 	Lcd_print(6, 4, FONT_1X,(unsigned char *)"Ок");

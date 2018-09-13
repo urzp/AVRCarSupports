@@ -185,6 +185,7 @@ bool Activity::Error(Panel &panel, Carrage &carrage){
 	}
 
 void Activity::Init(){
+	
 	SaveFlag = false;
 	SetFlag = false;
 	Step = 9;

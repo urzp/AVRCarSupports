@@ -23,11 +23,11 @@ Carrage::Carrage()
 {
 } //Carrage
 
-void Carrage::Init(Wheel &_Wheel_1, Wheel &_Wheel_2, Wheel &_Wheel_3, Wheel &_Wheel_4){
-	Wheel_1 = _Wheel_1;
-	Wheel_2 = _Wheel_2;
-	Wheel_3 = _Wheel_3;
-	Wheel_4 = _Wheel_4;
+void Carrage::Init(){
+	Wheel_1.Init(1);
+	Wheel_2.Init(2);
+	Wheel_3.Init(3);
+	Wheel_4.Init(4);
 	support.Init();
 	_step =1;
 	chechAll();

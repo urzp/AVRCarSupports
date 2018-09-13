@@ -18,13 +18,12 @@ Panel::Panel()
 {
 } 
 
-void Panel::Init(Button &ok, Button &up, Button &down, Button &left, Button &rigit ){
-	bat_ok = ok;
-	bat_up = up;
-	bat_down = down;
-	bat_right = rigit;
-	bat_left = left;
-
+void Panel::Init(){
+	bat_ok.Init('D', 2);
+	bat_up.Init('D', 3);
+	bat_down.Init('D', 4);
+	bat_left.Init('D',5);
+	bat_right.Init('D',6);
 }
 
 int Panel::Pressed(int debounse){

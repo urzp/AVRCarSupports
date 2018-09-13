@@ -20,8 +20,7 @@ class Screen
 {
 //variables
 public:
-	Activity activity;
-	Carrage carrage;
+
 protected:
 private:
 	
@@ -29,28 +28,28 @@ private:
 public:
 	Screen();
 	void Init();
-	void Render(Activity &_activity, Carrage &_carrage);
-	void Render_main();
-	void Render_menu();
-	void Render_tunning();
-	void Render_limits();
-	void Render_maltifaction();
-	void Render_ERRORS();
-	void Render_ERROR();
+	void Render(Activity &activity, Carrage &carrage);
+	void Render_main(Activity &activity, Carrage &carrage);
+	void Render_menu(Activity &activity, Carrage &carrage);
+	void Render_tunning(Activity &activity, Carrage &carrage);
+	void Render_limits(Activity &activity, Carrage &carrage);
+	void Render_maltifaction(Activity &activity, Carrage &carrage);
+	void Render_ERRORS(Activity &activity, Carrage &carrage);
+	void Render_ERROR(Activity &activity, Carrage &carrage);
 	void PrintError(Wheel wheel);
 protected:
 private:
 	// HELPERS
-	void PrintTitle();
+	void PrintTitle(Activity &activity, Carrage &carrage);
 	void Draw_icon_menu();
-	void Draw_Carrage();
+	void Draw_Carrage(Carrage &carrage);
 	void Draw_Wheel(Wheel wheel);
-	void Draw_adjustment_carrage();
-	bool Draw_CursorMainScreen();
-	void Draw_CursorMenuScreen();
-	bool Print_Step_Value();
+	void Draw_adjustment_carrage(Activity &activity);
+	bool Draw_CursorMainScreen(Activity &activity);
+	void Draw_CursorMenuScreen(Activity &activity);
+	bool Print_Step_Value(Activity &activity);
 	bool Draw_all_cursor_wheel();
-	bool Message();
+	bool Message(Activity &activity, Carrage &carrage);
 }; //Main_Screen
 
 #endif //__MAIN_SCREEN_H__

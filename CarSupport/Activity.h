@@ -102,16 +102,17 @@ class Activity
 {
 //variables
 public:
-	int Statment;
+
+	byte Statment;
 	int Step;
 	float button_step;
-	int Cursor;
+	byte Cursor;
 	byte Main_Screen_cursor_pathes[7][6];
 	byte Menu_Screen_cursor_pathes[20][5];
 	bool SaveFlag;
 	bool SetFlag;
 	bool SettingsSaveFlag;
-	int SavePosition;
+	byte SavePosition;
 	
 protected:
 private:

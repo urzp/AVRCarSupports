@@ -24,8 +24,7 @@
 
 
 int main(void)
-{	
-	
+{		
 	Initialisation();
     while (1) 
     {		
