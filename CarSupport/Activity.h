@@ -13,6 +13,9 @@
 #ifndef __ACTIVITY_H__
 #define __ACTIVITY_H__
 
+const int MESSAGE_SAVE = 0;
+const int MESSAGE_SELECT_MALFUCTION = 1;
+
 const int MENU = 0;
 const int LEFTUP = 1;
 const int RIGHTUP = 2;
@@ -117,6 +120,7 @@ public:
 	bool SetFlag;
 	bool SettingsSaveFlag;
 	byte SavePosition;
+	int TypeMessage;
 	
 protected:
 private:
@@ -134,13 +138,16 @@ public:
 	bool Errors(Panel &panel, Carrage &carrage);
 	bool Error(Panel &panel, Carrage &carrage);
 	bool Message(Panel &panel);
+	bool ExitMessageButton(Panel &panel);
 	// HELPERS
 	void Init();
 	void SelectWheel(Carrage &carrage);
+	void SelectAllWheel(Carrage &carrage);
 	float Get_val_step();
 	void Save();
 	void Set();
 	void ForceMove(Carrage &carrage, int derection);
+	bool TrySelectMalfunctionWheel(Carrage &carrage);
 	
 protected:
 private:

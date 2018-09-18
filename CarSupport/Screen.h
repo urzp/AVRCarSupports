@@ -51,6 +51,7 @@ private:
 	bool Print_Step_Value(Activity &activity);
 	bool Draw_all_cursor_wheel();
 	bool Message(Activity &activity, Carrage &carrage);
+	void MessageSelectMalfuction();
 }; //Main_Screen
 
 #endif //__MAIN_SCREEN_H__

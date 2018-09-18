@@ -248,10 +248,10 @@ void Carrage::errorsReset(){
 }
 
 void Carrage::SelectAllWheel(){
-	Wheel_1.selected = true;
-	Wheel_2.selected = true;
-	Wheel_3.selected = true;
-	Wheel_4.selected = true;
+	if(!Wheel_1.malfuction){Wheel_1.selected = true;}
+	if(!Wheel_2.malfuction){Wheel_2.selected = true;}
+	if(!Wheel_3.malfuction){Wheel_3.selected = true;}
+	if(!Wheel_4.malfuction){Wheel_4.selected = true;}
 }
 
 void Carrage::DiSelectAllWheel(){
@@ -262,9 +262,9 @@ void Carrage::DiSelectAllWheel(){
 }
 
 void Carrage::SwitchAllWheel(){
-	if(Wheel_1.selected&&Wheel_2.selected&&Wheel_3.selected&&Wheel_4.selected){
+	if(Wheel_1.MalFunctionAndnotselected()&&Wheel_2.MalFunctionAndnotselected()&&Wheel_3.MalFunctionAndnotselected()&&Wheel_4.MalFunctionAndnotselected()){
 		DiSelectAllWheel();
 	}else{
-		Carrage::SelectAllWheel();
+		SelectAllWheel();
 	}
 }

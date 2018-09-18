@@ -40,7 +40,7 @@ bool Activity::Main_Screen_Move(Panel &panel, Carrage &carrage){
 	next = Main_Screen_cursor_pathes[Cursor][move];
 	switch(next){
 		case (ACTION_WHEEL):SelectWheel(carrage);break;
-		case (ACTION_ALL_WHEEL):carrage.SwitchAllWheel();break;
+		case (ACTION_ALL_WHEEL):SelectAllWheel(carrage);break;
 		case (ACTION_ADJUST):Statment = SCREEN_ADJUST; carrage.beforeAdjast() ;break;
 		case (ACTION_MENU):Statment = SCREEN_MENU;Cursor = SAVE;break;
 		default: Cursor = next;break;
@@ -363,6 +363,7 @@ void Activity::Init(){
 }
 
 void Activity::SelectWheel(Carrage &carrage){
+	if(TrySelectMalfunctionWheel(carrage)){Statment=SCREEN_MESSAGE; TypeMessage = MESSAGE_SELECT_MALFUCTION;};
 	switch(Cursor){
 		case(LEFTUP): carrage.Wheel_1.Select(); break;
 		case(RIGHTUP): carrage.Wheel_2.Select(); break;
@@ -371,6 +372,23 @@ void Activity::SelectWheel(Carrage &carrage){
 	}
 }
 
+void Activity::SelectAllWheel(Carrage &carrage){
+	carrage.SwitchAllWheel();
+}
+
+bool Activity::TrySelectMalfunctionWheel(Carrage &carrage){
+	if(carrage.IfSelectetMalfuction()){return false;}
+	bool check=false;
+	switch(Cursor){
+		case(LEFTUP): check = carrage.Wheel_1.TrySelected_malfinction(); break;
+		case(RIGHTUP): check = carrage.Wheel_2.TrySelected_malfinction(); break;
+		case(RIGHTDOWN): check = carrage.Wheel_3.TrySelected_malfinction(); break;
+		case(LEFTDOWN): check = carrage.Wheel_4.TrySelected_malfinction(); break;
+	}
+	return check;
+}
+
+
 void Activity::Save(){
 	SaveFlag = true; //For set position in EEMEM
 	switch(Cursor){
@@ -378,7 +396,7 @@ void Activity::Save(){
 		case(HIGHTPOSITION_SAVE):SavePosition = 1;break;
 		case(LOWPOSITION_SAVE):SavePosition = 2;break;
 	}
-	Statment=SCREEN_MESSAGE;
+	Statment=SCREEN_MESSAGE;TypeMessage = MESSAGE_SAVE;;
 }
 
 float Activity::Get_val_step(){
@@ -397,11 +415,16 @@ void  Activity::Set(){
 }
 
 bool Activity::Message(Panel &panel){
-	_delay_ms(1000);
-	Statment=SCREEN_MENU;Cursor = SAVE;
+	switch(TypeMessage){
+		case(MESSAGE_SAVE):_delay_ms(1000);Statment=SCREEN_MENU;Cursor = SAVE;break;
+		case(MESSAGE_SELECT_MALFUCTION):ExitMessageButton(panel);break;
+	}
+}
+
+bool Activity::ExitMessageButton(Panel &panel){
 	int pressed = panel.Pressed(100);
 	if (pressed == B_NOTHING ){return false;}
-	if (!(pressed == B_NOTHING)){Statment=SCREEN_MENU;Cursor = SAVE;}
+	if (!(pressed == B_NOTHING)){Statment=SCREEN_MAIN;Cursor = SAVE;}
 }
 
 void Activity::ForceMove(Carrage &carrage, int derection){

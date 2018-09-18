@@ -354,6 +354,15 @@ bool Screen::Draw_all_cursor_wheel(){
 }
 
 bool Screen::Message(Activity &activity, Carrage &carrage){
-	Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранено...");
+	switch(activity.TypeMessage){
+		case(MESSAGE_SAVE):Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранено...");break;
+		case(MESSAGE_SELECT_MALFUCTION):MessageSelectMalfuction();break;
+	}
 	
+}
+
+void Screen::MessageSelectMalfuction(){
+	Lcd_print(4, 0, FONT_1X,(unsigned char *)"Внимание");
+	Lcd_print(1, 1, FONT_1X,(unsigned char *)"Стойка несправна. Возможна не адекватная реакция.");
+	Lcd_print(1, 5, FONT_1X,(unsigned char *)"Нажмите Ок");
 }

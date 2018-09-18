@@ -49,6 +49,8 @@ public:
 	int takeDerection();
 	bool Check();
 	bool selected_malfinction();
+	bool MalFunctionAndnotselected();
+	bool TrySelected_malfinction();
 protected:
 private:
 
