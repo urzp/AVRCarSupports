@@ -33,6 +33,10 @@ void Carrage::Init(){
 	chechAll();
 }
 
+bool Carrage::IfForseAdjast(){
+	
+};
+
 void Carrage::beforeAdjast(){
 	Wheel_1.initialHight();
 	Wheel_2.initialHight();
@@ -55,6 +59,27 @@ void Carrage::Down(float step){
 	Wheel_4.Down(step);
 	Ajustment();
 }
+
+void Carrage::ForceUp(){
+	if (Wheel_1.selected){derWheel[1]=1;}else{derWheel[1]=0;};
+	if (Wheel_2.selected){derWheel[2]=1;}else{derWheel[2]=0;};
+	if (Wheel_3.selected){derWheel[3]=1;}else{derWheel[3]=0;};
+	if (Wheel_4.selected){derWheel[4]=1;}else{derWheel[4]=0;};
+	support.ForceMove(10,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );
+}
+
+void Carrage::ForceDown(){
+	if (Wheel_1.selected){derWheel[1]=2;}else{derWheel[1]=0;};
+	if (Wheel_2.selected){derWheel[2]=2;}else{derWheel[2]=0;};
+	if (Wheel_3.selected){derWheel[3]=2;}else{derWheel[3]=0;};
+	if (Wheel_4.selected){derWheel[4]=2;}else{derWheel[4]=0;};
+	support.ForceMove(10,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );
+}
+
+bool Carrage::IfSelectetMalfuction(){
+	return Wheel_1.selected_malfinction()||Wheel_2.selected_malfinction()||Wheel_3.selected_malfinction()||Wheel_4.selected_malfinction();
+}
+
 
 void Carrage::SetLimits(){
 	Wheel_1.maxHight = max;
@@ -197,6 +222,13 @@ void Carrage::ControlMalfinction(){
 			Wheel_4.ControlMalfinction(countToMalfunctionLimit);
 		}
 	}
+}
+
+void Carrage::ResecCountMalfinction(){
+	Wheel_1.countToMalfunction = 0;
+	Wheel_2.countToMalfunction = 0;
+	Wheel_3.countToMalfunction = 0;
+	Wheel_4.countToMalfunction = 0;
 }
 
 

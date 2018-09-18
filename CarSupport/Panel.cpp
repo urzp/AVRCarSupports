@@ -9,6 +9,8 @@ const int B_UP = 1;
 const int B_DOWN = 2;
 const int B_LEFT = 3;
 const int B_RIGHT = 4;
+const int B_WHEEL_UP = 5;
+const int B_WHEEL_DOWN = 6;
 const int B_NOTHING = -1;
 
 #include "Panel.h"
@@ -19,6 +21,8 @@ Panel::Panel()
 } 
 
 void Panel::Init(){
+	bat_wheel_up.Init('D', 0);
+	bat_wheel_down.Init('D', 1);
 	bat_ok.Init('D', 2);
 	bat_up.Init('D', 3);
 	bat_down.Init('D', 4);
@@ -32,5 +36,7 @@ int Panel::Pressed(int debounse){
 	if (bat_down.Pressed(debounse)){return B_DOWN ;}
 	if (bat_right.Pressed(debounse)){return B_RIGHT;}
 	if (bat_left.Pressed(debounse)) {return B_LEFT;}	
+	if (bat_wheel_up.Pressed(debounse)){return B_WHEEL_UP;}
+	if (bat_wheel_down.Pressed(debounse)) {return B_WHEEL_DOWN;}
 	return B_NOTHING ;
 }

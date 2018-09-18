@@ -6,6 +6,7 @@
 */
 #include "Panel.h"
 #include "Carrage.h"
+#include <util/delay.h>
 #include <avr/pgmspace.h>
 
 
@@ -26,6 +27,8 @@ const int B_UP___ = 1;
 const int B_DOWN_ = 2;
 const int B_LEFT_ = 3;
 const int B_RIGHT = 4;
+const int B_W_UP_ = 5;
+const int B_W_DOWN = 6;
 const int B_NOTHING = -1;
 
 const int ACTION_WHEEL = 100;
@@ -137,6 +140,7 @@ public:
 	float Get_val_step();
 	void Save();
 	void Set();
+	void ForceMove(Carrage &carrage, int derection);
 	
 protected:
 private:

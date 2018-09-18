@@ -93,6 +93,29 @@ void Support::Adjast(int ms_time, int DerWheel_1, int DerWheel_2,int DerWheel_3,
 	
 }
 
+void Support::ForceMove(int ms_time, int DerWheel_1, int DerWheel_2,int DerWheel_3, int DerWheel_4){
+	if(ms_time>0){
+		uint8_t data = 0x00;
+		if(DerWheel_1 == UP){data |= (1<<0);};
+		if(DerWheel_1 == DOWN){data |= (1<<1);};
+		
+		if(DerWheel_2 == UP){data |= (1<<2);};
+		if(DerWheel_2 == DOWN){data |= (1<<3);};
+		
+		if(DerWheel_3 == UP){data |= (1<<4);};
+		if(DerWheel_3 == DOWN){data |= (1<<5);};
+		
+		if(DerWheel_4 == UP){data |= (1<<6);};
+		if(DerWheel_4 == DOWN){data |= (1<<7);};
+		
+		write_i2c((I2C_ADR_PCF8574<<1), data);
+		for (i=0;i<ms_time;i++){_delay_ms(1);}
+		write_i2c((I2C_ADR_PCF8574<<1), 0x00);
+		_delay_ms(1);
+	}
+	
+}
+
 
 static uint8_t write_i2c(uint8_t ADR, uint8_t value) {
 	uint8_t ret;

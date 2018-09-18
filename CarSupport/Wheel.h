@@ -48,6 +48,7 @@ public:
 	void initialHight();
 	int takeDerection();
 	bool Check();
+	bool selected_malfinction();
 protected:
 private:
 

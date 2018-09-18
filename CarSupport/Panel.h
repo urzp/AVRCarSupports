@@ -17,6 +17,8 @@ class Panel
 {
 	//variables
 	public:
+		Button bat_wheel_up;
+		Button bat_wheel_down;
 		Button bat_ok;
 		Button bat_up;
 		Button bat_down;

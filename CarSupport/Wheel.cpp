@@ -112,3 +112,8 @@ bool Wheel::Down(float step){
 	if (sethight < minHight){sethight = minHight;}
 	return true;
 }
+
+bool Wheel::selected_malfinction(){
+	if(selected&&malfuction){return true;}
+	else{return false;}
+}

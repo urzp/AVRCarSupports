@@ -35,7 +35,7 @@ bool Activity::Main_Screen_Move(Panel &panel, Carrage &carrage){
 	carrage.ControlMalfinction();
 	int move = panel.Pressed(100);
 	int next;
-	
+	if (move == B_W_UP_||move == B_W_DOWN){ForceMove(carrage, move);return false;}
 	if (move == B_NOTHING ){return false;}
 	next = Main_Screen_cursor_pathes[Cursor][move];
 	switch(next){
@@ -50,6 +50,8 @@ bool Activity::Main_Screen_Move(Panel &panel, Carrage &carrage){
 
 bool Activity::Adjusting_Carrage(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
+	if (pressed == B_W_UP_){carrage.ForceUp();return false;}
+	if (pressed == B_W_DOWN){carrage.ForceDown();return false;}
 	if (pressed == B_NOTHING ){return false;}
 	switch(pressed){
 		case(B_OK___):Statment = SCREEN_MAIN; break;
@@ -66,6 +68,8 @@ bool Activity::Menu_Screen_Move(Panel &panel, Carrage &carrage){
 	carrage.ControlMalfinction();
 	int move = panel.Pressed(100);
 	int next;
+	if (move == B_W_UP_){return false;}
+	if (move == B_W_DOWN){return false;}
 	if (move == B_NOTHING ){return false;}
 	next = Menu_Screen_cursor_pathes[Cursor][move];
 	switch(next){
@@ -88,6 +92,8 @@ bool Activity::Menu_Screen_Move(Panel &panel, Carrage &carrage){
 
 bool Activity::Tunning_rate(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
+	if (pressed == B_W_UP_){return false;}
+	if (pressed == B_W_DOWN){return false;}
 	if (pressed == B_NOTHING ){button_step=0;return false;}
 	if(Cursor==EXIT_TUNING&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_TUNING;SettingsSaveFlag = true;return false;}
 	switch(pressed){
@@ -105,6 +111,8 @@ bool Activity::Tunning_rate(Panel &panel, Carrage &carrage){
 
 bool Activity::Limits_set(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
+	if (pressed == B_W_UP_){return false;}
+	if (pressed == B_W_DOWN){return false;}
 	if (pressed == B_NOTHING ){button_step=0;return false;}
 	if(Cursor==EXIT_LIMITS&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_LIMITS;SettingsSaveFlag = true;return false;}
 	switch(pressed){
@@ -126,6 +134,8 @@ bool Activity::Limits_set(Panel &panel, Carrage &carrage){
 
 bool Activity::Malfaction_set(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
+	if (pressed == B_W_UP_){return false;}
+	if (pressed == B_W_DOWN){return false;}
 	if (pressed == B_NOTHING ){button_step=0;return false;}
 	switch(pressed){
 		case(B_DOWN_):Cursor++;break;
@@ -157,6 +167,8 @@ bool Activity::Malfaction_set(Panel &panel, Carrage &carrage){
 
 bool Activity::Errors(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
+	if (pressed == B_W_UP_){return false;}
+	if (pressed == B_W_DOWN){return false;}
 	if (pressed == B_NOTHING ){return false;}
 	if(pressed == B_OK___&&Cursor==ERRORS_RESET){carrage.errorsReset();return false;}
 	if(pressed == B_RIGHT&&Cursor==ERRORS_RESET){Cursor++;return false;}
@@ -180,6 +192,8 @@ bool Activity::Errors(Panel &panel, Carrage &carrage){
 
 bool Activity::Error(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
+	if (pressed == B_W_UP_){return false;}
+	if (pressed == B_W_DOWN){return false;}
 	if (pressed == B_NOTHING ){return false;}
 	if (!(pressed == B_NOTHING)){Statment=SCREEN_SET_ERRORS;}
 	}
@@ -384,7 +398,18 @@ void  Activity::Set(){
 }
 
 bool Activity::Message(Panel &panel){
+	_delay_ms(1000);
+	Statment=SCREEN_MENU;Cursor = SAVE;
 	int pressed = panel.Pressed(100);
 	if (pressed == B_NOTHING ){return false;}
 	if (!(pressed == B_NOTHING)){Statment=SCREEN_MENU;Cursor = SAVE;}
+}
+
+void Activity::ForceMove(Carrage &carrage, int derection){
+	carrage.ResecCountMalfinction();
+	switch(derection){
+		case(B_W_UP_):carrage.ForceUp();break;
+		case(B_W_DOWN):carrage.ForceDown();break;
+	}
+		
 }

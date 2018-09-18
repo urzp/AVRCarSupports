@@ -38,9 +38,13 @@ private:
 public:
 	Carrage();
 	void Init();
+	bool IfForseAdjast();
 	void beforeAdjast();
 	void Up(float step);
 	void Down(float step);
+	void ForceUp();
+	void ForceDown();
+	bool IfSelectetMalfuction();
 	void SetLimits();
 	void CheckLimitsSetHight();
 	void Ajustment();
@@ -50,6 +54,7 @@ public:
 	void Fast_print_LSD_hight(Wheel wheel);
 	int getStep();
 	void ControlMalfinction();
+	void ResecCountMalfinction();
 	void switch_malfaction();
 	void errorsReset();
 	void SelectAllWheel();

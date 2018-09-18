@@ -347,6 +347,5 @@ bool Screen::Draw_all_cursor_wheel(){
 
 bool Screen::Message(Activity &activity, Carrage &carrage){
 	Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранено...");
-	LcdGotoXY(4,4);LcdChr_full(0x9B);
-	Lcd_print(6, 4, FONT_1X,(unsigned char *)"Ок");
+	
 }
