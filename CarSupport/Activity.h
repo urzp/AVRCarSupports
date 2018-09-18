@@ -121,6 +121,7 @@ public:
 	bool SettingsSaveFlag;
 	byte SavePosition;
 	int TypeMessage;
+	bool MessageMoveMalfunctionReaded = false;
 	
 protected:
 private:
@@ -140,14 +141,13 @@ public:
 	bool Message(Panel &panel);
 	bool ExitMessageButton(Panel &panel);
 	// HELPERS
-	void Init();
+	void Init(Carrage &carrage);
 	void SelectWheel(Carrage &carrage);
 	void SelectAllWheel(Carrage &carrage);
 	float Get_val_step();
 	void Save();
 	void Set();
 	void ForceMove(Carrage &carrage, int derection);
-	bool TrySelectMalfunctionWheel(Carrage &carrage);
 	
 protected:
 private:

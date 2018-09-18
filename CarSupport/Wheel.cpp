@@ -118,10 +118,6 @@ bool Wheel::selected_malfinction(){
 	else{return false;}
 }
 
-bool Wheel::TrySelected_malfinction(){
-	if(!selected&&malfuction){return true;}
-	else{return false;}
-}
 
 bool Wheel::MalFunctionAndnotselected(){
 	if(malfuction){return true;}

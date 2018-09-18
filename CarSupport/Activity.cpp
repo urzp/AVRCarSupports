@@ -197,7 +197,7 @@ bool Activity::Error(Panel &panel, Carrage &carrage){
 	if (!(pressed == B_NOTHING)){Statment=SCREEN_SET_ERRORS;}
 	}
 
-void Activity::Init(){
+void Activity::Init(Carrage &carrage){
 	
 	SaveFlag = false;
 	SetFlag = false;
@@ -206,6 +206,7 @@ void Activity::Init(){
 	Cursor = MENU;
 	
 	Statment = SCREEN_MAIN;
+	SelectAllWheel(carrage);
 	//cursors map
 	Main_Screen_cursor_pathes[MENU][B_LEFT_] = LEFTUP;
 	Main_Screen_cursor_pathes[MENU][B_RIGHT] = RIGHTUP;
@@ -225,8 +226,8 @@ void Activity::Init(){
 	Main_Screen_cursor_pathes[LEFTDOWN][B_DOWN_] = LEFTDOWN;
 	Main_Screen_cursor_pathes[LEFTDOWN][B_OK___] = ACTION_WHEEL;
 	
-	Main_Screen_cursor_pathes[ADJUST][B_LEFT_] = LEFTDOWN;
-	Main_Screen_cursor_pathes[ADJUST][B_RIGHT] = RIGHTDOWN;
+	Main_Screen_cursor_pathes[ADJUST][B_LEFT_] = LEFTUP;
+	Main_Screen_cursor_pathes[ADJUST][B_RIGHT] = RIGHTUP;
 	Main_Screen_cursor_pathes[ADJUST][B_UP___] = MENU;
 	Main_Screen_cursor_pathes[ADJUST][B_DOWN_] = CARRAGE;
 	Main_Screen_cursor_pathes[ADJUST][B_OK___] = ACTION_ADJUST;
@@ -363,12 +364,14 @@ void Activity::Init(){
 }
 
 void Activity::SelectWheel(Carrage &carrage){
-	if(TrySelectMalfunctionWheel(carrage)){Statment=SCREEN_MESSAGE; TypeMessage = MESSAGE_SELECT_MALFUCTION;};
 	switch(Cursor){
 		case(LEFTUP): carrage.Wheel_1.Select(); break;
 		case(RIGHTUP): carrage.Wheel_2.Select(); break;
 		case(RIGHTDOWN): carrage.Wheel_3.Select(); break;
 		case(LEFTDOWN): carrage.Wheel_4.Select(); break;
+	}
+	if(!MessageMoveMalfunctionReaded){
+		if(carrage.IfSelectetMalfuction()){Statment=SCREEN_MESSAGE; TypeMessage = MESSAGE_SELECT_MALFUCTION;};
 	}
 }
 
@@ -376,17 +379,6 @@ void Activity::SelectAllWheel(Carrage &carrage){
 	carrage.SwitchAllWheel();
 }
 
-bool Activity::TrySelectMalfunctionWheel(Carrage &carrage){
-	if(carrage.IfSelectetMalfuction()){return false;}
-	bool check=false;
-	switch(Cursor){
-		case(LEFTUP): check = carrage.Wheel_1.TrySelected_malfinction(); break;
-		case(RIGHTUP): check = carrage.Wheel_2.TrySelected_malfinction(); break;
-		case(RIGHTDOWN): check = carrage.Wheel_3.TrySelected_malfinction(); break;
-		case(LEFTDOWN): check = carrage.Wheel_4.TrySelected_malfinction(); break;
-	}
-	return check;
-}
 
 
 void Activity::Save(){
@@ -424,10 +416,13 @@ bool Activity::Message(Panel &panel){
 bool Activity::ExitMessageButton(Panel &panel){
 	int pressed = panel.Pressed(100);
 	if (pressed == B_NOTHING ){return false;}
-	if (!(pressed == B_NOTHING)){Statment=SCREEN_MAIN;Cursor = SAVE;}
+	if (!(pressed == B_NOTHING)){Statment=SCREEN_MAIN;MessageMoveMalfunctionReaded=true;}
 }
 
 void Activity::ForceMove(Carrage &carrage, int derection){
+	if(!MessageMoveMalfunctionReaded){
+		if(carrage.IfSelectetMalfuction()){Statment=SCREEN_MESSAGE; TypeMessage = MESSAGE_SELECT_MALFUCTION;};
+	}
 	carrage.ResecCountMalfinction();
 	switch(derection){
 		case(B_W_UP_):carrage.ForceUp();break;

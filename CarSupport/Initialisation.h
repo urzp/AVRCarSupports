@@ -43,7 +43,7 @@ void Initialisation(){
 	Lcd_init();
 	panel.Init();
 	carrage.Init();
-	activity.Init();
+	activity.Init(carrage);
 	
 	// initilisation null EEMEM
 	if(!(eeprom_read_float(&Tunning_rate)>0||eeprom_read_float(&Tunning_rate)<3)){
