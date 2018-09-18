@@ -50,8 +50,7 @@ bool Activity::Main_Screen_Move(Panel &panel, Carrage &carrage){
 
 bool Activity::Adjusting_Carrage(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
-	if (pressed == B_W_UP_){carrage.ForceUp();return false;}
-	if (pressed == B_W_DOWN){carrage.ForceDown();return false;}
+	if (pressed == B_W_UP_||pressed == B_W_DOWN){ForceMove(carrage, pressed);return false;}
 	if (pressed == B_NOTHING ){return false;}
 	switch(pressed){
 		case(B_OK___):Statment = SCREEN_MAIN; break;

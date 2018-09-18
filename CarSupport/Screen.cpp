@@ -213,10 +213,9 @@ void Screen::Draw_Wheel(Wheel wheel){
 	int pos_y;
 	int hight_pos_x;
 	int hight_pos_y;
-	int n = wheel.number;
 	int Char_wheel[6];
 	//get position
-	switch(n){
+	switch(wheel.number){
 		case 1:pos_x  = 3;pos_y = 0; hight_pos_x = 0; hight_pos_y = 1 ; break;
 		case 2:pos_x  = 9;pos_y = 0; hight_pos_x = 11; hight_pos_y = 1 ;break;
 		case 3:pos_x  = 9;pos_y = 3; hight_pos_x = 11; hight_pos_y = 4 ;break;
@@ -224,12 +223,21 @@ void Screen::Draw_Wheel(Wheel wheel){
 	}
 	//get char of wheel
 	if(wheel.malfuction){
-		Char_wheel[0] = 0x8C;
-		Char_wheel[1] = 0x8D;
-		Char_wheel[2] = 0x8E;
-		Char_wheel[3] = 0x8F;
-		Char_wheel[4] = 0x90;
-		Char_wheel[5] = 0x91;
+		if(wheel.selected){
+			Char_wheel[0] = 0xA7;
+			Char_wheel[1] = 0xA8;
+			Char_wheel[2] = 0xA9;
+			Char_wheel[3] = 0xAA;
+			Char_wheel[4] = 0xAB;
+			Char_wheel[5] = 0xAC;			
+		}else{
+			Char_wheel[0] = 0x8C;
+			Char_wheel[1] = 0x8D;
+			Char_wheel[2] = 0x8E;
+			Char_wheel[3] = 0x8F;
+			Char_wheel[4] = 0x90;
+			Char_wheel[5] = 0x91;
+		}
 	} else if (wheel.selected){
 		Char_wheel[0] = 0x80;
 		Char_wheel[1] = 0x81;
