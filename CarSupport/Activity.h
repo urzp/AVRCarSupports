@@ -15,6 +15,7 @@
 
 const int MESSAGE_SAVE = 0;
 const int MESSAGE_SELECT_MALFUCTION = 1;
+const int MESSAGE_GET_MALFUCTION = 2;
 
 const int MENU = 0;
 const int LEFTUP = 1;
@@ -60,8 +61,8 @@ const int SCREEN_SET_ERRORS = 6;
 const int SCREEN_ERROR_WHEEL = 7;
 const int SCREEN_MESSAGE = 8;
 
-const int SAVE = 0;
-const int SETPOSITION = 1;
+const int SETPOSITION = 0;
+const int SAVE = 1;
 const int SETTINGS = 2;
 const int EXIT_1 = 3;
 
@@ -148,6 +149,7 @@ public:
 	void Save();
 	void Set();
 	void ForceMove(Carrage &carrage, int derection);
+	void CheckErrors();
 	
 protected:
 private:

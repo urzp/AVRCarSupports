@@ -38,13 +38,14 @@ void IFCarrageSaveStateToEEMEM( int position){
 void IFCarrageSetStateToEEMEM( int position){
 	if(activity.SetFlag){
 		carrage.SelectAllWheel();
+		screen.Render(activity, carrage);
 		carrage.Wheel_1.sethight=eeprom_read_float(&PositionsStates[position][1]);
 		carrage.Wheel_2.sethight=eeprom_read_float(&PositionsStates[position][2]);
 		carrage.Wheel_3.sethight=eeprom_read_float(&PositionsStates[position][3]);
 		carrage.Wheel_4.sethight=eeprom_read_float(&PositionsStates[position][4]);
 		carrage.Ajustment();
 		activity.Statment = 0;
-		carrage.DiSelectAllWheel();
+		//carrage.DiSelectAllWheel();
 	}
 	activity.SetFlag = false;
 }

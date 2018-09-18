@@ -54,7 +54,7 @@ void Screen::Render_menu(Activity &activity, Carrage &carrage){
 void Screen::Render_tunning(Activity &activity, Carrage &carrage){
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Калибровка");
 	Lcd_printf(5, 2, FONT_1X, carrage.tunning , 2);
-	Lcd_print(3, 4, FONT_1X,(unsigned char *)"Сохранить");
+	Lcd_print(3, 4, FONT_1X,(unsigned char *)"Выход");
 	
 	switch(activity.Cursor){
 		case(TUNING):LcdGotoXY(4,2);LcdChr_full(0x9A);LcdGotoXY(9,2);LcdChr_full(0x9B);break;
@@ -73,7 +73,7 @@ void Screen::Render_limits(Activity &activity, Carrage &carrage){
 		case(LIMITS_MAX):LcdGotoXY(7,3);LcdChr_full(0x9A);LcdGotoXY(12,3);LcdChr_full(0xA2);break;
 		case(EXIT_LIMITS):LcdGotoXY(1,5);LcdChr_full(0x9B);break;
 	}
-	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Сохранить");
+	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Выход");
 }
 
 void Screen::Render_maltifaction(Activity &activity, Carrage &carrage){
@@ -93,7 +93,7 @@ void Screen::Render_maltifaction(Activity &activity, Carrage &carrage){
 		case(TIME_MALFACTION):LcdGotoXY(9,2);LcdChr_full(0x9A);LcdGotoXY(13,2);LcdChr_full(0x9B);break;
 		case(EXIT_MALFACTION):LcdGotoXY(1,5);LcdChr_full(0x9B);break;
 	}
-	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Сохранить");
+	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Выход");
 }
 
 void Screen::Render_ERRORS(Activity &activity, Carrage &carrage){
@@ -152,14 +152,14 @@ void Screen::PrintError(Wheel wheel){
 void Screen::PrintTitle(Activity &activity, Carrage &carrage){
 	if(activity.Cursor < PARKING_SAVE){
 		Lcd_print(5, 0, FONT_1X,(unsigned char *)"МЕНЮ");
-		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Сохранить");
-		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Установить");
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Установить");
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранить");
 		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Настройки");
 		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
 	}else if(activity.Cursor < PARKING_SET){
 		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Сохранить");
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
-		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижняя поз.");
 		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
 		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
 	}else if (activity.Cursor < SETTINGS_TUNING ){
@@ -262,8 +262,10 @@ void Screen::Draw_Wheel(Wheel wheel){
 		LcdChr_full(Char_wheel[i+1]); 
 		pos_y ++;
 	}
+	float hight = wheel.sethight;
+	//Lcd_printf2(hight_pos_x, hight_pos_y-1, FONT_1X, hight, 2);
 	//print hight wheel	
-	float hight = wheel.get_hight();	
+	hight = wheel.get_hight();	
 	Lcd_printf2(hight_pos_x, hight_pos_y, FONT_1X, hight, 2);	
 	//print point
 	LcdGotoXY(hight_pos_x , hight_pos_y + 1 );
@@ -313,8 +315,8 @@ bool Screen::Draw_CursorMainScreen(Activity &activity){
 void Screen::Draw_CursorMenuScreen(Activity &activity){
 	//LcdGotoXY(0,1);LcdChr_full(0x9B);
 	switch(activity.Cursor){
-		case(SAVE):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
-		case(SETPOSITION):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
+		case(SETPOSITION):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
+		case(SAVE):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
 		case(SETTINGS):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
 		case(EXIT_1):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
 		
@@ -355,14 +357,23 @@ bool Screen::Draw_all_cursor_wheel(){
 
 bool Screen::Message(Activity &activity, Carrage &carrage){
 	switch(activity.TypeMessage){
-		case(MESSAGE_SAVE):Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранено...");break;
+		case(MESSAGE_SAVE):MessageSave();break;
 		case(MESSAGE_SELECT_MALFUCTION):MessageSelectMalfuction();break;
+		case(MESSAGE_GET_MALFUCTION):MessageGetMalfuction();break;
 	}
 	
 }
 
+void Screen::MessageSave(){
+	Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранено...");
+}
+
 void Screen::MessageSelectMalfuction(){
-	Lcd_print(4, 0, FONT_1X,(unsigned char *)"Внимание");
-	Lcd_print(1, 1, FONT_1X,(unsigned char *)"Стойка несправна. Возможна не адекватная реакция.");
+	Lcd_print(3, 0, FONT_1X,(unsigned char *)"Внимание");
+	Lcd_print(1, 1, FONT_1X,(unsigned char *)"Стойка(и) несправны. Возможна не адекватная реакция.");
 	Lcd_print(1, 5, FONT_1X,(unsigned char *)"Нажмите Ок");
+}
+
+void Screen::MessageGetMalfuction(){
+	Lcd_print(1, 1, FONT_1X,(unsigned char *)"Неисправность");
 }

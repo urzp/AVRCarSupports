@@ -52,7 +52,7 @@ public:
 	bool chechAll();
 	bool chechWheelsBefore();
 	void Fast_print_LSD_hight(Wheel wheel);
-	int getStep();
+	int  getStep();
 	void ControlMalfinction();
 	void ResecCountMalfinction();
 	void switch_malfaction();

@@ -42,7 +42,7 @@ bool Activity::Main_Screen_Move(Panel &panel, Carrage &carrage){
 		case (ACTION_WHEEL):SelectWheel(carrage);break;
 		case (ACTION_ALL_WHEEL):SelectAllWheel(carrage);break;
 		case (ACTION_ADJUST):Statment = SCREEN_ADJUST; carrage.beforeAdjast() ;break;
-		case (ACTION_MENU):Statment = SCREEN_MENU;Cursor = SAVE;break;
+		case (ACTION_MENU):Statment = SCREEN_MENU;Cursor = SETPOSITION;break;
 		default: Cursor = next;break;
 	}
 	return true;
@@ -189,6 +189,8 @@ bool Activity::Errors(Panel &panel, Carrage &carrage){
 
 }
 
+
+
 bool Activity::Error(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
 	if (pressed == B_W_UP_){return false;}
@@ -201,11 +203,11 @@ void Activity::Init(Carrage &carrage){
 	
 	SaveFlag = false;
 	SetFlag = false;
-	Step = 9;
+	Step = 16;
 	
-	Cursor = MENU;
+	Cursor = PARKING_SET;
 	
-	Statment = SCREEN_MAIN;
+	Statment = SCREEN_MENU;
 	SelectAllWheel(carrage);
 	//cursors map
 	Main_Screen_cursor_pathes[MENU][B_LEFT_] = LEFTUP;
@@ -254,21 +256,23 @@ void Activity::Init(Carrage &carrage){
 	//   Menu_Screen_cursor_pathes *
 	//   MAIN MENU				   *
 	//******************************
-	Menu_Screen_cursor_pathes[SAVE][B_LEFT_] = ACTION_MENU_EXIT;
-	Menu_Screen_cursor_pathes[SAVE][B_RIGHT] = PARKING_SAVE;
-	Menu_Screen_cursor_pathes[SAVE][B_UP___] = SAVE;
-	Menu_Screen_cursor_pathes[SAVE][B_DOWN_] = SETPOSITION;
-	Menu_Screen_cursor_pathes[SAVE][B_OK___] = PARKING_SAVE;
+
 	
 	Menu_Screen_cursor_pathes[SETPOSITION][B_LEFT_] = ACTION_MENU_EXIT;
 	Menu_Screen_cursor_pathes[SETPOSITION][B_RIGHT] = PARKING_SET;
-	Menu_Screen_cursor_pathes[SETPOSITION][B_UP___] = SAVE;
-	Menu_Screen_cursor_pathes[SETPOSITION][B_DOWN_] = SETTINGS;
+	Menu_Screen_cursor_pathes[SETPOSITION][B_UP___] = SETPOSITION;
+	Menu_Screen_cursor_pathes[SETPOSITION][B_DOWN_] = SAVE;
 	Menu_Screen_cursor_pathes[SETPOSITION][B_OK___] = PARKING_SET;
+	
+	Menu_Screen_cursor_pathes[SAVE][B_LEFT_] = ACTION_MENU_EXIT;
+	Menu_Screen_cursor_pathes[SAVE][B_RIGHT] = PARKING_SAVE;
+	Menu_Screen_cursor_pathes[SAVE][B_UP___] = SETPOSITION;
+	Menu_Screen_cursor_pathes[SAVE][B_DOWN_] = SETTINGS;
+	Menu_Screen_cursor_pathes[SAVE][B_OK___] = PARKING_SAVE;
 	
 	Menu_Screen_cursor_pathes[SETTINGS][B_LEFT_] = ACTION_MENU_EXIT;
 	Menu_Screen_cursor_pathes[SETTINGS][B_RIGHT] = SETTINGS_TUNING;
-	Menu_Screen_cursor_pathes[SETTINGS][B_UP___] = SETPOSITION;
+	Menu_Screen_cursor_pathes[SETTINGS][B_UP___] = SAVE;
 	Menu_Screen_cursor_pathes[SETTINGS][B_DOWN_] = EXIT_1;
 	Menu_Screen_cursor_pathes[SETTINGS][B_OK___] = SETTINGS_TUNING;
 	
@@ -361,6 +365,7 @@ void Activity::Init(Carrage &carrage){
 	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_UP___] = SETTINGS_RESET_ERRORS;
 	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_DOWN_] = SETTINGS_EXIT;
 	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_OK___] = ACTION_MENU_EXIT;
+	
 }
 
 void Activity::SelectWheel(Carrage &carrage){
@@ -410,6 +415,7 @@ bool Activity::Message(Panel &panel){
 	switch(TypeMessage){
 		case(MESSAGE_SAVE):_delay_ms(1000);Statment=SCREEN_MENU;Cursor = SAVE;break;
 		case(MESSAGE_SELECT_MALFUCTION):ExitMessageButton(panel);break;
+		case(MESSAGE_GET_MALFUCTION):ExitMessageButton(panel);break;
 	}
 }
 
@@ -429,4 +435,8 @@ void Activity::ForceMove(Carrage &carrage, int derection){
 		case(B_W_DOWN):carrage.ForceDown();break;
 	}
 		
+}
+
+void Activity::CheckErrors(){
+	
 }
