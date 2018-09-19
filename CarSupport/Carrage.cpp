@@ -270,3 +270,9 @@ void Carrage::SwitchAllWheel(){
 		SelectAllWheel();
 	}
 }
+
+bool Carrage::AnySelected(){
+	if(Wheel_1.selected||Wheel_2.selected||Wheel_3.selected||Wheel_4.selected){
+		return true;
+	}else{return false;}
+}

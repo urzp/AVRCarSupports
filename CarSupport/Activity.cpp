@@ -53,6 +53,7 @@ bool Activity::Adjusting_Carrage(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
 	if (pressed == B_W_UP_||pressed == B_W_DOWN){ForceMove(carrage, pressed);return false;}
 	if (pressed == B_NOTHING ){return false;}
+	if(B_UP___||B_DOWN_){if(!carrage.AnySelected()){Statment=SCREEN_MESSAGE;TypeMessage=MESSAGE_NO_ANY_SELECTED;}}
 	switch(pressed){
 		case(B_OK___):Statment = SCREEN_MAIN; break;
 		case(B_UP___):carrage.Up(Get_val_step()); break;
@@ -419,6 +420,7 @@ bool Activity::Message(Panel &panel,Carrage &carrage){
 		case(MESSAGE_SAVE):_delay_ms(1000);Statment=SCREEN_MENU;Cursor = SAVE;break;
 		case(MESSAGE_SELECT_MALFUCTION):MessageSelectMalfunction(panel);break;
 		case(MESSAGE_GET_MALFUCTION):MessageGetMalfunction(panel, carrage);break;
+		case(MESSAGE_NO_ANY_SELECTED):_delay_ms(1000);Statment=SCREEN_MAIN;Cursor = MENU;break;
 	}
 }
 
@@ -440,6 +442,7 @@ void Activity::ForceMove(Carrage &carrage, int derection){
 		if(carrage.IfSelectetMalfuction()){Statment=SCREEN_MESSAGE; TypeMessage = MESSAGE_SELECT_MALFUCTION;};
 	}
 	carrage.ResecCountMalfinction();
+	if(!carrage.AnySelected()){Statment=SCREEN_MESSAGE;TypeMessage=MESSAGE_NO_ANY_SELECTED;}
 	switch(derection){
 		case(B_W_UP_):carrage.ForceUp();break;
 		case(B_W_DOWN):carrage.ForceDown();break;

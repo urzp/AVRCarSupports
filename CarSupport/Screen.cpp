@@ -360,6 +360,7 @@ bool Screen::Message(Activity &activity, Carrage &carrage){
 		case(MESSAGE_SAVE):MessageSave();break;
 		case(MESSAGE_SELECT_MALFUCTION):MessageSelectMalfuction();break;
 		case(MESSAGE_GET_MALFUCTION):MessageGetMalfuction();break;
+		case(MESSAGE_NO_ANY_SELECTED):MessageNoAnySelected();break;
 	}
 	
 }
@@ -380,4 +381,11 @@ void Screen::MessageGetMalfuction(){
 	Lcd_print(0, 2, FONT_1X,(unsigned char *)"меню настройки");
 	Lcd_print(0, 3, FONT_1X,(unsigned char *)"ошибки");
 	Lcd_print(2, 5, FONT_1X,(unsigned char *)"нажмите ОК");
+}
+
+void Screen::MessageNoAnySelected(){
+
+	Lcd_print(3, 2, FONT_1X,(unsigned char *)"Выберите");
+	Lcd_print(3, 3, FONT_1X,(unsigned char *)"стойку(и)");
+
 }

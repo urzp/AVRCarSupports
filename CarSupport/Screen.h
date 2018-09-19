@@ -54,6 +54,7 @@ private:
 	void MessageSave();
 	void MessageSelectMalfuction();
 	void MessageGetMalfuction();
+	void MessageNoAnySelected();
 }; //Main_Screen
 
 #endif //__MAIN_SCREEN_H__

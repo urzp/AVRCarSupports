@@ -61,6 +61,7 @@ public:
 	void SelectAllWheel();
 	void DiSelectAllWheel();
 	void SwitchAllWheel();
+	bool AnySelected();
 protected:
 private:
 
