@@ -69,8 +69,8 @@ bool Activity::Menu_Screen_Move(Panel &panel, Carrage &carrage){
 	carrage.ControlMalfinction();
 	int move = panel.Pressed(100);
 	int next;
-	if (move == B_W_UP_){return false;}
-	if (move == B_W_DOWN){return false;}
+	if (move == B_W_UP_){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
+	if (move == B_W_DOWN){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
 	if (move == B_NOTHING ){return false;}
 	next = Menu_Screen_cursor_pathes[Cursor][move];
 	switch(next){
@@ -450,6 +450,7 @@ void Activity::ForceMove(Carrage &carrage, int derection){
 		
 }
 
-void Activity::CheckErrors(){
-	
+void Activity::GoToSetPosiions(){
+	Statment = SCREEN_MENU;
+	Cursor = PARKING_SET;
 }

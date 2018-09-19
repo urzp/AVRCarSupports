@@ -150,7 +150,7 @@ public:
 	void Save();
 	void Set();
 	void ForceMove(Carrage &carrage, int derection);
-	void CheckErrors();
+	void GoToSetPosiions();
 	
 protected:
 private:

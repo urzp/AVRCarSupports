@@ -44,7 +44,7 @@ void IFCarrageSetStateToEEMEM( int position){
 		carrage.Wheel_3.sethight=eeprom_read_float(&PositionsStates[position][3]);
 		carrage.Wheel_4.sethight=eeprom_read_float(&PositionsStates[position][4]);
 		carrage.Ajustment();
-		activity.Statment = 0;
+		activity.GoToSetPosiions();
 		//carrage.DiSelectAllWheel();
 	}
 	activity.SetFlag = false;
