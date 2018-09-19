@@ -123,7 +123,6 @@ public:
 	byte SavePosition;
 	int TypeMessage;
 	bool MessageMoveMalfunctionReaded = false;
-	
 protected:
 private:
 	
@@ -139,8 +138,9 @@ public:
 	bool Malfaction_set(Panel &panel, Carrage &carrage);
 	bool Errors(Panel &panel, Carrage &carrage);
 	bool Error(Panel &panel, Carrage &carrage);
-	bool Message(Panel &panel);
-	bool ExitMessageButton(Panel &panel);
+	bool Message(Panel &panel,Carrage &carrage);
+	bool MessageSelectMalfunction(Panel &panel);
+	bool MessageGetMalfunction(Panel &panel,Carrage &carrage);
 	// HELPERS
 	void Init(Carrage &carrage);
 	void SelectWheel(Carrage &carrage);

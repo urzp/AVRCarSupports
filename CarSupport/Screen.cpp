@@ -375,5 +375,9 @@ void Screen::MessageSelectMalfuction(){
 }
 
 void Screen::MessageGetMalfuction(){
-	Lcd_print(1, 1, FONT_1X,(unsigned char *)"Неисправность");
+	Lcd_print(4, 0, FONT_1X,(unsigned char *)"Ошибка");
+	Lcd_print(0, 1, FONT_1X,(unsigned char *)"Информация в");
+	Lcd_print(0, 2, FONT_1X,(unsigned char *)"меню настройки");
+	Lcd_print(0, 3, FONT_1X,(unsigned char *)"ошибки");
+	Lcd_print(2, 5, FONT_1X,(unsigned char *)"нажмите ОК");
 }

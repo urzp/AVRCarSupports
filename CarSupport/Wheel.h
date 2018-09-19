@@ -39,7 +39,7 @@ public:
 	Wheel();
 	void Init(int _number);
 	float get_hight();
-	void ControlMalfinction(int countToMalfunctionLimit);
+	bool ControlMalfinction(int countToMalfunctionLimit);
 	void SetLimitsSetHight();
 	bool Up(float step);
 	bool Down(float step);

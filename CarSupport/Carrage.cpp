@@ -121,10 +121,10 @@ void Carrage::Ajustment(){
 		}
 	
 		if(i>=100){
-			if(derWheel[1]>0){Wheel_1.malfuction = true;Wheel_1.Error = 2;}
-			if(derWheel[2]>0){Wheel_2.malfuction = true;Wheel_2.Error = 2;}
-			if(derWheel[3]>0){Wheel_3.malfuction = true;Wheel_3.Error = 2;}
-			if(derWheel[4]>0){Wheel_4.malfuction = true;Wheel_4.Error = 2;}
+			if(derWheel[1]>0){Wheel_1.malfuction = true;Wheel_1.Error = 2;flagNewMalfuction = true;}
+			if(derWheel[2]>0){Wheel_2.malfuction = true;Wheel_2.Error = 2;flagNewMalfuction = true;}
+			if(derWheel[3]>0){Wheel_3.malfuction = true;Wheel_3.Error = 2;flagNewMalfuction = true;}
+			if(derWheel[4]>0){Wheel_4.malfuction = true;Wheel_4.Error = 2;flagNewMalfuction = true;}
 		}
 	}
 }
@@ -143,7 +143,7 @@ bool Carrage::chechWheelsBefore(){
 		if	(derWheel[2]>0){checked[2]=Wheel_2.Check();}else{checked[2]=true;}
 		if	(derWheel[3]>0){checked[3]=Wheel_3.Check();}else{checked[3]=true;}
 		if	(derWheel[4]>0){checked[4]=Wheel_4.Check();}else{checked[4]=true;}	
-		if  (checked[1]&&checked[2]&&checked[3]&&checked[4]){return true;}else{return false;}					
+		if  (checked[1]&&checked[2]&&checked[3]&&checked[4]){return true;}else{flagNewMalfuction = true;return false;}					
 }
 
 bool Carrage::chechAll(){
@@ -157,7 +157,7 @@ bool Carrage::chechAll(){
 	checked[3]=Wheel_3.Check();
 	checked[4]=Wheel_4.Check();
 	support.Adjast(10 ,2, 2 ,2 ,2 );
-	if  (checked[1]&&checked[2]&&checked[3]&&checked[4]){return true;}else{return false;}
+	if  (checked[1]&&checked[2]&&checked[3]&&checked[4]){return true;}else{flagNewMalfuction = true;return false;}
 	
 }
 
@@ -218,10 +218,10 @@ void Carrage::ControlMalfinction(){
 		Wheel_4.IsChanchedHight();
 		bool caragemove = (Wheel_1.move|Wheel_2.move|Wheel_3.move|Wheel_4.move);
 		if (caragemove){
-			Wheel_1.ControlMalfinction(countToMalfunctionLimit);
-			Wheel_2.ControlMalfinction(countToMalfunctionLimit);
-			Wheel_3.ControlMalfinction(countToMalfunctionLimit);
-			Wheel_4.ControlMalfinction(countToMalfunctionLimit);
+			if(Wheel_1.ControlMalfinction(countToMalfunctionLimit)){flagNewMalfuction = true;};
+			if(Wheel_2.ControlMalfinction(countToMalfunctionLimit)){flagNewMalfuction = true;};
+			if(Wheel_3.ControlMalfinction(countToMalfunctionLimit)){flagNewMalfuction = true;};
+			if(Wheel_4.ControlMalfinction(countToMalfunctionLimit)){flagNewMalfuction = true;};
 		}
 	}
 }

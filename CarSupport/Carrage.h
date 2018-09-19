@@ -27,6 +27,7 @@ public:
 	float min,max;
 	float countToMalfunctionLimit;
 	bool OnOffMalfunction;
+	bool flagNewMalfuction;
 protected:
 private:
 	int sort_array[4];

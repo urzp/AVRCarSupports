@@ -18,6 +18,7 @@ Activity::Activity()
 
 
 bool Activity::Cursor_Action(Panel &panel, Carrage &carrage){
+	if(carrage.flagNewMalfuction){Statment=SCREEN_MESSAGE; TypeMessage = MESSAGE_GET_MALFUCTION;}
 	switch(Statment){
 		case(SCREEN_MAIN):Main_Screen_Move(panel,carrage);break;
 		case(SCREEN_MENU):Menu_Screen_Move(panel,carrage);break;
@@ -27,7 +28,7 @@ bool Activity::Cursor_Action(Panel &panel, Carrage &carrage){
 		case(SCREEN_SET_MALFACTION):Malfaction_set(panel,carrage);break;
 		case(SCREEN_SET_ERRORS):Errors(panel,carrage);break;
 		case(SCREEN_ERROR_WHEEL):Error(panel,carrage);break;
-		case(SCREEN_MESSAGE):Message(panel);break;
+		case(SCREEN_MESSAGE):Message(panel,carrage);break;
 	}
 }
 
@@ -209,6 +210,7 @@ void Activity::Init(Carrage &carrage){
 	
 	Statment = SCREEN_MENU;
 	SelectAllWheel(carrage);
+	
 	//cursors map
 	Main_Screen_cursor_pathes[MENU][B_LEFT_] = LEFTUP;
 	Main_Screen_cursor_pathes[MENU][B_RIGHT] = RIGHTUP;
@@ -368,6 +370,7 @@ void Activity::Init(Carrage &carrage){
 	
 }
 
+
 void Activity::SelectWheel(Carrage &carrage){
 	switch(Cursor){
 		case(LEFTUP): carrage.Wheel_1.Select(); break;
@@ -411,18 +414,25 @@ void  Activity::Set(){
 	Cursor = MENU;
 }
 
-bool Activity::Message(Panel &panel){
+bool Activity::Message(Panel &panel,Carrage &carrage){
 	switch(TypeMessage){
 		case(MESSAGE_SAVE):_delay_ms(1000);Statment=SCREEN_MENU;Cursor = SAVE;break;
-		case(MESSAGE_SELECT_MALFUCTION):ExitMessageButton(panel);break;
-		case(MESSAGE_GET_MALFUCTION):ExitMessageButton(panel);break;
+		case(MESSAGE_SELECT_MALFUCTION):MessageSelectMalfunction(panel);break;
+		case(MESSAGE_GET_MALFUCTION):MessageGetMalfunction(panel, carrage);break;
 	}
 }
 
-bool Activity::ExitMessageButton(Panel &panel){
+
+bool Activity::MessageSelectMalfunction(Panel &panel){
 	int pressed = panel.Pressed(100);
 	if (pressed == B_NOTHING ){return false;}
 	if (!(pressed == B_NOTHING)){Statment=SCREEN_MAIN;MessageMoveMalfunctionReaded=true;}
+}
+
+bool Activity::MessageGetMalfunction(Panel &panel,Carrage &carrage){
+	int pressed = panel.Pressed(100);
+	if (pressed == B_NOTHING ){return false;}
+	if (!(pressed == B_NOTHING)){carrage.flagNewMalfuction=false;Statment=SCREEN_MAIN;Cursor=MENU;}
 }
 
 void Activity::ForceMove(Carrage &carrage, int derection){

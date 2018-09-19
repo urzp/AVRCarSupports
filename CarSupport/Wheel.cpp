@@ -67,16 +67,19 @@ bool Wheel::Check(){
 	}
 }
 
-void Wheel::ControlMalfinction(int countToMalfunctionLimit ){
-	if(!move){
+bool Wheel::ControlMalfinction(int countToMalfunctionLimit ){
+	if(!move&&malfuction==false){
 		countToMalfunction++;
 		if(countToMalfunction>countToMalfunctionLimit){
 			malfuction = true;
 			Error = 3;
+			return true;
 		}
 	}else{
 		countToMalfunction=0;
+		return false;
 	}
+	return false;
 }
 
 void Wheel::SetLimitsSetHight(){
