@@ -129,7 +129,7 @@ bool Wheel::MalFunctionAndnotselected(){
 }
 
 bool Wheel::CheckGetLimit(){
-	if(hight<minHight||hight>maxHight){
+	if(hight<=minHight||hight>=maxHight){
 		flagGetLimits=true;
 		return true;
 	}else{return false;}
