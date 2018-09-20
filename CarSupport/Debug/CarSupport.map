@@ -760,27 +760,27 @@ END GROUP
                 0x00003260        0x2 Screen.o
                 0x00003260                _ZN6ScreenC2Ev
                 0x00003260                _ZN6ScreenC1Ev
- .text._ZN6Screen14Render_tunningER8ActivityR7Carrage
-                0x00003262       0x9a Screen.o
-                0x00003262                _ZN6Screen14Render_tunningER8ActivityR7Carrage
- .text._ZN6Screen13Render_limitsER8ActivityR7Carrage
-                0x000032fc       0xee Screen.o
-                0x000032fc                _ZN6Screen13Render_limitsER8ActivityR7Carrage
- .text._ZN6Screen19Render_maltifactionER8ActivityR7Carrage
-                0x000033ea      0x112 Screen.o
-                0x000033ea                _ZN6Screen19Render_maltifactionER8ActivityR7Carrage
- .text._ZN6Screen13Render_ERRORSER8ActivityR7Carrage
-                0x000034fc      0x248 Screen.o
-                0x000034fc                _ZN6Screen13Render_ERRORSER8ActivityR7Carrage
- .text._ZN6Screen10PrintErrorE5Wheel
-                0x00003744       0xb2 Screen.o
-                0x00003744                _ZN6Screen10PrintErrorE5Wheel
- .text._ZN6Screen12Render_ERRORER8ActivityR7Carrage
-                0x000037f6      0x15c Screen.o
-                0x000037f6                _ZN6Screen12Render_ERRORER8ActivityR7Carrage
  .text._ZN6Screen10PrintTitleER8ActivityR7Carrage
-                0x00003952      0x13e Screen.o
-                0x00003952                _ZN6Screen10PrintTitleER8ActivityR7Carrage
+                0x00003262      0x13e Screen.o
+                0x00003262                _ZN6Screen10PrintTitleER8ActivityR7Carrage
+ .text._ZN6Screen14Render_tunningER8ActivityR7Carrage
+                0x000033a0       0x9a Screen.o
+                0x000033a0                _ZN6Screen14Render_tunningER8ActivityR7Carrage
+ .text._ZN6Screen13Render_limitsER8ActivityR7Carrage
+                0x0000343a       0xee Screen.o
+                0x0000343a                _ZN6Screen13Render_limitsER8ActivityR7Carrage
+ .text._ZN6Screen19Render_maltifactionER8ActivityR7Carrage
+                0x00003528      0x112 Screen.o
+                0x00003528                _ZN6Screen19Render_maltifactionER8ActivityR7Carrage
+ .text._ZN6Screen13Render_ERRORSER8ActivityR7Carrage
+                0x0000363a      0x248 Screen.o
+                0x0000363a                _ZN6Screen13Render_ERRORSER8ActivityR7Carrage
+ .text._ZN6Screen10PrintErrorE5Wheel
+                0x00003882       0xb2 Screen.o
+                0x00003882                _ZN6Screen10PrintErrorE5Wheel
+ .text._ZN6Screen12Render_ERRORER8ActivityR7Carrage
+                0x00003934      0x15c Screen.o
+                0x00003934                _ZN6Screen12Render_ERRORER8ActivityR7Carrage
  .text._ZN6Screen14Draw_icon_menuEv
                 0x00003a90       0x1e Screen.o
                 0x00003a90                _ZN6Screen14Draw_icon_menuEv
@@ -1047,7 +1047,7 @@ END GROUP
  *(.fini0)
                 0x000050ca                _etext = .
 
-.data           0x00800100      0x258 load address 0x000050ca
+.data           0x00800100      0x26e load address 0x000050ca
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1055,44 +1055,45 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800100      0x258 Screen.o
+                0x00800100      0x26d Screen.o
  *(.gnu.linkonce.r*)
-                0x00800358                . = ALIGN (0x2)
-                0x00800358                _edata = .
-                0x00800358                PROVIDE (__data_end, .)
+                0x0080036e                . = ALIGN (0x2)
+ *fill*         0x0080036d        0x1 
+                0x0080036e                _edata = .
+                0x0080036e                PROVIDE (__data_end, .)
 
-.bss            0x00800358      0x3bd
-                0x00800358                PROVIDE (__bss_start, .)
+.bss            0x0080036e      0x3bd
+                0x0080036e                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss._ZZ5gftoafiE3buf
-                0x00800358       0x10 LCDn5110.o
+                0x0080036e       0x10 LCDn5110.o
  .bss._ZL11LcdCacheIdx
-                0x00800368        0x2 LCDn5110.o
+                0x0080037e        0x2 LCDn5110.o
  .bss._ZL11HiWaterMark
-                0x0080036a        0x2 LCDn5110.o
+                0x00800380        0x2 LCDn5110.o
  .bss._ZL11LoWaterMark
-                0x0080036c        0x2 LCDn5110.o
+                0x00800382        0x2 LCDn5110.o
  .bss._ZL8LcdCache
-                0x0080036e      0x1f8 LCDn5110.o
- .bss.activity  0x00800566       0x9d main.o
-                0x00800566                activity
- .bss.screen    0x00800603        0x1 main.o
-                0x00800603                screen
- .bss.panel     0x00800604       0x31 main.o
-                0x00800604                panel
- .bss.carrage   0x00800635       0xe0 main.o
-                0x00800635                carrage
+                0x00800384      0x1f8 LCDn5110.o
+ .bss.activity  0x0080057c       0x9d main.o
+                0x0080057c                activity
+ .bss.screen    0x00800619        0x1 main.o
+                0x00800619                screen
+ .bss.panel     0x0080061a       0x31 main.o
+                0x0080061a                panel
+ .bss.carrage   0x0080064b       0xe0 main.o
+                0x0080064b                carrage
  *(COMMON)
-                0x00800715                PROVIDE (__bss_end, .)
+                0x0080072b                PROVIDE (__bss_end, .)
                 0x000050ca                __data_load_start = LOADADDR (.data)
-                0x00005322                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00005338                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800715        0x0
+.noinit         0x0080072b        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800715                _end = .
+                0x0080072b                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000       0x4d
@@ -1251,7 +1252,7 @@ END GROUP
  .debug_abbrev  0x00001f88       0x14 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_word.o)
  .debug_abbrev  0x00001f9c       0x14 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_block.o)
 
-.debug_line     0x00000000     0x3c26
+.debug_line     0x00000000     0x3c22
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x133 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5/crtatmega328.o
  .debug_line    0x00000133      0xd76 Activity.o
@@ -1259,17 +1260,17 @@ END GROUP
  .debug_line    0x000010a0      0x9a1 Carrage.o
  .debug_line    0x00001a41      0x626 LCDn5110.o
  .debug_line    0x00002067      0x672 main.o
- .debug_line    0x000026d9      0x8c5 Screen.o
- .debug_line    0x00002f9e      0x10f Panel.o
- .debug_line    0x000030ad       0xdd SensorsWheels.o
- .debug_line    0x0000318a      0x3fc Support.o
- .debug_line    0x00003586      0x3b2 Wheel.o
- .debug_line    0x00003938       0x7a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_byte.o)
- .debug_line    0x000039b2       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_dword.o)
- .debug_line    0x00003a1a       0x9e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_byte.o)
- .debug_line    0x00003ab8       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_dword.o)
- .debug_line    0x00003b20       0x5b C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_word.o)
- .debug_line    0x00003b7b       0xab C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_block.o)
+ .debug_line    0x000026d9      0x8c1 Screen.o
+ .debug_line    0x00002f9a      0x10f Panel.o
+ .debug_line    0x000030a9       0xdd SensorsWheels.o
+ .debug_line    0x00003186      0x3fc Support.o
+ .debug_line    0x00003582      0x3b2 Wheel.o
+ .debug_line    0x00003934       0x7a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_byte.o)
+ .debug_line    0x000039ae       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_dword.o)
+ .debug_line    0x00003a16       0x9e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_byte.o)
+ .debug_line    0x00003ab4       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_dword.o)
+ .debug_line    0x00003b1c       0x5b C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_word.o)
+ .debug_line    0x00003b77       0xab C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_block.o)
 
 .debug_frame    0x00000000     0x126c
  *(.debug_frame)

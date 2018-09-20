@@ -3,33 +3,33 @@ CarSupport.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000258  00800100  000050ca  0000517e  2**0
+  0 .data         0000026e  00800100  000050ca  0000517e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   1 .text         000050ca  00000000  00000000  000000b4  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          000003bd  00800358  00800358  000053d6  2**0
+  2 .bss          000003bd  0080036e  0080036e  000053ec  2**0
                   ALLOC
-  3 .eeprom       0000004d  00810000  00810000  000053d6  2**0
+  3 .eeprom       0000004d  00810000  00810000  000053ec  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  4 .comment      00000030  00000000  00000000  00005423  2**0
+  4 .comment      00000030  00000000  00000000  00005439  2**0
                   CONTENTS, READONLY
-  5 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00005454  2**2
+  5 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000546c  2**2
                   CONTENTS, READONLY
-  6 .debug_aranges 000005f8  00000000  00000000  00005490  2**3
+  6 .debug_aranges 000005f8  00000000  00000000  000054a8  2**3
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_info   0000edad  00000000  00000000  00005a88  2**0
+  7 .debug_info   0000edad  00000000  00000000  00005aa0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 00001fb0  00000000  00000000  00014835  2**0
+  8 .debug_abbrev 00001fb0  00000000  00000000  0001484d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_line   00003c26  00000000  00000000  000167e5  2**0
+  9 .debug_line   00003c22  00000000  00000000  000167fd  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_frame  0000126c  00000000  00000000  0001a40c  2**2
+ 10 .debug_frame  0000126c  00000000  00000000  0001a420  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    0000238c  00000000  00000000  0001b678  2**0
+ 11 .debug_str    0000238c  00000000  00000000  0001b68c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    00006987  00000000  00000000  0001da04  2**0
+ 12 .debug_loc    00006987  00000000  00000000  0001da18  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 000004c8  00000000  00000000  0002438b  2**0
+ 13 .debug_ranges 000004c8  00000000  00000000  0002439f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -303,13 +303,13 @@ Disassembly of section .text:
      8b8:	02 c0       	rjmp	.+4      	; 0x8be <__do_copy_data+0x10>
      8ba:	05 90       	lpm	r0, Z+
      8bc:	0d 92       	st	X+, r0
-     8be:	a8 35       	cpi	r26, 0x58	; 88
+     8be:	ae 36       	cpi	r26, 0x6E	; 110
      8c0:	b1 07       	cpc	r27, r17
      8c2:	d9 f7       	brne	.-10     	; 0x8ba <__do_copy_data+0xc>
 
 000008c4 <__do_clear_bss>:
      8c4:	27 e0       	ldi	r18, 0x07	; 7
-     8c6:	a8 e5       	ldi	r26, 0x58	; 88
+     8c6:	ae e6       	ldi	r26, 0x6E	; 110
      8c8:	b3 e0       	ldi	r27, 0x03	; 3
      8ca:	01 c0       	rjmp	.+2      	; 0x8ce <.do_clear_bss_start>
 
@@ -317,7 +317,7 @@ Disassembly of section .text:
      8cc:	1d 92       	st	X+, r1
 
 000008ce <.do_clear_bss_start>:
-     8ce:	a5 31       	cpi	r26, 0x15	; 21
+     8ce:	ab 32       	cpi	r26, 0x2B	; 43
      8d0:	b2 07       	cpc	r27, r18
      8d2:	e1 f7       	brne	.-8      	; 0x8cc <.do_clear_bss_loop>
 
@@ -4961,7 +4961,7 @@ void Carrage::ForceUp(){
     292e:	34 9f       	mul	r19, r20
     2930:	90 0d       	add	r25, r0
     2932:	11 24       	eor	r1, r1
-    2934:	07 e6       	ldi	r16, 0x67	; 103
+    2934:	0d e7       	ldi	r16, 0x7D	; 125
     2936:	13 e0       	ldi	r17, 0x03	; 3
     2938:	0f 2e       	mov	r0, r31
     293a:	fa e0       	ldi	r31, 0x0A	; 10
@@ -5073,7 +5073,7 @@ void Carrage::ForceUp(){
 00002a16 <_Z9Lcd_clearv>:
     2a16:	88 ef       	ldi	r24, 0xF8	; 248
     2a18:	91 e0       	ldi	r25, 0x01	; 1
-    2a1a:	ee e6       	ldi	r30, 0x6E	; 110
+    2a1a:	e4 e8       	ldi	r30, 0x84	; 132
     2a1c:	f3 e0       	ldi	r31, 0x03	; 3
     2a1e:	df 01       	movw	r26, r30
     2a20:	9c 01       	movw	r18, r24
@@ -5081,12 +5081,12 @@ void Carrage::ForceUp(){
     2a24:	21 50       	subi	r18, 0x01	; 1
     2a26:	30 40       	sbci	r19, 0x00	; 0
     2a28:	e1 f7       	brne	.-8      	; 0x2a22 <_Z9Lcd_clearv+0xc>
-    2a2a:	10 92 6d 03 	sts	0x036D, r1	; 0x80036d <_ZL11LoWaterMark+0x1>
-    2a2e:	10 92 6c 03 	sts	0x036C, r1	; 0x80036c <_ZL11LoWaterMark>
+    2a2a:	10 92 83 03 	sts	0x0383, r1	; 0x800383 <_ZL11LoWaterMark+0x1>
+    2a2e:	10 92 82 03 	sts	0x0382, r1	; 0x800382 <_ZL11LoWaterMark>
     2a32:	87 ef       	ldi	r24, 0xF7	; 247
     2a34:	91 e0       	ldi	r25, 0x01	; 1
-    2a36:	90 93 6b 03 	sts	0x036B, r25	; 0x80036b <_ZL11HiWaterMark+0x1>
-    2a3a:	80 93 6a 03 	sts	0x036A, r24	; 0x80036a <_ZL11HiWaterMark>
+    2a36:	90 93 81 03 	sts	0x0381, r25	; 0x800381 <_ZL11HiWaterMark+0x1>
+    2a3a:	80 93 80 03 	sts	0x0380, r24	; 0x800380 <_ZL11HiWaterMark>
     2a3e:	08 95       	ret
 
 00002a40 <_Z10Lcd_updatev>:
@@ -5096,36 +5096,36 @@ void Carrage::ForceUp(){
     2a46:	1f 93       	push	r17
     2a48:	cf 93       	push	r28
     2a4a:	df 93       	push	r29
-    2a4c:	80 91 6c 03 	lds	r24, 0x036C	; 0x80036c <_ZL11LoWaterMark>
-    2a50:	90 91 6d 03 	lds	r25, 0x036D	; 0x80036d <_ZL11LoWaterMark+0x1>
+    2a4c:	80 91 82 03 	lds	r24, 0x0382	; 0x800382 <_ZL11LoWaterMark>
+    2a50:	90 91 83 03 	lds	r25, 0x0383	; 0x800383 <_ZL11LoWaterMark+0x1>
     2a54:	99 23       	and	r25, r25
     2a56:	2c f4       	brge	.+10     	; 0x2a62 <_Z10Lcd_updatev+0x22>
-    2a58:	10 92 6d 03 	sts	0x036D, r1	; 0x80036d <_ZL11LoWaterMark+0x1>
-    2a5c:	10 92 6c 03 	sts	0x036C, r1	; 0x80036c <_ZL11LoWaterMark>
+    2a58:	10 92 83 03 	sts	0x0383, r1	; 0x800383 <_ZL11LoWaterMark+0x1>
+    2a5c:	10 92 82 03 	sts	0x0382, r1	; 0x800382 <_ZL11LoWaterMark>
     2a60:	09 c0       	rjmp	.+18     	; 0x2a74 <_Z10Lcd_updatev+0x34>
     2a62:	88 3f       	cpi	r24, 0xF8	; 248
     2a64:	91 40       	sbci	r25, 0x01	; 1
     2a66:	34 f0       	brlt	.+12     	; 0x2a74 <_Z10Lcd_updatev+0x34>
     2a68:	87 ef       	ldi	r24, 0xF7	; 247
     2a6a:	91 e0       	ldi	r25, 0x01	; 1
-    2a6c:	90 93 6d 03 	sts	0x036D, r25	; 0x80036d <_ZL11LoWaterMark+0x1>
-    2a70:	80 93 6c 03 	sts	0x036C, r24	; 0x80036c <_ZL11LoWaterMark>
-    2a74:	80 91 6a 03 	lds	r24, 0x036A	; 0x80036a <_ZL11HiWaterMark>
-    2a78:	90 91 6b 03 	lds	r25, 0x036B	; 0x80036b <_ZL11HiWaterMark+0x1>
+    2a6c:	90 93 83 03 	sts	0x0383, r25	; 0x800383 <_ZL11LoWaterMark+0x1>
+    2a70:	80 93 82 03 	sts	0x0382, r24	; 0x800382 <_ZL11LoWaterMark>
+    2a74:	80 91 80 03 	lds	r24, 0x0380	; 0x800380 <_ZL11HiWaterMark>
+    2a78:	90 91 81 03 	lds	r25, 0x0381	; 0x800381 <_ZL11HiWaterMark+0x1>
     2a7c:	99 23       	and	r25, r25
     2a7e:	2c f4       	brge	.+10     	; 0x2a8a <_Z10Lcd_updatev+0x4a>
-    2a80:	10 92 6b 03 	sts	0x036B, r1	; 0x80036b <_ZL11HiWaterMark+0x1>
-    2a84:	10 92 6a 03 	sts	0x036A, r1	; 0x80036a <_ZL11HiWaterMark>
+    2a80:	10 92 81 03 	sts	0x0381, r1	; 0x800381 <_ZL11HiWaterMark+0x1>
+    2a84:	10 92 80 03 	sts	0x0380, r1	; 0x800380 <_ZL11HiWaterMark>
     2a88:	09 c0       	rjmp	.+18     	; 0x2a9c <_Z10Lcd_updatev+0x5c>
     2a8a:	88 3f       	cpi	r24, 0xF8	; 248
     2a8c:	91 40       	sbci	r25, 0x01	; 1
     2a8e:	34 f0       	brlt	.+12     	; 0x2a9c <_Z10Lcd_updatev+0x5c>
     2a90:	87 ef       	ldi	r24, 0xF7	; 247
     2a92:	91 e0       	ldi	r25, 0x01	; 1
-    2a94:	90 93 6b 03 	sts	0x036B, r25	; 0x80036b <_ZL11HiWaterMark+0x1>
-    2a98:	80 93 6a 03 	sts	0x036A, r24	; 0x80036a <_ZL11HiWaterMark>
-    2a9c:	c0 91 6c 03 	lds	r28, 0x036C	; 0x80036c <_ZL11LoWaterMark>
-    2aa0:	d0 91 6d 03 	lds	r29, 0x036D	; 0x80036d <_ZL11LoWaterMark+0x1>
+    2a94:	90 93 81 03 	sts	0x0381, r25	; 0x800381 <_ZL11HiWaterMark+0x1>
+    2a98:	80 93 80 03 	sts	0x0380, r24	; 0x800380 <_ZL11HiWaterMark>
+    2a9c:	c0 91 82 03 	lds	r28, 0x0382	; 0x800382 <_ZL11LoWaterMark>
+    2aa0:	d0 91 83 03 	lds	r29, 0x0383	; 0x800383 <_ZL11LoWaterMark+0x1>
     2aa4:	ce 01       	movw	r24, r28
     2aa6:	64 e5       	ldi	r22, 0x54	; 84
     2aa8:	70 e0       	ldi	r23, 0x00	; 0
@@ -5138,13 +5138,13 @@ void Carrage::ForceUp(){
     2aba:	81 2f       	mov	r24, r17
     2abc:	80 64       	ori	r24, 0x40	; 64
     2abe:	0e 94 50 14 	call	0x28a0	; 0x28a0 <_ZL7LcdSendh10LcdCmdData>
-    2ac2:	e0 90 6a 03 	lds	r14, 0x036A	; 0x80036a <_ZL11HiWaterMark>
-    2ac6:	f0 90 6b 03 	lds	r15, 0x036B	; 0x80036b <_ZL11HiWaterMark+0x1>
+    2ac2:	e0 90 80 03 	lds	r14, 0x0380	; 0x800380 <_ZL11HiWaterMark>
+    2ac6:	f0 90 81 03 	lds	r15, 0x0381	; 0x800381 <_ZL11HiWaterMark+0x1>
     2aca:	ec 16       	cp	r14, r28
     2acc:	fd 06       	cpc	r15, r29
     2ace:	6c f0       	brlt	.+26     	; 0x2aea <_Z10Lcd_updatev+0xaa>
     2ad0:	8e 01       	movw	r16, r28
-    2ad2:	02 59       	subi	r16, 0x92	; 146
+    2ad2:	0c 57       	subi	r16, 0x7C	; 124
     2ad4:	1c 4f       	sbci	r17, 0xFC	; 252
     2ad6:	61 e0       	ldi	r22, 0x01	; 1
     2ad8:	f8 01       	movw	r30, r16
@@ -5157,10 +5157,10 @@ void Carrage::ForceUp(){
     2ae8:	b4 f7       	brge	.-20     	; 0x2ad6 <_Z10Lcd_updatev+0x96>
     2aea:	87 ef       	ldi	r24, 0xF7	; 247
     2aec:	91 e0       	ldi	r25, 0x01	; 1
-    2aee:	90 93 6d 03 	sts	0x036D, r25	; 0x80036d <_ZL11LoWaterMark+0x1>
-    2af2:	80 93 6c 03 	sts	0x036C, r24	; 0x80036c <_ZL11LoWaterMark>
-    2af6:	10 92 6b 03 	sts	0x036B, r1	; 0x80036b <_ZL11HiWaterMark+0x1>
-    2afa:	10 92 6a 03 	sts	0x036A, r1	; 0x80036a <_ZL11HiWaterMark>
+    2aee:	90 93 83 03 	sts	0x0383, r25	; 0x800383 <_ZL11LoWaterMark+0x1>
+    2af2:	80 93 82 03 	sts	0x0382, r24	; 0x800382 <_ZL11LoWaterMark>
+    2af6:	10 92 81 03 	sts	0x0381, r1	; 0x800381 <_ZL11HiWaterMark+0x1>
+    2afa:	10 92 80 03 	sts	0x0380, r1	; 0x800380 <_ZL11HiWaterMark>
     2afe:	df 91       	pop	r29
     2b00:	cf 91       	pop	r28
     2b02:	1f 91       	pop	r17
@@ -5187,8 +5187,8 @@ void Carrage::ForceUp(){
     2b28:	80 0d       	add	r24, r0
     2b2a:	91 1d       	adc	r25, r1
     2b2c:	11 24       	eor	r1, r1
-    2b2e:	90 93 69 03 	sts	0x0369, r25	; 0x800369 <_ZL11LcdCacheIdx+0x1>
-    2b32:	80 93 68 03 	sts	0x0368, r24	; 0x800368 <_ZL11LcdCacheIdx>
+    2b2e:	90 93 7f 03 	sts	0x037F, r25	; 0x80037f <_ZL11LcdCacheIdx+0x1>
+    2b32:	80 93 7e 03 	sts	0x037E, r24	; 0x80037e <_ZL11LcdCacheIdx>
     2b36:	80 e0       	ldi	r24, 0x00	; 0
     2b38:	08 95       	ret
     2b3a:	81 e0       	ldi	r24, 0x01	; 1
@@ -5197,8 +5197,8 @@ void Carrage::ForceUp(){
     2b40:	08 95       	ret
 
 00002b42 <_Z11LcdChr_fullh>:
-    2b42:	40 91 68 03 	lds	r20, 0x0368	; 0x800368 <_ZL11LcdCacheIdx>
-    2b46:	50 91 69 03 	lds	r21, 0x0369	; 0x800369 <_ZL11LcdCacheIdx+0x1>
+    2b42:	40 91 7e 03 	lds	r20, 0x037E	; 0x80037e <_ZL11LcdCacheIdx>
+    2b46:	50 91 7f 03 	lds	r21, 0x037F	; 0x80037f <_ZL11LcdCacheIdx+0x1>
     2b4a:	80 52       	subi	r24, 0x20	; 32
     2b4c:	97 e0       	ldi	r25, 0x07	; 7
     2b4e:	89 9f       	mul	r24, r25
@@ -5207,10 +5207,10 @@ void Carrage::ForceUp(){
     2b54:	ec 5f       	subi	r30, 0xFC	; 252
     2b56:	fc 4f       	sbci	r31, 0xFC	; 252
     2b58:	da 01       	movw	r26, r20
-    2b5a:	a2 59       	subi	r26, 0x92	; 146
+    2b5a:	ac 57       	subi	r26, 0x7C	; 124
     2b5c:	bc 4f       	sbci	r27, 0xFC	; 252
     2b5e:	9a 01       	movw	r18, r20
-    2b60:	2c 58       	subi	r18, 0x8C	; 140
+    2b60:	26 57       	subi	r18, 0x76	; 118
     2b62:	3c 4f       	sbci	r19, 0xFC	; 252
     2b64:	84 91       	lpm	r24, Z
     2b66:	8d 93       	st	X+, r24
@@ -5220,14 +5220,14 @@ void Carrage::ForceUp(){
     2b6e:	d1 f7       	brne	.-12     	; 0x2b64 <_Z11LcdChr_fullh+0x22>
     2b70:	4a 5f       	subi	r20, 0xFA	; 250
     2b72:	5f 4f       	sbci	r21, 0xFF	; 255
-    2b74:	50 93 69 03 	sts	0x0369, r21	; 0x800369 <_ZL11LcdCacheIdx+0x1>
-    2b78:	40 93 68 03 	sts	0x0368, r20	; 0x800368 <_ZL11LcdCacheIdx>
+    2b74:	50 93 7f 03 	sts	0x037F, r21	; 0x80037f <_ZL11LcdCacheIdx+0x1>
+    2b78:	40 93 7e 03 	sts	0x037E, r20	; 0x80037e <_ZL11LcdCacheIdx>
     2b7c:	80 e0       	ldi	r24, 0x00	; 0
     2b7e:	08 95       	ret
 
 00002b80 <_Z12LcdStepLevelh>:
-    2b80:	40 91 68 03 	lds	r20, 0x0368	; 0x800368 <_ZL11LcdCacheIdx>
-    2b84:	50 91 69 03 	lds	r21, 0x0369	; 0x800369 <_ZL11LcdCacheIdx+0x1>
+    2b80:	40 91 7e 03 	lds	r20, 0x037E	; 0x80037e <_ZL11LcdCacheIdx>
+    2b84:	50 91 7f 03 	lds	r21, 0x037F	; 0x80037f <_ZL11LcdCacheIdx+0x1>
     2b88:	90 e0       	ldi	r25, 0x00	; 0
     2b8a:	fc 01       	movw	r30, r24
     2b8c:	ee 0f       	add	r30, r30
@@ -5243,10 +5243,10 @@ void Carrage::ForceUp(){
     2ba0:	ec 5d       	subi	r30, 0xDC	; 220
     2ba2:	fe 4f       	sbci	r31, 0xFE	; 254
     2ba4:	da 01       	movw	r26, r20
-    2ba6:	a2 59       	subi	r26, 0x92	; 146
+    2ba6:	ac 57       	subi	r26, 0x7C	; 124
     2ba8:	bc 4f       	sbci	r27, 0xFC	; 252
     2baa:	9a 01       	movw	r18, r20
-    2bac:	2a 57       	subi	r18, 0x7A	; 122
+    2bac:	24 56       	subi	r18, 0x64	; 100
     2bae:	3c 4f       	sbci	r19, 0xFC	; 252
     2bb0:	84 91       	lpm	r24, Z
     2bb2:	8d 93       	st	X+, r24
@@ -5256,8 +5256,8 @@ void Carrage::ForceUp(){
     2bba:	d1 f7       	brne	.-12     	; 0x2bb0 <_Z12LcdStepLevelh+0x30>
     2bbc:	48 5e       	subi	r20, 0xE8	; 232
     2bbe:	5f 4f       	sbci	r21, 0xFF	; 255
-    2bc0:	50 93 69 03 	sts	0x0369, r21	; 0x800369 <_ZL11LcdCacheIdx+0x1>
-    2bc4:	40 93 68 03 	sts	0x0368, r20	; 0x800368 <_ZL11LcdCacheIdx>
+    2bc0:	50 93 7f 03 	sts	0x037F, r21	; 0x80037f <_ZL11LcdCacheIdx+0x1>
+    2bc4:	40 93 7e 03 	sts	0x037E, r20	; 0x80037e <_ZL11LcdCacheIdx>
     2bc8:	80 e0       	ldi	r24, 0x00	; 0
     2bca:	08 95       	ret
 
@@ -5266,15 +5266,15 @@ void Carrage::ForceUp(){
     2bce:	1f 93       	push	r17
     2bd0:	cf 93       	push	r28
     2bd2:	df 93       	push	r29
-    2bd4:	40 91 68 03 	lds	r20, 0x0368	; 0x800368 <_ZL11LcdCacheIdx>
-    2bd8:	50 91 69 03 	lds	r21, 0x0369	; 0x800369 <_ZL11LcdCacheIdx+0x1>
-    2bdc:	20 91 6c 03 	lds	r18, 0x036C	; 0x80036c <_ZL11LoWaterMark>
-    2be0:	30 91 6d 03 	lds	r19, 0x036D	; 0x80036d <_ZL11LoWaterMark+0x1>
+    2bd4:	40 91 7e 03 	lds	r20, 0x037E	; 0x80037e <_ZL11LcdCacheIdx>
+    2bd8:	50 91 7f 03 	lds	r21, 0x037F	; 0x80037f <_ZL11LcdCacheIdx+0x1>
+    2bdc:	20 91 82 03 	lds	r18, 0x0382	; 0x800382 <_ZL11LoWaterMark>
+    2be0:	30 91 83 03 	lds	r19, 0x0383	; 0x800383 <_ZL11LoWaterMark+0x1>
     2be4:	42 17       	cp	r20, r18
     2be6:	53 07       	cpc	r21, r19
     2be8:	24 f4       	brge	.+8      	; 0x2bf2 <_Z6LcdChr11LcdFontSizeh+0x26>
-    2bea:	50 93 6d 03 	sts	0x036D, r21	; 0x80036d <_ZL11LoWaterMark+0x1>
-    2bee:	40 93 6c 03 	sts	0x036C, r20	; 0x80036c <_ZL11LoWaterMark>
+    2bea:	50 93 83 03 	sts	0x0383, r21	; 0x800383 <_ZL11LoWaterMark+0x1>
+    2bee:	40 93 82 03 	sts	0x0382, r20	; 0x800382 <_ZL11LoWaterMark>
     2bf2:	e0 ee       	ldi	r30, 0xE0	; 224
     2bf4:	e6 0f       	add	r30, r22
     2bf6:	e0 3a       	cpi	r30, 0xA0	; 160
@@ -5295,8 +5295,8 @@ void Carrage::ForceUp(){
     2c14:	c9 f7       	brne	.-14     	; 0x2c08 <_Z6LcdChr11LcdFontSizeh+0x3c>
     2c16:	4b 5f       	subi	r20, 0xFB	; 251
     2c18:	5f 4f       	sbci	r21, 0xFF	; 255
-    2c1a:	50 93 69 03 	sts	0x0369, r21	; 0x800369 <_ZL11LcdCacheIdx+0x1>
-    2c1e:	40 93 68 03 	sts	0x0368, r20	; 0x800368 <_ZL11LcdCacheIdx>
+    2c1a:	50 93 7f 03 	sts	0x037F, r21	; 0x80037f <_ZL11LcdCacheIdx+0x1>
+    2c1e:	40 93 7e 03 	sts	0x037E, r20	; 0x80037e <_ZL11LcdCacheIdx>
     2c22:	65 c0       	rjmp	.+202    	; 0x2cee <_Z6LcdChr11LcdFontSizeh+0x122>
     2c24:	82 30       	cpi	r24, 0x02	; 2
     2c26:	09 f0       	breq	.+2      	; 0x2c2a <_Z6LcdChr11LcdFontSizeh+0x5e>
@@ -5304,14 +5304,14 @@ void Carrage::ForceUp(){
     2c2a:	ca 01       	movw	r24, r20
     2c2c:	84 55       	subi	r24, 0x54	; 84
     2c2e:	91 09       	sbc	r25, r1
-    2c30:	20 91 6c 03 	lds	r18, 0x036C	; 0x80036c <_ZL11LoWaterMark>
-    2c34:	30 91 6d 03 	lds	r19, 0x036D	; 0x80036d <_ZL11LoWaterMark+0x1>
+    2c30:	20 91 82 03 	lds	r18, 0x0382	; 0x800382 <_ZL11LoWaterMark>
+    2c34:	30 91 83 03 	lds	r19, 0x0383	; 0x800383 <_ZL11LoWaterMark+0x1>
     2c38:	82 17       	cp	r24, r18
     2c3a:	93 07       	cpc	r25, r19
     2c3c:	0c f0       	brlt	.+2      	; 0x2c40 <_Z6LcdChr11LcdFontSizeh+0x74>
     2c3e:	8e c0       	rjmp	.+284    	; 0x2d5c <_Z6LcdChr11LcdFontSizeh+0x190>
-    2c40:	90 93 6d 03 	sts	0x036D, r25	; 0x80036d <_ZL11LoWaterMark+0x1>
-    2c44:	80 93 6c 03 	sts	0x036C, r24	; 0x80036c <_ZL11LoWaterMark>
+    2c40:	90 93 83 03 	sts	0x0383, r25	; 0x800383 <_ZL11LoWaterMark+0x1>
+    2c44:	80 93 82 03 	sts	0x0382, r24	; 0x800382 <_ZL11LoWaterMark>
     2c48:	89 c0       	rjmp	.+274    	; 0x2d5c <_Z6LcdChr11LcdFontSizeh+0x190>
     2c4a:	24 91       	lpm	r18, Z
     2c4c:	22 0f       	add	r18, r18
@@ -5390,32 +5390,32 @@ void Carrage::ForceUp(){
     2cde:	68 ef       	ldi	r22, 0xF8	; 248
     2ce0:	71 e0       	ldi	r23, 0x01	; 1
     2ce2:	0e 94 fc 27 	call	0x4ff8	; 0x4ff8 <__divmodhi4>
-    2ce6:	90 93 69 03 	sts	0x0369, r25	; 0x800369 <_ZL11LcdCacheIdx+0x1>
-    2cea:	80 93 68 03 	sts	0x0368, r24	; 0x800368 <_ZL11LcdCacheIdx>
-    2cee:	80 91 68 03 	lds	r24, 0x0368	; 0x800368 <_ZL11LcdCacheIdx>
-    2cf2:	90 91 69 03 	lds	r25, 0x0369	; 0x800369 <_ZL11LcdCacheIdx+0x1>
-    2cf6:	20 91 6a 03 	lds	r18, 0x036A	; 0x80036a <_ZL11HiWaterMark>
-    2cfa:	30 91 6b 03 	lds	r19, 0x036B	; 0x80036b <_ZL11HiWaterMark+0x1>
+    2ce6:	90 93 7f 03 	sts	0x037F, r25	; 0x80037f <_ZL11LcdCacheIdx+0x1>
+    2cea:	80 93 7e 03 	sts	0x037E, r24	; 0x80037e <_ZL11LcdCacheIdx>
+    2cee:	80 91 7e 03 	lds	r24, 0x037E	; 0x80037e <_ZL11LcdCacheIdx>
+    2cf2:	90 91 7f 03 	lds	r25, 0x037F	; 0x80037f <_ZL11LcdCacheIdx+0x1>
+    2cf6:	20 91 80 03 	lds	r18, 0x0380	; 0x800380 <_ZL11HiWaterMark>
+    2cfa:	30 91 81 03 	lds	r19, 0x0381	; 0x800381 <_ZL11HiWaterMark+0x1>
     2cfe:	28 17       	cp	r18, r24
     2d00:	39 07       	cpc	r19, r25
     2d02:	24 f4       	brge	.+8      	; 0x2d0c <_Z6LcdChr11LcdFontSizeh+0x140>
-    2d04:	90 93 6b 03 	sts	0x036B, r25	; 0x80036b <_ZL11HiWaterMark+0x1>
-    2d08:	80 93 6a 03 	sts	0x036A, r24	; 0x80036a <_ZL11HiWaterMark>
+    2d04:	90 93 81 03 	sts	0x0381, r25	; 0x800381 <_ZL11HiWaterMark+0x1>
+    2d08:	80 93 80 03 	sts	0x0380, r24	; 0x800380 <_ZL11HiWaterMark>
     2d0c:	fc 01       	movw	r30, r24
-    2d0e:	e2 59       	subi	r30, 0x92	; 146
+    2d0e:	ec 57       	subi	r30, 0x7C	; 124
     2d10:	fc 4f       	sbci	r31, 0xFC	; 252
     2d12:	10 82       	st	Z, r1
     2d14:	87 3f       	cpi	r24, 0xF7	; 247
     2d16:	21 e0       	ldi	r18, 0x01	; 1
     2d18:	92 07       	cpc	r25, r18
     2d1a:	31 f4       	brne	.+12     	; 0x2d28 <_Z6LcdChr11LcdFontSizeh+0x15c>
-    2d1c:	10 92 69 03 	sts	0x0369, r1	; 0x800369 <_ZL11LcdCacheIdx+0x1>
-    2d20:	10 92 68 03 	sts	0x0368, r1	; 0x800368 <_ZL11LcdCacheIdx>
+    2d1c:	10 92 7f 03 	sts	0x037F, r1	; 0x80037f <_ZL11LcdCacheIdx+0x1>
+    2d20:	10 92 7e 03 	sts	0x037E, r1	; 0x80037e <_ZL11LcdCacheIdx>
     2d24:	82 e0       	ldi	r24, 0x02	; 2
     2d26:	2d c0       	rjmp	.+90     	; 0x2d82 <_Z6LcdChr11LcdFontSizeh+0x1b6>
     2d28:	01 96       	adiw	r24, 0x01	; 1
-    2d2a:	90 93 69 03 	sts	0x0369, r25	; 0x800369 <_ZL11LcdCacheIdx+0x1>
-    2d2e:	80 93 68 03 	sts	0x0368, r24	; 0x800368 <_ZL11LcdCacheIdx>
+    2d2a:	90 93 7f 03 	sts	0x037F, r25	; 0x80037f <_ZL11LcdCacheIdx+0x1>
+    2d2e:	80 93 7e 03 	sts	0x037E, r24	; 0x80037e <_ZL11LcdCacheIdx>
     2d32:	80 e0       	ldi	r24, 0x00	; 0
     2d34:	26 c0       	rjmp	.+76     	; 0x2d82 <_Z6LcdChr11LcdFontSizeh+0x1b6>
     2d36:	81 e0       	ldi	r24, 0x01	; 1
@@ -5431,10 +5431,10 @@ void Carrage::ForceUp(){
     2d4a:	ec 5f       	subi	r30, 0xFC	; 252
     2d4c:	fc 4f       	sbci	r31, 0xFC	; 252
     2d4e:	da 01       	movw	r26, r20
-    2d50:	a2 59       	subi	r26, 0x92	; 146
+    2d50:	ac 57       	subi	r26, 0x7C	; 124
     2d52:	bc 4f       	sbci	r27, 0xFC	; 252
     2d54:	9a 01       	movw	r18, r20
-    2d56:	2d 58       	subi	r18, 0x8D	; 141
+    2d56:	27 57       	subi	r18, 0x77	; 119
     2d58:	3c 4f       	sbci	r19, 0xFC	; 252
     2d5a:	56 cf       	rjmp	.-340    	; 0x2c08 <_Z6LcdChr11LcdFontSizeh+0x3c>
     2d5c:	99 23       	and	r25, r25
@@ -5446,13 +5446,13 @@ void Carrage::ForceUp(){
     2d68:	ec 5f       	subi	r30, 0xFC	; 252
     2d6a:	fc 4f       	sbci	r31, 0xFC	; 252
     2d6c:	ea 01       	movw	r28, r20
-    2d6e:	c6 5e       	subi	r28, 0xE6	; 230
+    2d6e:	c0 5d       	subi	r28, 0xD0	; 208
     2d70:	dc 4f       	sbci	r29, 0xFC	; 252
     2d72:	da 01       	movw	r26, r20
-    2d74:	a2 59       	subi	r26, 0x92	; 146
+    2d74:	ac 57       	subi	r26, 0x7C	; 124
     2d76:	bc 4f       	sbci	r27, 0xFC	; 252
     2d78:	ba 01       	movw	r22, r20
-    2d7a:	68 58       	subi	r22, 0x88	; 136
+    2d7a:	62 57       	subi	r22, 0x72	; 114
     2d7c:	7c 4f       	sbci	r23, 0xFC	; 252
     2d7e:	18 e1       	ldi	r17, 0x18	; 24
     2d80:	64 cf       	rjmp	.-312    	; 0x2c4a <_Z6LcdChr11LcdFontSizeh+0x7e>
@@ -5618,17 +5618,17 @@ void Initialisation(){
 	Lcd_init();
     2e96:	0e 94 e9 14 	call	0x29d2	; 0x29d2 <_Z8Lcd_initv>
 	panel.Init();
-    2e9a:	84 e0       	ldi	r24, 0x04	; 4
+    2e9a:	8a e1       	ldi	r24, 0x1A	; 26
     2e9c:	96 e0       	ldi	r25, 0x06	; 6
     2e9e:	0e 94 a6 21 	call	0x434c	; 0x434c <_ZN5Panel4InitEv>
 	carrage.Init();
-    2ea2:	85 e3       	ldi	r24, 0x35	; 53
+    2ea2:	8b e4       	ldi	r24, 0x4B	; 75
     2ea4:	96 e0       	ldi	r25, 0x06	; 6
     2ea6:	0e 94 f6 0d 	call	0x1bec	; 0x1bec <_ZN7Carrage4InitEv>
 	activity.Init(carrage);
-    2eaa:	65 e3       	ldi	r22, 0x35	; 53
+    2eaa:	6b e4       	ldi	r22, 0x4B	; 75
     2eac:	76 e0       	ldi	r23, 0x06	; 6
-    2eae:	86 e6       	ldi	r24, 0x66	; 102
+    2eae:	8c e7       	ldi	r24, 0x7C	; 124
     2eb0:	95 e0       	ldi	r25, 0x05	; 5
     2eb2:	0e 94 3b 08 	call	0x1076	; 0x1076 <_ZN8Activity4InitER7Carrage>
 	
@@ -5667,10 +5667,10 @@ void Initialisation(){
     2ef4:	89 e4       	ldi	r24, 0x49	; 73
     2ef6:	90 e0       	ldi	r25, 0x00	; 0
     2ef8:	0e 94 32 28 	call	0x5064	; 0x5064 <eeprom_read_dword>
-    2efc:	60 93 e7 06 	sts	0x06E7, r22	; 0x8006e7 <carrage+0xb2>
-    2f00:	70 93 e8 06 	sts	0x06E8, r23	; 0x8006e8 <carrage+0xb3>
-    2f04:	80 93 e9 06 	sts	0x06E9, r24	; 0x8006e9 <carrage+0xb4>
-    2f08:	90 93 ea 06 	sts	0x06EA, r25	; 0x8006ea <carrage+0xb5>
+    2efc:	60 93 fd 06 	sts	0x06FD, r22	; 0x8006fd <carrage+0xb2>
+    2f00:	70 93 fe 06 	sts	0x06FE, r23	; 0x8006fe <carrage+0xb3>
+    2f04:	80 93 ff 06 	sts	0x06FF, r24	; 0x8006ff <carrage+0xb4>
+    2f08:	90 93 00 07 	sts	0x0700, r25	; 0x800700 <carrage+0xb5>
 	
 	if (!(eeprom_read_float(&CarrajeMin)>=0||eeprom_read_float(&CarrajeMin)<=5)){
     2f0c:	85 e4       	ldi	r24, 0x45	; 69
@@ -5705,10 +5705,10 @@ void Initialisation(){
     2f48:	85 e4       	ldi	r24, 0x45	; 69
     2f4a:	90 e0       	ldi	r25, 0x00	; 0
     2f4c:	0e 94 32 28 	call	0x5064	; 0x5064 <eeprom_read_dword>
-    2f50:	60 93 eb 06 	sts	0x06EB, r22	; 0x8006eb <carrage+0xb6>
-    2f54:	70 93 ec 06 	sts	0x06EC, r23	; 0x8006ec <carrage+0xb7>
-    2f58:	80 93 ed 06 	sts	0x06ED, r24	; 0x8006ed <carrage+0xb8>
-    2f5c:	90 93 ee 06 	sts	0x06EE, r25	; 0x8006ee <carrage+0xb9>
+    2f50:	60 93 01 07 	sts	0x0701, r22	; 0x800701 <carrage+0xb6>
+    2f54:	70 93 02 07 	sts	0x0702, r23	; 0x800702 <carrage+0xb7>
+    2f58:	80 93 03 07 	sts	0x0703, r24	; 0x800703 <carrage+0xb8>
+    2f5c:	90 93 04 07 	sts	0x0704, r25	; 0x800704 <carrage+0xb9>
 	
 	if (!(eeprom_read_float(&CarrajeMax)>=0||eeprom_read_float(&CarrajeMax)<=5)){
     2f60:	81 e4       	ldi	r24, 0x41	; 65
@@ -5744,13 +5744,13 @@ void Initialisation(){
     2f9e:	81 e4       	ldi	r24, 0x41	; 65
     2fa0:	90 e0       	ldi	r25, 0x00	; 0
     2fa2:	0e 94 32 28 	call	0x5064	; 0x5064 <eeprom_read_dword>
-    2fa6:	60 93 ef 06 	sts	0x06EF, r22	; 0x8006ef <carrage+0xba>
-    2faa:	70 93 f0 06 	sts	0x06F0, r23	; 0x8006f0 <carrage+0xbb>
-    2fae:	80 93 f1 06 	sts	0x06F1, r24	; 0x8006f1 <carrage+0xbc>
-    2fb2:	90 93 f2 06 	sts	0x06F2, r25	; 0x8006f2 <carrage+0xbd>
+    2fa6:	60 93 05 07 	sts	0x0705, r22	; 0x800705 <carrage+0xba>
+    2faa:	70 93 06 07 	sts	0x0706, r23	; 0x800706 <carrage+0xbb>
+    2fae:	80 93 07 07 	sts	0x0707, r24	; 0x800707 <carrage+0xbc>
+    2fb2:	90 93 08 07 	sts	0x0708, r25	; 0x800708 <carrage+0xbd>
 	
 	carrage.SetLimits();
-    2fb6:	85 e3       	ldi	r24, 0x35	; 53
+    2fb6:	8b e4       	ldi	r24, 0x4B	; 75
     2fb8:	96 e0       	ldi	r25, 0x06	; 6
     2fba:	0e 94 08 0d 	call	0x1a10	; 0x1a10 <_ZN7Carrage9SetLimitsEv>
 	
@@ -5794,10 +5794,10 @@ void Initialisation(){
     3006:	8c e3       	ldi	r24, 0x3C	; 60
     3008:	90 e0       	ldi	r25, 0x00	; 0
     300a:	0e 94 32 28 	call	0x5064	; 0x5064 <eeprom_read_dword>
-    300e:	60 93 f3 06 	sts	0x06F3, r22	; 0x8006f3 <carrage+0xbe>
-    3012:	70 93 f4 06 	sts	0x06F4, r23	; 0x8006f4 <carrage+0xbf>
-    3016:	80 93 f5 06 	sts	0x06F5, r24	; 0x8006f5 <carrage+0xc0>
-    301a:	90 93 f6 06 	sts	0x06F6, r25	; 0x8006f6 <carrage+0xc1>
+    300e:	60 93 09 07 	sts	0x0709, r22	; 0x800709 <carrage+0xbe>
+    3012:	70 93 0a 07 	sts	0x070A, r23	; 0x80070a <carrage+0xbf>
+    3016:	80 93 0b 07 	sts	0x070B, r24	; 0x80070b <carrage+0xc0>
+    301a:	90 93 0c 07 	sts	0x070C, r25	; 0x80070c <carrage+0xc1>
 	carrage.OnOffMalfunction = eeprom_read_byte(&OnOffMalfunction);
     301e:	80 e4       	ldi	r24, 0x40	; 64
     3020:	90 e0       	ldi	r25, 0x00	; 0
@@ -5806,7 +5806,7 @@ void Initialisation(){
     3028:	81 11       	cpse	r24, r1
     302a:	01 c0       	rjmp	.+2      	; 0x302e <_Z14Initialisationv+0x1a0>
     302c:	90 e0       	ldi	r25, 0x00	; 0
-    302e:	90 93 f7 06 	sts	0x06F7, r25	; 0x8006f7 <carrage+0xc2>
+    302e:	90 93 0d 07 	sts	0x070D, r25	; 0x80070d <carrage+0xc2>
 }
     3032:	ff 90       	pop	r15
     3034:	ef 90       	pop	r14
@@ -5824,43 +5824,43 @@ void SettingsSave(bool SettingSave){
     303c:	88 23       	and	r24, r24
     303e:	d1 f1       	breq	.+116    	; 0x30b4 <_Z12SettingsSaveb+0x78>
 		eeprom_write_float (&Tunning_rate, carrage.tunning);
-    3040:	40 91 e7 06 	lds	r20, 0x06E7	; 0x8006e7 <carrage+0xb2>
-    3044:	50 91 e8 06 	lds	r21, 0x06E8	; 0x8006e8 <carrage+0xb3>
-    3048:	60 91 e9 06 	lds	r22, 0x06E9	; 0x8006e9 <carrage+0xb4>
-    304c:	70 91 ea 06 	lds	r23, 0x06EA	; 0x8006ea <carrage+0xb5>
+    3040:	40 91 fd 06 	lds	r20, 0x06FD	; 0x8006fd <carrage+0xb2>
+    3044:	50 91 fe 06 	lds	r21, 0x06FE	; 0x8006fe <carrage+0xb3>
+    3048:	60 91 ff 06 	lds	r22, 0x06FF	; 0x8006ff <carrage+0xb4>
+    304c:	70 91 00 07 	lds	r23, 0x0700	; 0x800700 <carrage+0xb5>
     3050:	89 e4       	ldi	r24, 0x49	; 73
     3052:	90 e0       	ldi	r25, 0x00	; 0
     3054:	0e 94 46 28 	call	0x508c	; 0x508c <eeprom_write_dword>
 		eeprom_write_float(&CarrajeMin, carrage.min);
-    3058:	40 91 eb 06 	lds	r20, 0x06EB	; 0x8006eb <carrage+0xb6>
-    305c:	50 91 ec 06 	lds	r21, 0x06EC	; 0x8006ec <carrage+0xb7>
-    3060:	60 91 ed 06 	lds	r22, 0x06ED	; 0x8006ed <carrage+0xb8>
-    3064:	70 91 ee 06 	lds	r23, 0x06EE	; 0x8006ee <carrage+0xb9>
+    3058:	40 91 01 07 	lds	r20, 0x0701	; 0x800701 <carrage+0xb6>
+    305c:	50 91 02 07 	lds	r21, 0x0702	; 0x800702 <carrage+0xb7>
+    3060:	60 91 03 07 	lds	r22, 0x0703	; 0x800703 <carrage+0xb8>
+    3064:	70 91 04 07 	lds	r23, 0x0704	; 0x800704 <carrage+0xb9>
     3068:	85 e4       	ldi	r24, 0x45	; 69
     306a:	90 e0       	ldi	r25, 0x00	; 0
     306c:	0e 94 46 28 	call	0x508c	; 0x508c <eeprom_write_dword>
 		eeprom_write_float(&CarrajeMax, carrage.max);
-    3070:	40 91 ef 06 	lds	r20, 0x06EF	; 0x8006ef <carrage+0xba>
-    3074:	50 91 f0 06 	lds	r21, 0x06F0	; 0x8006f0 <carrage+0xbb>
-    3078:	60 91 f1 06 	lds	r22, 0x06F1	; 0x8006f1 <carrage+0xbc>
-    307c:	70 91 f2 06 	lds	r23, 0x06F2	; 0x8006f2 <carrage+0xbd>
+    3070:	40 91 05 07 	lds	r20, 0x0705	; 0x800705 <carrage+0xba>
+    3074:	50 91 06 07 	lds	r21, 0x0706	; 0x800706 <carrage+0xbb>
+    3078:	60 91 07 07 	lds	r22, 0x0707	; 0x800707 <carrage+0xbc>
+    307c:	70 91 08 07 	lds	r23, 0x0708	; 0x800708 <carrage+0xbd>
     3080:	81 e4       	ldi	r24, 0x41	; 65
     3082:	90 e0       	ldi	r25, 0x00	; 0
     3084:	0e 94 46 28 	call	0x508c	; 0x508c <eeprom_write_dword>
 		carrage.SetLimits();
-    3088:	85 e3       	ldi	r24, 0x35	; 53
+    3088:	8b e4       	ldi	r24, 0x4B	; 75
     308a:	96 e0       	ldi	r25, 0x06	; 6
     308c:	0e 94 08 0d 	call	0x1a10	; 0x1a10 <_ZN7Carrage9SetLimitsEv>
 		eeprom_write_float (&countToMalfunctionLimit, carrage.countToMalfunctionLimit);
-    3090:	40 91 f3 06 	lds	r20, 0x06F3	; 0x8006f3 <carrage+0xbe>
-    3094:	50 91 f4 06 	lds	r21, 0x06F4	; 0x8006f4 <carrage+0xbf>
-    3098:	60 91 f5 06 	lds	r22, 0x06F5	; 0x8006f5 <carrage+0xc0>
-    309c:	70 91 f6 06 	lds	r23, 0x06F6	; 0x8006f6 <carrage+0xc1>
+    3090:	40 91 09 07 	lds	r20, 0x0709	; 0x800709 <carrage+0xbe>
+    3094:	50 91 0a 07 	lds	r21, 0x070A	; 0x80070a <carrage+0xbf>
+    3098:	60 91 0b 07 	lds	r22, 0x070B	; 0x80070b <carrage+0xc0>
+    309c:	70 91 0c 07 	lds	r23, 0x070C	; 0x80070c <carrage+0xc1>
     30a0:	8c e3       	ldi	r24, 0x3C	; 60
     30a2:	90 e0       	ldi	r25, 0x00	; 0
     30a4:	0e 94 46 28 	call	0x508c	; 0x508c <eeprom_write_dword>
 		eeprom_write_byte(&OnOffMalfunction,carrage.OnOffMalfunction); 
-    30a8:	60 91 f7 06 	lds	r22, 0x06F7	; 0x8006f7 <carrage+0xc2>
+    30a8:	60 91 0d 07 	lds	r22, 0x070D	; 0x80070d <carrage+0xc2>
     30ac:	80 e4       	ldi	r24, 0x40	; 64
     30ae:	90 e0       	ldi	r25, 0x00	; 0
     30b0:	0e 94 38 28 	call	0x5070	; 0x5070 <eeprom_write_byte>
@@ -5878,12 +5878,12 @@ void IFCarrageSaveStateToEEMEM( int position){
     30bc:	df 93       	push	r29
 	
 	if(activity.SaveFlag){
-    30be:	20 91 fc 05 	lds	r18, 0x05FC	; 0x8005fc <activity+0x96>
+    30be:	20 91 12 06 	lds	r18, 0x0612	; 0x800612 <activity+0x96>
     30c2:	22 23       	and	r18, r18
     30c4:	99 f1       	breq	.+102    	; 0x312c <_Z25IFCarrageSaveStateToEEMEMi+0x76>
     30c6:	ec 01       	movw	r28, r24
 		eeprom_write_float (&PositionsStates[position][1], carrage.Wheel_1.get_hight());
-    30c8:	85 e3       	ldi	r24, 0x35	; 53
+    30c8:	8b e4       	ldi	r24, 0x4B	; 75
     30ca:	96 e0       	ldi	r25, 0x06	; 6
     30cc:	0e 94 82 23 	call	0x4704	; 0x4704 <_ZN5Wheel9get_hightEv>
     30d0:	ab 01       	movw	r20, r22
@@ -5899,7 +5899,7 @@ void IFCarrageSaveStateToEEMEM( int position){
     30e4:	9f 4f       	sbci	r25, 0xFF	; 255
     30e6:	0e 94 46 28 	call	0x508c	; 0x508c <eeprom_write_dword>
 		eeprom_write_float (&PositionsStates[position][2], carrage.Wheel_2.get_hight());
-    30ea:	81 e6       	ldi	r24, 0x61	; 97
+    30ea:	87 e7       	ldi	r24, 0x77	; 119
     30ec:	96 e0       	ldi	r25, 0x06	; 6
     30ee:	0e 94 82 23 	call	0x4704	; 0x4704 <_ZN5Wheel9get_hightEv>
     30f2:	ab 01       	movw	r20, r22
@@ -5909,7 +5909,7 @@ void IFCarrageSaveStateToEEMEM( int position){
     30fa:	9f 4f       	sbci	r25, 0xFF	; 255
     30fc:	0e 94 46 28 	call	0x508c	; 0x508c <eeprom_write_dword>
 		eeprom_write_float (&PositionsStates[position][3], carrage.Wheel_3.get_hight());
-    3100:	8d e8       	ldi	r24, 0x8D	; 141
+    3100:	83 ea       	ldi	r24, 0xA3	; 163
     3102:	96 e0       	ldi	r25, 0x06	; 6
     3104:	0e 94 82 23 	call	0x4704	; 0x4704 <_ZN5Wheel9get_hightEv>
     3108:	ab 01       	movw	r20, r22
@@ -5919,7 +5919,7 @@ void IFCarrageSaveStateToEEMEM( int position){
     3110:	9f 4f       	sbci	r25, 0xFF	; 255
     3112:	0e 94 46 28 	call	0x508c	; 0x508c <eeprom_write_dword>
 		eeprom_write_float (&PositionsStates[position][4], carrage.Wheel_4.get_hight());
-    3116:	89 eb       	ldi	r24, 0xB9	; 185
+    3116:	8f ec       	ldi	r24, 0xCF	; 207
     3118:	96 e0       	ldi	r25, 0x06	; 6
     311a:	0e 94 82 23 	call	0x4704	; 0x4704 <_ZN5Wheel9get_hightEv>
     311e:	ab 01       	movw	r20, r22
@@ -5930,7 +5930,7 @@ void IFCarrageSaveStateToEEMEM( int position){
     3128:	0e 94 46 28 	call	0x508c	; 0x508c <eeprom_write_dword>
 	}
 	activity.SaveFlag = false;
-    312c:	10 92 fc 05 	sts	0x05FC, r1	; 0x8005fc <activity+0x96>
+    312c:	10 92 12 06 	sts	0x0612, r1	; 0x800612 <activity+0x96>
 }
     3130:	df 91       	pop	r29
     3132:	cf 91       	pop	r28
@@ -5946,21 +5946,21 @@ void IFCarrageSetStateToEEMEM( int position){
     313e:	cf 93       	push	r28
     3140:	df 93       	push	r29
 	if(activity.SetFlag){
-    3142:	20 91 fd 05 	lds	r18, 0x05FD	; 0x8005fd <activity+0x97>
+    3142:	20 91 13 06 	lds	r18, 0x0613	; 0x800613 <activity+0x97>
     3146:	22 23       	and	r18, r18
     3148:	09 f4       	brne	.+2      	; 0x314c <_Z24IFCarrageSetStateToEEMEMi+0x12>
     314a:	4f c0       	rjmp	.+158    	; 0x31ea <_Z24IFCarrageSetStateToEEMEMi+0xb0>
     314c:	ec 01       	movw	r28, r24
 		carrage.SelectAllWheel();
-    314e:	85 e3       	ldi	r24, 0x35	; 53
+    314e:	8b e4       	ldi	r24, 0x4B	; 75
     3150:	96 e0       	ldi	r25, 0x06	; 6
     3152:	0e 94 72 12 	call	0x24e4	; 0x24e4 <_ZN7Carrage14SelectAllWheelEv>
 		screen.Render(activity, carrage);
-    3156:	45 e3       	ldi	r20, 0x35	; 53
+    3156:	4b e4       	ldi	r20, 0x4B	; 75
     3158:	56 e0       	ldi	r21, 0x06	; 6
-    315a:	66 e6       	ldi	r22, 0x66	; 102
+    315a:	6c e7       	ldi	r22, 0x7C	; 124
     315c:	75 e0       	ldi	r23, 0x05	; 5
-    315e:	83 e0       	ldi	r24, 0x03	; 3
+    315e:	89 e1       	ldi	r24, 0x19	; 25
     3160:	96 e0       	ldi	r25, 0x06	; 6
     3162:	0e 94 12 21 	call	0x4224	; 0x4224 <_ZN6Screen6RenderER8ActivityR7Carrage>
 		carrage.Wheel_1.sethight=eeprom_read_float(&PositionsStates[position][1]);
@@ -5974,50 +5974,50 @@ void IFCarrageSetStateToEEMEM( int position){
     3174:	8c 5f       	subi	r24, 0xFC	; 252
     3176:	9f 4f       	sbci	r25, 0xFF	; 255
     3178:	0e 94 32 28 	call	0x5064	; 0x5064 <eeprom_read_dword>
-    317c:	60 93 4c 06 	sts	0x064C, r22	; 0x80064c <carrage+0x17>
-    3180:	70 93 4d 06 	sts	0x064D, r23	; 0x80064d <carrage+0x18>
-    3184:	80 93 4e 06 	sts	0x064E, r24	; 0x80064e <carrage+0x19>
-    3188:	90 93 4f 06 	sts	0x064F, r25	; 0x80064f <carrage+0x1a>
+    317c:	60 93 62 06 	sts	0x0662, r22	; 0x800662 <carrage+0x17>
+    3180:	70 93 63 06 	sts	0x0663, r23	; 0x800663 <carrage+0x18>
+    3184:	80 93 64 06 	sts	0x0664, r24	; 0x800664 <carrage+0x19>
+    3188:	90 93 65 06 	sts	0x0665, r25	; 0x800665 <carrage+0x1a>
 		carrage.Wheel_2.sethight=eeprom_read_float(&PositionsStates[position][2]);
     318c:	c8 01       	movw	r24, r16
     318e:	88 5f       	subi	r24, 0xF8	; 248
     3190:	9f 4f       	sbci	r25, 0xFF	; 255
     3192:	0e 94 32 28 	call	0x5064	; 0x5064 <eeprom_read_dword>
-    3196:	60 93 78 06 	sts	0x0678, r22	; 0x800678 <carrage+0x43>
-    319a:	70 93 79 06 	sts	0x0679, r23	; 0x800679 <carrage+0x44>
-    319e:	80 93 7a 06 	sts	0x067A, r24	; 0x80067a <carrage+0x45>
-    31a2:	90 93 7b 06 	sts	0x067B, r25	; 0x80067b <carrage+0x46>
+    3196:	60 93 8e 06 	sts	0x068E, r22	; 0x80068e <carrage+0x43>
+    319a:	70 93 8f 06 	sts	0x068F, r23	; 0x80068f <carrage+0x44>
+    319e:	80 93 90 06 	sts	0x0690, r24	; 0x800690 <carrage+0x45>
+    31a2:	90 93 91 06 	sts	0x0691, r25	; 0x800691 <carrage+0x46>
 		carrage.Wheel_3.sethight=eeprom_read_float(&PositionsStates[position][3]);
     31a6:	c8 01       	movw	r24, r16
     31a8:	84 5f       	subi	r24, 0xF4	; 244
     31aa:	9f 4f       	sbci	r25, 0xFF	; 255
     31ac:	0e 94 32 28 	call	0x5064	; 0x5064 <eeprom_read_dword>
-    31b0:	60 93 a4 06 	sts	0x06A4, r22	; 0x8006a4 <carrage+0x6f>
-    31b4:	70 93 a5 06 	sts	0x06A5, r23	; 0x8006a5 <carrage+0x70>
-    31b8:	80 93 a6 06 	sts	0x06A6, r24	; 0x8006a6 <carrage+0x71>
-    31bc:	90 93 a7 06 	sts	0x06A7, r25	; 0x8006a7 <carrage+0x72>
+    31b0:	60 93 ba 06 	sts	0x06BA, r22	; 0x8006ba <carrage+0x6f>
+    31b4:	70 93 bb 06 	sts	0x06BB, r23	; 0x8006bb <carrage+0x70>
+    31b8:	80 93 bc 06 	sts	0x06BC, r24	; 0x8006bc <carrage+0x71>
+    31bc:	90 93 bd 06 	sts	0x06BD, r25	; 0x8006bd <carrage+0x72>
 		carrage.Wheel_4.sethight=eeprom_read_float(&PositionsStates[position][4]);
     31c0:	c8 01       	movw	r24, r16
     31c2:	80 5f       	subi	r24, 0xF0	; 240
     31c4:	9f 4f       	sbci	r25, 0xFF	; 255
     31c6:	0e 94 32 28 	call	0x5064	; 0x5064 <eeprom_read_dword>
-    31ca:	60 93 d0 06 	sts	0x06D0, r22	; 0x8006d0 <carrage+0x9b>
-    31ce:	70 93 d1 06 	sts	0x06D1, r23	; 0x8006d1 <carrage+0x9c>
-    31d2:	80 93 d2 06 	sts	0x06D2, r24	; 0x8006d2 <carrage+0x9d>
-    31d6:	90 93 d3 06 	sts	0x06D3, r25	; 0x8006d3 <carrage+0x9e>
+    31ca:	60 93 e6 06 	sts	0x06E6, r22	; 0x8006e6 <carrage+0x9b>
+    31ce:	70 93 e7 06 	sts	0x06E7, r23	; 0x8006e7 <carrage+0x9c>
+    31d2:	80 93 e8 06 	sts	0x06E8, r24	; 0x8006e8 <carrage+0x9d>
+    31d6:	90 93 e9 06 	sts	0x06E9, r25	; 0x8006e9 <carrage+0x9e>
 		carrage.Ajustment();
-    31da:	85 e3       	ldi	r24, 0x35	; 53
+    31da:	8b e4       	ldi	r24, 0x4B	; 75
     31dc:	96 e0       	ldi	r25, 0x06	; 6
     31de:	0e 94 16 10 	call	0x202c	; 0x202c <_ZN7Carrage9AjustmentEv>
 		//_delay_ms(100);
 		activity.GoToSetPosiions();
-    31e2:	86 e6       	ldi	r24, 0x66	; 102
+    31e2:	8c e7       	ldi	r24, 0x7C	; 124
     31e4:	95 e0       	ldi	r25, 0x05	; 5
     31e6:	0e 94 fa 0b 	call	0x17f4	; 0x17f4 <_ZN8Activity15GoToSetPosiionsEv>
 		//carrage.DiSelectAllWheel();
 	}
 	activity.SetFlag = false;
-    31ea:	10 92 fd 05 	sts	0x05FD, r1	; 0x8005fd <activity+0x97>
+    31ea:	10 92 13 06 	sts	0x0613, r1	; 0x800613 <activity+0x97>
 }
     31ee:	df 91       	pop	r29
     31f0:	cf 91       	pop	r28
@@ -6038,31 +6038,31 @@ int main(void)
 		activity.Cursor_Action(panel, carrage);
 		screen.Render(activity, carrage);
 		IFCarrageSaveStateToEEMEM(activity.SavePosition);
-    31fc:	cf ef       	ldi	r28, 0xFF	; 255
-    31fe:	d5 e0       	ldi	r29, 0x05	; 5
+    31fc:	c5 e1       	ldi	r28, 0x15	; 21
+    31fe:	d6 e0       	ldi	r29, 0x06	; 6
 		IFCarrageSetStateToEEMEM(activity.SavePosition);
 		SettingsSave(activity.SettingsSaveFlag);
-    3200:	0e ef       	ldi	r16, 0xFE	; 254
-    3202:	15 e0       	ldi	r17, 0x05	; 5
+    3200:	04 e1       	ldi	r16, 0x14	; 20
+    3202:	16 e0       	ldi	r17, 0x06	; 6
 int main(void)
 {		
 	Initialisation();
     while (1) 
     {		
 		activity.Cursor_Action(panel, carrage);
-    3204:	45 e3       	ldi	r20, 0x35	; 53
+    3204:	4b e4       	ldi	r20, 0x4B	; 75
     3206:	56 e0       	ldi	r21, 0x06	; 6
-    3208:	64 e0       	ldi	r22, 0x04	; 4
+    3208:	6a e1       	ldi	r22, 0x1A	; 26
     320a:	76 e0       	ldi	r23, 0x06	; 6
-    320c:	86 e6       	ldi	r24, 0x66	; 102
+    320c:	8c e7       	ldi	r24, 0x7C	; 124
     320e:	95 e0       	ldi	r25, 0x05	; 5
     3210:	0e 94 cf 0b 	call	0x179e	; 0x179e <_ZN8Activity13Cursor_ActionER5PanelR7Carrage>
 		screen.Render(activity, carrage);
-    3214:	45 e3       	ldi	r20, 0x35	; 53
+    3214:	4b e4       	ldi	r20, 0x4B	; 75
     3216:	56 e0       	ldi	r21, 0x06	; 6
-    3218:	66 e6       	ldi	r22, 0x66	; 102
+    3218:	6c e7       	ldi	r22, 0x7C	; 124
     321a:	75 e0       	ldi	r23, 0x05	; 5
-    321c:	83 e0       	ldi	r24, 0x03	; 3
+    321c:	89 e1       	ldi	r24, 0x19	; 25
     321e:	96 e0       	ldi	r25, 0x06	; 6
     3220:	0e 94 12 21 	call	0x4224	; 0x4224 <_ZN6Screen6RenderER8ActivityR7Carrage>
 		IFCarrageSaveStateToEEMEM(activity.SavePosition);
@@ -6086,19 +6086,19 @@ float countToMalfunctionLimit EEMEM;
 float PositionsStates[3][5] EEMEM;
 
 Carrage carrage;
-    323e:	85 e3       	ldi	r24, 0x35	; 53
+    323e:	8b e4       	ldi	r24, 0x4B	; 75
     3240:	96 e0       	ldi	r25, 0x06	; 6
     3242:	0e 94 bb 0c 	call	0x1976	; 0x1976 <_ZN7CarrageC1Ev>
 Panel panel;
-    3246:	84 e0       	ldi	r24, 0x04	; 4
+    3246:	8a e1       	ldi	r24, 0x1A	; 26
     3248:	96 e0       	ldi	r25, 0x06	; 6
     324a:	0e 94 86 21 	call	0x430c	; 0x430c <_ZN5PanelC1Ev>
 Screen screen;
-    324e:	83 e0       	ldi	r24, 0x03	; 3
+    324e:	89 e1       	ldi	r24, 0x19	; 25
     3250:	96 e0       	ldi	r25, 0x06	; 6
     3252:	0e 94 30 19 	call	0x3260	; 0x3260 <_ZN6ScreenC1Ev>
 Activity activity;
-    3256:	86 e6       	ldi	r24, 0x66	; 102
+    3256:	8c e7       	ldi	r24, 0x7C	; 124
     3258:	95 e0       	ldi	r25, 0x05	; 5
     325a:	0e 94 7b 04 	call	0x8f6	; 0x8f6 <_ZN8ActivityC1Ev>
     325e:	08 95       	ret
@@ -6112,1092 +6112,1092 @@ Screen::Screen()
 void Screen::Init(){
     3260:	08 95       	ret
 
-00003262 <_ZN6Screen14Render_tunningER8ActivityR7Carrage>:
+00003262 <_ZN6Screen10PrintTitleER8ActivityR7Carrage>:
+	}
+	Lcd_update();
+}
+
+void Screen::PrintTitle(Activity &activity, Carrage &carrage){
+	if(activity.Cursor < PARKING_SAVE){
+    3262:	fb 01       	movw	r30, r22
+    3264:	87 81       	ldd	r24, Z+7	; 0x07
+    3266:	84 30       	cpi	r24, 0x04	; 4
+    3268:	20 f5       	brcc	.+72     	; 0x32b2 <_ZN6Screen10PrintTitleER8ActivityR7Carrage+0x50>
+		Lcd_print(5, 0, FONT_1X,(unsigned char *)"МЕНЮ");
+    326a:	20 e0       	ldi	r18, 0x00	; 0
+    326c:	31 e0       	ldi	r19, 0x01	; 1
+    326e:	41 e0       	ldi	r20, 0x01	; 1
+    3270:	60 e0       	ldi	r22, 0x00	; 0
+    3272:	85 e0       	ldi	r24, 0x05	; 5
+    3274:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Установить");
+    3278:	25 e0       	ldi	r18, 0x05	; 5
+    327a:	31 e0       	ldi	r19, 0x01	; 1
+    327c:	41 e0       	ldi	r20, 0x01	; 1
+    327e:	61 e0       	ldi	r22, 0x01	; 1
+    3280:	82 e0       	ldi	r24, 0x02	; 2
+    3282:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранить");
+    3286:	20 e1       	ldi	r18, 0x10	; 16
+    3288:	31 e0       	ldi	r19, 0x01	; 1
+    328a:	41 e0       	ldi	r20, 0x01	; 1
+    328c:	62 e0       	ldi	r22, 0x02	; 2
+    328e:	82 e0       	ldi	r24, 0x02	; 2
+    3290:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Настройки");
+    3294:	2a e1       	ldi	r18, 0x1A	; 26
+    3296:	31 e0       	ldi	r19, 0x01	; 1
+    3298:	41 e0       	ldi	r20, 0x01	; 1
+    329a:	63 e0       	ldi	r22, 0x03	; 3
+    329c:	82 e0       	ldi	r24, 0x02	; 2
+    329e:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Дисплей");
+    32a2:	24 e2       	ldi	r18, 0x24	; 36
+    32a4:	31 e0       	ldi	r19, 0x01	; 1
+    32a6:	41 e0       	ldi	r20, 0x01	; 1
+    32a8:	64 e0       	ldi	r22, 0x04	; 4
+    32aa:	82 e0       	ldi	r24, 0x02	; 2
+    32ac:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    32b0:	08 95       	ret
+		}else if(activity.Cursor < PARKING_SET){
+    32b2:	88 30       	cpi	r24, 0x08	; 8
+    32b4:	20 f5       	brcc	.+72     	; 0x32fe <_ZN6Screen10PrintTitleER8ActivityR7Carrage+0x9c>
+		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Сохранить");
+    32b6:	20 e1       	ldi	r18, 0x10	; 16
+    32b8:	31 e0       	ldi	r19, 0x01	; 1
+    32ba:	41 e0       	ldi	r20, 0x01	; 1
+    32bc:	60 e0       	ldi	r22, 0x00	; 0
+    32be:	83 e0       	ldi	r24, 0x03	; 3
+    32c0:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
+    32c4:	2c e2       	ldi	r18, 0x2C	; 44
+    32c6:	31 e0       	ldi	r19, 0x01	; 1
+    32c8:	41 e0       	ldi	r20, 0x01	; 1
+    32ca:	61 e0       	ldi	r22, 0x01	; 1
+    32cc:	82 e0       	ldi	r24, 0x02	; 2
+    32ce:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижняя поз.");
+    32d2:	25 e3       	ldi	r18, 0x35	; 53
+    32d4:	31 e0       	ldi	r19, 0x01	; 1
+    32d6:	41 e0       	ldi	r20, 0x01	; 1
+    32d8:	62 e0       	ldi	r22, 0x02	; 2
+    32da:	82 e0       	ldi	r24, 0x02	; 2
+    32dc:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
+    32e0:	21 e4       	ldi	r18, 0x41	; 65
+    32e2:	31 e0       	ldi	r19, 0x01	; 1
+    32e4:	41 e0       	ldi	r20, 0x01	; 1
+    32e6:	63 e0       	ldi	r22, 0x03	; 3
+    32e8:	82 e0       	ldi	r24, 0x02	; 2
+    32ea:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Дисплей");
+    32ee:	24 e2       	ldi	r18, 0x24	; 36
+    32f0:	31 e0       	ldi	r19, 0x01	; 1
+    32f2:	41 e0       	ldi	r20, 0x01	; 1
+    32f4:	64 e0       	ldi	r22, 0x04	; 4
+    32f6:	82 e0       	ldi	r24, 0x02	; 2
+    32f8:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    32fc:	08 95       	ret
+		}else if (activity.Cursor < SETTINGS_TUNING ){
+    32fe:	8c 30       	cpi	r24, 0x0C	; 12
+    3300:	20 f5       	brcc	.+72     	; 0x334a <_ZN6Screen10PrintTitleER8ActivityR7Carrage+0xe8>
+		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Установить");
+    3302:	25 e0       	ldi	r18, 0x05	; 5
+    3304:	31 e0       	ldi	r19, 0x01	; 1
+    3306:	41 e0       	ldi	r20, 0x01	; 1
+    3308:	60 e0       	ldi	r22, 0x00	; 0
+    330a:	83 e0       	ldi	r24, 0x03	; 3
+    330c:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
+    3310:	2c e2       	ldi	r18, 0x2C	; 44
+    3312:	31 e0       	ldi	r19, 0x01	; 1
+    3314:	41 e0       	ldi	r20, 0x01	; 1
+    3316:	61 e0       	ldi	r22, 0x01	; 1
+    3318:	82 e0       	ldi	r24, 0x02	; 2
+    331a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
+    331e:	2e e4       	ldi	r18, 0x4E	; 78
+    3320:	31 e0       	ldi	r19, 0x01	; 1
+    3322:	41 e0       	ldi	r20, 0x01	; 1
+    3324:	62 e0       	ldi	r22, 0x02	; 2
+    3326:	82 e0       	ldi	r24, 0x02	; 2
+    3328:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
+    332c:	21 e4       	ldi	r18, 0x41	; 65
+    332e:	31 e0       	ldi	r19, 0x01	; 1
+    3330:	41 e0       	ldi	r20, 0x01	; 1
+    3332:	63 e0       	ldi	r22, 0x03	; 3
+    3334:	82 e0       	ldi	r24, 0x02	; 2
+    3336:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Дисплей");
+    333a:	24 e2       	ldi	r18, 0x24	; 36
+    333c:	31 e0       	ldi	r19, 0x01	; 1
+    333e:	41 e0       	ldi	r20, 0x01	; 1
+    3340:	64 e0       	ldi	r22, 0x04	; 4
+    3342:	82 e0       	ldi	r24, 0x02	; 2
+    3344:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3348:	08 95       	ret
+		}else{
+		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Настройки");
+    334a:	2a e1       	ldi	r18, 0x1A	; 26
+    334c:	31 e0       	ldi	r19, 0x01	; 1
+    334e:	41 e0       	ldi	r20, 0x01	; 1
+    3350:	60 e0       	ldi	r22, 0x00	; 0
+    3352:	83 e0       	ldi	r24, 0x03	; 3
+    3354:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Калибровка");
+    3358:	2a e5       	ldi	r18, 0x5A	; 90
+    335a:	31 e0       	ldi	r19, 0x01	; 1
+    335c:	41 e0       	ldi	r20, 0x01	; 1
+    335e:	61 e0       	ldi	r22, 0x01	; 1
+    3360:	82 e0       	ldi	r24, 0x02	; 2
+    3362:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Ограничения");
+    3366:	25 e6       	ldi	r18, 0x65	; 101
+    3368:	31 e0       	ldi	r19, 0x01	; 1
+    336a:	41 e0       	ldi	r20, 0x01	; 1
+    336c:	62 e0       	ldi	r22, 0x02	; 2
+    336e:	82 e0       	ldi	r24, 0x02	; 2
+    3370:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Диагностика");
+    3374:	21 e7       	ldi	r18, 0x71	; 113
+    3376:	31 e0       	ldi	r19, 0x01	; 1
+    3378:	41 e0       	ldi	r20, 0x01	; 1
+    337a:	63 e0       	ldi	r22, 0x03	; 3
+    337c:	82 e0       	ldi	r24, 0x02	; 2
+    337e:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Ошибки");
+    3382:	2d e7       	ldi	r18, 0x7D	; 125
+    3384:	31 e0       	ldi	r19, 0x01	; 1
+    3386:	41 e0       	ldi	r20, 0x01	; 1
+    3388:	64 e0       	ldi	r22, 0x04	; 4
+    338a:	82 e0       	ldi	r24, 0x02	; 2
+    338c:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+		Lcd_print(2, 5, FONT_1X,(unsigned char *)"Выйти Диспл.");
+    3390:	24 e8       	ldi	r18, 0x84	; 132
+    3392:	31 e0       	ldi	r19, 0x01	; 1
+    3394:	41 e0       	ldi	r20, 0x01	; 1
+    3396:	65 e0       	ldi	r22, 0x05	; 5
+    3398:	82 e0       	ldi	r24, 0x02	; 2
+    339a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    339e:	08 95       	ret
+
+000033a0 <_ZN6Screen14Render_tunningER8ActivityR7Carrage>:
 void Screen::Render_menu(Activity &activity, Carrage &carrage){
 	PrintTitle(activity,carrage);
 	Draw_CursorMenuScreen(activity);
 }
 
 void Screen::Render_tunning(Activity &activity, Carrage &carrage){
-    3262:	cf 92       	push	r12
-    3264:	df 92       	push	r13
-    3266:	ef 92       	push	r14
-    3268:	ff 92       	push	r15
-    326a:	0f 93       	push	r16
-    326c:	1f 93       	push	r17
-    326e:	cf 93       	push	r28
-    3270:	df 93       	push	r29
-    3272:	6b 01       	movw	r12, r22
-    3274:	ea 01       	movw	r28, r20
+    33a0:	cf 92       	push	r12
+    33a2:	df 92       	push	r13
+    33a4:	ef 92       	push	r14
+    33a6:	ff 92       	push	r15
+    33a8:	0f 93       	push	r16
+    33aa:	1f 93       	push	r17
+    33ac:	cf 93       	push	r28
+    33ae:	df 93       	push	r29
+    33b0:	6b 01       	movw	r12, r22
+    33b2:	ea 01       	movw	r28, r20
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Калибровка");
-    3276:	20 e0       	ldi	r18, 0x00	; 0
-    3278:	31 e0       	ldi	r19, 0x01	; 1
-    327a:	41 e0       	ldi	r20, 0x01	; 1
-    327c:	60 e0       	ldi	r22, 0x00	; 0
-    327e:	82 e0       	ldi	r24, 0x02	; 2
-    3280:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    33b4:	2a e5       	ldi	r18, 0x5A	; 90
+    33b6:	31 e0       	ldi	r19, 0x01	; 1
+    33b8:	41 e0       	ldi	r20, 0x01	; 1
+    33ba:	60 e0       	ldi	r22, 0x00	; 0
+    33bc:	82 e0       	ldi	r24, 0x02	; 2
+    33be:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_printf(5, 2, FONT_1X, carrage.tunning , 2);
-    3284:	ce 54       	subi	r28, 0x4E	; 78
-    3286:	df 4f       	sbci	r29, 0xFF	; 255
-    3288:	08 81       	ld	r16, Y
-    328a:	19 81       	ldd	r17, Y+1	; 0x01
-    328c:	2a 81       	ldd	r18, Y+2	; 0x02
-    328e:	3b 81       	ldd	r19, Y+3	; 0x03
-    3290:	68 94       	set
-    3292:	ee 24       	eor	r14, r14
-    3294:	e1 f8       	bld	r14, 1
-    3296:	f1 2c       	mov	r15, r1
-    3298:	41 e0       	ldi	r20, 0x01	; 1
-    329a:	62 e0       	ldi	r22, 0x02	; 2
-    329c:	85 e0       	ldi	r24, 0x05	; 5
-    329e:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
+    33c2:	ce 54       	subi	r28, 0x4E	; 78
+    33c4:	df 4f       	sbci	r29, 0xFF	; 255
+    33c6:	08 81       	ld	r16, Y
+    33c8:	19 81       	ldd	r17, Y+1	; 0x01
+    33ca:	2a 81       	ldd	r18, Y+2	; 0x02
+    33cc:	3b 81       	ldd	r19, Y+3	; 0x03
+    33ce:	68 94       	set
+    33d0:	ee 24       	eor	r14, r14
+    33d2:	e1 f8       	bld	r14, 1
+    33d4:	f1 2c       	mov	r15, r1
+    33d6:	41 e0       	ldi	r20, 0x01	; 1
+    33d8:	62 e0       	ldi	r22, 0x02	; 2
+    33da:	85 e0       	ldi	r24, 0x05	; 5
+    33dc:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
 	Lcd_print(3, 4, FONT_1X,(unsigned char *)"Выход");
-    32a2:	2b e0       	ldi	r18, 0x0B	; 11
-    32a4:	31 e0       	ldi	r19, 0x01	; 1
-    32a6:	41 e0       	ldi	r20, 0x01	; 1
-    32a8:	64 e0       	ldi	r22, 0x04	; 4
-    32aa:	83 e0       	ldi	r24, 0x03	; 3
-    32ac:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    33e0:	21 e9       	ldi	r18, 0x91	; 145
+    33e2:	31 e0       	ldi	r19, 0x01	; 1
+    33e4:	41 e0       	ldi	r20, 0x01	; 1
+    33e6:	64 e0       	ldi	r22, 0x04	; 4
+    33e8:	83 e0       	ldi	r24, 0x03	; 3
+    33ea:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	
 	switch(activity.Cursor){
-    32b0:	f6 01       	movw	r30, r12
-    32b2:	87 81       	ldd	r24, Z+7	; 0x07
-    32b4:	81 31       	cpi	r24, 0x11	; 17
-    32b6:	19 f0       	breq	.+6      	; 0x32be <_ZN6Screen14Render_tunningER8ActivityR7Carrage+0x5c>
-    32b8:	82 31       	cpi	r24, 0x12	; 18
-    32ba:	81 f0       	breq	.+32     	; 0x32dc <_ZN6Screen14Render_tunningER8ActivityR7Carrage+0x7a>
-    32bc:	16 c0       	rjmp	.+44     	; 0x32ea <_ZN6Screen14Render_tunningER8ActivityR7Carrage+0x88>
+    33ee:	f6 01       	movw	r30, r12
+    33f0:	87 81       	ldd	r24, Z+7	; 0x07
+    33f2:	81 31       	cpi	r24, 0x11	; 17
+    33f4:	19 f0       	breq	.+6      	; 0x33fc <_ZN6Screen14Render_tunningER8ActivityR7Carrage+0x5c>
+    33f6:	82 31       	cpi	r24, 0x12	; 18
+    33f8:	81 f0       	breq	.+32     	; 0x341a <_ZN6Screen14Render_tunningER8ActivityR7Carrage+0x7a>
+    33fa:	16 c0       	rjmp	.+44     	; 0x3428 <_ZN6Screen14Render_tunningER8ActivityR7Carrage+0x88>
 		case(TUNING):LcdGotoXY(4,2);LcdChr_full(0x9A);LcdGotoXY(9,2);LcdChr_full(0x9B);break;
-    32be:	62 e0       	ldi	r22, 0x02	; 2
-    32c0:	84 e0       	ldi	r24, 0x04	; 4
-    32c2:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    32c6:	8a e9       	ldi	r24, 0x9A	; 154
-    32c8:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    32cc:	62 e0       	ldi	r22, 0x02	; 2
-    32ce:	89 e0       	ldi	r24, 0x09	; 9
-    32d0:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    32d4:	8b e9       	ldi	r24, 0x9B	; 155
-    32d6:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    32da:	07 c0       	rjmp	.+14     	; 0x32ea <_ZN6Screen14Render_tunningER8ActivityR7Carrage+0x88>
+    33fc:	62 e0       	ldi	r22, 0x02	; 2
+    33fe:	84 e0       	ldi	r24, 0x04	; 4
+    3400:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    3404:	8a e9       	ldi	r24, 0x9A	; 154
+    3406:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    340a:	62 e0       	ldi	r22, 0x02	; 2
+    340c:	89 e0       	ldi	r24, 0x09	; 9
+    340e:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    3412:	8b e9       	ldi	r24, 0x9B	; 155
+    3414:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    3418:	07 c0       	rjmp	.+14     	; 0x3428 <_ZN6Screen14Render_tunningER8ActivityR7Carrage+0x88>
 		case(EXIT_TUNING):LcdGotoXY(1,4);LcdChr_full(0x9B);break;
-    32dc:	64 e0       	ldi	r22, 0x04	; 4
-    32de:	81 e0       	ldi	r24, 0x01	; 1
-    32e0:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    32e4:	8b e9       	ldi	r24, 0x9B	; 155
-    32e6:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    341a:	64 e0       	ldi	r22, 0x04	; 4
+    341c:	81 e0       	ldi	r24, 0x01	; 1
+    341e:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    3422:	8b e9       	ldi	r24, 0x9B	; 155
+    3424:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
 	}
 }
-    32ea:	df 91       	pop	r29
-    32ec:	cf 91       	pop	r28
-    32ee:	1f 91       	pop	r17
-    32f0:	0f 91       	pop	r16
-    32f2:	ff 90       	pop	r15
-    32f4:	ef 90       	pop	r14
-    32f6:	df 90       	pop	r13
-    32f8:	cf 90       	pop	r12
-    32fa:	08 95       	ret
+    3428:	df 91       	pop	r29
+    342a:	cf 91       	pop	r28
+    342c:	1f 91       	pop	r17
+    342e:	0f 91       	pop	r16
+    3430:	ff 90       	pop	r15
+    3432:	ef 90       	pop	r14
+    3434:	df 90       	pop	r13
+    3436:	cf 90       	pop	r12
+    3438:	08 95       	ret
 
-000032fc <_ZN6Screen13Render_limitsER8ActivityR7Carrage>:
+0000343a <_ZN6Screen13Render_limitsER8ActivityR7Carrage>:
 
 void Screen::Render_limits(Activity &activity, Carrage &carrage){
-    32fc:	cf 92       	push	r12
-    32fe:	df 92       	push	r13
-    3300:	ef 92       	push	r14
-    3302:	ff 92       	push	r15
-    3304:	0f 93       	push	r16
-    3306:	1f 93       	push	r17
-    3308:	cf 93       	push	r28
-    330a:	df 93       	push	r29
-    330c:	6b 01       	movw	r12, r22
-    330e:	ea 01       	movw	r28, r20
+    343a:	cf 92       	push	r12
+    343c:	df 92       	push	r13
+    343e:	ef 92       	push	r14
+    3440:	ff 92       	push	r15
+    3442:	0f 93       	push	r16
+    3444:	1f 93       	push	r17
+    3446:	cf 93       	push	r28
+    3448:	df 93       	push	r29
+    344a:	6b 01       	movw	r12, r22
+    344c:	ea 01       	movw	r28, r20
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Ограничения");
-    3310:	21 e1       	ldi	r18, 0x11	; 17
-    3312:	31 e0       	ldi	r19, 0x01	; 1
-    3314:	41 e0       	ldi	r20, 0x01	; 1
-    3316:	60 e0       	ldi	r22, 0x00	; 0
-    3318:	82 e0       	ldi	r24, 0x02	; 2
-    331a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    344e:	25 e6       	ldi	r18, 0x65	; 101
+    3450:	31 e0       	ldi	r19, 0x01	; 1
+    3452:	41 e0       	ldi	r20, 0x01	; 1
+    3454:	60 e0       	ldi	r22, 0x00	; 0
+    3456:	82 e0       	ldi	r24, 0x02	; 2
+    3458:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(2, 2, FONT_1X,(unsigned char *)"min");
-    331e:	2d e1       	ldi	r18, 0x1D	; 29
-    3320:	31 e0       	ldi	r19, 0x01	; 1
-    3322:	41 e0       	ldi	r20, 0x01	; 1
-    3324:	62 e0       	ldi	r22, 0x02	; 2
-    3326:	82 e0       	ldi	r24, 0x02	; 2
-    3328:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    345c:	27 e9       	ldi	r18, 0x97	; 151
+    345e:	31 e0       	ldi	r19, 0x01	; 1
+    3460:	41 e0       	ldi	r20, 0x01	; 1
+    3462:	62 e0       	ldi	r22, 0x02	; 2
+    3464:	82 e0       	ldi	r24, 0x02	; 2
+    3466:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_printf(8, 2, FONT_1X, carrage.min , 2);
-    332c:	fe 01       	movw	r30, r28
-    332e:	ea 54       	subi	r30, 0x4A	; 74
-    3330:	ff 4f       	sbci	r31, 0xFF	; 255
-    3332:	00 81       	ld	r16, Z
-    3334:	11 81       	ldd	r17, Z+1	; 0x01
-    3336:	22 81       	ldd	r18, Z+2	; 0x02
-    3338:	33 81       	ldd	r19, Z+3	; 0x03
-    333a:	68 94       	set
-    333c:	ee 24       	eor	r14, r14
-    333e:	e1 f8       	bld	r14, 1
-    3340:	f1 2c       	mov	r15, r1
-    3342:	41 e0       	ldi	r20, 0x01	; 1
-    3344:	62 e0       	ldi	r22, 0x02	; 2
-    3346:	88 e0       	ldi	r24, 0x08	; 8
-    3348:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
+    346a:	fe 01       	movw	r30, r28
+    346c:	ea 54       	subi	r30, 0x4A	; 74
+    346e:	ff 4f       	sbci	r31, 0xFF	; 255
+    3470:	00 81       	ld	r16, Z
+    3472:	11 81       	ldd	r17, Z+1	; 0x01
+    3474:	22 81       	ldd	r18, Z+2	; 0x02
+    3476:	33 81       	ldd	r19, Z+3	; 0x03
+    3478:	68 94       	set
+    347a:	ee 24       	eor	r14, r14
+    347c:	e1 f8       	bld	r14, 1
+    347e:	f1 2c       	mov	r15, r1
+    3480:	41 e0       	ldi	r20, 0x01	; 1
+    3482:	62 e0       	ldi	r22, 0x02	; 2
+    3484:	88 e0       	ldi	r24, 0x08	; 8
+    3486:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
 	Lcd_print(2, 3, FONT_1X,(unsigned char *)"max");
-    334c:	21 e2       	ldi	r18, 0x21	; 33
-    334e:	31 e0       	ldi	r19, 0x01	; 1
-    3350:	41 e0       	ldi	r20, 0x01	; 1
-    3352:	63 e0       	ldi	r22, 0x03	; 3
-    3354:	82 e0       	ldi	r24, 0x02	; 2
-    3356:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    348a:	2b e9       	ldi	r18, 0x9B	; 155
+    348c:	31 e0       	ldi	r19, 0x01	; 1
+    348e:	41 e0       	ldi	r20, 0x01	; 1
+    3490:	63 e0       	ldi	r22, 0x03	; 3
+    3492:	82 e0       	ldi	r24, 0x02	; 2
+    3494:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_printf(8, 3, FONT_1X, carrage.max , 2);
-    335a:	c6 54       	subi	r28, 0x46	; 70
-    335c:	df 4f       	sbci	r29, 0xFF	; 255
-    335e:	08 81       	ld	r16, Y
-    3360:	19 81       	ldd	r17, Y+1	; 0x01
-    3362:	2a 81       	ldd	r18, Y+2	; 0x02
-    3364:	3b 81       	ldd	r19, Y+3	; 0x03
-    3366:	41 e0       	ldi	r20, 0x01	; 1
-    3368:	63 e0       	ldi	r22, 0x03	; 3
-    336a:	88 e0       	ldi	r24, 0x08	; 8
-    336c:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
+    3498:	c6 54       	subi	r28, 0x46	; 70
+    349a:	df 4f       	sbci	r29, 0xFF	; 255
+    349c:	08 81       	ld	r16, Y
+    349e:	19 81       	ldd	r17, Y+1	; 0x01
+    34a0:	2a 81       	ldd	r18, Y+2	; 0x02
+    34a2:	3b 81       	ldd	r19, Y+3	; 0x03
+    34a4:	41 e0       	ldi	r20, 0x01	; 1
+    34a6:	63 e0       	ldi	r22, 0x03	; 3
+    34a8:	88 e0       	ldi	r24, 0x08	; 8
+    34aa:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
 	switch(activity.Cursor){
-    3370:	f6 01       	movw	r30, r12
-    3372:	87 81       	ldd	r24, Z+7	; 0x07
-    3374:	84 31       	cpi	r24, 0x14	; 20
-    3376:	99 f0       	breq	.+38     	; 0x339e <_ZN6Screen13Render_limitsER8ActivityR7Carrage+0xa2>
-    3378:	85 31       	cpi	r24, 0x15	; 21
-    337a:	01 f1       	breq	.+64     	; 0x33bc <_ZN6Screen13Render_limitsER8ActivityR7Carrage+0xc0>
-    337c:	83 31       	cpi	r24, 0x13	; 19
-    337e:	29 f5       	brne	.+74     	; 0x33ca <_ZN6Screen13Render_limitsER8ActivityR7Carrage+0xce>
+    34ae:	f6 01       	movw	r30, r12
+    34b0:	87 81       	ldd	r24, Z+7	; 0x07
+    34b2:	84 31       	cpi	r24, 0x14	; 20
+    34b4:	99 f0       	breq	.+38     	; 0x34dc <_ZN6Screen13Render_limitsER8ActivityR7Carrage+0xa2>
+    34b6:	85 31       	cpi	r24, 0x15	; 21
+    34b8:	01 f1       	breq	.+64     	; 0x34fa <_ZN6Screen13Render_limitsER8ActivityR7Carrage+0xc0>
+    34ba:	83 31       	cpi	r24, 0x13	; 19
+    34bc:	29 f5       	brne	.+74     	; 0x3508 <_ZN6Screen13Render_limitsER8ActivityR7Carrage+0xce>
 		case(LIMITS_MIN):LcdGotoXY(7,2);LcdChr_full(0x9A);LcdGotoXY(12,2);LcdChr_full(0xA2);break;
-    3380:	62 e0       	ldi	r22, 0x02	; 2
-    3382:	87 e0       	ldi	r24, 0x07	; 7
-    3384:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    3388:	8a e9       	ldi	r24, 0x9A	; 154
-    338a:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    338e:	62 e0       	ldi	r22, 0x02	; 2
-    3390:	8c e0       	ldi	r24, 0x0C	; 12
-    3392:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    3396:	82 ea       	ldi	r24, 0xA2	; 162
-    3398:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    339c:	16 c0       	rjmp	.+44     	; 0x33ca <_ZN6Screen13Render_limitsER8ActivityR7Carrage+0xce>
+    34be:	62 e0       	ldi	r22, 0x02	; 2
+    34c0:	87 e0       	ldi	r24, 0x07	; 7
+    34c2:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    34c6:	8a e9       	ldi	r24, 0x9A	; 154
+    34c8:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    34cc:	62 e0       	ldi	r22, 0x02	; 2
+    34ce:	8c e0       	ldi	r24, 0x0C	; 12
+    34d0:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    34d4:	82 ea       	ldi	r24, 0xA2	; 162
+    34d6:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    34da:	16 c0       	rjmp	.+44     	; 0x3508 <_ZN6Screen13Render_limitsER8ActivityR7Carrage+0xce>
 		case(LIMITS_MAX):LcdGotoXY(7,3);LcdChr_full(0x9A);LcdGotoXY(12,3);LcdChr_full(0xA2);break;
-    339e:	63 e0       	ldi	r22, 0x03	; 3
-    33a0:	87 e0       	ldi	r24, 0x07	; 7
-    33a2:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    33a6:	8a e9       	ldi	r24, 0x9A	; 154
-    33a8:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    33ac:	63 e0       	ldi	r22, 0x03	; 3
-    33ae:	8c e0       	ldi	r24, 0x0C	; 12
-    33b0:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    33b4:	82 ea       	ldi	r24, 0xA2	; 162
-    33b6:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    33ba:	07 c0       	rjmp	.+14     	; 0x33ca <_ZN6Screen13Render_limitsER8ActivityR7Carrage+0xce>
+    34dc:	63 e0       	ldi	r22, 0x03	; 3
+    34de:	87 e0       	ldi	r24, 0x07	; 7
+    34e0:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    34e4:	8a e9       	ldi	r24, 0x9A	; 154
+    34e6:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    34ea:	63 e0       	ldi	r22, 0x03	; 3
+    34ec:	8c e0       	ldi	r24, 0x0C	; 12
+    34ee:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    34f2:	82 ea       	ldi	r24, 0xA2	; 162
+    34f4:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    34f8:	07 c0       	rjmp	.+14     	; 0x3508 <_ZN6Screen13Render_limitsER8ActivityR7Carrage+0xce>
 		case(EXIT_LIMITS):LcdGotoXY(1,5);LcdChr_full(0x9B);break;
-    33bc:	65 e0       	ldi	r22, 0x05	; 5
-    33be:	81 e0       	ldi	r24, 0x01	; 1
-    33c0:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    33c4:	8b e9       	ldi	r24, 0x9B	; 155
-    33c6:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    34fa:	65 e0       	ldi	r22, 0x05	; 5
+    34fc:	81 e0       	ldi	r24, 0x01	; 1
+    34fe:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    3502:	8b e9       	ldi	r24, 0x9B	; 155
+    3504:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
 	}
 	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Выход");
-    33ca:	2b e0       	ldi	r18, 0x0B	; 11
-    33cc:	31 e0       	ldi	r19, 0x01	; 1
-    33ce:	41 e0       	ldi	r20, 0x01	; 1
-    33d0:	65 e0       	ldi	r22, 0x05	; 5
-    33d2:	83 e0       	ldi	r24, 0x03	; 3
-    33d4:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3508:	21 e9       	ldi	r18, 0x91	; 145
+    350a:	31 e0       	ldi	r19, 0x01	; 1
+    350c:	41 e0       	ldi	r20, 0x01	; 1
+    350e:	65 e0       	ldi	r22, 0x05	; 5
+    3510:	83 e0       	ldi	r24, 0x03	; 3
+    3512:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 }
-    33d8:	df 91       	pop	r29
-    33da:	cf 91       	pop	r28
-    33dc:	1f 91       	pop	r17
-    33de:	0f 91       	pop	r16
-    33e0:	ff 90       	pop	r15
-    33e2:	ef 90       	pop	r14
-    33e4:	df 90       	pop	r13
-    33e6:	cf 90       	pop	r12
-    33e8:	08 95       	ret
+    3516:	df 91       	pop	r29
+    3518:	cf 91       	pop	r28
+    351a:	1f 91       	pop	r17
+    351c:	0f 91       	pop	r16
+    351e:	ff 90       	pop	r15
+    3520:	ef 90       	pop	r14
+    3522:	df 90       	pop	r13
+    3524:	cf 90       	pop	r12
+    3526:	08 95       	ret
 
-000033ea <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage>:
+00003528 <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage>:
 
 void Screen::Render_maltifaction(Activity &activity, Carrage &carrage){
-    33ea:	cf 92       	push	r12
-    33ec:	df 92       	push	r13
-    33ee:	ef 92       	push	r14
-    33f0:	ff 92       	push	r15
-    33f2:	0f 93       	push	r16
-    33f4:	1f 93       	push	r17
-    33f6:	cf 93       	push	r28
-    33f8:	df 93       	push	r29
-    33fa:	6b 01       	movw	r12, r22
-    33fc:	ea 01       	movw	r28, r20
+    3528:	cf 92       	push	r12
+    352a:	df 92       	push	r13
+    352c:	ef 92       	push	r14
+    352e:	ff 92       	push	r15
+    3530:	0f 93       	push	r16
+    3532:	1f 93       	push	r17
+    3534:	cf 93       	push	r28
+    3536:	df 93       	push	r29
+    3538:	6b 01       	movw	r12, r22
+    353a:	ea 01       	movw	r28, r20
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Диагностика");
-    33fe:	25 e2       	ldi	r18, 0x25	; 37
-    3400:	31 e0       	ldi	r19, 0x01	; 1
-    3402:	41 e0       	ldi	r20, 0x01	; 1
-    3404:	60 e0       	ldi	r22, 0x00	; 0
-    3406:	82 e0       	ldi	r24, 0x02	; 2
-    3408:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    353c:	21 e7       	ldi	r18, 0x71	; 113
+    353e:	31 e0       	ldi	r19, 0x01	; 1
+    3540:	41 e0       	ldi	r20, 0x01	; 1
+    3542:	60 e0       	ldi	r22, 0x00	; 0
+    3544:	82 e0       	ldi	r24, 0x02	; 2
+    3546:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(0, 1, FONT_1X,(unsigned char *)"Длительность");
-    340c:	21 e3       	ldi	r18, 0x31	; 49
-    340e:	31 e0       	ldi	r19, 0x01	; 1
-    3410:	41 e0       	ldi	r20, 0x01	; 1
-    3412:	61 e0       	ldi	r22, 0x01	; 1
-    3414:	80 e0       	ldi	r24, 0x00	; 0
-    3416:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    354a:	2f e9       	ldi	r18, 0x9F	; 159
+    354c:	31 e0       	ldi	r19, 0x01	; 1
+    354e:	41 e0       	ldi	r20, 0x01	; 1
+    3550:	61 e0       	ldi	r22, 0x01	; 1
+    3552:	80 e0       	ldi	r24, 0x00	; 0
+    3554:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(0, 2, FONT_1X,(unsigned char *)"процесса");
-    341a:	2e e3       	ldi	r18, 0x3E	; 62
-    341c:	31 e0       	ldi	r19, 0x01	; 1
-    341e:	41 e0       	ldi	r20, 0x01	; 1
-    3420:	62 e0       	ldi	r22, 0x02	; 2
-    3422:	80 e0       	ldi	r24, 0x00	; 0
-    3424:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3558:	2c ea       	ldi	r18, 0xAC	; 172
+    355a:	31 e0       	ldi	r19, 0x01	; 1
+    355c:	41 e0       	ldi	r20, 0x01	; 1
+    355e:	62 e0       	ldi	r22, 0x02	; 2
+    3560:	80 e0       	ldi	r24, 0x00	; 0
+    3562:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_printf2(10, 2, FONT_1X, carrage.countToMalfunctionLimit/100 , 2);
-    3428:	fe 01       	movw	r30, r28
-    342a:	e2 54       	subi	r30, 0x42	; 66
-    342c:	ff 4f       	sbci	r31, 0xFF	; 255
-    342e:	20 e0       	ldi	r18, 0x00	; 0
-    3430:	30 e0       	ldi	r19, 0x00	; 0
-    3432:	48 ec       	ldi	r20, 0xC8	; 200
-    3434:	52 e4       	ldi	r21, 0x42	; 66
-    3436:	60 81       	ld	r22, Z
-    3438:	71 81       	ldd	r23, Z+1	; 0x01
-    343a:	82 81       	ldd	r24, Z+2	; 0x02
-    343c:	93 81       	ldd	r25, Z+3	; 0x03
-    343e:	0e 94 30 26 	call	0x4c60	; 0x4c60 <__divsf3>
-    3442:	8b 01       	movw	r16, r22
-    3444:	9c 01       	movw	r18, r24
-    3446:	68 94       	set
-    3448:	ee 24       	eor	r14, r14
-    344a:	e1 f8       	bld	r14, 1
-    344c:	f1 2c       	mov	r15, r1
-    344e:	41 e0       	ldi	r20, 0x01	; 1
-    3450:	62 e0       	ldi	r22, 0x02	; 2
-    3452:	8a e0       	ldi	r24, 0x0A	; 10
-    3454:	0e 94 2a 17 	call	0x2e54	; 0x2e54 <_Z11Lcd_printf2hh11LcdFontSizefi>
+    3566:	fe 01       	movw	r30, r28
+    3568:	e2 54       	subi	r30, 0x42	; 66
+    356a:	ff 4f       	sbci	r31, 0xFF	; 255
+    356c:	20 e0       	ldi	r18, 0x00	; 0
+    356e:	30 e0       	ldi	r19, 0x00	; 0
+    3570:	48 ec       	ldi	r20, 0xC8	; 200
+    3572:	52 e4       	ldi	r21, 0x42	; 66
+    3574:	60 81       	ld	r22, Z
+    3576:	71 81       	ldd	r23, Z+1	; 0x01
+    3578:	82 81       	ldd	r24, Z+2	; 0x02
+    357a:	93 81       	ldd	r25, Z+3	; 0x03
+    357c:	0e 94 30 26 	call	0x4c60	; 0x4c60 <__divsf3>
+    3580:	8b 01       	movw	r16, r22
+    3582:	9c 01       	movw	r18, r24
+    3584:	68 94       	set
+    3586:	ee 24       	eor	r14, r14
+    3588:	e1 f8       	bld	r14, 1
+    358a:	f1 2c       	mov	r15, r1
+    358c:	41 e0       	ldi	r20, 0x01	; 1
+    358e:	62 e0       	ldi	r22, 0x02	; 2
+    3590:	8a e0       	ldi	r24, 0x0A	; 10
+    3592:	0e 94 2a 17 	call	0x2e54	; 0x2e54 <_Z11Lcd_printf2hh11LcdFontSizefi>
 	
 	Lcd_print(0, 3, FONT_1X,(unsigned char *)"Включить");
-    3458:	27 e4       	ldi	r18, 0x47	; 71
-    345a:	31 e0       	ldi	r19, 0x01	; 1
-    345c:	41 e0       	ldi	r20, 0x01	; 1
-    345e:	63 e0       	ldi	r22, 0x03	; 3
-    3460:	80 e0       	ldi	r24, 0x00	; 0
-    3462:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3596:	25 eb       	ldi	r18, 0xB5	; 181
+    3598:	31 e0       	ldi	r19, 0x01	; 1
+    359a:	41 e0       	ldi	r20, 0x01	; 1
+    359c:	63 e0       	ldi	r22, 0x03	; 3
+    359e:	80 e0       	ldi	r24, 0x00	; 0
+    35a0:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	switch(carrage.OnOffMalfunction){
-    3466:	ce 53       	subi	r28, 0x3E	; 62
-    3468:	df 4f       	sbci	r29, 0xFF	; 255
-    346a:	88 81       	ld	r24, Y
-    346c:	81 30       	cpi	r24, 0x01	; 1
-    346e:	41 f0       	breq	.+16     	; 0x3480 <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0x96>
+    35a4:	ce 53       	subi	r28, 0x3E	; 62
+    35a6:	df 4f       	sbci	r29, 0xFF	; 255
+    35a8:	88 81       	ld	r24, Y
+    35aa:	81 30       	cpi	r24, 0x01	; 1
+    35ac:	41 f0       	breq	.+16     	; 0x35be <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0x96>
 		case(false):Lcd_print(10, 3, FONT_1X,(unsigned char *)"отк");break;
-    3470:	20 e5       	ldi	r18, 0x50	; 80
-    3472:	31 e0       	ldi	r19, 0x01	; 1
-    3474:	41 e0       	ldi	r20, 0x01	; 1
-    3476:	63 e0       	ldi	r22, 0x03	; 3
-    3478:	8a e0       	ldi	r24, 0x0A	; 10
-    347a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    347e:	07 c0       	rjmp	.+14     	; 0x348e <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xa4>
+    35ae:	2e eb       	ldi	r18, 0xBE	; 190
+    35b0:	31 e0       	ldi	r19, 0x01	; 1
+    35b2:	41 e0       	ldi	r20, 0x01	; 1
+    35b4:	63 e0       	ldi	r22, 0x03	; 3
+    35b6:	8a e0       	ldi	r24, 0x0A	; 10
+    35b8:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    35bc:	07 c0       	rjmp	.+14     	; 0x35cc <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xa4>
 		case(true):Lcd_print(10, 3, FONT_1X,(unsigned char *)"вкл");break;
-    3480:	24 e5       	ldi	r18, 0x54	; 84
-    3482:	31 e0       	ldi	r19, 0x01	; 1
-    3484:	41 e0       	ldi	r20, 0x01	; 1
-    3486:	63 e0       	ldi	r22, 0x03	; 3
-    3488:	8a e0       	ldi	r24, 0x0A	; 10
-    348a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    35be:	22 ec       	ldi	r18, 0xC2	; 194
+    35c0:	31 e0       	ldi	r19, 0x01	; 1
+    35c2:	41 e0       	ldi	r20, 0x01	; 1
+    35c4:	63 e0       	ldi	r22, 0x03	; 3
+    35c6:	8a e0       	ldi	r24, 0x0A	; 10
+    35c8:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	}
 	
 	switch(activity.Cursor){
-    348e:	f6 01       	movw	r30, r12
-    3490:	87 81       	ldd	r24, Z+7	; 0x07
-    3492:	87 31       	cpi	r24, 0x17	; 23
-    3494:	29 f0       	breq	.+10     	; 0x34a0 <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xb6>
-    3496:	88 31       	cpi	r24, 0x18	; 24
-    3498:	d1 f0       	breq	.+52     	; 0x34ce <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xe4>
-    349a:	86 31       	cpi	r24, 0x16	; 22
-    349c:	f9 f4       	brne	.+62     	; 0x34dc <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xf2>
-    349e:	08 c0       	rjmp	.+16     	; 0x34b0 <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xc6>
+    35cc:	f6 01       	movw	r30, r12
+    35ce:	87 81       	ldd	r24, Z+7	; 0x07
+    35d0:	87 31       	cpi	r24, 0x17	; 23
+    35d2:	29 f0       	breq	.+10     	; 0x35de <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xb6>
+    35d4:	88 31       	cpi	r24, 0x18	; 24
+    35d6:	d1 f0       	breq	.+52     	; 0x360c <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xe4>
+    35d8:	86 31       	cpi	r24, 0x16	; 22
+    35da:	f9 f4       	brne	.+62     	; 0x361a <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xf2>
+    35dc:	08 c0       	rjmp	.+16     	; 0x35ee <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xc6>
 		case(ONOF_MALFACTION):LcdGotoXY(9,3);LcdChr_full(0xA2);break;
-    34a0:	63 e0       	ldi	r22, 0x03	; 3
-    34a2:	89 e0       	ldi	r24, 0x09	; 9
-    34a4:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    34a8:	82 ea       	ldi	r24, 0xA2	; 162
-    34aa:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    34ae:	16 c0       	rjmp	.+44     	; 0x34dc <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xf2>
+    35de:	63 e0       	ldi	r22, 0x03	; 3
+    35e0:	89 e0       	ldi	r24, 0x09	; 9
+    35e2:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    35e6:	82 ea       	ldi	r24, 0xA2	; 162
+    35e8:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    35ec:	16 c0       	rjmp	.+44     	; 0x361a <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xf2>
 		case(TIME_MALFACTION):LcdGotoXY(9,2);LcdChr_full(0x9A);LcdGotoXY(13,2);LcdChr_full(0x9B);break;
-    34b0:	62 e0       	ldi	r22, 0x02	; 2
-    34b2:	89 e0       	ldi	r24, 0x09	; 9
-    34b4:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    34b8:	8a e9       	ldi	r24, 0x9A	; 154
-    34ba:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    34be:	62 e0       	ldi	r22, 0x02	; 2
-    34c0:	8d e0       	ldi	r24, 0x0D	; 13
-    34c2:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    34c6:	8b e9       	ldi	r24, 0x9B	; 155
-    34c8:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    34cc:	07 c0       	rjmp	.+14     	; 0x34dc <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xf2>
+    35ee:	62 e0       	ldi	r22, 0x02	; 2
+    35f0:	89 e0       	ldi	r24, 0x09	; 9
+    35f2:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    35f6:	8a e9       	ldi	r24, 0x9A	; 154
+    35f8:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    35fc:	62 e0       	ldi	r22, 0x02	; 2
+    35fe:	8d e0       	ldi	r24, 0x0D	; 13
+    3600:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    3604:	8b e9       	ldi	r24, 0x9B	; 155
+    3606:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    360a:	07 c0       	rjmp	.+14     	; 0x361a <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage+0xf2>
 		case(EXIT_MALFACTION):LcdGotoXY(1,5);LcdChr_full(0x9B);break;
-    34ce:	65 e0       	ldi	r22, 0x05	; 5
-    34d0:	81 e0       	ldi	r24, 0x01	; 1
-    34d2:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    34d6:	8b e9       	ldi	r24, 0x9B	; 155
-    34d8:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    360c:	65 e0       	ldi	r22, 0x05	; 5
+    360e:	81 e0       	ldi	r24, 0x01	; 1
+    3610:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    3614:	8b e9       	ldi	r24, 0x9B	; 155
+    3616:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
 	}
 	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Выход");
-    34dc:	2b e0       	ldi	r18, 0x0B	; 11
-    34de:	31 e0       	ldi	r19, 0x01	; 1
-    34e0:	41 e0       	ldi	r20, 0x01	; 1
-    34e2:	65 e0       	ldi	r22, 0x05	; 5
-    34e4:	83 e0       	ldi	r24, 0x03	; 3
-    34e6:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    361a:	21 e9       	ldi	r18, 0x91	; 145
+    361c:	31 e0       	ldi	r19, 0x01	; 1
+    361e:	41 e0       	ldi	r20, 0x01	; 1
+    3620:	65 e0       	ldi	r22, 0x05	; 5
+    3622:	83 e0       	ldi	r24, 0x03	; 3
+    3624:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 }
-    34ea:	df 91       	pop	r29
-    34ec:	cf 91       	pop	r28
-    34ee:	1f 91       	pop	r17
-    34f0:	0f 91       	pop	r16
-    34f2:	ff 90       	pop	r15
-    34f4:	ef 90       	pop	r14
-    34f6:	df 90       	pop	r13
-    34f8:	cf 90       	pop	r12
-    34fa:	08 95       	ret
+    3628:	df 91       	pop	r29
+    362a:	cf 91       	pop	r28
+    362c:	1f 91       	pop	r17
+    362e:	0f 91       	pop	r16
+    3630:	ff 90       	pop	r15
+    3632:	ef 90       	pop	r14
+    3634:	df 90       	pop	r13
+    3636:	cf 90       	pop	r12
+    3638:	08 95       	ret
 
-000034fc <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage>:
+0000363a <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage>:
 
 void Screen::Render_ERRORS(Activity &activity, Carrage &carrage){
-    34fc:	cf 92       	push	r12
-    34fe:	df 92       	push	r13
-    3500:	ef 92       	push	r14
-    3502:	ff 92       	push	r15
-    3504:	0f 93       	push	r16
-    3506:	1f 93       	push	r17
-    3508:	cf 93       	push	r28
-    350a:	df 93       	push	r29
-    350c:	6b 01       	movw	r12, r22
-    350e:	ea 01       	movw	r28, r20
+    363a:	cf 92       	push	r12
+    363c:	df 92       	push	r13
+    363e:	ef 92       	push	r14
+    3640:	ff 92       	push	r15
+    3642:	0f 93       	push	r16
+    3644:	1f 93       	push	r17
+    3646:	cf 93       	push	r28
+    3648:	df 93       	push	r29
+    364a:	6b 01       	movw	r12, r22
+    364c:	ea 01       	movw	r28, r20
 	Lcd_print(4, 0, FONT_1X,(unsigned char *)"Ошибки");
-    3510:	28 e5       	ldi	r18, 0x58	; 88
-    3512:	31 e0       	ldi	r19, 0x01	; 1
-    3514:	41 e0       	ldi	r20, 0x01	; 1
-    3516:	60 e0       	ldi	r22, 0x00	; 0
-    3518:	84 e0       	ldi	r24, 0x04	; 4
-    351a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    364e:	2d e7       	ldi	r18, 0x7D	; 125
+    3650:	31 e0       	ldi	r19, 0x01	; 1
+    3652:	41 e0       	ldi	r20, 0x01	; 1
+    3654:	60 e0       	ldi	r22, 0x00	; 0
+    3656:	84 e0       	ldi	r24, 0x04	; 4
+    3658:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(2, 1, FONT_1X,(unsigned char *)"1.Стойка");
-    351e:	2f e5       	ldi	r18, 0x5F	; 95
-    3520:	31 e0       	ldi	r19, 0x01	; 1
-    3522:	41 e0       	ldi	r20, 0x01	; 1
-    3524:	61 e0       	ldi	r22, 0x01	; 1
-    3526:	82 e0       	ldi	r24, 0x02	; 2
-    3528:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    365c:	26 ec       	ldi	r18, 0xC6	; 198
+    365e:	31 e0       	ldi	r19, 0x01	; 1
+    3660:	41 e0       	ldi	r20, 0x01	; 1
+    3662:	61 e0       	ldi	r22, 0x01	; 1
+    3664:	82 e0       	ldi	r24, 0x02	; 2
+    3666:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(2, 2, FONT_1X,(unsigned char *)"2.Стойка");
-    352c:	28 e6       	ldi	r18, 0x68	; 104
-    352e:	31 e0       	ldi	r19, 0x01	; 1
-    3530:	41 e0       	ldi	r20, 0x01	; 1
-    3532:	62 e0       	ldi	r22, 0x02	; 2
-    3534:	82 e0       	ldi	r24, 0x02	; 2
-    3536:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    366a:	2f ec       	ldi	r18, 0xCF	; 207
+    366c:	31 e0       	ldi	r19, 0x01	; 1
+    366e:	41 e0       	ldi	r20, 0x01	; 1
+    3670:	62 e0       	ldi	r22, 0x02	; 2
+    3672:	82 e0       	ldi	r24, 0x02	; 2
+    3674:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(2, 3, FONT_1X,(unsigned char *)"3.Стойка");
-    353a:	21 e7       	ldi	r18, 0x71	; 113
-    353c:	31 e0       	ldi	r19, 0x01	; 1
-    353e:	41 e0       	ldi	r20, 0x01	; 1
-    3540:	63 e0       	ldi	r22, 0x03	; 3
-    3542:	82 e0       	ldi	r24, 0x02	; 2
-    3544:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3678:	28 ed       	ldi	r18, 0xD8	; 216
+    367a:	31 e0       	ldi	r19, 0x01	; 1
+    367c:	41 e0       	ldi	r20, 0x01	; 1
+    367e:	63 e0       	ldi	r22, 0x03	; 3
+    3680:	82 e0       	ldi	r24, 0x02	; 2
+    3682:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(2, 4, FONT_1X,(unsigned char *)"4.Стойка");
-    3548:	2a e7       	ldi	r18, 0x7A	; 122
-    354a:	31 e0       	ldi	r19, 0x01	; 1
-    354c:	41 e0       	ldi	r20, 0x01	; 1
-    354e:	64 e0       	ldi	r22, 0x04	; 4
-    3550:	82 e0       	ldi	r24, 0x02	; 2
-    3552:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3686:	21 ee       	ldi	r18, 0xE1	; 225
+    3688:	31 e0       	ldi	r19, 0x01	; 1
+    368a:	41 e0       	ldi	r20, 0x01	; 1
+    368c:	64 e0       	ldi	r22, 0x04	; 4
+    368e:	82 e0       	ldi	r24, 0x02	; 2
+    3690:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(2, 5, FONT_1X,(unsigned char *)"Сброс");
-    3556:	23 e8       	ldi	r18, 0x83	; 131
-    3558:	31 e0       	ldi	r19, 0x01	; 1
-    355a:	41 e0       	ldi	r20, 0x01	; 1
-    355c:	65 e0       	ldi	r22, 0x05	; 5
-    355e:	82 e0       	ldi	r24, 0x02	; 2
-    3560:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3694:	2a ee       	ldi	r18, 0xEA	; 234
+    3696:	31 e0       	ldi	r19, 0x01	; 1
+    3698:	41 e0       	ldi	r20, 0x01	; 1
+    369a:	65 e0       	ldi	r22, 0x05	; 5
+    369c:	82 e0       	ldi	r24, 0x02	; 2
+    369e:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(9, 5, FONT_1X,(unsigned char *)"Выход");
-    3564:	2b e0       	ldi	r18, 0x0B	; 11
-    3566:	31 e0       	ldi	r19, 0x01	; 1
-    3568:	41 e0       	ldi	r20, 0x01	; 1
-    356a:	65 e0       	ldi	r22, 0x05	; 5
-    356c:	89 e0       	ldi	r24, 0x09	; 9
-    356e:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    36a2:	21 e9       	ldi	r18, 0x91	; 145
+    36a4:	31 e0       	ldi	r19, 0x01	; 1
+    36a6:	41 e0       	ldi	r20, 0x01	; 1
+    36a8:	65 e0       	ldi	r22, 0x05	; 5
+    36aa:	89 e0       	ldi	r24, 0x09	; 9
+    36ac:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	
 	Lcd_print(11, 1, FONT_1X,(unsigned char *)"--");
-    3572:	29 e8       	ldi	r18, 0x89	; 137
-    3574:	31 e0       	ldi	r19, 0x01	; 1
-    3576:	41 e0       	ldi	r20, 0x01	; 1
-    3578:	61 e0       	ldi	r22, 0x01	; 1
-    357a:	8b e0       	ldi	r24, 0x0B	; 11
-    357c:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    36b0:	20 ef       	ldi	r18, 0xF0	; 240
+    36b2:	31 e0       	ldi	r19, 0x01	; 1
+    36b4:	41 e0       	ldi	r20, 0x01	; 1
+    36b6:	61 e0       	ldi	r22, 0x01	; 1
+    36b8:	8b e0       	ldi	r24, 0x0B	; 11
+    36ba:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(11, 2, FONT_1X,(unsigned char *)"--");
-    3580:	29 e8       	ldi	r18, 0x89	; 137
-    3582:	31 e0       	ldi	r19, 0x01	; 1
-    3584:	41 e0       	ldi	r20, 0x01	; 1
-    3586:	62 e0       	ldi	r22, 0x02	; 2
-    3588:	8b e0       	ldi	r24, 0x0B	; 11
-    358a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    36be:	20 ef       	ldi	r18, 0xF0	; 240
+    36c0:	31 e0       	ldi	r19, 0x01	; 1
+    36c2:	41 e0       	ldi	r20, 0x01	; 1
+    36c4:	62 e0       	ldi	r22, 0x02	; 2
+    36c6:	8b e0       	ldi	r24, 0x0B	; 11
+    36c8:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(11, 3, FONT_1X,(unsigned char *)"--");
-    358e:	29 e8       	ldi	r18, 0x89	; 137
-    3590:	31 e0       	ldi	r19, 0x01	; 1
-    3592:	41 e0       	ldi	r20, 0x01	; 1
-    3594:	63 e0       	ldi	r22, 0x03	; 3
-    3596:	8b e0       	ldi	r24, 0x0B	; 11
-    3598:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    36cc:	20 ef       	ldi	r18, 0xF0	; 240
+    36ce:	31 e0       	ldi	r19, 0x01	; 1
+    36d0:	41 e0       	ldi	r20, 0x01	; 1
+    36d2:	63 e0       	ldi	r22, 0x03	; 3
+    36d4:	8b e0       	ldi	r24, 0x0B	; 11
+    36d6:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(11, 4, FONT_1X,(unsigned char *)"--");
-    359c:	29 e8       	ldi	r18, 0x89	; 137
-    359e:	31 e0       	ldi	r19, 0x01	; 1
-    35a0:	41 e0       	ldi	r20, 0x01	; 1
-    35a2:	64 e0       	ldi	r22, 0x04	; 4
-    35a4:	8b e0       	ldi	r24, 0x0B	; 11
-    35a6:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    36da:	20 ef       	ldi	r18, 0xF0	; 240
+    36dc:	31 e0       	ldi	r19, 0x01	; 1
+    36de:	41 e0       	ldi	r20, 0x01	; 1
+    36e0:	64 e0       	ldi	r22, 0x04	; 4
+    36e2:	8b e0       	ldi	r24, 0x0B	; 11
+    36e4:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 		
 	if(carrage.Wheel_1.Error>0){Lcd_print(11, 1, FONT_1X,(unsigned char *)"E");Lcd_printf(12, 1, FONT_1X, carrage.Wheel_1.Error , 0);}
-    35aa:	8f 8d       	ldd	r24, Y+31	; 0x1f
-    35ac:	98 a1       	ldd	r25, Y+32	; 0x20
-    35ae:	18 16       	cp	r1, r24
-    35b0:	19 06       	cpc	r1, r25
-    35b2:	c4 f4       	brge	.+48     	; 0x35e4 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0xe8>
-    35b4:	2c e8       	ldi	r18, 0x8C	; 140
-    35b6:	31 e0       	ldi	r19, 0x01	; 1
-    35b8:	41 e0       	ldi	r20, 0x01	; 1
-    35ba:	61 e0       	ldi	r22, 0x01	; 1
-    35bc:	8b e0       	ldi	r24, 0x0B	; 11
-    35be:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    35c2:	6f 8d       	ldd	r22, Y+31	; 0x1f
-    35c4:	78 a1       	ldd	r23, Y+32	; 0x20
-    35c6:	07 2e       	mov	r0, r23
-    35c8:	00 0c       	add	r0, r0
-    35ca:	88 0b       	sbc	r24, r24
-    35cc:	99 0b       	sbc	r25, r25
-    35ce:	0e 94 da 26 	call	0x4db4	; 0x4db4 <__floatsisf>
-    35d2:	8b 01       	movw	r16, r22
-    35d4:	9c 01       	movw	r18, r24
-    35d6:	e1 2c       	mov	r14, r1
-    35d8:	f1 2c       	mov	r15, r1
-    35da:	41 e0       	ldi	r20, 0x01	; 1
-    35dc:	61 e0       	ldi	r22, 0x01	; 1
-    35de:	8c e0       	ldi	r24, 0x0C	; 12
-    35e0:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
+    36e8:	8f 8d       	ldd	r24, Y+31	; 0x1f
+    36ea:	98 a1       	ldd	r25, Y+32	; 0x20
+    36ec:	18 16       	cp	r1, r24
+    36ee:	19 06       	cpc	r1, r25
+    36f0:	c4 f4       	brge	.+48     	; 0x3722 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0xe8>
+    36f2:	23 ef       	ldi	r18, 0xF3	; 243
+    36f4:	31 e0       	ldi	r19, 0x01	; 1
+    36f6:	41 e0       	ldi	r20, 0x01	; 1
+    36f8:	61 e0       	ldi	r22, 0x01	; 1
+    36fa:	8b e0       	ldi	r24, 0x0B	; 11
+    36fc:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3700:	6f 8d       	ldd	r22, Y+31	; 0x1f
+    3702:	78 a1       	ldd	r23, Y+32	; 0x20
+    3704:	07 2e       	mov	r0, r23
+    3706:	00 0c       	add	r0, r0
+    3708:	88 0b       	sbc	r24, r24
+    370a:	99 0b       	sbc	r25, r25
+    370c:	0e 94 da 26 	call	0x4db4	; 0x4db4 <__floatsisf>
+    3710:	8b 01       	movw	r16, r22
+    3712:	9c 01       	movw	r18, r24
+    3714:	e1 2c       	mov	r14, r1
+    3716:	f1 2c       	mov	r15, r1
+    3718:	41 e0       	ldi	r20, 0x01	; 1
+    371a:	61 e0       	ldi	r22, 0x01	; 1
+    371c:	8c e0       	ldi	r24, 0x0C	; 12
+    371e:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
 	if(carrage.Wheel_2.Error>0){Lcd_print(11, 2, FONT_1X,(unsigned char *)"E");Lcd_printf(12, 2, FONT_1X, carrage.Wheel_2.Error , 0);}
-    35e4:	fe 01       	movw	r30, r28
-    35e6:	e5 5b       	subi	r30, 0xB5	; 181
-    35e8:	ff 4f       	sbci	r31, 0xFF	; 255
-    35ea:	80 81       	ld	r24, Z
-    35ec:	91 81       	ldd	r25, Z+1	; 0x01
-    35ee:	18 16       	cp	r1, r24
-    35f0:	19 06       	cpc	r1, r25
-    35f2:	dc f4       	brge	.+54     	; 0x362a <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x12e>
-    35f4:	2c e8       	ldi	r18, 0x8C	; 140
-    35f6:	31 e0       	ldi	r19, 0x01	; 1
-    35f8:	41 e0       	ldi	r20, 0x01	; 1
-    35fa:	62 e0       	ldi	r22, 0x02	; 2
-    35fc:	8b e0       	ldi	r24, 0x0B	; 11
-    35fe:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    3602:	fe 01       	movw	r30, r28
-    3604:	e5 5b       	subi	r30, 0xB5	; 181
-    3606:	ff 4f       	sbci	r31, 0xFF	; 255
-    3608:	60 81       	ld	r22, Z
-    360a:	71 81       	ldd	r23, Z+1	; 0x01
-    360c:	07 2e       	mov	r0, r23
-    360e:	00 0c       	add	r0, r0
-    3610:	88 0b       	sbc	r24, r24
-    3612:	99 0b       	sbc	r25, r25
-    3614:	0e 94 da 26 	call	0x4db4	; 0x4db4 <__floatsisf>
-    3618:	8b 01       	movw	r16, r22
-    361a:	9c 01       	movw	r18, r24
-    361c:	e1 2c       	mov	r14, r1
-    361e:	f1 2c       	mov	r15, r1
-    3620:	41 e0       	ldi	r20, 0x01	; 1
-    3622:	62 e0       	ldi	r22, 0x02	; 2
-    3624:	8c e0       	ldi	r24, 0x0C	; 12
-    3626:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
+    3722:	fe 01       	movw	r30, r28
+    3724:	e5 5b       	subi	r30, 0xB5	; 181
+    3726:	ff 4f       	sbci	r31, 0xFF	; 255
+    3728:	80 81       	ld	r24, Z
+    372a:	91 81       	ldd	r25, Z+1	; 0x01
+    372c:	18 16       	cp	r1, r24
+    372e:	19 06       	cpc	r1, r25
+    3730:	dc f4       	brge	.+54     	; 0x3768 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x12e>
+    3732:	23 ef       	ldi	r18, 0xF3	; 243
+    3734:	31 e0       	ldi	r19, 0x01	; 1
+    3736:	41 e0       	ldi	r20, 0x01	; 1
+    3738:	62 e0       	ldi	r22, 0x02	; 2
+    373a:	8b e0       	ldi	r24, 0x0B	; 11
+    373c:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3740:	fe 01       	movw	r30, r28
+    3742:	e5 5b       	subi	r30, 0xB5	; 181
+    3744:	ff 4f       	sbci	r31, 0xFF	; 255
+    3746:	60 81       	ld	r22, Z
+    3748:	71 81       	ldd	r23, Z+1	; 0x01
+    374a:	07 2e       	mov	r0, r23
+    374c:	00 0c       	add	r0, r0
+    374e:	88 0b       	sbc	r24, r24
+    3750:	99 0b       	sbc	r25, r25
+    3752:	0e 94 da 26 	call	0x4db4	; 0x4db4 <__floatsisf>
+    3756:	8b 01       	movw	r16, r22
+    3758:	9c 01       	movw	r18, r24
+    375a:	e1 2c       	mov	r14, r1
+    375c:	f1 2c       	mov	r15, r1
+    375e:	41 e0       	ldi	r20, 0x01	; 1
+    3760:	62 e0       	ldi	r22, 0x02	; 2
+    3762:	8c e0       	ldi	r24, 0x0C	; 12
+    3764:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
 	if(carrage.Wheel_3.Error>0){Lcd_print(11, 3, FONT_1X,(unsigned char *)"E");Lcd_printf(12, 3, FONT_1X, carrage.Wheel_3.Error , 0);}
-    362a:	fe 01       	movw	r30, r28
-    362c:	e9 58       	subi	r30, 0x89	; 137
-    362e:	ff 4f       	sbci	r31, 0xFF	; 255
-    3630:	80 81       	ld	r24, Z
-    3632:	91 81       	ldd	r25, Z+1	; 0x01
-    3634:	18 16       	cp	r1, r24
-    3636:	19 06       	cpc	r1, r25
-    3638:	dc f4       	brge	.+54     	; 0x3670 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x174>
-    363a:	2c e8       	ldi	r18, 0x8C	; 140
-    363c:	31 e0       	ldi	r19, 0x01	; 1
-    363e:	41 e0       	ldi	r20, 0x01	; 1
-    3640:	63 e0       	ldi	r22, 0x03	; 3
-    3642:	8b e0       	ldi	r24, 0x0B	; 11
-    3644:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    3648:	fe 01       	movw	r30, r28
-    364a:	e9 58       	subi	r30, 0x89	; 137
-    364c:	ff 4f       	sbci	r31, 0xFF	; 255
-    364e:	60 81       	ld	r22, Z
-    3650:	71 81       	ldd	r23, Z+1	; 0x01
-    3652:	07 2e       	mov	r0, r23
-    3654:	00 0c       	add	r0, r0
-    3656:	88 0b       	sbc	r24, r24
-    3658:	99 0b       	sbc	r25, r25
-    365a:	0e 94 da 26 	call	0x4db4	; 0x4db4 <__floatsisf>
-    365e:	8b 01       	movw	r16, r22
-    3660:	9c 01       	movw	r18, r24
-    3662:	e1 2c       	mov	r14, r1
-    3664:	f1 2c       	mov	r15, r1
-    3666:	41 e0       	ldi	r20, 0x01	; 1
-    3668:	63 e0       	ldi	r22, 0x03	; 3
-    366a:	8c e0       	ldi	r24, 0x0C	; 12
-    366c:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
+    3768:	fe 01       	movw	r30, r28
+    376a:	e9 58       	subi	r30, 0x89	; 137
+    376c:	ff 4f       	sbci	r31, 0xFF	; 255
+    376e:	80 81       	ld	r24, Z
+    3770:	91 81       	ldd	r25, Z+1	; 0x01
+    3772:	18 16       	cp	r1, r24
+    3774:	19 06       	cpc	r1, r25
+    3776:	dc f4       	brge	.+54     	; 0x37ae <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x174>
+    3778:	23 ef       	ldi	r18, 0xF3	; 243
+    377a:	31 e0       	ldi	r19, 0x01	; 1
+    377c:	41 e0       	ldi	r20, 0x01	; 1
+    377e:	63 e0       	ldi	r22, 0x03	; 3
+    3780:	8b e0       	ldi	r24, 0x0B	; 11
+    3782:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3786:	fe 01       	movw	r30, r28
+    3788:	e9 58       	subi	r30, 0x89	; 137
+    378a:	ff 4f       	sbci	r31, 0xFF	; 255
+    378c:	60 81       	ld	r22, Z
+    378e:	71 81       	ldd	r23, Z+1	; 0x01
+    3790:	07 2e       	mov	r0, r23
+    3792:	00 0c       	add	r0, r0
+    3794:	88 0b       	sbc	r24, r24
+    3796:	99 0b       	sbc	r25, r25
+    3798:	0e 94 da 26 	call	0x4db4	; 0x4db4 <__floatsisf>
+    379c:	8b 01       	movw	r16, r22
+    379e:	9c 01       	movw	r18, r24
+    37a0:	e1 2c       	mov	r14, r1
+    37a2:	f1 2c       	mov	r15, r1
+    37a4:	41 e0       	ldi	r20, 0x01	; 1
+    37a6:	63 e0       	ldi	r22, 0x03	; 3
+    37a8:	8c e0       	ldi	r24, 0x0C	; 12
+    37aa:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
 	if(carrage.Wheel_4.Error>0){Lcd_print(11, 4, FONT_1X,(unsigned char *)"E");Lcd_printf(12, 4, FONT_1X, carrage.Wheel_4.Error , 0);}
-    3670:	fe 01       	movw	r30, r28
-    3672:	ed 55       	subi	r30, 0x5D	; 93
-    3674:	ff 4f       	sbci	r31, 0xFF	; 255
-    3676:	80 81       	ld	r24, Z
-    3678:	91 81       	ldd	r25, Z+1	; 0x01
-    367a:	18 16       	cp	r1, r24
-    367c:	19 06       	cpc	r1, r25
-    367e:	d4 f4       	brge	.+52     	; 0x36b4 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x1b8>
-    3680:	2c e8       	ldi	r18, 0x8C	; 140
-    3682:	31 e0       	ldi	r19, 0x01	; 1
-    3684:	41 e0       	ldi	r20, 0x01	; 1
-    3686:	64 e0       	ldi	r22, 0x04	; 4
-    3688:	8b e0       	ldi	r24, 0x0B	; 11
-    368a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    368e:	cd 55       	subi	r28, 0x5D	; 93
-    3690:	df 4f       	sbci	r29, 0xFF	; 255
-    3692:	68 81       	ld	r22, Y
-    3694:	79 81       	ldd	r23, Y+1	; 0x01
-    3696:	07 2e       	mov	r0, r23
-    3698:	00 0c       	add	r0, r0
-    369a:	88 0b       	sbc	r24, r24
-    369c:	99 0b       	sbc	r25, r25
-    369e:	0e 94 da 26 	call	0x4db4	; 0x4db4 <__floatsisf>
-    36a2:	8b 01       	movw	r16, r22
-    36a4:	9c 01       	movw	r18, r24
-    36a6:	e1 2c       	mov	r14, r1
-    36a8:	f1 2c       	mov	r15, r1
-    36aa:	41 e0       	ldi	r20, 0x01	; 1
-    36ac:	64 e0       	ldi	r22, 0x04	; 4
-    36ae:	8c e0       	ldi	r24, 0x0C	; 12
-    36b0:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
+    37ae:	fe 01       	movw	r30, r28
+    37b0:	ed 55       	subi	r30, 0x5D	; 93
+    37b2:	ff 4f       	sbci	r31, 0xFF	; 255
+    37b4:	80 81       	ld	r24, Z
+    37b6:	91 81       	ldd	r25, Z+1	; 0x01
+    37b8:	18 16       	cp	r1, r24
+    37ba:	19 06       	cpc	r1, r25
+    37bc:	d4 f4       	brge	.+52     	; 0x37f2 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x1b8>
+    37be:	23 ef       	ldi	r18, 0xF3	; 243
+    37c0:	31 e0       	ldi	r19, 0x01	; 1
+    37c2:	41 e0       	ldi	r20, 0x01	; 1
+    37c4:	64 e0       	ldi	r22, 0x04	; 4
+    37c6:	8b e0       	ldi	r24, 0x0B	; 11
+    37c8:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    37cc:	cd 55       	subi	r28, 0x5D	; 93
+    37ce:	df 4f       	sbci	r29, 0xFF	; 255
+    37d0:	68 81       	ld	r22, Y
+    37d2:	79 81       	ldd	r23, Y+1	; 0x01
+    37d4:	07 2e       	mov	r0, r23
+    37d6:	00 0c       	add	r0, r0
+    37d8:	88 0b       	sbc	r24, r24
+    37da:	99 0b       	sbc	r25, r25
+    37dc:	0e 94 da 26 	call	0x4db4	; 0x4db4 <__floatsisf>
+    37e0:	8b 01       	movw	r16, r22
+    37e2:	9c 01       	movw	r18, r24
+    37e4:	e1 2c       	mov	r14, r1
+    37e6:	f1 2c       	mov	r15, r1
+    37e8:	41 e0       	ldi	r20, 0x01	; 1
+    37ea:	64 e0       	ldi	r22, 0x04	; 4
+    37ec:	8c e0       	ldi	r24, 0x0C	; 12
+    37ee:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
 		
 	switch(activity.Cursor){
-    36b4:	f6 01       	movw	r30, r12
-    36b6:	87 81       	ldd	r24, Z+7	; 0x07
-    36b8:	8b 31       	cpi	r24, 0x1B	; 27
-    36ba:	e1 f0       	breq	.+56     	; 0x36f4 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x1f8>
-    36bc:	28 f4       	brcc	.+10     	; 0x36c8 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x1cc>
-    36be:	89 31       	cpi	r24, 0x19	; 25
-    36c0:	49 f0       	breq	.+18     	; 0x36d4 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x1d8>
-    36c2:	8a 31       	cpi	r24, 0x1A	; 26
-    36c4:	79 f0       	breq	.+30     	; 0x36e4 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x1e8>
-    36c6:	35 c0       	rjmp	.+106    	; 0x3732 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
-    36c8:	8d 31       	cpi	r24, 0x1D	; 29
-    36ca:	21 f1       	breq	.+72     	; 0x3714 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x218>
-    36cc:	d8 f0       	brcs	.+54     	; 0x3704 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x208>
-    36ce:	8e 31       	cpi	r24, 0x1E	; 30
-    36d0:	49 f1       	breq	.+82     	; 0x3724 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x228>
-    36d2:	2f c0       	rjmp	.+94     	; 0x3732 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
+    37f2:	f6 01       	movw	r30, r12
+    37f4:	87 81       	ldd	r24, Z+7	; 0x07
+    37f6:	8b 31       	cpi	r24, 0x1B	; 27
+    37f8:	e1 f0       	breq	.+56     	; 0x3832 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x1f8>
+    37fa:	28 f4       	brcc	.+10     	; 0x3806 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x1cc>
+    37fc:	89 31       	cpi	r24, 0x19	; 25
+    37fe:	49 f0       	breq	.+18     	; 0x3812 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x1d8>
+    3800:	8a 31       	cpi	r24, 0x1A	; 26
+    3802:	79 f0       	breq	.+30     	; 0x3822 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x1e8>
+    3804:	35 c0       	rjmp	.+106    	; 0x3870 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
+    3806:	8d 31       	cpi	r24, 0x1D	; 29
+    3808:	21 f1       	breq	.+72     	; 0x3852 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x218>
+    380a:	d8 f0       	brcs	.+54     	; 0x3842 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x208>
+    380c:	8e 31       	cpi	r24, 0x1E	; 30
+    380e:	49 f1       	breq	.+82     	; 0x3862 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x228>
+    3810:	2f c0       	rjmp	.+94     	; 0x3870 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
 		case(ERRORS_WHEEL1):LcdGotoXY(0,1);LcdChr_full(0x9B);break;
-    36d4:	61 e0       	ldi	r22, 0x01	; 1
-    36d6:	80 e0       	ldi	r24, 0x00	; 0
-    36d8:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    36dc:	8b e9       	ldi	r24, 0x9B	; 155
-    36de:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    36e2:	27 c0       	rjmp	.+78     	; 0x3732 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
+    3812:	61 e0       	ldi	r22, 0x01	; 1
+    3814:	80 e0       	ldi	r24, 0x00	; 0
+    3816:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    381a:	8b e9       	ldi	r24, 0x9B	; 155
+    381c:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    3820:	27 c0       	rjmp	.+78     	; 0x3870 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
 		case(ERRORS_WHEEL2):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
-    36e4:	62 e0       	ldi	r22, 0x02	; 2
-    36e6:	80 e0       	ldi	r24, 0x00	; 0
-    36e8:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    36ec:	8b e9       	ldi	r24, 0x9B	; 155
-    36ee:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    36f2:	1f c0       	rjmp	.+62     	; 0x3732 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
+    3822:	62 e0       	ldi	r22, 0x02	; 2
+    3824:	80 e0       	ldi	r24, 0x00	; 0
+    3826:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    382a:	8b e9       	ldi	r24, 0x9B	; 155
+    382c:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    3830:	1f c0       	rjmp	.+62     	; 0x3870 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
 		case(ERRORS_WHEEL3):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
-    36f4:	63 e0       	ldi	r22, 0x03	; 3
-    36f6:	80 e0       	ldi	r24, 0x00	; 0
-    36f8:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    36fc:	8b e9       	ldi	r24, 0x9B	; 155
-    36fe:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    3702:	17 c0       	rjmp	.+46     	; 0x3732 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
+    3832:	63 e0       	ldi	r22, 0x03	; 3
+    3834:	80 e0       	ldi	r24, 0x00	; 0
+    3836:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    383a:	8b e9       	ldi	r24, 0x9B	; 155
+    383c:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    3840:	17 c0       	rjmp	.+46     	; 0x3870 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
 		case(ERRORS_WHEEL4):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
-    3704:	64 e0       	ldi	r22, 0x04	; 4
-    3706:	80 e0       	ldi	r24, 0x00	; 0
-    3708:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    370c:	8b e9       	ldi	r24, 0x9B	; 155
-    370e:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    3712:	0f c0       	rjmp	.+30     	; 0x3732 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
+    3842:	64 e0       	ldi	r22, 0x04	; 4
+    3844:	80 e0       	ldi	r24, 0x00	; 0
+    3846:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    384a:	8b e9       	ldi	r24, 0x9B	; 155
+    384c:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    3850:	0f c0       	rjmp	.+30     	; 0x3870 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
 		case(ERRORS_RESET):LcdGotoXY(0,5);LcdChr_full(0x9B);break;
-    3714:	65 e0       	ldi	r22, 0x05	; 5
-    3716:	80 e0       	ldi	r24, 0x00	; 0
-    3718:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    371c:	8b e9       	ldi	r24, 0x9B	; 155
-    371e:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
-    3722:	07 c0       	rjmp	.+14     	; 0x3732 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
+    3852:	65 e0       	ldi	r22, 0x05	; 5
+    3854:	80 e0       	ldi	r24, 0x00	; 0
+    3856:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    385a:	8b e9       	ldi	r24, 0x9B	; 155
+    385c:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    3860:	07 c0       	rjmp	.+14     	; 0x3870 <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage+0x236>
 		case(ERRORS_EXIT):LcdGotoXY(7,5);LcdChr_full(0x9B);break;
-    3724:	65 e0       	ldi	r22, 0x05	; 5
-    3726:	87 e0       	ldi	r24, 0x07	; 7
-    3728:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
-    372c:	8b e9       	ldi	r24, 0x9B	; 155
-    372e:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
+    3862:	65 e0       	ldi	r22, 0x05	; 5
+    3864:	87 e0       	ldi	r24, 0x07	; 7
+    3866:	0e 94 86 15 	call	0x2b0c	; 0x2b0c <_Z9LcdGotoXYhh>
+    386a:	8b e9       	ldi	r24, 0x9B	; 155
+    386c:	0e 94 a1 15 	call	0x2b42	; 0x2b42 <_Z11LcdChr_fullh>
 	}
 }
-    3732:	df 91       	pop	r29
-    3734:	cf 91       	pop	r28
-    3736:	1f 91       	pop	r17
-    3738:	0f 91       	pop	r16
-    373a:	ff 90       	pop	r15
-    373c:	ef 90       	pop	r14
-    373e:	df 90       	pop	r13
-    3740:	cf 90       	pop	r12
-    3742:	08 95       	ret
+    3870:	df 91       	pop	r29
+    3872:	cf 91       	pop	r28
+    3874:	1f 91       	pop	r17
+    3876:	0f 91       	pop	r16
+    3878:	ff 90       	pop	r15
+    387a:	ef 90       	pop	r14
+    387c:	df 90       	pop	r13
+    387e:	cf 90       	pop	r12
+    3880:	08 95       	ret
 
-00003744 <_ZN6Screen10PrintErrorE5Wheel>:
+00003882 <_ZN6Screen10PrintErrorE5Wheel>:
 		case(ERRORS_WHEEL4):Lcd_print(3, 0, FONT_1X,(unsigned char *)"4 Стойка");PrintError(carrage.Wheel_4);break;
 	}
 
 }
 
 void Screen::PrintError(Wheel wheel){
-    3744:	cf 92       	push	r12
-    3746:	df 92       	push	r13
-    3748:	ef 92       	push	r14
-    374a:	ff 92       	push	r15
-    374c:	0f 93       	push	r16
-    374e:	1f 93       	push	r17
-    3750:	cf 93       	push	r28
-    3752:	df 93       	push	r29
-    3754:	cd b7       	in	r28, 0x3d	; 61
-    3756:	de b7       	in	r29, 0x3e	; 62
-    3758:	ca a4       	ldd	r12, Y+42	; 0x2a
-    375a:	db a4       	ldd	r13, Y+43	; 0x2b
+    3882:	cf 92       	push	r12
+    3884:	df 92       	push	r13
+    3886:	ef 92       	push	r14
+    3888:	ff 92       	push	r15
+    388a:	0f 93       	push	r16
+    388c:	1f 93       	push	r17
+    388e:	cf 93       	push	r28
+    3890:	df 93       	push	r29
+    3892:	cd b7       	in	r28, 0x3d	; 61
+    3894:	de b7       	in	r29, 0x3e	; 62
+    3896:	ca a4       	ldd	r12, Y+42	; 0x2a
+    3898:	db a4       	ldd	r13, Y+43	; 0x2b
 	if(wheel.Error == 0){
-    375c:	c1 14       	cp	r12, r1
-    375e:	d1 04       	cpc	r13, r1
-    3760:	41 f4       	brne	.+16     	; 0x3772 <_ZN6Screen10PrintErrorE5Wheel+0x2e>
+    389a:	c1 14       	cp	r12, r1
+    389c:	d1 04       	cpc	r13, r1
+    389e:	41 f4       	brne	.+16     	; 0x38b0 <_ZN6Screen10PrintErrorE5Wheel+0x2e>
 		Lcd_print(1, 2, FONT_1X,(unsigned char *)"Ошибок нет");
-    3762:	2e e8       	ldi	r18, 0x8E	; 142
-    3764:	31 e0       	ldi	r19, 0x01	; 1
-    3766:	41 e0       	ldi	r20, 0x01	; 1
-    3768:	62 e0       	ldi	r22, 0x02	; 2
-    376a:	81 e0       	ldi	r24, 0x01	; 1
-    376c:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    3770:	39 c0       	rjmp	.+114    	; 0x37e4 <_ZN6Screen10PrintErrorE5Wheel+0xa0>
+    38a0:	25 ef       	ldi	r18, 0xF5	; 245
+    38a2:	31 e0       	ldi	r19, 0x01	; 1
+    38a4:	41 e0       	ldi	r20, 0x01	; 1
+    38a6:	62 e0       	ldi	r22, 0x02	; 2
+    38a8:	81 e0       	ldi	r24, 0x01	; 1
+    38aa:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    38ae:	39 c0       	rjmp	.+114    	; 0x3922 <_ZN6Screen10PrintErrorE5Wheel+0xa0>
 		}else{
 		Lcd_print(1, 1, FONT_1X,(unsigned char *)"Ошибка Е");
-    3772:	29 e9       	ldi	r18, 0x99	; 153
-    3774:	31 e0       	ldi	r19, 0x01	; 1
-    3776:	41 e0       	ldi	r20, 0x01	; 1
-    3778:	61 e0       	ldi	r22, 0x01	; 1
-    377a:	81 e0       	ldi	r24, 0x01	; 1
-    377c:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    38b0:	20 e0       	ldi	r18, 0x00	; 0
+    38b2:	32 e0       	ldi	r19, 0x02	; 2
+    38b4:	41 e0       	ldi	r20, 0x01	; 1
+    38b6:	61 e0       	ldi	r22, 0x01	; 1
+    38b8:	81 e0       	ldi	r24, 0x01	; 1
+    38ba:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 		Lcd_printf(9, 1, FONT_1X, wheel.Error , 0);
-    3780:	b6 01       	movw	r22, r12
-    3782:	0d 2c       	mov	r0, r13
-    3784:	00 0c       	add	r0, r0
-    3786:	88 0b       	sbc	r24, r24
-    3788:	99 0b       	sbc	r25, r25
-    378a:	0e 94 da 26 	call	0x4db4	; 0x4db4 <__floatsisf>
-    378e:	8b 01       	movw	r16, r22
-    3790:	9c 01       	movw	r18, r24
-    3792:	e1 2c       	mov	r14, r1
-    3794:	f1 2c       	mov	r15, r1
-    3796:	41 e0       	ldi	r20, 0x01	; 1
-    3798:	61 e0       	ldi	r22, 0x01	; 1
-    379a:	89 e0       	ldi	r24, 0x09	; 9
-    379c:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
+    38be:	b6 01       	movw	r22, r12
+    38c0:	0d 2c       	mov	r0, r13
+    38c2:	00 0c       	add	r0, r0
+    38c4:	88 0b       	sbc	r24, r24
+    38c6:	99 0b       	sbc	r25, r25
+    38c8:	0e 94 da 26 	call	0x4db4	; 0x4db4 <__floatsisf>
+    38cc:	8b 01       	movw	r16, r22
+    38ce:	9c 01       	movw	r18, r24
+    38d0:	e1 2c       	mov	r14, r1
+    38d2:	f1 2c       	mov	r15, r1
+    38d4:	41 e0       	ldi	r20, 0x01	; 1
+    38d6:	61 e0       	ldi	r22, 0x01	; 1
+    38d8:	89 e0       	ldi	r24, 0x09	; 9
+    38da:	0e 94 0d 17 	call	0x2e1a	; 0x2e1a <_Z10Lcd_printfhh11LcdFontSizefi>
 		switch(wheel.Error){
-    37a0:	82 e0       	ldi	r24, 0x02	; 2
-    37a2:	c8 16       	cp	r12, r24
-    37a4:	d1 04       	cpc	r13, r1
-    37a6:	79 f0       	breq	.+30     	; 0x37c6 <_ZN6Screen10PrintErrorE5Wheel+0x82>
-    37a8:	83 e0       	ldi	r24, 0x03	; 3
-    37aa:	c8 16       	cp	r12, r24
-    37ac:	d1 04       	cpc	r13, r1
-    37ae:	99 f0       	breq	.+38     	; 0x37d6 <_ZN6Screen10PrintErrorE5Wheel+0x92>
-    37b0:	ca 94       	dec	r12
-    37b2:	cd 28       	or	r12, r13
-    37b4:	b9 f4       	brne	.+46     	; 0x37e4 <_ZN6Screen10PrintErrorE5Wheel+0xa0>
+    38de:	82 e0       	ldi	r24, 0x02	; 2
+    38e0:	c8 16       	cp	r12, r24
+    38e2:	d1 04       	cpc	r13, r1
+    38e4:	79 f0       	breq	.+30     	; 0x3904 <_ZN6Screen10PrintErrorE5Wheel+0x82>
+    38e6:	83 e0       	ldi	r24, 0x03	; 3
+    38e8:	c8 16       	cp	r12, r24
+    38ea:	d1 04       	cpc	r13, r1
+    38ec:	99 f0       	breq	.+38     	; 0x3914 <_ZN6Screen10PrintErrorE5Wheel+0x92>
+    38ee:	ca 94       	dec	r12
+    38f0:	cd 28       	or	r12, r13
+    38f2:	b9 f4       	brne	.+46     	; 0x3922 <_ZN6Screen10PrintErrorE5Wheel+0xa0>
 			case(1):Lcd_print(0, 2, FONT_1X,(unsigned char *)"нет ответа стойки при попытке изменить ее положение");break;//"нет ответа стойки при попытке изменить ее положение"
-    37b6:	22 ea       	ldi	r18, 0xA2	; 162
-    37b8:	31 e0       	ldi	r19, 0x01	; 1
-    37ba:	41 e0       	ldi	r20, 0x01	; 1
-    37bc:	62 e0       	ldi	r22, 0x02	; 2
-    37be:	80 e0       	ldi	r24, 0x00	; 0
-    37c0:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    37c4:	0f c0       	rjmp	.+30     	; 0x37e4 <_ZN6Screen10PrintErrorE5Wheel+0xa0>
+    38f4:	29 e0       	ldi	r18, 0x09	; 9
+    38f6:	32 e0       	ldi	r19, 0x02	; 2
+    38f8:	41 e0       	ldi	r20, 0x01	; 1
+    38fa:	62 e0       	ldi	r22, 0x02	; 2
+    38fc:	80 e0       	ldi	r24, 0x00	; 0
+    38fe:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3902:	0f c0       	rjmp	.+30     	; 0x3922 <_ZN6Screen10PrintErrorE5Wheel+0xa0>
 			case(2):Lcd_print(0, 2, FONT_1X,(unsigned char *)"невозжможно выставить заданное положение");break;//"невозжможно выставить заданное положение"
-    37c6:	26 ed       	ldi	r18, 0xD6	; 214
-    37c8:	31 e0       	ldi	r19, 0x01	; 1
-    37ca:	41 e0       	ldi	r20, 0x01	; 1
-    37cc:	62 e0       	ldi	r22, 0x02	; 2
-    37ce:	80 e0       	ldi	r24, 0x00	; 0
-    37d0:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    37d4:	07 c0       	rjmp	.+14     	; 0x37e4 <_ZN6Screen10PrintErrorE5Wheel+0xa0>
+    3904:	2d e3       	ldi	r18, 0x3D	; 61
+    3906:	32 e0       	ldi	r19, 0x02	; 2
+    3908:	41 e0       	ldi	r20, 0x01	; 1
+    390a:	62 e0       	ldi	r22, 0x02	; 2
+    390c:	80 e0       	ldi	r24, 0x00	; 0
+    390e:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3912:	07 c0       	rjmp	.+14     	; 0x3922 <_ZN6Screen10PrintErrorE5Wheel+0xa0>
 			case(3):Lcd_print(0, 2, FONT_1X,(unsigned char *)"зависание датчика положения во время движения");break; //"зависание датчика положения во время движения"
-    37d6:	2f ef       	ldi	r18, 0xFF	; 255
-    37d8:	31 e0       	ldi	r19, 0x01	; 1
-    37da:	41 e0       	ldi	r20, 0x01	; 1
-    37dc:	62 e0       	ldi	r22, 0x02	; 2
-    37de:	80 e0       	ldi	r24, 0x00	; 0
-    37e0:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3914:	26 e6       	ldi	r18, 0x66	; 102
+    3916:	32 e0       	ldi	r19, 0x02	; 2
+    3918:	41 e0       	ldi	r20, 0x01	; 1
+    391a:	62 e0       	ldi	r22, 0x02	; 2
+    391c:	80 e0       	ldi	r24, 0x00	; 0
+    391e:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 		}
 	}
 }
-    37e4:	df 91       	pop	r29
-    37e6:	cf 91       	pop	r28
-    37e8:	1f 91       	pop	r17
-    37ea:	0f 91       	pop	r16
-    37ec:	ff 90       	pop	r15
-    37ee:	ef 90       	pop	r14
-    37f0:	df 90       	pop	r13
-    37f2:	cf 90       	pop	r12
-    37f4:	08 95       	ret
+    3922:	df 91       	pop	r29
+    3924:	cf 91       	pop	r28
+    3926:	1f 91       	pop	r17
+    3928:	0f 91       	pop	r16
+    392a:	ff 90       	pop	r15
+    392c:	ef 90       	pop	r14
+    392e:	df 90       	pop	r13
+    3930:	cf 90       	pop	r12
+    3932:	08 95       	ret
 
-000037f6 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage>:
+00003934 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage>:
 		case(ERRORS_RESET):LcdGotoXY(0,5);LcdChr_full(0x9B);break;
 		case(ERRORS_EXIT):LcdGotoXY(7,5);LcdChr_full(0x9B);break;
 	}
 }
 
 void Screen::Render_ERROR(Activity &activity, Carrage &carrage){
-    37f6:	0f 93       	push	r16
-    37f8:	1f 93       	push	r17
-    37fa:	cf 93       	push	r28
-    37fc:	df 93       	push	r29
-    37fe:	8c 01       	movw	r16, r24
-    3800:	ea 01       	movw	r28, r20
+    3934:	0f 93       	push	r16
+    3936:	1f 93       	push	r17
+    3938:	cf 93       	push	r28
+    393a:	df 93       	push	r29
+    393c:	8c 01       	movw	r16, r24
+    393e:	ea 01       	movw	r28, r20
 	switch(activity.Cursor){
-    3802:	fb 01       	movw	r30, r22
-    3804:	87 81       	ldd	r24, Z+7	; 0x07
-    3806:	8a 31       	cpi	r24, 0x1A	; 26
-    3808:	79 f1       	breq	.+94     	; 0x3868 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x72>
-    380a:	18 f4       	brcc	.+6      	; 0x3812 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x1c>
-    380c:	89 31       	cpi	r24, 0x19	; 25
-    380e:	41 f0       	breq	.+16     	; 0x3820 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x2a>
-    3810:	9b c0       	rjmp	.+310    	; 0x3948 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x152>
-    3812:	8b 31       	cpi	r24, 0x1B	; 27
-    3814:	09 f4       	brne	.+2      	; 0x3818 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x22>
-    3816:	4d c0       	rjmp	.+154    	; 0x38b2 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0xbc>
-    3818:	8c 31       	cpi	r24, 0x1C	; 28
-    381a:	09 f4       	brne	.+2      	; 0x381e <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x28>
-    381c:	70 c0       	rjmp	.+224    	; 0x38fe <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x108>
-    381e:	94 c0       	rjmp	.+296    	; 0x3948 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x152>
+    3940:	fb 01       	movw	r30, r22
+    3942:	87 81       	ldd	r24, Z+7	; 0x07
+    3944:	8a 31       	cpi	r24, 0x1A	; 26
+    3946:	79 f1       	breq	.+94     	; 0x39a6 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x72>
+    3948:	18 f4       	brcc	.+6      	; 0x3950 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x1c>
+    394a:	89 31       	cpi	r24, 0x19	; 25
+    394c:	41 f0       	breq	.+16     	; 0x395e <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x2a>
+    394e:	9b c0       	rjmp	.+310    	; 0x3a86 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x152>
+    3950:	8b 31       	cpi	r24, 0x1B	; 27
+    3952:	09 f4       	brne	.+2      	; 0x3956 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x22>
+    3954:	4d c0       	rjmp	.+154    	; 0x39f0 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0xbc>
+    3956:	8c 31       	cpi	r24, 0x1C	; 28
+    3958:	09 f4       	brne	.+2      	; 0x395c <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x28>
+    395a:	70 c0       	rjmp	.+224    	; 0x3a3c <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x108>
+    395c:	94 c0       	rjmp	.+296    	; 0x3a86 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x152>
 		case(ERRORS_WHEEL1):Lcd_print(3, 0, FONT_1X,(unsigned char *)"1 Стойка");PrintError(carrage.Wheel_1);break;
-    3820:	2d e2       	ldi	r18, 0x2D	; 45
-    3822:	32 e0       	ldi	r19, 0x02	; 2
-    3824:	41 e0       	ldi	r20, 0x01	; 1
-    3826:	60 e0       	ldi	r22, 0x00	; 0
-    3828:	83 e0       	ldi	r24, 0x03	; 3
-    382a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    382e:	8d b7       	in	r24, 0x3d	; 61
-    3830:	9e b7       	in	r25, 0x3e	; 62
-    3832:	8c 97       	sbiw	r24, 0x2c	; 44
-    3834:	0f b6       	in	r0, 0x3f	; 63
-    3836:	f8 94       	cli
-    3838:	9e bf       	out	0x3e, r25	; 62
-    383a:	0f be       	out	0x3f, r0	; 63
-    383c:	8d bf       	out	0x3d, r24	; 61
-    383e:	ad b7       	in	r26, 0x3d	; 61
-    3840:	be b7       	in	r27, 0x3e	; 62
-    3842:	11 96       	adiw	r26, 0x01	; 1
-    3844:	8c e2       	ldi	r24, 0x2C	; 44
-    3846:	fe 01       	movw	r30, r28
-    3848:	01 90       	ld	r0, Z+
-    384a:	0d 92       	st	X+, r0
-    384c:	8a 95       	dec	r24
-    384e:	e1 f7       	brne	.-8      	; 0x3848 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x52>
-    3850:	c8 01       	movw	r24, r16
-    3852:	0e 94 a2 1b 	call	0x3744	; 0x3744 <_ZN6Screen10PrintErrorE5Wheel>
-    3856:	ed b7       	in	r30, 0x3d	; 61
-    3858:	fe b7       	in	r31, 0x3e	; 62
-    385a:	bc 96       	adiw	r30, 0x2c	; 44
-    385c:	0f b6       	in	r0, 0x3f	; 63
-    385e:	f8 94       	cli
-    3860:	fe bf       	out	0x3e, r31	; 62
-    3862:	0f be       	out	0x3f, r0	; 63
-    3864:	ed bf       	out	0x3d, r30	; 61
-    3866:	70 c0       	rjmp	.+224    	; 0x3948 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x152>
+    395e:	24 e9       	ldi	r18, 0x94	; 148
+    3960:	32 e0       	ldi	r19, 0x02	; 2
+    3962:	41 e0       	ldi	r20, 0x01	; 1
+    3964:	60 e0       	ldi	r22, 0x00	; 0
+    3966:	83 e0       	ldi	r24, 0x03	; 3
+    3968:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    396c:	8d b7       	in	r24, 0x3d	; 61
+    396e:	9e b7       	in	r25, 0x3e	; 62
+    3970:	8c 97       	sbiw	r24, 0x2c	; 44
+    3972:	0f b6       	in	r0, 0x3f	; 63
+    3974:	f8 94       	cli
+    3976:	9e bf       	out	0x3e, r25	; 62
+    3978:	0f be       	out	0x3f, r0	; 63
+    397a:	8d bf       	out	0x3d, r24	; 61
+    397c:	ad b7       	in	r26, 0x3d	; 61
+    397e:	be b7       	in	r27, 0x3e	; 62
+    3980:	11 96       	adiw	r26, 0x01	; 1
+    3982:	8c e2       	ldi	r24, 0x2C	; 44
+    3984:	fe 01       	movw	r30, r28
+    3986:	01 90       	ld	r0, Z+
+    3988:	0d 92       	st	X+, r0
+    398a:	8a 95       	dec	r24
+    398c:	e1 f7       	brne	.-8      	; 0x3986 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x52>
+    398e:	c8 01       	movw	r24, r16
+    3990:	0e 94 41 1c 	call	0x3882	; 0x3882 <_ZN6Screen10PrintErrorE5Wheel>
+    3994:	ed b7       	in	r30, 0x3d	; 61
+    3996:	fe b7       	in	r31, 0x3e	; 62
+    3998:	bc 96       	adiw	r30, 0x2c	; 44
+    399a:	0f b6       	in	r0, 0x3f	; 63
+    399c:	f8 94       	cli
+    399e:	fe bf       	out	0x3e, r31	; 62
+    39a0:	0f be       	out	0x3f, r0	; 63
+    39a2:	ed bf       	out	0x3d, r30	; 61
+    39a4:	70 c0       	rjmp	.+224    	; 0x3a86 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x152>
 		case(ERRORS_WHEEL2):Lcd_print(3, 0, FONT_1X,(unsigned char *)"2 Стойка");PrintError(carrage.Wheel_2);break;
-    3868:	26 e3       	ldi	r18, 0x36	; 54
-    386a:	32 e0       	ldi	r19, 0x02	; 2
-    386c:	41 e0       	ldi	r20, 0x01	; 1
-    386e:	60 e0       	ldi	r22, 0x00	; 0
-    3870:	83 e0       	ldi	r24, 0x03	; 3
-    3872:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    3876:	8d b7       	in	r24, 0x3d	; 61
-    3878:	9e b7       	in	r25, 0x3e	; 62
-    387a:	8c 97       	sbiw	r24, 0x2c	; 44
-    387c:	0f b6       	in	r0, 0x3f	; 63
-    387e:	f8 94       	cli
-    3880:	9e bf       	out	0x3e, r25	; 62
-    3882:	0f be       	out	0x3f, r0	; 63
-    3884:	8d bf       	out	0x3d, r24	; 61
-    3886:	ad b7       	in	r26, 0x3d	; 61
-    3888:	be b7       	in	r27, 0x3e	; 62
-    388a:	11 96       	adiw	r26, 0x01	; 1
-    388c:	8c e2       	ldi	r24, 0x2C	; 44
-    388e:	fe 01       	movw	r30, r28
-    3890:	bc 96       	adiw	r30, 0x2c	; 44
-    3892:	01 90       	ld	r0, Z+
-    3894:	0d 92       	st	X+, r0
-    3896:	8a 95       	dec	r24
-    3898:	e1 f7       	brne	.-8      	; 0x3892 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x9c>
-    389a:	c8 01       	movw	r24, r16
-    389c:	0e 94 a2 1b 	call	0x3744	; 0x3744 <_ZN6Screen10PrintErrorE5Wheel>
-    38a0:	ed b7       	in	r30, 0x3d	; 61
-    38a2:	fe b7       	in	r31, 0x3e	; 62
-    38a4:	bc 96       	adiw	r30, 0x2c	; 44
-    38a6:	0f b6       	in	r0, 0x3f	; 63
-    38a8:	f8 94       	cli
-    38aa:	fe bf       	out	0x3e, r31	; 62
-    38ac:	0f be       	out	0x3f, r0	; 63
-    38ae:	ed bf       	out	0x3d, r30	; 61
-    38b0:	4b c0       	rjmp	.+150    	; 0x3948 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x152>
-		case(ERRORS_WHEEL3):Lcd_print(3, 0, FONT_1X,(unsigned char *)"3 Стойка");PrintError(carrage.Wheel_3);break;
-    38b2:	2f e3       	ldi	r18, 0x3F	; 63
-    38b4:	32 e0       	ldi	r19, 0x02	; 2
-    38b6:	41 e0       	ldi	r20, 0x01	; 1
-    38b8:	60 e0       	ldi	r22, 0x00	; 0
-    38ba:	83 e0       	ldi	r24, 0x03	; 3
-    38bc:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    38c0:	fe 01       	movw	r30, r28
-    38c2:	e8 5a       	subi	r30, 0xA8	; 168
-    38c4:	ff 4f       	sbci	r31, 0xFF	; 255
-    38c6:	8d b7       	in	r24, 0x3d	; 61
-    38c8:	9e b7       	in	r25, 0x3e	; 62
-    38ca:	8c 97       	sbiw	r24, 0x2c	; 44
-    38cc:	0f b6       	in	r0, 0x3f	; 63
-    38ce:	f8 94       	cli
-    38d0:	9e bf       	out	0x3e, r25	; 62
-    38d2:	0f be       	out	0x3f, r0	; 63
-    38d4:	8d bf       	out	0x3d, r24	; 61
-    38d6:	ad b7       	in	r26, 0x3d	; 61
-    38d8:	be b7       	in	r27, 0x3e	; 62
-    38da:	11 96       	adiw	r26, 0x01	; 1
-    38dc:	8c e2       	ldi	r24, 0x2C	; 44
-    38de:	01 90       	ld	r0, Z+
-    38e0:	0d 92       	st	X+, r0
-    38e2:	8a 95       	dec	r24
-    38e4:	e1 f7       	brne	.-8      	; 0x38de <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0xe8>
-    38e6:	c8 01       	movw	r24, r16
-    38e8:	0e 94 a2 1b 	call	0x3744	; 0x3744 <_ZN6Screen10PrintErrorE5Wheel>
-    38ec:	ed b7       	in	r30, 0x3d	; 61
-    38ee:	fe b7       	in	r31, 0x3e	; 62
-    38f0:	bc 96       	adiw	r30, 0x2c	; 44
-    38f2:	0f b6       	in	r0, 0x3f	; 63
-    38f4:	f8 94       	cli
-    38f6:	fe bf       	out	0x3e, r31	; 62
-    38f8:	0f be       	out	0x3f, r0	; 63
-    38fa:	ed bf       	out	0x3d, r30	; 61
-    38fc:	25 c0       	rjmp	.+74     	; 0x3948 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x152>
-		case(ERRORS_WHEEL4):Lcd_print(3, 0, FONT_1X,(unsigned char *)"4 Стойка");PrintError(carrage.Wheel_4);break;
-    38fe:	28 e4       	ldi	r18, 0x48	; 72
-    3900:	32 e0       	ldi	r19, 0x02	; 2
-    3902:	41 e0       	ldi	r20, 0x01	; 1
-    3904:	60 e0       	ldi	r22, 0x00	; 0
-    3906:	83 e0       	ldi	r24, 0x03	; 3
-    3908:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    390c:	fe 01       	movw	r30, r28
-    390e:	ec 57       	subi	r30, 0x7C	; 124
-    3910:	ff 4f       	sbci	r31, 0xFF	; 255
-    3912:	8d b7       	in	r24, 0x3d	; 61
-    3914:	9e b7       	in	r25, 0x3e	; 62
-    3916:	8c 97       	sbiw	r24, 0x2c	; 44
-    3918:	0f b6       	in	r0, 0x3f	; 63
-    391a:	f8 94       	cli
-    391c:	9e bf       	out	0x3e, r25	; 62
-    391e:	0f be       	out	0x3f, r0	; 63
-    3920:	8d bf       	out	0x3d, r24	; 61
-    3922:	ad b7       	in	r26, 0x3d	; 61
-    3924:	be b7       	in	r27, 0x3e	; 62
-    3926:	11 96       	adiw	r26, 0x01	; 1
-    3928:	8c e2       	ldi	r24, 0x2C	; 44
-    392a:	01 90       	ld	r0, Z+
-    392c:	0d 92       	st	X+, r0
-    392e:	8a 95       	dec	r24
-    3930:	e1 f7       	brne	.-8      	; 0x392a <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x134>
-    3932:	c8 01       	movw	r24, r16
-    3934:	0e 94 a2 1b 	call	0x3744	; 0x3744 <_ZN6Screen10PrintErrorE5Wheel>
-    3938:	ed b7       	in	r30, 0x3d	; 61
-    393a:	fe b7       	in	r31, 0x3e	; 62
-    393c:	bc 96       	adiw	r30, 0x2c	; 44
-    393e:	0f b6       	in	r0, 0x3f	; 63
-    3940:	f8 94       	cli
-    3942:	fe bf       	out	0x3e, r31	; 62
-    3944:	0f be       	out	0x3f, r0	; 63
-    3946:	ed bf       	out	0x3d, r30	; 61
-	}
-
-}
-    3948:	df 91       	pop	r29
-    394a:	cf 91       	pop	r28
-    394c:	1f 91       	pop	r17
-    394e:	0f 91       	pop	r16
-    3950:	08 95       	ret
-
-00003952 <_ZN6Screen10PrintTitleER8ActivityR7Carrage>:
-		}
-	}
-}
-
-void Screen::PrintTitle(Activity &activity, Carrage &carrage){
-	if(activity.Cursor < PARKING_SAVE){
-    3952:	fb 01       	movw	r30, r22
-    3954:	87 81       	ldd	r24, Z+7	; 0x07
-    3956:	84 30       	cpi	r24, 0x04	; 4
-    3958:	20 f5       	brcc	.+72     	; 0x39a2 <_ZN6Screen10PrintTitleER8ActivityR7Carrage+0x50>
-		Lcd_print(5, 0, FONT_1X,(unsigned char *)"МЕНЮ");
-    395a:	21 e5       	ldi	r18, 0x51	; 81
-    395c:	32 e0       	ldi	r19, 0x02	; 2
-    395e:	41 e0       	ldi	r20, 0x01	; 1
-    3960:	60 e0       	ldi	r22, 0x00	; 0
-    3962:	85 e0       	ldi	r24, 0x05	; 5
-    3964:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Установить");
-    3968:	26 e5       	ldi	r18, 0x56	; 86
-    396a:	32 e0       	ldi	r19, 0x02	; 2
-    396c:	41 e0       	ldi	r20, 0x01	; 1
-    396e:	61 e0       	ldi	r22, 0x01	; 1
-    3970:	82 e0       	ldi	r24, 0x02	; 2
-    3972:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранить");
-    3976:	21 e6       	ldi	r18, 0x61	; 97
-    3978:	32 e0       	ldi	r19, 0x02	; 2
-    397a:	41 e0       	ldi	r20, 0x01	; 1
-    397c:	62 e0       	ldi	r22, 0x02	; 2
-    397e:	82 e0       	ldi	r24, 0x02	; 2
-    3980:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Настройки");
-    3984:	2b e6       	ldi	r18, 0x6B	; 107
-    3986:	32 e0       	ldi	r19, 0x02	; 2
-    3988:	41 e0       	ldi	r20, 0x01	; 1
-    398a:	63 e0       	ldi	r22, 0x03	; 3
-    398c:	82 e0       	ldi	r24, 0x02	; 2
-    398e:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
-    3992:	2b e0       	ldi	r18, 0x0B	; 11
-    3994:	31 e0       	ldi	r19, 0x01	; 1
-    3996:	41 e0       	ldi	r20, 0x01	; 1
-    3998:	64 e0       	ldi	r22, 0x04	; 4
-    399a:	82 e0       	ldi	r24, 0x02	; 2
-    399c:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    39a0:	08 95       	ret
-	}else if(activity.Cursor < PARKING_SET){
-    39a2:	88 30       	cpi	r24, 0x08	; 8
-    39a4:	20 f5       	brcc	.+72     	; 0x39ee <_ZN6Screen10PrintTitleER8ActivityR7Carrage+0x9c>
-		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Сохранить");
-    39a6:	21 e6       	ldi	r18, 0x61	; 97
+    39a6:	2d e9       	ldi	r18, 0x9D	; 157
     39a8:	32 e0       	ldi	r19, 0x02	; 2
     39aa:	41 e0       	ldi	r20, 0x01	; 1
     39ac:	60 e0       	ldi	r22, 0x00	; 0
     39ae:	83 e0       	ldi	r24, 0x03	; 3
     39b0:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
-    39b4:	25 e7       	ldi	r18, 0x75	; 117
-    39b6:	32 e0       	ldi	r19, 0x02	; 2
-    39b8:	41 e0       	ldi	r20, 0x01	; 1
-    39ba:	61 e0       	ldi	r22, 0x01	; 1
-    39bc:	82 e0       	ldi	r24, 0x02	; 2
-    39be:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижняя поз.");
-    39c2:	2e e7       	ldi	r18, 0x7E	; 126
-    39c4:	32 e0       	ldi	r19, 0x02	; 2
-    39c6:	41 e0       	ldi	r20, 0x01	; 1
-    39c8:	62 e0       	ldi	r22, 0x02	; 2
-    39ca:	82 e0       	ldi	r24, 0x02	; 2
-    39cc:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
-    39d0:	2a e8       	ldi	r18, 0x8A	; 138
-    39d2:	32 e0       	ldi	r19, 0x02	; 2
-    39d4:	41 e0       	ldi	r20, 0x01	; 1
-    39d6:	63 e0       	ldi	r22, 0x03	; 3
-    39d8:	82 e0       	ldi	r24, 0x02	; 2
-    39da:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
-    39de:	2b e0       	ldi	r18, 0x0B	; 11
-    39e0:	31 e0       	ldi	r19, 0x01	; 1
-    39e2:	41 e0       	ldi	r20, 0x01	; 1
-    39e4:	64 e0       	ldi	r22, 0x04	; 4
-    39e6:	82 e0       	ldi	r24, 0x02	; 2
-    39e8:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    39ec:	08 95       	ret
-	}else if (activity.Cursor < SETTINGS_TUNING ){
-    39ee:	8c 30       	cpi	r24, 0x0C	; 12
-    39f0:	20 f5       	brcc	.+72     	; 0x3a3a <_ZN6Screen10PrintTitleER8ActivityR7Carrage+0xe8>
-		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Установить");
-    39f2:	26 e5       	ldi	r18, 0x56	; 86
-    39f4:	32 e0       	ldi	r19, 0x02	; 2
-    39f6:	41 e0       	ldi	r20, 0x01	; 1
-    39f8:	60 e0       	ldi	r22, 0x00	; 0
-    39fa:	83 e0       	ldi	r24, 0x03	; 3
-    39fc:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
-    3a00:	25 e7       	ldi	r18, 0x75	; 117
-    3a02:	32 e0       	ldi	r19, 0x02	; 2
-    3a04:	41 e0       	ldi	r20, 0x01	; 1
-    3a06:	61 e0       	ldi	r22, 0x01	; 1
-    3a08:	82 e0       	ldi	r24, 0x02	; 2
-    3a0a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
-    3a0e:	27 e9       	ldi	r18, 0x97	; 151
-    3a10:	32 e0       	ldi	r19, 0x02	; 2
-    3a12:	41 e0       	ldi	r20, 0x01	; 1
-    3a14:	62 e0       	ldi	r22, 0x02	; 2
-    3a16:	82 e0       	ldi	r24, 0x02	; 2
-    3a18:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
-    3a1c:	2a e8       	ldi	r18, 0x8A	; 138
-    3a1e:	32 e0       	ldi	r19, 0x02	; 2
-    3a20:	41 e0       	ldi	r20, 0x01	; 1
-    3a22:	63 e0       	ldi	r22, 0x03	; 3
-    3a24:	82 e0       	ldi	r24, 0x02	; 2
-    3a26:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
-    3a2a:	2b e0       	ldi	r18, 0x0B	; 11
-    3a2c:	31 e0       	ldi	r19, 0x01	; 1
-    3a2e:	41 e0       	ldi	r20, 0x01	; 1
-    3a30:	64 e0       	ldi	r22, 0x04	; 4
-    3a32:	82 e0       	ldi	r24, 0x02	; 2
-    3a34:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-    3a38:	08 95       	ret
-	}else{
-		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Настройки");
-    3a3a:	2b e6       	ldi	r18, 0x6B	; 107
-    3a3c:	32 e0       	ldi	r19, 0x02	; 2
-    3a3e:	41 e0       	ldi	r20, 0x01	; 1
-    3a40:	60 e0       	ldi	r22, 0x00	; 0
-    3a42:	83 e0       	ldi	r24, 0x03	; 3
-    3a44:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Калибровка");
-    3a48:	20 e0       	ldi	r18, 0x00	; 0
-    3a4a:	31 e0       	ldi	r19, 0x01	; 1
-    3a4c:	41 e0       	ldi	r20, 0x01	; 1
-    3a4e:	61 e0       	ldi	r22, 0x01	; 1
-    3a50:	82 e0       	ldi	r24, 0x02	; 2
-    3a52:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Ограничения");
-    3a56:	21 e1       	ldi	r18, 0x11	; 17
-    3a58:	31 e0       	ldi	r19, 0x01	; 1
-    3a5a:	41 e0       	ldi	r20, 0x01	; 1
-    3a5c:	62 e0       	ldi	r22, 0x02	; 2
-    3a5e:	82 e0       	ldi	r24, 0x02	; 2
-    3a60:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Диагностика");
-    3a64:	25 e2       	ldi	r18, 0x25	; 37
-    3a66:	31 e0       	ldi	r19, 0x01	; 1
-    3a68:	41 e0       	ldi	r20, 0x01	; 1
-    3a6a:	63 e0       	ldi	r22, 0x03	; 3
-    3a6c:	82 e0       	ldi	r24, 0x02	; 2
-    3a6e:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Ошибки");
-    3a72:	28 e5       	ldi	r18, 0x58	; 88
-    3a74:	31 e0       	ldi	r19, 0x01	; 1
-    3a76:	41 e0       	ldi	r20, 0x01	; 1
-    3a78:	64 e0       	ldi	r22, 0x04	; 4
-    3a7a:	82 e0       	ldi	r24, 0x02	; 2
-    3a7c:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
-		Lcd_print(2, 5, FONT_1X,(unsigned char *)"Выход");
-    3a80:	2b e0       	ldi	r18, 0x0B	; 11
-    3a82:	31 e0       	ldi	r19, 0x01	; 1
-    3a84:	41 e0       	ldi	r20, 0x01	; 1
-    3a86:	65 e0       	ldi	r22, 0x05	; 5
-    3a88:	82 e0       	ldi	r24, 0x02	; 2
-    3a8a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    39b4:	8d b7       	in	r24, 0x3d	; 61
+    39b6:	9e b7       	in	r25, 0x3e	; 62
+    39b8:	8c 97       	sbiw	r24, 0x2c	; 44
+    39ba:	0f b6       	in	r0, 0x3f	; 63
+    39bc:	f8 94       	cli
+    39be:	9e bf       	out	0x3e, r25	; 62
+    39c0:	0f be       	out	0x3f, r0	; 63
+    39c2:	8d bf       	out	0x3d, r24	; 61
+    39c4:	ad b7       	in	r26, 0x3d	; 61
+    39c6:	be b7       	in	r27, 0x3e	; 62
+    39c8:	11 96       	adiw	r26, 0x01	; 1
+    39ca:	8c e2       	ldi	r24, 0x2C	; 44
+    39cc:	fe 01       	movw	r30, r28
+    39ce:	bc 96       	adiw	r30, 0x2c	; 44
+    39d0:	01 90       	ld	r0, Z+
+    39d2:	0d 92       	st	X+, r0
+    39d4:	8a 95       	dec	r24
+    39d6:	e1 f7       	brne	.-8      	; 0x39d0 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x9c>
+    39d8:	c8 01       	movw	r24, r16
+    39da:	0e 94 41 1c 	call	0x3882	; 0x3882 <_ZN6Screen10PrintErrorE5Wheel>
+    39de:	ed b7       	in	r30, 0x3d	; 61
+    39e0:	fe b7       	in	r31, 0x3e	; 62
+    39e2:	bc 96       	adiw	r30, 0x2c	; 44
+    39e4:	0f b6       	in	r0, 0x3f	; 63
+    39e6:	f8 94       	cli
+    39e8:	fe bf       	out	0x3e, r31	; 62
+    39ea:	0f be       	out	0x3f, r0	; 63
+    39ec:	ed bf       	out	0x3d, r30	; 61
+    39ee:	4b c0       	rjmp	.+150    	; 0x3a86 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x152>
+		case(ERRORS_WHEEL3):Lcd_print(3, 0, FONT_1X,(unsigned char *)"3 Стойка");PrintError(carrage.Wheel_3);break;
+    39f0:	26 ea       	ldi	r18, 0xA6	; 166
+    39f2:	32 e0       	ldi	r19, 0x02	; 2
+    39f4:	41 e0       	ldi	r20, 0x01	; 1
+    39f6:	60 e0       	ldi	r22, 0x00	; 0
+    39f8:	83 e0       	ldi	r24, 0x03	; 3
+    39fa:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    39fe:	fe 01       	movw	r30, r28
+    3a00:	e8 5a       	subi	r30, 0xA8	; 168
+    3a02:	ff 4f       	sbci	r31, 0xFF	; 255
+    3a04:	8d b7       	in	r24, 0x3d	; 61
+    3a06:	9e b7       	in	r25, 0x3e	; 62
+    3a08:	8c 97       	sbiw	r24, 0x2c	; 44
+    3a0a:	0f b6       	in	r0, 0x3f	; 63
+    3a0c:	f8 94       	cli
+    3a0e:	9e bf       	out	0x3e, r25	; 62
+    3a10:	0f be       	out	0x3f, r0	; 63
+    3a12:	8d bf       	out	0x3d, r24	; 61
+    3a14:	ad b7       	in	r26, 0x3d	; 61
+    3a16:	be b7       	in	r27, 0x3e	; 62
+    3a18:	11 96       	adiw	r26, 0x01	; 1
+    3a1a:	8c e2       	ldi	r24, 0x2C	; 44
+    3a1c:	01 90       	ld	r0, Z+
+    3a1e:	0d 92       	st	X+, r0
+    3a20:	8a 95       	dec	r24
+    3a22:	e1 f7       	brne	.-8      	; 0x3a1c <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0xe8>
+    3a24:	c8 01       	movw	r24, r16
+    3a26:	0e 94 41 1c 	call	0x3882	; 0x3882 <_ZN6Screen10PrintErrorE5Wheel>
+    3a2a:	ed b7       	in	r30, 0x3d	; 61
+    3a2c:	fe b7       	in	r31, 0x3e	; 62
+    3a2e:	bc 96       	adiw	r30, 0x2c	; 44
+    3a30:	0f b6       	in	r0, 0x3f	; 63
+    3a32:	f8 94       	cli
+    3a34:	fe bf       	out	0x3e, r31	; 62
+    3a36:	0f be       	out	0x3f, r0	; 63
+    3a38:	ed bf       	out	0x3d, r30	; 61
+    3a3a:	25 c0       	rjmp	.+74     	; 0x3a86 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x152>
+		case(ERRORS_WHEEL4):Lcd_print(3, 0, FONT_1X,(unsigned char *)"4 Стойка");PrintError(carrage.Wheel_4);break;
+    3a3c:	2f ea       	ldi	r18, 0xAF	; 175
+    3a3e:	32 e0       	ldi	r19, 0x02	; 2
+    3a40:	41 e0       	ldi	r20, 0x01	; 1
+    3a42:	60 e0       	ldi	r22, 0x00	; 0
+    3a44:	83 e0       	ldi	r24, 0x03	; 3
+    3a46:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
+    3a4a:	fe 01       	movw	r30, r28
+    3a4c:	ec 57       	subi	r30, 0x7C	; 124
+    3a4e:	ff 4f       	sbci	r31, 0xFF	; 255
+    3a50:	8d b7       	in	r24, 0x3d	; 61
+    3a52:	9e b7       	in	r25, 0x3e	; 62
+    3a54:	8c 97       	sbiw	r24, 0x2c	; 44
+    3a56:	0f b6       	in	r0, 0x3f	; 63
+    3a58:	f8 94       	cli
+    3a5a:	9e bf       	out	0x3e, r25	; 62
+    3a5c:	0f be       	out	0x3f, r0	; 63
+    3a5e:	8d bf       	out	0x3d, r24	; 61
+    3a60:	ad b7       	in	r26, 0x3d	; 61
+    3a62:	be b7       	in	r27, 0x3e	; 62
+    3a64:	11 96       	adiw	r26, 0x01	; 1
+    3a66:	8c e2       	ldi	r24, 0x2C	; 44
+    3a68:	01 90       	ld	r0, Z+
+    3a6a:	0d 92       	st	X+, r0
+    3a6c:	8a 95       	dec	r24
+    3a6e:	e1 f7       	brne	.-8      	; 0x3a68 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage+0x134>
+    3a70:	c8 01       	movw	r24, r16
+    3a72:	0e 94 41 1c 	call	0x3882	; 0x3882 <_ZN6Screen10PrintErrorE5Wheel>
+    3a76:	ed b7       	in	r30, 0x3d	; 61
+    3a78:	fe b7       	in	r31, 0x3e	; 62
+    3a7a:	bc 96       	adiw	r30, 0x2c	; 44
+    3a7c:	0f b6       	in	r0, 0x3f	; 63
+    3a7e:	f8 94       	cli
+    3a80:	fe bf       	out	0x3e, r31	; 62
+    3a82:	0f be       	out	0x3f, r0	; 63
+    3a84:	ed bf       	out	0x3d, r30	; 61
+	}
+
+}
+    3a86:	df 91       	pop	r29
+    3a88:	cf 91       	pop	r28
+    3a8a:	1f 91       	pop	r17
+    3a8c:	0f 91       	pop	r16
     3a8e:	08 95       	ret
 
 00003a90 <_ZN6Screen14Draw_icon_menuEv>:
@@ -7936,7 +7936,7 @@ void Screen::Render_menu(Activity &activity, Carrage &carrage){
     3f72:	ec 01       	movw	r28, r24
     3f74:	8b 01       	movw	r16, r22
 	PrintTitle(activity,carrage);
-    3f76:	0e 94 a9 1c 	call	0x3952	; 0x3952 <_ZN6Screen10PrintTitleER8ActivityR7Carrage>
+    3f76:	0e 94 31 19 	call	0x3262	; 0x3262 <_ZN6Screen10PrintTitleER8ActivityR7Carrage>
 	Draw_CursorMenuScreen(activity);
     3f7a:	b8 01       	movw	r22, r16
     3f7c:	ce 01       	movw	r24, r28
@@ -8125,10 +8125,10 @@ bool Screen::Draw_CursorMainScreen(Activity &activity){
     40ca:	08 95       	ret
 
 000040cc <_ZN6Screen11Render_mainER8ActivityR7Carrage>:
-		case(SCREEN_MESSAGE):Message(activity,carrage);break;
-	}
-	Lcd_update();
+	
+	
 }
+
 
 void Screen::Render_main(Activity &activity, Carrage &carrage){	
     40cc:	ef 92       	push	r14
@@ -8179,7 +8179,7 @@ void Screen::Render_main(Activity &activity, Carrage &carrage){
 
 void Screen::MessageSave(){
 	Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранено...");
-    4118:	23 ea       	ldi	r18, 0xA3	; 163
+    4118:	28 eb       	ldi	r18, 0xB8	; 184
     411a:	32 e0       	ldi	r19, 0x02	; 2
     411c:	41 e0       	ldi	r20, 0x01	; 1
     411e:	62 e0       	ldi	r22, 0x02	; 2
@@ -8192,22 +8192,22 @@ void Screen::MessageSave(){
 
 void Screen::MessageSelectMalfuction(){
 	Lcd_print(3, 0, FONT_1X,(unsigned char *)"Внимание");
-    4128:	20 eb       	ldi	r18, 0xB0	; 176
+    4128:	25 ec       	ldi	r18, 0xC5	; 197
     412a:	32 e0       	ldi	r19, 0x02	; 2
     412c:	41 e0       	ldi	r20, 0x01	; 1
     412e:	60 e0       	ldi	r22, 0x00	; 0
     4130:	83 e0       	ldi	r24, 0x03	; 3
     4132:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(1, 1, FONT_1X,(unsigned char *)"Стойка(и) несправны. Возможна не адекватная реакция.");
-    4136:	29 eb       	ldi	r18, 0xB9	; 185
+    4136:	2e ec       	ldi	r18, 0xCE	; 206
     4138:	32 e0       	ldi	r19, 0x02	; 2
     413a:	41 e0       	ldi	r20, 0x01	; 1
     413c:	61 e0       	ldi	r22, 0x01	; 1
     413e:	81 e0       	ldi	r24, 0x01	; 1
     4140:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(1, 5, FONT_1X,(unsigned char *)"Нажмите Ок");
-    4144:	2e ee       	ldi	r18, 0xEE	; 238
-    4146:	32 e0       	ldi	r19, 0x02	; 2
+    4144:	23 e0       	ldi	r18, 0x03	; 3
+    4146:	33 e0       	ldi	r19, 0x03	; 3
     4148:	41 e0       	ldi	r20, 0x01	; 1
     414a:	65 e0       	ldi	r22, 0x05	; 5
     414c:	81 e0       	ldi	r24, 0x01	; 1
@@ -8219,35 +8219,35 @@ void Screen::MessageSelectMalfuction(){
 
 void Screen::MessageGetMalfuction(){
 	Lcd_print(4, 0, FONT_1X,(unsigned char *)"Ошибка");
-    4154:	29 ef       	ldi	r18, 0xF9	; 249
-    4156:	32 e0       	ldi	r19, 0x02	; 2
+    4154:	2e e0       	ldi	r18, 0x0E	; 14
+    4156:	33 e0       	ldi	r19, 0x03	; 3
     4158:	41 e0       	ldi	r20, 0x01	; 1
     415a:	60 e0       	ldi	r22, 0x00	; 0
     415c:	84 e0       	ldi	r24, 0x04	; 4
     415e:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(0, 1, FONT_1X,(unsigned char *)"Информация в");
-    4162:	20 e0       	ldi	r18, 0x00	; 0
+    4162:	25 e1       	ldi	r18, 0x15	; 21
     4164:	33 e0       	ldi	r19, 0x03	; 3
     4166:	41 e0       	ldi	r20, 0x01	; 1
     4168:	61 e0       	ldi	r22, 0x01	; 1
     416a:	80 e0       	ldi	r24, 0x00	; 0
     416c:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(0, 2, FONT_1X,(unsigned char *)"меню настройки");
-    4170:	2d e0       	ldi	r18, 0x0D	; 13
+    4170:	22 e2       	ldi	r18, 0x22	; 34
     4172:	33 e0       	ldi	r19, 0x03	; 3
     4174:	41 e0       	ldi	r20, 0x01	; 1
     4176:	62 e0       	ldi	r22, 0x02	; 2
     4178:	80 e0       	ldi	r24, 0x00	; 0
     417a:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(0, 3, FONT_1X,(unsigned char *)"ошибки");
-    417e:	2c e1       	ldi	r18, 0x1C	; 28
+    417e:	21 e3       	ldi	r18, 0x31	; 49
     4180:	33 e0       	ldi	r19, 0x03	; 3
     4182:	41 e0       	ldi	r20, 0x01	; 1
     4184:	63 e0       	ldi	r22, 0x03	; 3
     4186:	80 e0       	ldi	r24, 0x00	; 0
     4188:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(2, 5, FONT_1X,(unsigned char *)"нажмите ОК");
-    418c:	23 e2       	ldi	r18, 0x23	; 35
+    418c:	28 e3       	ldi	r18, 0x38	; 56
     418e:	33 e0       	ldi	r19, 0x03	; 3
     4190:	41 e0       	ldi	r20, 0x01	; 1
     4192:	65 e0       	ldi	r22, 0x05	; 5
@@ -8261,14 +8261,14 @@ void Screen::MessageGetMalfuction(){
 void Screen::MessageNoAnySelected(){
 
 	Lcd_print(3, 2, FONT_1X,(unsigned char *)"Выберите");
-    419c:	2e e2       	ldi	r18, 0x2E	; 46
+    419c:	23 e4       	ldi	r18, 0x43	; 67
     419e:	33 e0       	ldi	r19, 0x03	; 3
     41a0:	41 e0       	ldi	r20, 0x01	; 1
     41a2:	62 e0       	ldi	r22, 0x02	; 2
     41a4:	83 e0       	ldi	r24, 0x03	; 3
     41a6:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(3, 3, FONT_1X,(unsigned char *)"стойку(и)");
-    41aa:	27 e3       	ldi	r18, 0x37	; 55
+    41aa:	2c e4       	ldi	r18, 0x4C	; 76
     41ac:	33 e0       	ldi	r19, 0x03	; 3
     41ae:	41 e0       	ldi	r20, 0x01	; 1
     41b0:	63 e0       	ldi	r22, 0x03	; 3
@@ -8282,14 +8282,14 @@ void Screen::MessageNoAnySelected(){
 
 void Screen::MessageGetLimits(){
 	Lcd_print(3, 2, FONT_1X,(unsigned char *)"Достигнуто");
-    41ba:	21 e4       	ldi	r18, 0x41	; 65
+    41ba:	26 e5       	ldi	r18, 0x56	; 86
     41bc:	33 e0       	ldi	r19, 0x03	; 3
     41be:	41 e0       	ldi	r20, 0x01	; 1
     41c0:	62 e0       	ldi	r22, 0x02	; 2
     41c2:	83 e0       	ldi	r24, 0x03	; 3
     41c4:	0e 94 c6 16 	call	0x2d8c	; 0x2d8c <_Z9Lcd_printhh11LcdFontSizePh>
 	Lcd_print(2, 3, FONT_1X,(unsigned char *)"ограничение");
-    41c8:	2c e4       	ldi	r18, 0x4C	; 76
+    41c8:	21 e6       	ldi	r18, 0x61	; 97
     41ca:	33 e0       	ldi	r19, 0x03	; 3
     41cc:	41 e0       	ldi	r20, 0x01	; 1
     41ce:	63 e0       	ldi	r22, 0x03	; 3
@@ -8431,31 +8431,31 @@ void Screen::Render(Activity &activity, Carrage &carrage){
     42b4:	a8 01       	movw	r20, r16
     42b6:	be 01       	movw	r22, r28
     42b8:	c7 01       	movw	r24, r14
-    42ba:	0e 94 31 19 	call	0x3262	; 0x3262 <_ZN6Screen14Render_tunningER8ActivityR7Carrage>
+    42ba:	0e 94 d0 19 	call	0x33a0	; 0x33a0 <_ZN6Screen14Render_tunningER8ActivityR7Carrage>
     42be:	1d c0       	rjmp	.+58     	; 0x42fa <_ZN6Screen6RenderER8ActivityR7Carrage+0xd6>
 		case(SCREEN_LIMITS):Render_limits(activity,carrage);break;
     42c0:	a8 01       	movw	r20, r16
     42c2:	be 01       	movw	r22, r28
     42c4:	c7 01       	movw	r24, r14
-    42c6:	0e 94 7e 19 	call	0x32fc	; 0x32fc <_ZN6Screen13Render_limitsER8ActivityR7Carrage>
+    42c6:	0e 94 1d 1a 	call	0x343a	; 0x343a <_ZN6Screen13Render_limitsER8ActivityR7Carrage>
     42ca:	17 c0       	rjmp	.+46     	; 0x42fa <_ZN6Screen6RenderER8ActivityR7Carrage+0xd6>
 		case(SCREEN_SET_MALFACTION):Render_maltifaction(activity,carrage);break;
     42cc:	a8 01       	movw	r20, r16
     42ce:	be 01       	movw	r22, r28
     42d0:	c7 01       	movw	r24, r14
-    42d2:	0e 94 f5 19 	call	0x33ea	; 0x33ea <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage>
+    42d2:	0e 94 94 1a 	call	0x3528	; 0x3528 <_ZN6Screen19Render_maltifactionER8ActivityR7Carrage>
     42d6:	11 c0       	rjmp	.+34     	; 0x42fa <_ZN6Screen6RenderER8ActivityR7Carrage+0xd6>
 		case(SCREEN_SET_ERRORS):Render_ERRORS(activity,carrage);break;
     42d8:	a8 01       	movw	r20, r16
     42da:	be 01       	movw	r22, r28
     42dc:	c7 01       	movw	r24, r14
-    42de:	0e 94 7e 1a 	call	0x34fc	; 0x34fc <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage>
+    42de:	0e 94 1d 1b 	call	0x363a	; 0x363a <_ZN6Screen13Render_ERRORSER8ActivityR7Carrage>
     42e2:	0b c0       	rjmp	.+22     	; 0x42fa <_ZN6Screen6RenderER8ActivityR7Carrage+0xd6>
 		case(SCREEN_ERROR_WHEEL):Render_ERROR(activity,carrage);break;\
     42e4:	a8 01       	movw	r20, r16
     42e6:	be 01       	movw	r22, r28
     42e8:	c7 01       	movw	r24, r14
-    42ea:	0e 94 fb 1b 	call	0x37f6	; 0x37f6 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage>
+    42ea:	0e 94 9a 1c 	call	0x3934	; 0x3934 <_ZN6Screen12Render_ERRORER8ActivityR7Carrage>
     42ee:	05 c0       	rjmp	.+10     	; 0x42fa <_ZN6Screen6RenderER8ActivityR7Carrage+0xd6>
 		case(SCREEN_MESSAGE):Message(activity,carrage);break;
     42f0:	a8 01       	movw	r20, r16

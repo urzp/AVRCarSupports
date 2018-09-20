@@ -37,6 +37,38 @@ void Screen::Render(Activity &activity, Carrage &carrage){
 	Lcd_update();
 }
 
+void Screen::PrintTitle(Activity &activity, Carrage &carrage){
+	if(activity.Cursor < PARKING_SAVE){
+		Lcd_print(5, 0, FONT_1X,(unsigned char *)"МЕНЮ");
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Установить");
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранить");
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Настройки");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Дисплей");
+		}else if(activity.Cursor < PARKING_SET){
+		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Сохранить");
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижняя поз.");
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Дисплей");
+		}else if (activity.Cursor < SETTINGS_TUNING ){
+		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Установить");
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Дисплей");
+		}else{
+		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Настройки");
+		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Калибровка");
+		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Ограничения");
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Диагностика");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Ошибки");
+		Lcd_print(2, 5, FONT_1X,(unsigned char *)"Выйти Диспл.");
+	}
+	
+	
+}
+
+
 void Screen::Render_main(Activity &activity, Carrage &carrage){	
 	Draw_icon_menu();
 	Draw_icon_carrage(activity);
@@ -150,36 +182,7 @@ void Screen::PrintError(Wheel wheel){
 	}
 }
 
-void Screen::PrintTitle(Activity &activity, Carrage &carrage){
-	if(activity.Cursor < PARKING_SAVE){
-		Lcd_print(5, 0, FONT_1X,(unsigned char *)"МЕНЮ");
-		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Установить");
-		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранить");
-		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Настройки");
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
-	}else if(activity.Cursor < PARKING_SET){
-		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Сохранить");
-		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
-		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижняя поз.");
-		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
-	}else if (activity.Cursor < SETTINGS_TUNING ){
-		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Установить");
-		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
-		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
-		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Выход");
-	}else{
-		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Настройки");
-		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Калибровка");
-		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Ограничения");
-		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Диагностика");
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Ошибки");
-		Lcd_print(2, 5, FONT_1X,(unsigned char *)"Выход");
-	}
-	
-	
-}
+
 
 
 // ******************************************************
