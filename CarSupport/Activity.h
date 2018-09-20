@@ -17,6 +17,7 @@ const int MESSAGE_SAVE = 0;
 const int MESSAGE_SELECT_MALFUCTION = 1;
 const int MESSAGE_GET_MALFUCTION = 2;
 const int MESSAGE_NO_ANY_SELECTED = 3;
+const int MESSAGE_GET_LIMITS = 400;
 
 const int MENU = 0;
 const int LEFTUP = 1;

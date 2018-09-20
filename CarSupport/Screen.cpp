@@ -361,6 +361,7 @@ bool Screen::Message(Activity &activity, Carrage &carrage){
 		case(MESSAGE_SELECT_MALFUCTION):MessageSelectMalfuction();break;
 		case(MESSAGE_GET_MALFUCTION):MessageGetMalfuction();break;
 		case(MESSAGE_NO_ANY_SELECTED):MessageNoAnySelected();break;
+		case(MESSAGE_GET_LIMITS):MessageGetLimits();break;
 	}
 	
 }
@@ -388,4 +389,9 @@ void Screen::MessageNoAnySelected(){
 	Lcd_print(3, 2, FONT_1X,(unsigned char *)"Выберите");
 	Lcd_print(3, 3, FONT_1X,(unsigned char *)"стойку(и)");
 
+}
+
+void Screen::MessageGetLimits(){
+	Lcd_print(3, 2, FONT_1X,(unsigned char *)"Достигнуто");
+	Lcd_print(2, 3, FONT_1X,(unsigned char *)"ограничение");
 }

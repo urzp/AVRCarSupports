@@ -28,6 +28,7 @@ public:
 	float countToMalfunctionLimit;
 	bool OnOffMalfunction;
 	bool flagNewMalfuction;
+	bool flagGetLimits;
 protected:
 private:
 	int sort_array[4];
@@ -62,6 +63,8 @@ public:
 	void DiSelectAllWheel();
 	void SwitchAllWheel();
 	bool AnySelected();
+	bool ChekGetLimits();
+	
 protected:
 private:
 

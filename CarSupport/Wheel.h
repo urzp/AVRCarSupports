@@ -18,6 +18,7 @@ public:
 	float hight;
 	float maxHight;
 	float minHight;
+	bool flagGetLimits;
 	float oldHigit;
 	float checkhight;
 	float sethight;
@@ -50,6 +51,7 @@ public:
 	bool Check();
 	bool selected_malfinction();
 	bool MalFunctionAndnotselected();
+	bool CheckGetLimit();
 protected:
 private:
 

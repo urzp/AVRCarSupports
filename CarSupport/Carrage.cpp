@@ -66,6 +66,7 @@ void Carrage::ForceUp(){
 	if (Wheel_3.selected){derWheel[3]=1;}else{derWheel[3]=0;};
 	if (Wheel_4.selected){derWheel[4]=1;}else{derWheel[4]=0;};
 	support.ForceMove(10,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );
+	ChekGetLimits();
 }
 
 void Carrage::ForceDown(){
@@ -74,6 +75,7 @@ void Carrage::ForceDown(){
 	if (Wheel_3.selected){derWheel[3]=2;}else{derWheel[3]=0;};
 	if (Wheel_4.selected){derWheel[4]=2;}else{derWheel[4]=0;};
 	support.ForceMove(10,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );
+	ChekGetLimits();
 }
 
 bool Carrage::IfSelectetMalfuction(){
@@ -275,4 +277,21 @@ bool Carrage::AnySelected(){
 	if(Wheel_1.selected||Wheel_2.selected||Wheel_3.selected||Wheel_4.selected){
 		return true;
 	}else{return false;}
+}
+
+bool Carrage::ChekGetLimits(){
+	Wheel_1.CheckGetLimit();
+	Wheel_2.CheckGetLimit();
+	Wheel_3.CheckGetLimit();
+	Wheel_4.CheckGetLimit();
+	if(Wheel_1.flagGetLimits||Wheel_2.flagGetLimits||Wheel_2.flagGetLimits||Wheel_2.flagGetLimits){
+		Wheel_1.flagGetLimits = false;
+		Wheel_2.flagGetLimits = false;
+		Wheel_3.flagGetLimits = false;
+		Wheel_4.flagGetLimits = false;
+		flagGetLimits = true;
+		return true;
+	}else{
+		return false;
+	}
 }

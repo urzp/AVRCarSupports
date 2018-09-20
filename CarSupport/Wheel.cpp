@@ -105,14 +105,14 @@ void Wheel::Select(){
 bool Wheel::Up(float step){
 	if (!selected){return false;}
 	sethight += step;
-	if (sethight > maxHight){sethight = maxHight;}
+	if (sethight > maxHight){sethight = maxHight;flagGetLimits=true;}
 	return true;
 }
 
 bool Wheel::Down(float step){
 	if (!selected){return false;}
 	sethight -= step;
-	if (sethight < minHight){sethight = minHight;}
+	if (sethight < minHight){sethight = minHight;flagGetLimits=true;}
 	return true;
 }
 
@@ -126,4 +126,11 @@ bool Wheel::MalFunctionAndnotselected(){
 	if(malfuction){return true;}
 	if(selected){return true;}
 	return false;
+}
+
+bool Wheel::CheckGetLimit(){
+	if(hight<minHight||hight>maxHight){
+		flagGetLimits=true;
+		return true;
+	}else{return false;}
 }
