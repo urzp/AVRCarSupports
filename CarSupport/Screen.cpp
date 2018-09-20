@@ -20,7 +20,8 @@ void Screen::Init(){
 }
 
 void Screen::Render(Activity &activity, Carrage &carrage){
-
+	if(carrage.flagNewMalfuction){carrage.flagNewMalfuction=false;activity.Statment=SCREEN_MESSAGE; activity.TypeMessage = MESSAGE_GET_MALFUCTION;}
+	if(carrage.flagGetLimits){carrage.flagGetLimits=false; activity.Statment=SCREEN_MESSAGE; activity.TypeMessage = MESSAGE_GET_LIMITS;}	
 	Lcd_clear();
 	switch(activity.Statment){
 		case(SCREEN_MAIN):Render_main(activity,carrage);break;

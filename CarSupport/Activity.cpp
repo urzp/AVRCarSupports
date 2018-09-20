@@ -18,7 +18,6 @@ Activity::Activity()
 
 
 bool Activity::Cursor_Action(Panel &panel, Carrage &carrage){
-	if(carrage.flagNewMalfuction){carrage.flagNewMalfuction=false;Statment=SCREEN_MESSAGE; TypeMessage = MESSAGE_GET_MALFUCTION;}
 	switch(Statment){
 		case(SCREEN_MAIN):Main_Screen_Move(panel,carrage);break;
 		case(SCREEN_MENU):Menu_Screen_Move(panel,carrage);break;
@@ -421,7 +420,7 @@ bool Activity::Message(Panel &panel,Carrage &carrage){
 		case(MESSAGE_SELECT_MALFUCTION):MessageSelectMalfunction(panel);break;
 		case(MESSAGE_GET_MALFUCTION):MessageGetMalfunction(panel, carrage);break;
 		case(MESSAGE_NO_ANY_SELECTED):_delay_ms(1000);Statment=SCREEN_MAIN;Cursor = MENU;break;
-		case(MESSAGE_GET_LIMITS):_delay_ms(1000);Statment=SCREEN_MAIN;break;
+		case(MESSAGE_GET_LIMITS):_delay_ms(1000);Statment=SCREEN_LIMITS;Cursor=LIMITS_MIN;break;
 	}
 }
 
@@ -435,7 +434,7 @@ bool Activity::MessageSelectMalfunction(Panel &panel){
 bool Activity::MessageGetMalfunction(Panel &panel,Carrage &carrage){
 	int pressed = panel.Pressed(100);
 	if (pressed == B_NOTHING ){return false;}
-	if (!(pressed == B_NOTHING)){carrage.flagNewMalfuction=false;Statment=SCREEN_MAIN;Cursor=MENU;}
+	if (!(pressed == B_NOTHING)){carrage.flagNewMalfuction=false;Statment=SCREEN_SET_ERRORS;Cursor=ERRORS_RESET;}
 }
 
 void Activity::ForceMove(Carrage &carrage, int derection){
@@ -444,7 +443,6 @@ void Activity::ForceMove(Carrage &carrage, int derection){
 	}
 	carrage.ResecCountMalfinction();
 	if(!carrage.AnySelected()){Statment=SCREEN_MESSAGE;TypeMessage=MESSAGE_NO_ANY_SELECTED;}
-	if(carrage.flagGetLimits){carrage.flagGetLimits=false; Statment=SCREEN_MESSAGE; TypeMessage = MESSAGE_GET_LIMITS;}
 	switch(derection){
 		case(B_W_UP_):carrage.ForceUp();break;
 		case(B_W_DOWN):carrage.ForceDown();break;

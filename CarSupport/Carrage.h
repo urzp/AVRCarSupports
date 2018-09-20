@@ -63,8 +63,8 @@ public:
 	void DiSelectAllWheel();
 	void SwitchAllWheel();
 	bool AnySelected();
-	bool ChekGetLimits();
-	
+	bool ChekGetLimitsLow();
+	bool ChekGetLimitsHight();
 protected:
 private:
 

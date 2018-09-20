@@ -50,6 +50,7 @@ void Carrage::Up(float step){
 	Wheel_3.Up(step);
 	Wheel_4.Up(step);
 	Ajustment();
+	ChekGetLimitsHight();
 }
 
 void Carrage::Down(float step){
@@ -58,6 +59,7 @@ void Carrage::Down(float step){
 	Wheel_3.Down(step);
 	Wheel_4.Down(step);
 	Ajustment();
+	ChekGetLimitsLow();
 }
 
 void Carrage::ForceUp(){
@@ -65,7 +67,7 @@ void Carrage::ForceUp(){
 	if (Wheel_2.selected){derWheel[2]=1;}else{derWheel[2]=0;};
 	if (Wheel_3.selected){derWheel[3]=1;}else{derWheel[3]=0;};
 	if (Wheel_4.selected){derWheel[4]=1;}else{derWheel[4]=0;};
-	if(!ChekGetLimits()){support.ForceMove(10,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );}
+	if(!ChekGetLimitsHight()){support.ForceMove(10,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );}
 }
 
 void Carrage::ForceDown(){
@@ -73,7 +75,7 @@ void Carrage::ForceDown(){
 	if (Wheel_2.selected){derWheel[2]=2;}else{derWheel[2]=0;};
 	if (Wheel_3.selected){derWheel[3]=2;}else{derWheel[3]=0;};
 	if (Wheel_4.selected){derWheel[4]=2;}else{derWheel[4]=0;};
-	if(!ChekGetLimits()){support.ForceMove(10,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );}
+	if(!ChekGetLimitsLow()){support.ForceMove(10,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );}
 	
 }
 
@@ -278,11 +280,11 @@ bool Carrage::AnySelected(){
 	}else{return false;}
 }
 
-bool Carrage::ChekGetLimits(){
-	Wheel_1.CheckGetLimit();
-	Wheel_2.CheckGetLimit();
-	Wheel_3.CheckGetLimit();
-	Wheel_4.CheckGetLimit();
+bool Carrage::ChekGetLimitsLow(){
+	Wheel_1.CheckGetLimitLow();
+	Wheel_2.CheckGetLimitLow();
+	Wheel_3.CheckGetLimitLow();
+	Wheel_4.CheckGetLimitLow();
 	if(Wheel_1.flagGetLimits||Wheel_2.flagGetLimits||Wheel_3.flagGetLimits||Wheel_4.flagGetLimits){
 		Wheel_1.flagGetLimits = false;
 		Wheel_2.flagGetLimits = false;
@@ -291,6 +293,23 @@ bool Carrage::ChekGetLimits(){
 		flagGetLimits = true;
 		return true;
 	}else{
+		return false;
+	}
+}
+
+bool Carrage::ChekGetLimitsHight(){
+	Wheel_1.CheckGetLimitHight();
+	Wheel_2.CheckGetLimitHight();
+	Wheel_3.CheckGetLimitHight();
+	Wheel_4.CheckGetLimitHight();
+	if(Wheel_1.flagGetLimits||Wheel_2.flagGetLimits||Wheel_3.flagGetLimits||Wheel_4.flagGetLimits){
+		Wheel_1.flagGetLimits = false;
+		Wheel_2.flagGetLimits = false;
+		Wheel_3.flagGetLimits = false;
+		Wheel_4.flagGetLimits = false;
+		flagGetLimits = true;
+		return true;
+		}else{
 		return false;
 	}
 }

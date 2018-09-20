@@ -51,7 +51,8 @@ public:
 	bool Check();
 	bool selected_malfinction();
 	bool MalFunctionAndnotselected();
-	bool CheckGetLimit();
+	bool CheckGetLimitLow();
+	bool CheckGetLimitHight();
 protected:
 private:
 
