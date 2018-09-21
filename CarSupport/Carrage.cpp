@@ -109,6 +109,7 @@ void Carrage::Ajustment(){
 	int i=0;
 	if (chechWheelsBefore()){
 		while(finish>0&&i<200){
+			LCDflachIndicator(i);
 			derWheel[1] = Wheel_1.takeDerection();
 			Fast_print_LSD_hight(Wheel_1);
 			derWheel[2] = Wheel_2.takeDerection();
@@ -121,14 +122,17 @@ void Carrage::Ajustment(){
 			finish = derWheel[1] + derWheel[2] + derWheel[3] + derWheel[4];
 			support.Adjast(getStep() ,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );	
 			i++;
+			
 		}
 	
-		if(i>=100){
+		if(i>=200){
 			if(derWheel[1]>0){Wheel_1.malfuction = true;Wheel_1.Error = 2;flagNewMalfuction = true;}
 			if(derWheel[2]>0){Wheel_2.malfuction = true;Wheel_2.Error = 2;flagNewMalfuction = true;}
 			if(derWheel[3]>0){Wheel_3.malfuction = true;Wheel_3.Error = 2;flagNewMalfuction = true;}
 			if(derWheel[4]>0){Wheel_4.malfuction = true;Wheel_4.Error = 2;flagNewMalfuction = true;}
 		}
+		
+		
 	}
 }
 
@@ -209,6 +213,7 @@ void Carrage::Fast_print_LSD_hight(Wheel wheel){
 	float hight = wheel.sethight;
 	//Lcd_printf2(hight_pos_x, hight_pos_y-1, FONT_1X, hight, 2);
 	hight = wheel.get_hight();
+
 	Lcd_printf2(hight_pos_x, hight_pos_y, FONT_1X, hight, 2);
 	Lcd_update();
 }
@@ -312,4 +317,32 @@ bool Carrage::ChekGetLimitsHight(){
 		}else{
 		return false;
 	}
+}
+
+void Carrage::LCDflachIndicator(int i){
+
+	if(i%6>3){
+
+		LcdGotoXY(6,2);
+		LcdChr_full(0x96);
+		LcdGotoXY(7,2);
+		LcdChr_full(0x97);
+		LcdGotoXY(6,3);
+		LcdChr_full(0x98);
+		LcdGotoXY(7,3);
+		LcdChr_full(0x99);
+		
+	}else{
+
+		LcdGotoXY(6,2);
+		LcdChr_full(0x92);
+		LcdGotoXY(7,2);
+		LcdChr_full(0x93);
+		LcdGotoXY(6,3);
+		LcdChr_full(0x94);
+		LcdGotoXY(7,3);
+		LcdChr_full(0x95);
+		
+	}
+
 }

@@ -65,6 +65,7 @@ public:
 	bool AnySelected();
 	bool ChekGetLimitsLow();
 	bool ChekGetLimitsHight();
+	void LCDflachIndicator(int i);
 protected:
 private:
 

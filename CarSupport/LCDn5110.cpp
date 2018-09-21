@@ -311,11 +311,18 @@ byte LcdChr_full(byte ch){
 	int  tmpIdx;
 	ch -= 32;
 	
-	    for ( i = 0; i < 6; i++ )
-	    {
-		    // Копируем вид символа из таблицы в кэш
-		    LcdCache[LcdCacheIdx++] = pgm_read_byte( &(FontLookup[ch][i]) );
-	    }
+	for ( i = 0; i < 6; i++ )
+	{
+		// Копируем вид символа из таблицы в кэш
+		LcdCache[LcdCacheIdx++] = pgm_read_byte( &(FontLookup[ch][i]) );
+	}
+		
+	if ( LcdCacheIdx > HiWaterMark )
+	{
+		// Обновляем верхнюю границу
+		HiWaterMark = LcdCacheIdx;
+	}
+		
 	return OK;
 }
 
