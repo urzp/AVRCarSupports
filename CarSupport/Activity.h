@@ -84,23 +84,27 @@ const int SETTINGS_TEST_MALFACTION = 14;
 const int SETTINGS_RESET_ERRORS = 15;
 const int SETTINGS_EXIT = 16;
 
-const int TUNING = 17;
-const int EXIT_TUNING =18;
+const int TUNING = 200;
+const int EXIT_TUNING =201;
+const int EXIT_TUNING_DISPLAY =202;
 
-const int LIMITS_MIN = 19;
-const int LIMITS_MAX = 20;
-const int EXIT_LIMITS =21;
+const int LIMITS_MIN = 210;
+const int LIMITS_MAX = 211;
+const int EXIT_LIMITS =212;
+const int EXIT_LIMITS_DISPLAY =213;
 
-const int TIME_MALFACTION =22;
-const int ONOF_MALFACTION =23;
-const int EXIT_MALFACTION =24;
+const int TIME_MALFACTION =220;
+const int ONOF_MALFACTION =221;
+const int EXIT_MALFACTION =222;
+const int EXIT_MALFACTION_DISPLAY =223;
 
-const int ERRORS_WHEEL1 = 25;
-const int ERRORS_WHEEL2 = 26;
-const int ERRORS_WHEEL3 = 27;
-const int ERRORS_WHEEL4 = 28;
-const int ERRORS_RESET = 29;
-const int ERRORS_EXIT = 30;
+const int ERRORS_RESET = 230;
+const int ERRORS_WHEEL1 = 231;
+const int ERRORS_WHEEL2 = 232;
+const int ERRORS_WHEEL3 = 233;
+const int ERRORS_WHEEL4 = 234;
+const int ERRORS_EXIT = 235;
+const int ERRORS_EXIT_DISPLAY = 236;
 
 static const float Steps[] PROGMEM={
 	0.01, 0.02, 0.03, 0.04, 0.05,
