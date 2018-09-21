@@ -44,9 +44,10 @@ void IFCarrageSetStateToEEMEM( int position){
 		carrage.Wheel_3.sethight=eeprom_read_float(&PositionsStates[position][3]);
 		carrage.Wheel_4.sethight=eeprom_read_float(&PositionsStates[position][4]);
 		carrage.Ajustment();
-		//_delay_ms(100);
-		activity.GoToSetPosiions();
-		//carrage.DiSelectAllWheel();
+		//_delay_ms(10);
+		//activity.GoToSetPosiions();
+		carrage.DiSelectAllWheel();
+		activity.Statment = 0;
 	}
 	activity.SetFlag = false;
 }

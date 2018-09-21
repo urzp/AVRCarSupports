@@ -130,6 +130,7 @@ bool Wheel::MalFunctionAndnotselected(){
 
 bool Wheel::CheckGetLimitLow(){
 	if(malfuction){return false;}
+	if(!selected){return false;}
 	if((int)(hight*100)<=(int)(minHight*100)){
 		flagGetLimits=true;
 		return true;
@@ -138,6 +139,7 @@ bool Wheel::CheckGetLimitLow(){
 
 bool Wheel::CheckGetLimitHight(){
 	if(malfuction){return false;}
+	if(!selected){return false;}
 	if((int)(hight*100)>=(int)(maxHight*100)){
 		flagGetLimits=true;
 		return true;
