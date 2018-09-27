@@ -35,7 +35,7 @@
 #define ERROR       0x01
 #define SUCCESS     0x00
 
-#define I2C_ADR_PCF8574 0x27
+#define I2C_ADR_PCF8574 0x3F
 
 static uint8_t send_i2c(uint8_t value);
 static uint8_t start_i2c(uint8_t d_adr);
@@ -53,6 +53,7 @@ Support::Support()
 
 
 void Support::Init(){
+	TWBR = 39;
 	write_i2c((I2C_ADR_PCF8574<<1), 0x00);
 } 
 

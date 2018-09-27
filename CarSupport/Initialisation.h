@@ -7,7 +7,7 @@
 
 
 
-#define F_CPU 16000000
+
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/eeprom.h>
@@ -21,11 +21,12 @@
 #include "Activity.h"
 
 
-#define I2C_ADR_PCF8574 0x27
+
 
 #ifndef INITIALISATION_H_
 #define INITIALISATION_H_
 
+byte FierstStart EEMEM;
 float Tunning_rate EEMEM;
 float CarrajeMin EEMEM;
 float CarrajeMax EEMEM;
@@ -45,20 +46,30 @@ void Initialisation(){
 	carrage.Init();
 	activity.Init(carrage);
 	
-	// initilisation null EEMEM
-	if(!(eeprom_read_float(&Tunning_rate)>0||eeprom_read_float(&Tunning_rate)<3)){
+	if(!(eeprom_read_byte(&FierstStart) == 1)){
 		eeprom_write_float (&Tunning_rate, 1.00);
-	}
-	carrage.tunning = eeprom_read_float(&Tunning_rate);
-	
-	if (!(eeprom_read_float(&CarrajeMin)>=0||eeprom_read_float(&CarrajeMin)<=5)){
 		eeprom_write_float (&CarrajeMin, 0.00);
-	}
-	carrage.min =  eeprom_read_float(&CarrajeMin);
-	
-	if (!(eeprom_read_float(&CarrajeMax)>=0||eeprom_read_float(&CarrajeMax)<=5)){
 		eeprom_write_float (&CarrajeMax, 5.00);
+		eeprom_write_byte(&FierstStart, 1);
 	}
+	
+	// initilisation null EEMEM
+	//if(!(eeprom_read_float(&Tunning_rate)>0||eeprom_read_float(&Tunning_rate)<3)){
+		//eeprom_write_float (&Tunning_rate, 1.00);
+	//}
+
+	
+	//if (!(eeprom_read_float(&CarrajeMin)>=0||eeprom_read_float(&CarrajeMin)<=5)){
+		//eeprom_write_float (&CarrajeMin, 0.00);
+	//}
+	
+	
+	//if (!(eeprom_read_float(&CarrajeMax)>=0||eeprom_read_float(&CarrajeMax)<=5)){
+		//eeprom_write_float (&CarrajeMax, 5.00);
+	//}
+	
+	carrage.tunning = eeprom_read_float(&Tunning_rate);
+	carrage.min =  eeprom_read_float(&CarrajeMin);
 	carrage.max =  eeprom_read_float(&CarrajeMax);
 	
 	carrage.SetLimits();

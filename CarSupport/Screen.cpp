@@ -62,7 +62,7 @@ void Screen::PrintTitle(Activity &activity, Carrage &carrage){
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Ограничения");
 		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Диагностика");
 		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Ошибки");
-		Lcd_print(2, 5, FONT_1X,(unsigned char *)"Выйти Диспл.");
+		Lcd_print(2, 5, FONT_1X,(unsigned char *)"Дисплей");
 	}
 	
 	

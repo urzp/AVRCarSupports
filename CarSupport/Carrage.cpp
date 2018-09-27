@@ -321,7 +321,7 @@ bool Carrage::ChekGetLimitsHight(){
 
 void Carrage::LCDflachIndicator(int i){
 
-	if(i%6>3){
+	if(i%4>2){
 
 		LcdGotoXY(6,2);
 		LcdChr_full(0x96);

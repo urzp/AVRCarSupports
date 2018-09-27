@@ -31,7 +31,7 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="695" x="905" flags="00008001" y="127" h="448" pid="0" iid="8">
+   <POPUP w="695" x="905" flags="00000000" y="270" h="448" pid="0" iid="8">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="12" x="98" flags="0000000a" y="191" h="16" pid="1" iid="37">
@@ -105,6 +105,25 @@
      <ITEM name="ShowChanges">Yes</ITEM>
      <ITEM name="ShowToolTips">Yes</ITEM>
      <ITEM name="TopLineAddress">00000020</ITEM>
+    </PROPERTIES>
+   </POPUP>
+   <POPUP w="695" x="558" flags="00000000" y="152" h="448" pid="0" iid="3">
+    <PROPERTIES/>
+   </POPUP>
+   <POPUP w="770" x="38" flags="00008023" y="131" h="365" pid="0" iid="42">
+    <PROPERTIES>
+     <ITEM name="ComboBox1000">S</ITEM>
+     <ITEM name="ComboBox1001">Sr</ITEM>
+     <ITEM name="ComboBox1002">P</ITEM>
+     <ITEM name="ComboBox1003">A</ITEM>
+     <ITEM name="ComboBox1004">N</ITEM>
+     <ITEM name="ComboBox1005">S</ITEM>
+     <ITEM name="ComboBox1006">Sr</ITEM>
+     <ITEM name="ComboBox1007">P</ITEM>
+     <ITEM name="ComboBox1008">A</ITEM>
+     <ITEM name="ComboBox1009">N</ITEM>
+     <ITEM name="HSplitter1Pos">100</ITEM>
+     <ITEM name="VSplitter1Pos">238</ITEM>
     </PROPERTIES>
    </POPUP>
   </PWI>

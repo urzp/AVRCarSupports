@@ -261,8 +261,8 @@ bool Activity::Menu_Screen_Move(Panel &panel, Carrage &carrage){
 
 bool Activity::Tunning_rate(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
-	if (pressed == B_W_UP_){return false;}
-	if (pressed == B_W_DOWN){return false;}
+	if (pressed == B_W_UP_){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
+	if (pressed == B_W_DOWN){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
 	if (pressed == B_NOTHING ){button_step=0;return false;}
 	if(Cursor==EXIT_TUNING&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_TUNING;SettingsSaveFlag = true;return false;}
 	if(Cursor==EXIT_TUNING_DISPLAY&&pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
@@ -291,8 +291,8 @@ bool Activity::Tunning_rate(Panel &panel, Carrage &carrage){
 
 bool Activity::Limits_set(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
-	if (pressed == B_W_UP_){return false;}
-	if (pressed == B_W_DOWN){return false;}
+	if (pressed == B_W_UP_){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
+	if (pressed == B_W_DOWN){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
 	if (pressed == B_NOTHING ){button_step=0;return false;}
 	if(Cursor==EXIT_LIMITS&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_LIMITS;SettingsSaveFlag = true;return false;}
 	if(Cursor==EXIT_LIMITS_DISPLAY&&pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
@@ -325,8 +325,8 @@ bool Activity::Limits_set(Panel &panel, Carrage &carrage){
 
 bool Activity::Malfaction_set(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
-	if (pressed == B_W_UP_){return false;}
-	if (pressed == B_W_DOWN){return false;}
+	if (pressed == B_W_UP_){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
+	if (pressed == B_W_DOWN){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
 	if (pressed == B_NOTHING ){button_step=0;return false;}
 	if(Cursor==EXIT_MALFACTION&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_TEST_MALFACTION;SettingsSaveFlag = true;return false; }
 	if(Cursor==EXIT_MALFACTION_DISPLAY&&pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
@@ -361,8 +361,8 @@ bool Activity::Malfaction_set(Panel &panel, Carrage &carrage){
 
 bool Activity::Errors(Panel &panel, Carrage &carrage){
 	int pressed = panel.Pressed(100);
-	if (pressed == B_W_UP_){return false;}
-	if (pressed == B_W_DOWN){return false;}
+	if (pressed == B_W_UP_){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
+	if (pressed == B_W_DOWN){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
 	if (pressed == B_NOTHING ){return false;}
 	if(pressed == B_OK___&&Cursor==ERRORS_RESET){carrage.errorsReset();return false;}
 	if(pressed == B_OK___&&Cursor==ERRORS_EXIT){Statment = SCREEN_MENU;Cursor=SETTINGS_RESET_ERRORS;return false;}
@@ -447,11 +447,11 @@ void  Activity::Set(){
 
 bool Activity::Message(Panel &panel,Carrage &carrage){
 	switch(TypeMessage){
-		case(MESSAGE_SAVE):_delay_ms(1000);Statment=SCREEN_MENU;Cursor = SAVE;break;
+		case(MESSAGE_SAVE):_delay_ms(1500);Statment=SCREEN_MENU;Cursor = SAVE;break;
 		case(MESSAGE_SELECT_MALFUCTION):MessageSelectMalfunction(panel);break;
 		case(MESSAGE_GET_MALFUCTION):MessageGetMalfunction(panel, carrage);break;
-		case(MESSAGE_NO_ANY_SELECTED):_delay_ms(1000);Statment=SCREEN_MAIN;Cursor = MENU;break;
-		case(MESSAGE_GET_LIMITS):_delay_ms(1000);Statment=SCREEN_LIMITS;Cursor=LIMITS_MIN;break;
+		case(MESSAGE_NO_ANY_SELECTED):_delay_ms(1500);Statment=SCREEN_MAIN;Cursor = MENU;break;
+		case(MESSAGE_GET_LIMITS):_delay_ms(1500);Statment=SCREEN_LIMITS;Cursor=LIMITS_MIN;break;
 	}
 }
 

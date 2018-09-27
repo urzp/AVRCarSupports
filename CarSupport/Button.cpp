@@ -42,7 +42,7 @@ bool Button::Pressed(int debounce){
 		}
 		
 		if (read_pin){
-			slice_limit = 500;
+			slice_limit = 800;
 			return false;
 			}else{
 			debounce--;
