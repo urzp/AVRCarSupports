@@ -115,7 +115,7 @@ void Lcd_init ( void )
 
     // Отправляем команды дисплею
     LcdSend( 0x21, LCD_CMD ); // Включаем расширенный набор команд (LCD Extended Commands)
-    LcdSend( 0xB8, LCD_CMD ); // Установка контрастности (LCD Vop)
+    LcdSend( 0xBF, LCD_CMD ); // Установка контрастности (LCD Vop)
     LcdSend( 0x06, LCD_CMD ); // Установка температурного коэффициента (Temp coefficent)
     LcdSend( 0x13, LCD_CMD ); // Настройка питания (LCD bias mode 1:48)
     LcdSend( 0x20, LCD_CMD ); // Включаем стандартный набор команд и горизонтальную адресацию (LCD Standard Commands,Horizontal addressing mode)

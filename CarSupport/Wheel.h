@@ -18,6 +18,7 @@ public:
 	float hight;
 	float maxHight;
 	float minHight;
+	float hightBeforeMove;
 	bool flagGetLimits;
 	float oldHigit;
 	float checkhight;
@@ -29,6 +30,7 @@ public:
 	int Error;
 	int countToMalfunction;
 	int step;
+	int step_min;
 	SensorsWheels sensorWheels;
 protected:
 private:
@@ -47,7 +49,10 @@ public:
 	bool IsChanchedHight();
 	void Select();
 	void initialHight();
+	bool hightBeforeMoveNoting();
 	int takeDerection();
+	bool stepMinCorricting();
+	bool stepMinReset();
 	bool Check();
 	bool selected_malfinction();
 	bool MalFunctionAndnotselected();

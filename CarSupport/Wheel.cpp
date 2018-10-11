@@ -36,6 +36,13 @@ float Wheel::get_hight(){
 void Wheel::initialHight(){
 	get_hight();
 	sethight = hight;
+	step_min = 0;
+}
+
+bool Wheel::hightBeforeMoveNoting(){
+	if (!selected) return false;
+	if (malfuction) return false;
+	hightBeforeMove = hight;
 }
 
 int Wheel::takeDerection(){	
@@ -46,12 +53,25 @@ int Wheel::takeDerection(){
 	diff = sethight*300 - hight*300;
 	step = diff;
 	_diff = diff;
+	
 	adjusted = false;
-	if (_diff < 0){ step = (0 - step) ; return DOWN;}
-	if (_diff > 0){ ; return UP;}
+	if (_diff < 0){ step = (0 - step); if(step<step_min){step=step_min;} ; return DOWN;}
+	if (_diff > 0){ if(step<step_min){step=step_min;}; ; return UP;}
 	step = 0;
 	adjusted = true;
 	return NORMAL;
+}
+
+bool Wheel::stepMinCorricting(){
+	if (!selected) return false;
+	if (malfuction) return false;
+	if (adjusted) return false;
+	if (hightBeforeMove == get_hight()){step_min++;};
+	return true;
+}
+
+bool Wheel::stepMinReset(){
+	step_min = 0;
 }
 
 bool Wheel::Check(){
