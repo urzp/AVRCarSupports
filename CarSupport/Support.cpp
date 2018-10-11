@@ -71,7 +71,7 @@ void Support::Up(int ms_time, bool support_1, bool support_2, bool support_3, bo
 	write_i2c((I2C_ADR_PCF8574<<1), 0x00);
 }
 
-void Support::Adjast(int ms_time, int DerWheel_1, int DerWheel_2,int DerWheel_3, int DerWheel_4){
+void Support::Adjast(int ms_time, float inertion, int DerWheel_1, int DerWheel_2,int DerWheel_3, int DerWheel_4){
 	if(ms_time>0){
 		uint8_t data = 0x00;
 		if(DerWheel_1 == UP){data |= (1<<0);};
@@ -89,7 +89,7 @@ void Support::Adjast(int ms_time, int DerWheel_1, int DerWheel_2,int DerWheel_3,
 		write_i2c((I2C_ADR_PCF8574<<1), data);
 		for (i=0;i<ms_time;i++){_delay_ms(1);}
 		write_i2c((I2C_ADR_PCF8574<<1), 0x00);
-		_delay_ms(100);
+		for (i=0;i<inertion;i++){_delay_ms(1);}
 	}
 	
 }

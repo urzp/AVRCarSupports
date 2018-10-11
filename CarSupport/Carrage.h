@@ -23,7 +23,7 @@ public:
 	Wheel Wheel_3;
 	Wheel Wheel_4;
 	Support support;
-	float tunning;
+	float tunning, inertion, step_force_move, accuracy;
 	float min,max;
 	float countToMalfunctionLimit;
 	bool OnOffMalfunction;

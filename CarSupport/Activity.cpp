@@ -276,7 +276,29 @@ bool Activity::Tunning_rate(Panel &panel, Carrage &carrage){
 			case(B_RIGHT):carrage.tunning+=(0.01+button_step);button_step=0.09; break;
 		}
 	}
-	if(Cursor>TUNING){
+	
+	if(Cursor==TUNING_INERT){
+		switch(pressed){
+			case(B_LEFT_):carrage.inertion-=(1+button_step);button_step=9; break;
+			case(B_RIGHT):carrage.inertion+=(1+button_step);button_step=9; break;
+		}
+	}
+	
+	if(Cursor==TUNING_STEP){
+		switch(pressed){
+			case(B_LEFT_):carrage.step_force_move-=(1+button_step);button_step=9; break;
+			case(B_RIGHT):carrage.step_force_move+=(1+button_step);button_step=9; break;
+		}
+	}
+	
+	if(Cursor==TUNING_ACCURACY){
+		switch(pressed){
+			case(B_LEFT_):carrage.accuracy-=(0.01+button_step);button_step=0.09; break;
+			case(B_RIGHT):carrage.accuracy+=(0.01+button_step);button_step=0.09; break;
+		}
+	}
+	
+	if(Cursor>=EXIT_TUNING){
 		switch(pressed){
 			case(B_LEFT_):Cursor--;break;
 			case(B_RIGHT):Cursor++;break;
@@ -285,8 +307,15 @@ bool Activity::Tunning_rate(Panel &panel, Carrage &carrage){
 	
 	if(Cursor<=TUNING ){Cursor=TUNING ;}
 	if(Cursor>=EXIT_TUNING_DISPLAY){Cursor=EXIT_TUNING_DISPLAY ;}
+		
 	if (carrage.tunning <= 0){carrage.tunning = 0.01;}
 	if (carrage.tunning >= 3){carrage.tunning = 3.00;}
+	if (carrage.inertion <= 0){carrage.inertion = 0;}
+	if (carrage.inertion >= 999){carrage.inertion = 999;}
+	if (carrage.step_force_move <= 0){carrage.step_force_move = 0;}
+	if (carrage.step_force_move >= 999){carrage.step_force_move = 999;}
+	if (carrage.accuracy <= 0){carrage.accuracy = 0.00;}
+	if (carrage.accuracy >= 0.50){carrage.accuracy = 0.50;}
 }
 
 bool Activity::Limits_set(Panel &panel, Carrage &carrage){

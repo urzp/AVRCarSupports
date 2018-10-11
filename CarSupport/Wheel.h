@@ -50,7 +50,7 @@ public:
 	void Select();
 	void initialHight();
 	bool hightBeforeMoveNoting();
-	int takeDerection();
+	int takeDerection(float accuracy);
 	bool stepMinCorricting();
 	bool stepMinReset();
 	bool Check();

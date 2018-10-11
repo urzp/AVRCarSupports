@@ -86,14 +86,26 @@ void Screen::Render_menu(Activity &activity, Carrage &carrage){
 
 void Screen::Render_tunning(Activity &activity, Carrage &carrage){
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Калибровка");
-	Lcd_printf(5, 2, FONT_1X, carrage.tunning , 2);
-	Lcd_print(2, 4, FONT_1X,(unsigned char *)"Меню");
-	Lcd_print(9, 4, FONT_1X,(unsigned char *)"Дисп");
+	Lcd_print(0, 1, FONT_1X,(unsigned char *)"Корр-ия");
+	Lcd_print(0, 2, FONT_1X,(unsigned char *)"Инер-ия");
+	Lcd_print(0, 3, FONT_1X,(unsigned char *)"Шаг");
+	Lcd_print(0, 4, FONT_1X,(unsigned char *)"Точность");
+	Lcd_print(2, 5, FONT_1X,(unsigned char *)"Меню");
+	Lcd_print(9, 5, FONT_1X,(unsigned char *)"Дисп");
+	
+	Lcd_printf(9, 1, FONT_1X, carrage.tunning , 2);
+	Lcd_printf2(10, 2, FONT_1X, carrage.inertion/100 , 2);
+	Lcd_printf2(10, 3, FONT_1X, carrage.step_force_move/100 , 2);
+	Lcd_printf(9, 4, FONT_1X, carrage.accuracy , 2);
+	
 	
 	switch(activity.Cursor){
-		case(TUNING):LcdGotoXY(4,2);LcdChr_full(0x9A);LcdGotoXY(9,2);LcdChr_full(0x9B);break;
-		case(EXIT_TUNING):LcdGotoXY(1,4);LcdChr_full(0xA2);break;
-		case(EXIT_TUNING_DISPLAY):LcdGotoXY(8,4);LcdChr_full(0xA2);break;
+		case(TUNING):LcdGotoXY(8,1);LcdChr_full(0x9A);LcdGotoXY(13,1);LcdChr_full(0x9B);break;
+		case(TUNING_INERT):LcdGotoXY(8,2);LcdChr_full(0x9A);LcdGotoXY(13,2);LcdChr_full(0x9B);break;
+		case(TUNING_STEP):LcdGotoXY(8,3);LcdChr_full(0x9A);LcdGotoXY(13,3);LcdChr_full(0x9B);break;
+		case(TUNING_ACCURACY):LcdGotoXY(8,4);LcdChr_full(0x9A);LcdGotoXY(13,4);LcdChr_full(0x9B);break;
+		case(EXIT_TUNING):LcdGotoXY(1,5);LcdChr_full(0xA2);break;
+		case(EXIT_TUNING_DISPLAY):LcdGotoXY(8,5);LcdChr_full(0xA2);break;
 	}
 }
 

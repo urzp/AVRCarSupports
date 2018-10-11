@@ -87,8 +87,11 @@ const int SETTINGS_RESET_ERRORS = 15;
 const int SETTINGS_EXIT = 16;
 
 const int TUNING = 200;
-const int EXIT_TUNING =201;
-const int EXIT_TUNING_DISPLAY =202;
+const int TUNING_INERT = 201;
+const int TUNING_STEP = 202;
+const int TUNING_ACCURACY = 203;
+const int EXIT_TUNING =204;
+const int EXIT_TUNING_DISPLAY =205;
 
 const int LIMITS_MIN = 210;
 const int LIMITS_MAX = 211;

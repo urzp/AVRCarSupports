@@ -45,7 +45,7 @@ bool Wheel::hightBeforeMoveNoting(){
 	hightBeforeMove = hight;
 }
 
-int Wheel::takeDerection(){	
+int Wheel::takeDerection(float accuracy){	
 	if (!selected) return NORMAL;
 	if (malfuction) return 0;
 	hight = get_hight();
@@ -55,8 +55,8 @@ int Wheel::takeDerection(){
 	_diff = diff;
 	
 	adjusted = false;
-	if (_diff < 0){ step = (0 - step); if(step<step_min){step=step_min;} ; return DOWN;}
-	if (_diff > 0){ if(step<step_min){step=step_min;}; ; return UP;}
+	if (_diff < 0 - accuracy*300){ step = (0 - step); if(step<step_min){step=step_min;} ; return DOWN;}
+	if (_diff > 0 + accuracy*300){ if(step<step_min){step=step_min;}; ; return UP;}
 	step = 0;
 	adjusted = true;
 	return NORMAL;
