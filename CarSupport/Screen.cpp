@@ -43,19 +43,19 @@ void Screen::PrintTitle(Activity &activity, Carrage &carrage){
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Установить");
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Сохранить");
 		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Настройки");
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Дисплей");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Панель упр.");
 		}else if(activity.Cursor < PARKING_SET){
 		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Сохранить");
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижняя поз.");
 		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Дисплей");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Панель упр.");
 		}else if (activity.Cursor < SETTINGS_TUNING ){
 		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Установить");
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Парковка");
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Нижнее поз.");
 		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Верхняя поз.");
-		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Дисплей");
+		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Панель упр.");
 		}else{
 		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Настройки");
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Калибровка");
@@ -90,8 +90,8 @@ void Screen::Render_tunning(Activity &activity, Carrage &carrage){
 	Lcd_print(0, 2, FONT_1X,(unsigned char *)"Инер-ия");
 	Lcd_print(0, 3, FONT_1X,(unsigned char *)"Шаг");
 	Lcd_print(0, 4, FONT_1X,(unsigned char *)"Точность");
-	Lcd_print(2, 5, FONT_1X,(unsigned char *)"Меню");
-	Lcd_print(9, 5, FONT_1X,(unsigned char *)"Дисп");
+	LcdGotoXY(3,5);LcdChr_full(0x9E);LcdChr_full(0x9F);//menu
+	LcdGotoXY(9,5);LcdChr_full(0xAD);LcdChr_full(0xAE);//Panel
 	
 	Lcd_printf(9, 1, FONT_1X, carrage.tunning , 2);
 	Lcd_printf2(10, 2, FONT_1X, carrage.inertion/100 , 2);
@@ -104,7 +104,7 @@ void Screen::Render_tunning(Activity &activity, Carrage &carrage){
 		case(TUNING_INERT):LcdGotoXY(8,2);LcdChr_full(0x9A);LcdGotoXY(13,2);LcdChr_full(0x9B);break;
 		case(TUNING_STEP):LcdGotoXY(8,3);LcdChr_full(0x9A);LcdGotoXY(13,3);LcdChr_full(0x9B);break;
 		case(TUNING_ACCURACY):LcdGotoXY(8,4);LcdChr_full(0x9A);LcdGotoXY(13,4);LcdChr_full(0x9B);break;
-		case(EXIT_TUNING):LcdGotoXY(1,5);LcdChr_full(0xA2);break;
+		case(EXIT_TUNING):LcdGotoXY(2,5);LcdChr_full(0xA2);break;
 		case(EXIT_TUNING_DISPLAY):LcdGotoXY(8,5);LcdChr_full(0xA2);break;
 	}
 }
@@ -118,11 +118,11 @@ void Screen::Render_limits(Activity &activity, Carrage &carrage){
 	switch(activity.Cursor){
 		case(LIMITS_MIN):LcdGotoXY(7,2);LcdChr_full(0x9A);LcdGotoXY(12,2);LcdChr_full(0xA2);break;
 		case(LIMITS_MAX):LcdGotoXY(7,3);LcdChr_full(0x9A);LcdGotoXY(12,3);LcdChr_full(0xA2);break;
-		case(EXIT_LIMITS):LcdGotoXY(1,5);LcdChr_full(0xA2);break;
+		case(EXIT_LIMITS):LcdGotoXY(2,5);LcdChr_full(0xA2);break;
 		case(EXIT_LIMITS_DISPLAY):LcdGotoXY(8,5);LcdChr_full(0xA2);break;
 	}
-	Lcd_print(2, 5, FONT_1X,(unsigned char *)"Меню");
-	Lcd_print(9, 5, FONT_1X,(unsigned char *)"Дисп");
+	LcdGotoXY(3,5);LcdChr_full(0x9E);LcdChr_full(0x9F);//menu
+	LcdGotoXY(9,5);LcdChr_full(0xAD);LcdChr_full(0xAE);//Panel
 }
 
 void Screen::Render_maltifaction(Activity &activity, Carrage &carrage){
@@ -140,11 +140,11 @@ void Screen::Render_maltifaction(Activity &activity, Carrage &carrage){
 	switch(activity.Cursor){
 		case(ONOF_MALFACTION):LcdGotoXY(9,3);LcdChr_full(0xA2);break;
 		case(TIME_MALFACTION):LcdGotoXY(9,2);LcdChr_full(0x9A);LcdGotoXY(13,2);LcdChr_full(0x9B);break;
-		case(EXIT_MALFACTION):LcdGotoXY(1,5);LcdChr_full(0xA2);break;
+		case(EXIT_MALFACTION):LcdGotoXY(2,5);LcdChr_full(0xA2);break;
 		case(EXIT_MALFACTION_DISPLAY):LcdGotoXY(8,5);LcdChr_full(0xA2);break;
 	}
-	Lcd_print(2, 5, FONT_1X,(unsigned char *)"Меню");
-	Lcd_print(9, 5, FONT_1X,(unsigned char *)"Дисп");
+	LcdGotoXY(3,5);LcdChr_full(0x9E);LcdChr_full(0x9F);//menu
+	LcdGotoXY(9,5);LcdChr_full(0xAD);LcdChr_full(0xAE);//Panel
 }
 
 void Screen::Render_ERRORS(Activity &activity, Carrage &carrage){
@@ -153,8 +153,8 @@ void Screen::Render_ERRORS(Activity &activity, Carrage &carrage){
 	Lcd_print(2, 2, FONT_1X,(unsigned char *)"2.Стойка");
 	Lcd_print(2, 3, FONT_1X,(unsigned char *)"3.Стойка");
 	Lcd_print(2, 4, FONT_1X,(unsigned char *)"4.Стойка");
-	Lcd_print(3, 5, FONT_1X,(unsigned char *)"Меню");
-	Lcd_print(8, 5, FONT_1X,(unsigned char *)"Дисп");
+	LcdGotoXY(3,5);LcdChr_full(0x9E);LcdChr_full(0x9F);//menu
+	LcdGotoXY(9,5);LcdChr_full(0xAD);LcdChr_full(0xAE);//Panel
 	
 	Lcd_print(11, 1, FONT_1X,(unsigned char *)"--");
 	Lcd_print(11, 2, FONT_1X,(unsigned char *)"--");
@@ -173,7 +173,7 @@ void Screen::Render_ERRORS(Activity &activity, Carrage &carrage){
 		case(ERRORS_WHEEL3):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
 		case(ERRORS_WHEEL4):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
 		case(ERRORS_EXIT):LcdGotoXY(2,5);LcdChr_full(0xA2);break;
-		case(ERRORS_EXIT_DISPLAY):LcdGotoXY(7,5);LcdChr_full(0xA2);break;
+		case(ERRORS_EXIT_DISPLAY):LcdGotoXY(8,5);LcdChr_full(0xA2);break;
 	}
 }
 

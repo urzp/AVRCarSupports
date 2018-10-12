@@ -368,7 +368,7 @@ byte LcdChr ( LcdFontSize size, byte ch )
     else if ( ch >= 0xC0 )
     {
         // Смещение в таблице для символов CP1251[0xC0-0xFF]
-        ch -= 51;
+        ch -= 49;
     }
     else
     {

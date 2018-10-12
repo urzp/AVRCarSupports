@@ -451,7 +451,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x5b54
+.text           0x00000000     0x5b92
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5/crtatmega328.o
                 0x00000000                __vector_default
@@ -484,561 +484,561 @@ END GROUP
  .progmem.data._ZL10StepLevels
                 0x00000132      0x1e0 LCDn5110.o
  .progmem.data._ZL10FontLookup
-                0x00000312      0x59b LCDn5110.o
-                0x000008ae                . = ALIGN (0x2)
- *fill*         0x000008ad        0x1 
+                0x00000312      0x5a9 LCDn5110.o
+                0x000008bc                . = ALIGN (0x2)
+ *fill*         0x000008bb        0x1 
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x000008ae                __ctors_start = .
+                0x000008bc                __ctors_start = .
  *(.ctors)
- .ctors         0x000008ae        0x2 main.o
-                0x000008b0                __ctors_end = .
-                0x000008b0                __dtors_start = .
+ .ctors         0x000008bc        0x2 main.o
+                0x000008be                __ctors_end = .
+                0x000008be                __dtors_start = .
  *(.dtors)
-                0x000008b0                __dtors_end = .
+                0x000008be                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x000008b0        0x0 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5/crtatmega328.o
-                0x000008b0                __init
+ .init0         0x000008be        0x0 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5/crtatmega328.o
+                0x000008be                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x000008b0        0xc C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5/crtatmega328.o
+ .init2         0x000008be        0xc C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5/crtatmega328.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x000008bc       0x16 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
-                0x000008bc                __do_copy_data
- .init4         0x000008d2       0x10 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
-                0x000008d2                __do_clear_bss
+ .init4         0x000008ca       0x16 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
+                0x000008ca                __do_copy_data
+ .init4         0x000008e0       0x10 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+                0x000008e0                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
  *(.init6)
- .init6         0x000008e2       0x16 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
-                0x000008e2                __do_global_ctors
+ .init6         0x000008f0       0x16 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_ctors.o)
+                0x000008f0                __do_global_ctors
  *(.init6)
  *(.init7)
  *(.init7)
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x000008f8        0x8 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5/crtatmega328.o
+ .init9         0x00000906        0x8 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5/crtatmega328.o
  *(.init9)
  *(.text)
- .text          0x00000900        0x4 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5/crtatmega328.o
-                0x00000900                __vector_22
-                0x00000900                __vector_1
-                0x00000900                __vector_24
-                0x00000900                __vector_12
-                0x00000900                __bad_interrupt
-                0x00000900                __vector_6
-                0x00000900                __vector_3
-                0x00000900                __vector_23
-                0x00000900                __vector_25
-                0x00000900                __vector_11
-                0x00000900                __vector_13
-                0x00000900                __vector_17
-                0x00000900                __vector_19
-                0x00000900                __vector_7
-                0x00000900                __vector_5
-                0x00000900                __vector_4
-                0x00000900                __vector_9
-                0x00000900                __vector_2
-                0x00000900                __vector_21
-                0x00000900                __vector_15
-                0x00000900                __vector_8
-                0x00000900                __vector_14
-                0x00000900                __vector_10
-                0x00000900                __vector_16
-                0x00000900                __vector_18
-                0x00000900                __vector_20
-                0x00000904                . = ALIGN (0x2)
+ .text          0x0000090e        0x4 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5/crtatmega328.o
+                0x0000090e                __vector_22
+                0x0000090e                __vector_1
+                0x0000090e                __vector_24
+                0x0000090e                __vector_12
+                0x0000090e                __bad_interrupt
+                0x0000090e                __vector_6
+                0x0000090e                __vector_3
+                0x0000090e                __vector_23
+                0x0000090e                __vector_25
+                0x0000090e                __vector_11
+                0x0000090e                __vector_13
+                0x0000090e                __vector_17
+                0x0000090e                __vector_19
+                0x0000090e                __vector_7
+                0x0000090e                __vector_5
+                0x0000090e                __vector_4
+                0x0000090e                __vector_9
+                0x0000090e                __vector_2
+                0x0000090e                __vector_21
+                0x0000090e                __vector_15
+                0x0000090e                __vector_8
+                0x0000090e                __vector_14
+                0x0000090e                __vector_10
+                0x0000090e                __vector_16
+                0x0000090e                __vector_18
+                0x0000090e                __vector_20
+                0x00000912                . = ALIGN (0x2)
  *(.text.*)
  .text._ZN8ActivityC2Ev
-                0x00000904        0xa Activity.o
-                0x00000904                _ZN8ActivityC2Ev
-                0x00000904                _ZN8ActivityC1Ev
+                0x00000912        0xa Activity.o
+                0x00000912                _ZN8ActivityC2Ev
+                0x00000912                _ZN8ActivityC1Ev
  .text._ZN8Activity4InitER7Carrage
-                0x0000090e      0x1f4 Activity.o
-                0x0000090e                _ZN8Activity4InitER7Carrage
+                0x0000091c      0x1f4 Activity.o
+                0x0000091c                _ZN8Activity4InitER7Carrage
  .text._ZN8Activity12Tunning_rateER5PanelR7Carrage
-                0x00000b02      0x566 Activity.o
-                0x00000b02                _ZN8Activity12Tunning_rateER5PanelR7Carrage
+                0x00000b10      0x566 Activity.o
+                0x00000b10                _ZN8Activity12Tunning_rateER5PanelR7Carrage
  .text._ZN8Activity10Limits_setER5PanelR7Carrage
-                0x00001068      0x30c Activity.o
-                0x00001068                _ZN8Activity10Limits_setER5PanelR7Carrage
+                0x00001076      0x30c Activity.o
+                0x00001076                _ZN8Activity10Limits_setER5PanelR7Carrage
  .text._ZN8Activity14Malfaction_setER5PanelR7Carrage
-                0x00001374      0x226 Activity.o
-                0x00001374                _ZN8Activity14Malfaction_setER5PanelR7Carrage
+                0x00001382      0x226 Activity.o
+                0x00001382                _ZN8Activity14Malfaction_setER5PanelR7Carrage
  .text._ZN8Activity6ErrorsER5PanelR7Carrage
-                0x0000159a      0x108 Activity.o
-                0x0000159a                _ZN8Activity6ErrorsER5PanelR7Carrage
+                0x000015a8      0x108 Activity.o
+                0x000015a8                _ZN8Activity6ErrorsER5PanelR7Carrage
  .text._ZN8Activity5ErrorER5PanelR7Carrage
-                0x000016a2       0x2e Activity.o
-                0x000016a2                _ZN8Activity5ErrorER5PanelR7Carrage
+                0x000016b0       0x2e Activity.o
+                0x000016b0                _ZN8Activity5ErrorER5PanelR7Carrage
  .text._ZN8Activity11SelectWheelER7Carrage
-                0x000016d0       0x7c Activity.o
-                0x000016d0                _ZN8Activity11SelectWheelER7Carrage
+                0x000016de       0x7c Activity.o
+                0x000016de                _ZN8Activity11SelectWheelER7Carrage
  .text._ZN8Activity4SaveEv
-                0x0000174c       0x48 Activity.o
-                0x0000174c                _ZN8Activity4SaveEv
+                0x0000175a       0x48 Activity.o
+                0x0000175a                _ZN8Activity4SaveEv
  .text._ZN8Activity12Get_val_stepEv
-                0x00001794       0x20 Activity.o
-                0x00001794                _ZN8Activity12Get_val_stepEv
+                0x000017a2       0x20 Activity.o
+                0x000017a2                _ZN8Activity12Get_val_stepEv
  .text._ZN8Activity3SetEv
-                0x000017b4       0x3e Activity.o
-                0x000017b4                _ZN8Activity3SetEv
+                0x000017c2       0x3e Activity.o
+                0x000017c2                _ZN8Activity3SetEv
  .text._ZN8Activity16Menu_Screen_MoveER5PanelR7Carrage
-                0x000017f2       0xfe Activity.o
-                0x000017f2                _ZN8Activity16Menu_Screen_MoveER5PanelR7Carrage
+                0x00001800       0xfe Activity.o
+                0x00001800                _ZN8Activity16Menu_Screen_MoveER5PanelR7Carrage
  .text._ZN8Activity24MessageSelectMalfunctionER5Panel
-                0x000018f0       0x28 Activity.o
-                0x000018f0                _ZN8Activity24MessageSelectMalfunctionER5Panel
+                0x000018fe       0x28 Activity.o
+                0x000018fe                _ZN8Activity24MessageSelectMalfunctionER5Panel
  .text._ZN8Activity21MessageGetMalfunctionER5PanelR7Carrage
-                0x00001918       0x38 Activity.o
-                0x00001918                _ZN8Activity21MessageGetMalfunctionER5PanelR7Carrage
+                0x00001926       0x38 Activity.o
+                0x00001926                _ZN8Activity21MessageGetMalfunctionER5PanelR7Carrage
  .text._ZN8Activity7MessageER5PanelR7Carrage
-                0x00001950       0x8e Activity.o
-                0x00001950                _ZN8Activity7MessageER5PanelR7Carrage
+                0x0000195e       0x8e Activity.o
+                0x0000195e                _ZN8Activity7MessageER5PanelR7Carrage
  .text._ZN8Activity9ForceMoveER7Carragei
-                0x000019de       0x88 Activity.o
-                0x000019de                _ZN8Activity9ForceMoveER7Carragei
+                0x000019ec       0x88 Activity.o
+                0x000019ec                _ZN8Activity9ForceMoveER7Carragei
  .text._ZN8Activity16Main_Screen_MoveER5PanelR7Carrage
-                0x00001a66       0xb6 Activity.o
-                0x00001a66                _ZN8Activity16Main_Screen_MoveER5PanelR7Carrage
+                0x00001a74       0xb6 Activity.o
+                0x00001a74                _ZN8Activity16Main_Screen_MoveER5PanelR7Carrage
  .text._ZN8Activity17Adjusting_CarrageER5PanelR7Carrage
-                0x00001b1c       0xe8 Activity.o
-                0x00001b1c                _ZN8Activity17Adjusting_CarrageER5PanelR7Carrage
+                0x00001b2a       0xe8 Activity.o
+                0x00001b2a                _ZN8Activity17Adjusting_CarrageER5PanelR7Carrage
  .text._ZN8Activity13Cursor_ActionER5PanelR7Carrage
-                0x00001c04       0x56 Activity.o
-                0x00001c04                _ZN8Activity13Cursor_ActionER5PanelR7Carrage
+                0x00001c12       0x56 Activity.o
+                0x00001c12                _ZN8Activity13Cursor_ActionER5PanelR7Carrage
  .text._ZN6ButtonC2Ev
-                0x00001c5a        0x2 Button.o
-                0x00001c5a                _ZN6ButtonC2Ev
-                0x00001c5a                _ZN6ButtonC1Ev
+                0x00001c68        0x2 Button.o
+                0x00001c68                _ZN6ButtonC2Ev
+                0x00001c68                _ZN6ButtonC1Ev
  .text._ZN6Button4InitEci
-                0x00001c5c       0x7c Button.o
-                0x00001c5c                _ZN6Button4InitEci
+                0x00001c6a       0x7c Button.o
+                0x00001c6a                _ZN6Button4InitEci
  .text._ZN6Button7PressedEi
-                0x00001cd8       0xf8 Button.o
-                0x00001cd8                _ZN6Button7PressedEi
+                0x00001ce6       0xf8 Button.o
+                0x00001ce6                _ZN6Button7PressedEi
  .text._ZN7CarrageC2Ev
-                0x00001dd0       0x36 Carrage.o
-                0x00001dd0                _ZN7CarrageC2Ev
-                0x00001dd0                _ZN7CarrageC1Ev
+                0x00001dde       0x36 Carrage.o
+                0x00001dde                _ZN7CarrageC2Ev
+                0x00001dde                _ZN7CarrageC1Ev
  .text._ZN7Carrage12beforeAdjastEv
-                0x00001e06       0x2c Carrage.o
-                0x00001e06                _ZN7Carrage12beforeAdjastEv
+                0x00001e14       0x2c Carrage.o
+                0x00001e14                _ZN7Carrage12beforeAdjastEv
  .text._ZN7Carrage20IfSelectetMalfuctionEv
-                0x00001e32       0x38 Carrage.o
-                0x00001e32                _ZN7Carrage20IfSelectetMalfuctionEv
+                0x00001e40       0x38 Carrage.o
+                0x00001e40                _ZN7Carrage20IfSelectetMalfuctionEv
  .text._ZN7Carrage9SetLimitsEv
-                0x00001e6a       0x7a Carrage.o
-                0x00001e6a                _ZN7Carrage9SetLimitsEv
+                0x00001e78       0x7a Carrage.o
+                0x00001e78                _ZN7Carrage9SetLimitsEv
  .text._ZN7Carrage19CheckLimitsSetHightEv
-                0x00001ee4       0x2c Carrage.o
-                0x00001ee4                _ZN7Carrage19CheckLimitsSetHightEv
+                0x00001ef2       0x2c Carrage.o
+                0x00001ef2                _ZN7Carrage19CheckLimitsSetHightEv
  .text._ZN7Carrage8chechAllEv
-                0x00001f10      0x1ba Carrage.o
-                0x00001f10                _ZN7Carrage8chechAllEv
+                0x00001f1e      0x1ba Carrage.o
+                0x00001f1e                _ZN7Carrage8chechAllEv
  .text._ZN7Carrage4InitEv
-                0x000020ca       0x5a Carrage.o
-                0x000020ca                _ZN7Carrage4InitEv
+                0x000020d8       0x5a Carrage.o
+                0x000020d8                _ZN7Carrage4InitEv
  .text._ZN7Carrage7getStepEv
-                0x00002124       0xbe Carrage.o
-                0x00002124                _ZN7Carrage7getStepEv
+                0x00002132       0xbe Carrage.o
+                0x00002132                _ZN7Carrage7getStepEv
  .text._ZN7Carrage20Fast_print_LSD_hightE5Wheel
-                0x000021e2       0x94 Carrage.o
-                0x000021e2                _ZN7Carrage20Fast_print_LSD_hightE5Wheel
+                0x000021f0       0x94 Carrage.o
+                0x000021f0                _ZN7Carrage20Fast_print_LSD_hightE5Wheel
  .text._ZN7Carrage17chechWheelsBeforeEv
-                0x00002276      0x2e2 Carrage.o
-                0x00002276                _ZN7Carrage17chechWheelsBeforeEv
+                0x00002284      0x2e2 Carrage.o
+                0x00002284                _ZN7Carrage17chechWheelsBeforeEv
  .text._ZN7Carrage18ControlMalfinctionEv
-                0x00002558      0x112 Carrage.o
-                0x00002558                _ZN7Carrage18ControlMalfinctionEv
+                0x00002566      0x112 Carrage.o
+                0x00002566                _ZN7Carrage18ControlMalfinctionEv
  .text._ZN7Carrage21ResecCountMalfinctionEv
-                0x0000266a       0x1c Carrage.o
-                0x0000266a                _ZN7Carrage21ResecCountMalfinctionEv
+                0x00002678       0x1c Carrage.o
+                0x00002678                _ZN7Carrage21ResecCountMalfinctionEv
  .text._ZN7Carrage17switch_malfactionEv
-                0x00002686       0x10 Carrage.o
-                0x00002686                _ZN7Carrage17switch_malfactionEv
+                0x00002694       0x10 Carrage.o
+                0x00002694                _ZN7Carrage17switch_malfactionEv
  .text._ZN7Carrage11errorsResetEv
-                0x00002696       0x2a Carrage.o
-                0x00002696                _ZN7Carrage11errorsResetEv
+                0x000026a4       0x2a Carrage.o
+                0x000026a4                _ZN7Carrage11errorsResetEv
  .text._ZN7Carrage14SelectAllWheelEv
-                0x000026c0       0x44 Carrage.o
-                0x000026c0                _ZN7Carrage14SelectAllWheelEv
+                0x000026ce       0x44 Carrage.o
+                0x000026ce                _ZN7Carrage14SelectAllWheelEv
  .text._ZN7Carrage16DiSelectAllWheelEv
-                0x00002704       0x14 Carrage.o
-                0x00002704                _ZN7Carrage16DiSelectAllWheelEv
+                0x00002712       0x14 Carrage.o
+                0x00002712                _ZN7Carrage16DiSelectAllWheelEv
  .text._ZN7Carrage14SwitchAllWheelEv
-                0x00002718       0x58 Carrage.o
-                0x00002718                _ZN7Carrage14SwitchAllWheelEv
+                0x00002726       0x58 Carrage.o
+                0x00002726                _ZN7Carrage14SwitchAllWheelEv
  .text._ZN7Carrage11AnySelectedEv
-                0x00002770       0x24 Carrage.o
-                0x00002770                _ZN7Carrage11AnySelectedEv
+                0x0000277e       0x24 Carrage.o
+                0x0000277e                _ZN7Carrage11AnySelectedEv
  .text._ZN7Carrage16ChekGetLimitsLowEv
-                0x00002794       0x68 Carrage.o
-                0x00002794                _ZN7Carrage16ChekGetLimitsLowEv
+                0x000027a2       0x68 Carrage.o
+                0x000027a2                _ZN7Carrage16ChekGetLimitsLowEv
  .text._ZN7Carrage9ForceDownEv
-                0x000027fc       0xe2 Carrage.o
-                0x000027fc                _ZN7Carrage9ForceDownEv
+                0x0000280a       0xe2 Carrage.o
+                0x0000280a                _ZN7Carrage9ForceDownEv
  .text._ZN7Carrage18ChekGetLimitsHightEv
-                0x000028de       0x68 Carrage.o
-                0x000028de                _ZN7Carrage18ChekGetLimitsHightEv
+                0x000028ec       0x68 Carrage.o
+                0x000028ec                _ZN7Carrage18ChekGetLimitsHightEv
  .text._ZN7Carrage7ForceUpEv
-                0x00002946       0xe2 Carrage.o
-                0x00002946                _ZN7Carrage7ForceUpEv
+                0x00002954       0xe2 Carrage.o
+                0x00002954                _ZN7Carrage7ForceUpEv
  .text._ZN7Carrage17LCDflachIndicatorEi
-                0x00002a28       0x82 Carrage.o
-                0x00002a28                _ZN7Carrage17LCDflachIndicatorEi
+                0x00002a36       0x82 Carrage.o
+                0x00002a36                _ZN7Carrage17LCDflachIndicatorEi
  .text._ZN7Carrage9AjustmentEv
-                0x00002aaa      0x44e Carrage.o
-                0x00002aaa                _ZN7Carrage9AjustmentEv
+                0x00002ab8      0x44e Carrage.o
+                0x00002ab8                _ZN7Carrage9AjustmentEv
  .text._ZN7Carrage2UpEf
-                0x00002ef8       0x58 Carrage.o
-                0x00002ef8                _ZN7Carrage2UpEf
+                0x00002f06       0x58 Carrage.o
+                0x00002f06                _ZN7Carrage2UpEf
  .text._ZN7Carrage4DownEf
-                0x00002f50       0x58 Carrage.o
-                0x00002f50                _ZN7Carrage4DownEf
+                0x00002f5e       0x58 Carrage.o
+                0x00002f5e                _ZN7Carrage4DownEf
  .text._ZL7LcdSendh10LcdCmdData
-                0x00002fa8       0x18 LCDn5110.o
+                0x00002fb6       0x18 LCDn5110.o
  .text._Z5gftoafi
-                0x00002fc0      0x11a LCDn5110.o
-                0x00002fc0                _Z5gftoafi
+                0x00002fce      0x11a LCDn5110.o
+                0x00002fce                _Z5gftoafi
  .text._Z8Lcd_initv
-                0x000030da       0x44 LCDn5110.o
-                0x000030da                _Z8Lcd_initv
+                0x000030e8       0x44 LCDn5110.o
+                0x000030e8                _Z8Lcd_initv
  .text._Z9Lcd_clearv
-                0x0000311e       0x2a LCDn5110.o
-                0x0000311e                _Z9Lcd_clearv
+                0x0000312c       0x2a LCDn5110.o
+                0x0000312c                _Z9Lcd_clearv
  .text._Z10Lcd_updatev
-                0x00003148       0xcc LCDn5110.o
-                0x00003148                _Z10Lcd_updatev
+                0x00003156       0xcc LCDn5110.o
+                0x00003156                _Z10Lcd_updatev
  .text._Z9LcdGotoXYhh
-                0x00003214       0x36 LCDn5110.o
-                0x00003214                _Z9LcdGotoXYhh
+                0x00003222       0x36 LCDn5110.o
+                0x00003222                _Z9LcdGotoXYhh
  .text._Z11LcdChr_fullh
-                0x0000324a       0x54 LCDn5110.o
-                0x0000324a                _Z11LcdChr_fullh
+                0x00003258       0x54 LCDn5110.o
+                0x00003258                _Z11LcdChr_fullh
  .text._Z12LcdStepLevelh
-                0x0000329e       0x4c LCDn5110.o
-                0x0000329e                _Z12LcdStepLevelh
+                0x000032ac       0x4c LCDn5110.o
+                0x000032ac                _Z12LcdStepLevelh
  .text._Z6LcdChr11LcdFontSizeh
-                0x000032ea      0x1c0 LCDn5110.o
-                0x000032ea                _Z6LcdChr11LcdFontSizeh
+                0x000032f8      0x1c0 LCDn5110.o
+                0x000032f8                _Z6LcdChr11LcdFontSizeh
  .text._Z9Lcd_printhh11LcdFontSizePh
-                0x000034aa       0x42 LCDn5110.o
-                0x000034aa                _Z9Lcd_printhh11LcdFontSizePh
+                0x000034b8       0x42 LCDn5110.o
+                0x000034b8                _Z9Lcd_printhh11LcdFontSizePh
  .text._Z10Lcd_print2hh11LcdFontSizePh
-                0x000034ec       0x4c LCDn5110.o
-                0x000034ec                _Z10Lcd_print2hh11LcdFontSizePh
+                0x000034fa       0x4c LCDn5110.o
+                0x000034fa                _Z10Lcd_print2hh11LcdFontSizePh
  .text._Z10Lcd_printfhh11LcdFontSizefi
-                0x00003538       0x3a LCDn5110.o
-                0x00003538                _Z10Lcd_printfhh11LcdFontSizefi
+                0x00003546       0x3a LCDn5110.o
+                0x00003546                _Z10Lcd_printfhh11LcdFontSizefi
  .text._Z11Lcd_printf2hh11LcdFontSizefi
-                0x00003572       0x3a LCDn5110.o
-                0x00003572                _Z11Lcd_printf2hh11LcdFontSizefi
+                0x00003580       0x3a LCDn5110.o
+                0x00003580                _Z11Lcd_printf2hh11LcdFontSizefi
  .text._Z14Initialisationv
-                0x000035ac      0x1b0 main.o
-                0x000035ac                _Z14Initialisationv
+                0x000035ba      0x1b0 main.o
+                0x000035ba                _Z14Initialisationv
  .text._Z12SettingsSaveb
-                0x0000375c       0xc4 main.o
-                0x0000375c                _Z12SettingsSaveb
+                0x0000376a       0xc4 main.o
+                0x0000376a                _Z12SettingsSaveb
  .text._Z25IFCarrageSaveStateToEEMEMi
-                0x00003820       0x84 main.o
-                0x00003820                _Z25IFCarrageSaveStateToEEMEMi
+                0x0000382e       0x84 main.o
+                0x0000382e                _Z25IFCarrageSaveStateToEEMEMi
  .text._Z24IFCarrageSetStateToEEMEMi
-                0x000038a4       0xc2 main.o
-                0x000038a4                _Z24IFCarrageSetStateToEEMEMi
- .text.main     0x00003966       0x46 main.o
-                0x00003966                main
+                0x000038b2       0xc2 main.o
+                0x000038b2                _Z24IFCarrageSetStateToEEMEMi
+ .text.main     0x00003974       0x46 main.o
+                0x00003974                main
  .text._GLOBAL__sub_I__Z14test_out_timer6Button6Output
-                0x000039ac       0x22 main.o
+                0x000039ba       0x22 main.o
  .text._ZN6ScreenC2Ev
-                0x000039ce        0x2 Screen.o
-                0x000039ce                _ZN6ScreenC2Ev
-                0x000039ce                _ZN6ScreenC1Ev
+                0x000039dc        0x2 Screen.o
+                0x000039dc                _ZN6ScreenC2Ev
+                0x000039dc                _ZN6ScreenC1Ev
  .text._ZN6Screen10PrintTitleER8ActivityR7Carrage
-                0x000039d0      0x13e Screen.o
-                0x000039d0                _ZN6Screen10PrintTitleER8ActivityR7Carrage
+                0x000039de      0x13e Screen.o
+                0x000039de                _ZN6Screen10PrintTitleER8ActivityR7Carrage
  .text._ZN6Screen14Render_tunningER8ActivityR7Carrage
-                0x00003b0e      0x1c8 Screen.o
-                0x00003b0e                _ZN6Screen14Render_tunningER8ActivityR7Carrage
+                0x00003b1c      0x1d4 Screen.o
+                0x00003b1c                _ZN6Screen14Render_tunningER8ActivityR7Carrage
  .text._ZN6Screen13Render_limitsER8ActivityR7Carrage
-                0x00003cd6      0x116 Screen.o
-                0x00003cd6                _ZN6Screen13Render_limitsER8ActivityR7Carrage
+                0x00003cf0      0x122 Screen.o
+                0x00003cf0                _ZN6Screen13Render_limitsER8ActivityR7Carrage
  .text._ZN6Screen19Render_maltifactionER8ActivityR7Carrage
-                0x00003dec      0x138 Screen.o
-                0x00003dec                _ZN6Screen19Render_maltifactionER8ActivityR7Carrage
+                0x00003e12      0x144 Screen.o
+                0x00003e12                _ZN6Screen19Render_maltifactionER8ActivityR7Carrage
  .text._ZN6Screen13Render_ERRORSER8ActivityR7Carrage
-                0x00003f24      0x256 Screen.o
-                0x00003f24                _ZN6Screen13Render_ERRORSER8ActivityR7Carrage
+                0x00003f56      0x262 Screen.o
+                0x00003f56                _ZN6Screen13Render_ERRORSER8ActivityR7Carrage
  .text._ZN6Screen10PrintErrorE5Wheel
-                0x0000417a       0xb2 Screen.o
-                0x0000417a                _ZN6Screen10PrintErrorE5Wheel
+                0x000041b8       0xb2 Screen.o
+                0x000041b8                _ZN6Screen10PrintErrorE5Wheel
  .text._ZN6Screen12Render_ERRORER8ActivityR7Carrage
-                0x0000422c      0x15c Screen.o
-                0x0000422c                _ZN6Screen12Render_ERRORER8ActivityR7Carrage
+                0x0000426a      0x15c Screen.o
+                0x0000426a                _ZN6Screen12Render_ERRORER8ActivityR7Carrage
  .text._ZN6Screen14Draw_icon_menuEv
-                0x00004388       0x1e Screen.o
-                0x00004388                _ZN6Screen14Draw_icon_menuEv
+                0x000043c6       0x1e Screen.o
+                0x000043c6                _ZN6Screen14Draw_icon_menuEv
  .text._ZN6Screen17Draw_icon_carrageER8Activity
-                0x000043a6       0x1e Screen.o
-                0x000043a6                _ZN6Screen17Draw_icon_carrageER8Activity
+                0x000043e4       0x1e Screen.o
+                0x000043e4                _ZN6Screen17Draw_icon_carrageER8Activity
  .text._ZN6Screen10Draw_WheelE5Wheel
-                0x000043c4      0x202 Screen.o
-                0x000043c4                _ZN6Screen10Draw_WheelE5Wheel
+                0x00004402      0x202 Screen.o
+                0x00004402                _ZN6Screen10Draw_WheelE5Wheel
  .text._ZN6Screen12Draw_CarrageER7Carrage
-                0x000045c6       0xf4 Screen.o
-                0x000045c6                _ZN6Screen12Draw_CarrageER7Carrage
+                0x00004604       0xf4 Screen.o
+                0x00004604                _ZN6Screen12Draw_CarrageER7Carrage
  .text._ZN6Screen23Draw_adjustment_carrageER8Activity
-                0x000046ba       0x7c Screen.o
-                0x000046ba                _ZN6Screen23Draw_adjustment_carrageER8Activity
+                0x000046f8       0x7c Screen.o
+                0x000046f8                _ZN6Screen23Draw_adjustment_carrageER8Activity
  .text._ZN6Screen21Draw_CursorMenuScreenER8Activity
-                0x00004736      0x12c Screen.o
-                0x00004736                _ZN6Screen21Draw_CursorMenuScreenER8Activity
+                0x00004774      0x12c Screen.o
+                0x00004774                _ZN6Screen21Draw_CursorMenuScreenER8Activity
  .text._ZN6Screen11Render_menuER8ActivityR7Carrage
-                0x00004862       0x22 Screen.o
-                0x00004862                _ZN6Screen11Render_menuER8ActivityR7Carrage
+                0x000048a0       0x22 Screen.o
+                0x000048a0                _ZN6Screen11Render_menuER8ActivityR7Carrage
  .text._ZN6Screen16Print_Step_ValueER8Activity
-                0x00004884       0x52 Screen.o
-                0x00004884                _ZN6Screen16Print_Step_ValueER8Activity
+                0x000048c2       0x52 Screen.o
+                0x000048c2                _ZN6Screen16Print_Step_ValueER8Activity
  .text._ZN6Screen21Draw_all_cursor_wheelEv
-                0x000048d6       0x3a Screen.o
-                0x000048d6                _ZN6Screen21Draw_all_cursor_wheelEv
+                0x00004914       0x3a Screen.o
+                0x00004914                _ZN6Screen21Draw_all_cursor_wheelEv
  .text._ZN6Screen21Draw_CursorMainScreenER8Activity
-                0x00004910       0xb4 Screen.o
-                0x00004910                _ZN6Screen21Draw_CursorMainScreenER8Activity
+                0x0000494e       0xb4 Screen.o
+                0x0000494e                _ZN6Screen21Draw_CursorMainScreenER8Activity
  .text._ZN6Screen11Render_mainER8ActivityR7Carrage
-                0x000049c4       0x4c Screen.o
-                0x000049c4                _ZN6Screen11Render_mainER8ActivityR7Carrage
+                0x00004a02       0x4c Screen.o
+                0x00004a02                _ZN6Screen11Render_mainER8ActivityR7Carrage
  .text._ZN6Screen11MessageSaveEv
-                0x00004a10       0x10 Screen.o
-                0x00004a10                _ZN6Screen11MessageSaveEv
+                0x00004a4e       0x10 Screen.o
+                0x00004a4e                _ZN6Screen11MessageSaveEv
  .text._ZN6Screen23MessageSelectMalfuctionEv
-                0x00004a20       0x2c Screen.o
-                0x00004a20                _ZN6Screen23MessageSelectMalfuctionEv
+                0x00004a5e       0x2c Screen.o
+                0x00004a5e                _ZN6Screen23MessageSelectMalfuctionEv
  .text._ZN6Screen20MessageGetMalfuctionEv
-                0x00004a4c       0x48 Screen.o
-                0x00004a4c                _ZN6Screen20MessageGetMalfuctionEv
+                0x00004a8a       0x48 Screen.o
+                0x00004a8a                _ZN6Screen20MessageGetMalfuctionEv
  .text._ZN6Screen20MessageNoAnySelectedEv
-                0x00004a94       0x1e Screen.o
-                0x00004a94                _ZN6Screen20MessageNoAnySelectedEv
+                0x00004ad2       0x1e Screen.o
+                0x00004ad2                _ZN6Screen20MessageNoAnySelectedEv
  .text._ZN6Screen16MessageGetLimitsEv
-                0x00004ab2       0x1e Screen.o
-                0x00004ab2                _ZN6Screen16MessageGetLimitsEv
+                0x00004af0       0x1e Screen.o
+                0x00004af0                _ZN6Screen16MessageGetLimitsEv
  .text._ZN6Screen7MessageER8ActivityR7Carrage
-                0x00004ad0       0x4c Screen.o
-                0x00004ad0                _ZN6Screen7MessageER8ActivityR7Carrage
+                0x00004b0e       0x4c Screen.o
+                0x00004b0e                _ZN6Screen7MessageER8ActivityR7Carrage
  .text._ZN6Screen6RenderER8ActivityR7Carrage
-                0x00004b1c       0xe8 Screen.o
-                0x00004b1c                _ZN6Screen6RenderER8ActivityR7Carrage
+                0x00004b5a       0xe8 Screen.o
+                0x00004b5a                _ZN6Screen6RenderER8ActivityR7Carrage
  .text._ZN5PanelC2Ev
-                0x00004c04       0x40 Panel.o
-                0x00004c04                _ZN5PanelC2Ev
-                0x00004c04                _ZN5PanelC1Ev
+                0x00004c42       0x40 Panel.o
+                0x00004c42                _ZN5PanelC2Ev
+                0x00004c42                _ZN5PanelC1Ev
  .text._ZN5Panel4InitEv
-                0x00004c44       0x6a Panel.o
-                0x00004c44                _ZN5Panel4InitEv
+                0x00004c82       0x6a Panel.o
+                0x00004c82                _ZN5Panel4InitEv
  .text._ZN5Panel7PressedEi
-                0x00004cae       0xa0 Panel.o
-                0x00004cae                _ZN5Panel7PressedEi
+                0x00004cec       0xa0 Panel.o
+                0x00004cec                _ZN5Panel7PressedEi
  .text._ZN13SensorsWheelsC2Ev
-                0x00004d4e        0x2 SensorsWheels.o
-                0x00004d4e                _ZN13SensorsWheelsC1Ev
-                0x00004d4e                _ZN13SensorsWheelsC2Ev
+                0x00004d8c        0x2 SensorsWheels.o
+                0x00004d8c                _ZN13SensorsWheelsC1Ev
+                0x00004d8c                _ZN13SensorsWheelsC2Ev
  .text._ZN13SensorsWheels4InitEv
-                0x00004d50       0x16 SensorsWheels.o
-                0x00004d50                _ZN13SensorsWheels4InitEv
+                0x00004d8e       0x16 SensorsWheels.o
+                0x00004d8e                _ZN13SensorsWheels4InitEv
  .text._ZN13SensorsWheels9getParamsEi
-                0x00004d66       0x8e SensorsWheels.o
-                0x00004d66                _ZN13SensorsWheels9getParamsEi
+                0x00004da4       0x8e SensorsWheels.o
+                0x00004da4                _ZN13SensorsWheels9getParamsEi
  .text._ZL8send_i2ch
-                0x00004df4       0x2c Support.o
+                0x00004e32       0x2c Support.o
  .text._ZL9write_i2chh
-                0x00004e20       0x44 Support.o
+                0x00004e5e       0x44 Support.o
  .text._ZN7SupportC2Ev
-                0x00004e64        0x2 Support.o
-                0x00004e64                _ZN7SupportC2Ev
-                0x00004e64                _ZN7SupportC1Ev
+                0x00004ea2        0x2 Support.o
+                0x00004ea2                _ZN7SupportC2Ev
+                0x00004ea2                _ZN7SupportC1Ev
  .text._ZN7Support4InitEv
-                0x00004e66       0x10 Support.o
-                0x00004e66                _ZN7Support4InitEv
+                0x00004ea4       0x10 Support.o
+                0x00004ea4                _ZN7Support4InitEv
  .text._ZN7Support6AdjastEifiiii
-                0x00004e76      0x116 Support.o
-                0x00004e76                _ZN7Support6AdjastEifiiii
+                0x00004eb4      0x116 Support.o
+                0x00004eb4                _ZN7Support6AdjastEifiiii
  .text._ZN7Support9ForceMoveEiiiii
-                0x00004f8c       0xb6 Support.o
-                0x00004f8c                _ZN7Support9ForceMoveEiiiii
+                0x00004fca       0xb6 Support.o
+                0x00004fca                _ZN7Support9ForceMoveEiiiii
  .text._ZN5WheelC2Ev
-                0x00005042        0x8 Wheel.o
-                0x00005042                _ZN5WheelC2Ev
-                0x00005042                _ZN5WheelC1Ev
+                0x00005080        0x8 Wheel.o
+                0x00005080                _ZN5WheelC2Ev
+                0x00005080                _ZN5WheelC1Ev
  .text._ZN5Wheel9get_hightEv
-                0x0000504a       0x1e Wheel.o
-                0x0000504a                _ZN5Wheel9get_hightEv
+                0x00005088       0x1e Wheel.o
+                0x00005088                _ZN5Wheel9get_hightEv
  .text._ZN5Wheel4InitEi
-                0x00005068       0x56 Wheel.o
-                0x00005068                _ZN5Wheel4InitEi
+                0x000050a6       0x56 Wheel.o
+                0x000050a6                _ZN5Wheel4InitEi
  .text._ZN5Wheel12initialHightEv
-                0x000050be       0x24 Wheel.o
-                0x000050be                _ZN5Wheel12initialHightEv
+                0x000050fc       0x24 Wheel.o
+                0x000050fc                _ZN5Wheel12initialHightEv
  .text._ZN5Wheel21hightBeforeMoveNotingEv
-                0x000050e2       0x24 Wheel.o
-                0x000050e2                _ZN5Wheel21hightBeforeMoveNotingEv
+                0x00005120       0x24 Wheel.o
+                0x00005120                _ZN5Wheel21hightBeforeMoveNotingEv
  .text._ZN5Wheel13takeDerectionEf
-                0x00005106      0x192 Wheel.o
-                0x00005106                _ZN5Wheel13takeDerectionEf
+                0x00005144      0x192 Wheel.o
+                0x00005144                _ZN5Wheel13takeDerectionEf
  .text._ZN5Wheel17stepMinCorrictingEv
-                0x00005298       0x66 Wheel.o
-                0x00005298                _ZN5Wheel17stepMinCorrictingEv
+                0x000052d6       0x66 Wheel.o
+                0x000052d6                _ZN5Wheel17stepMinCorrictingEv
  .text._ZN5Wheel12stepMinResetEv
-                0x000052fe        0x8 Wheel.o
-                0x000052fe                _ZN5Wheel12stepMinResetEv
+                0x0000533c        0x8 Wheel.o
+                0x0000533c                _ZN5Wheel12stepMinResetEv
  .text._ZN5Wheel5CheckEv
-                0x00005306       0x4e Wheel.o
-                0x00005306                _ZN5Wheel5CheckEv
+                0x00005344       0x4e Wheel.o
+                0x00005344                _ZN5Wheel5CheckEv
  .text._ZN5Wheel18ControlMalfinctionEi
-                0x00005354       0x38 Wheel.o
-                0x00005354                _ZN5Wheel18ControlMalfinctionEi
+                0x00005392       0x38 Wheel.o
+                0x00005392                _ZN5Wheel18ControlMalfinctionEi
  .text._ZN5Wheel17SetLimitsSetHightEv
-                0x0000538c       0x64 Wheel.o
-                0x0000538c                _ZN5Wheel17SetLimitsSetHightEv
+                0x000053ca       0x64 Wheel.o
+                0x000053ca                _ZN5Wheel17SetLimitsSetHightEv
  .text._ZN5Wheel15IsChanchedHightEv
-                0x000053f0       0x52 Wheel.o
-                0x000053f0                _ZN5Wheel15IsChanchedHightEv
+                0x0000542e       0x52 Wheel.o
+                0x0000542e                _ZN5Wheel15IsChanchedHightEv
  .text._ZN5Wheel6SelectEv
-                0x00005442        0xc Wheel.o
-                0x00005442                _ZN5Wheel6SelectEv
+                0x00005480        0xc Wheel.o
+                0x00005480                _ZN5Wheel6SelectEv
  .text._ZN5Wheel2UpEf
-                0x0000544e       0x60 Wheel.o
-                0x0000544e                _ZN5Wheel2UpEf
+                0x0000548c       0x60 Wheel.o
+                0x0000548c                _ZN5Wheel2UpEf
  .text._ZN5Wheel4DownEf
-                0x000054ae       0x62 Wheel.o
-                0x000054ae                _ZN5Wheel4DownEf
+                0x000054ec       0x62 Wheel.o
+                0x000054ec                _ZN5Wheel4DownEf
  .text._ZN5Wheel20selected_malfinctionEv
-                0x00005510        0xa Wheel.o
-                0x00005510                _ZN5Wheel20selected_malfinctionEv
+                0x0000554e        0xa Wheel.o
+                0x0000554e                _ZN5Wheel20selected_malfinctionEv
  .text._ZN5Wheel25MalFunctionAndnotselectedEv
-                0x0000551a        0xc Wheel.o
-                0x0000551a                _ZN5Wheel25MalFunctionAndnotselectedEv
+                0x00005558        0xc Wheel.o
+                0x00005558                _ZN5Wheel25MalFunctionAndnotselectedEv
  .text._ZN5Wheel16CheckGetLimitLowEv
-                0x00005526       0x70 Wheel.o
-                0x00005526                _ZN5Wheel16CheckGetLimitLowEv
+                0x00005564       0x70 Wheel.o
+                0x00005564                _ZN5Wheel16CheckGetLimitLowEv
  .text._ZN5Wheel18CheckGetLimitHightEv
-                0x00005596       0x70 Wheel.o
-                0x00005596                _ZN5Wheel18CheckGetLimitHightEv
+                0x000055d4       0x70 Wheel.o
+                0x000055d4                _ZN5Wheel18CheckGetLimitHightEv
  .text.avr-libc.fplib
-                0x00005606        0xe c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
-                0x00005606                __subsf3
-                0x00005608                __addsf3
+                0x00005644        0xe c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
+                0x00005644                __subsf3
+                0x00005646                __addsf3
  .text.avr-libc.fplib
-                0x00005614       0xcc c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3x.o)
-                0x00005636                __addsf3x
+                0x00005652       0xcc c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+                0x00005674                __addsf3x
  .text.avr-libc.fplib
-                0x000056e0        0xa c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
-                0x000056e0                __nesf2
-                0x000056e0                __eqsf2
-                0x000056e0                __cmpsf2
-                0x000056e0                __ltsf2
-                0x000056e0                __lesf2
+                0x0000571e        0xa c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+                0x0000571e                __nesf2
+                0x0000571e                __eqsf2
+                0x0000571e                __cmpsf2
+                0x0000571e                __ltsf2
+                0x0000571e                __lesf2
  .text.avr-libc.fplib
-                0x000056ea        0x8 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3.o)
-                0x000056ea                __divsf3
+                0x00005728        0x8 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3.o)
+                0x00005728                __divsf3
  .text.avr-libc.fplib
-                0x000056f2       0xdc c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3x.o)
-                0x00005712                __divsf3x
-                0x00005718                __divsf3_pse
+                0x00005730       0xdc c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(divsf3x.o)
+                0x00005750                __divsf3x
+                0x00005756                __divsf3_pse
  .text.avr-libc.fplib
-                0x000057ce        0xe c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixsfsi.o)
-                0x000057ce                __fixsfsi
+                0x0000580c        0xe c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixsfsi.o)
+                0x0000580c                __fixsfsi
  .text.avr-libc.fplib
-                0x000057dc       0x5e c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
-                0x000057dc                __fixunssfsi
+                0x0000581a       0x5e c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+                0x0000581a                __fixunssfsi
  .text.avr-libc.fplib
-                0x0000583a       0x7a c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
-                0x0000583a                __floatunsisf
-                0x0000583e                __floatsisf
+                0x00005878       0x7a c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                0x00005878                __floatunsisf
+                0x0000587c                __floatsisf
  .text.avr-libc.fplib
-                0x000058b4       0x48 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
-                0x000058b4                __fp_cmp
+                0x000058f2       0x48 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+                0x000058f2                __fp_cmp
  .text.avr-libc.fplib
-                0x000058fc        0xc c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_inf.o)
-                0x000058fc                __fp_inf
+                0x0000593a        0xc c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_inf.o)
+                0x0000593a                __fp_inf
  .text.avr-libc.fplib
-                0x00005908        0x6 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_nan.o)
-                0x00005908                __fp_nan
+                0x00005946        0x6 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_nan.o)
+                0x00005946                __fp_nan
  .text.avr-libc.fplib
-                0x0000590e        0xe c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
-                0x0000590e                __fp_pscA
+                0x0000594c        0xe c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
+                0x0000594c                __fp_pscA
  .text.avr-libc.fplib
-                0x0000591c        0xe c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
-                0x0000591c                __fp_pscB
+                0x0000595a        0xe c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
+                0x0000595a                __fp_pscB
  .text.avr-libc.fplib
-                0x0000592a       0x22 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_round.o)
-                0x0000592a                __fp_round
+                0x00005968       0x22 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_round.o)
+                0x00005968                __fp_round
  .text.avr-libc.fplib
-                0x0000594c       0x44 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_split3.o)
-                0x0000594c                __fp_split3
-                0x0000595c                __fp_splitA
+                0x0000598a       0x44 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+                0x0000598a                __fp_split3
+                0x0000599a                __fp_splitA
  .text.avr-libc.fplib
-                0x00005990        0xe c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_zero.o)
-                0x00005990                __fp_zero
-                0x00005992                __fp_szero
+                0x000059ce        0xe c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+                0x000059ce                __fp_zero
+                0x000059d0                __fp_szero
  .text.avr-libc.fplib
-                0x0000599e        0xa c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(gesf2.o)
-                0x0000599e                __gesf2
-                0x0000599e                __gtsf2
+                0x000059dc        0xa c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(gesf2.o)
+                0x000059dc                __gesf2
+                0x000059dc                __gtsf2
  .text.avr-libc.fplib
-                0x000059a8        0x8 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3.o)
-                0x000059a8                __mulsf3
+                0x000059e6        0x8 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3.o)
+                0x000059e6                __mulsf3
  .text.avr-libc.fplib
-                0x000059b0       0xd2 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
-                0x000059ce                __mulsf3x
-                0x000059d4                __mulsf3_pse
+                0x000059ee       0xd2 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
+                0x00005a0c                __mulsf3x
+                0x00005a12                __mulsf3_pse
  .text.libgcc.div
-                0x00005a82       0x28 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
-                0x00005a82                _div
-                0x00005a82                __divmodhi4
- .text.libgcc   0x00005aaa        0xc c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
-                0x00005aaa                __tablejump2__
+                0x00005ac0       0x28 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+                0x00005ac0                _div
+                0x00005ac0                __divmodhi4
+ .text.libgcc   0x00005ae8        0xc c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
+                0x00005ae8                __tablejump2__
  .text.libgcc.div
-                0x00005ab6       0x28 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
-                0x00005ab6                __udivmodhi4
+                0x00005af4       0x28 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
+                0x00005af4                __udivmodhi4
  .text.avr-libc
-                0x00005ade       0x10 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_byte.o)
-                0x00005ade                eeprom_read_byte
+                0x00005b1c       0x10 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_byte.o)
+                0x00005b1c                eeprom_read_byte
  .text.avr-libc
-                0x00005aee        0xc C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_dword.o)
-                0x00005aee                eeprom_read_float
-                0x00005aee                eeprom_read_dword
+                0x00005b2c        0xc C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_dword.o)
+                0x00005b2c                eeprom_read_float
+                0x00005b2c                eeprom_read_dword
  .text.avr-libc
-                0x00005afa       0x1c C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_byte.o)
-                0x00005afa                eeprom_write_byte
-                0x00005afc                eeprom_write_r18
+                0x00005b38       0x1c C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_byte.o)
+                0x00005b38                eeprom_write_byte
+                0x00005b3a                eeprom_write_r18
  .text.avr-libc
-                0x00005b16       0x10 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_dword.o)
-                0x00005b16                eeprom_write_dword
-                0x00005b16                eeprom_write_float
+                0x00005b54       0x10 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_dword.o)
+                0x00005b54                eeprom_write_dword
+                0x00005b54                eeprom_write_float
  .text.avr-libc
-                0x00005b26        0xa C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_word.o)
-                0x00005b26                eeprom_write_word
+                0x00005b64        0xa C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_word.o)
+                0x00005b64                eeprom_write_word
  .text.avr-libc
-                0x00005b30       0x20 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_block.o)
-                0x00005b30                eeprom_read_block
-                0x00005b34                eeprom_read_blraw
-                0x00005b50                . = ALIGN (0x2)
+                0x00005b6e       0x20 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_block.o)
+                0x00005b6e                eeprom_read_block
+                0x00005b72                eeprom_read_blraw
+                0x00005b8e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00005b50        0x0 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00005b50                _exit
-                0x00005b50                exit
+ .fini9         0x00005b8e        0x0 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00005b8e                _exit
+                0x00005b8e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1057,11 +1057,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00005b50        0x4 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00005b8e        0x4 c:/program files/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00005b54                _etext = .
+                0x00005b92                _etext = .
 
-.data           0x00800100      0x288 load address 0x00005b54
+.data           0x00800100      0x28a load address 0x00005b92
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1069,44 +1069,44 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800100      0x288 Screen.o
+                0x00800100      0x28a Screen.o
  *(.gnu.linkonce.r*)
-                0x00800388                . = ALIGN (0x2)
-                0x00800388                _edata = .
-                0x00800388                PROVIDE (__data_end, .)
+                0x0080038a                . = ALIGN (0x2)
+                0x0080038a                _edata = .
+                0x0080038a                PROVIDE (__data_end, .)
 
-.bss            0x00800388      0x3e1
-                0x00800388                PROVIDE (__bss_start, .)
+.bss            0x0080038a      0x3e1
+                0x0080038a                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss._ZZ5gftoafiE3buf
-                0x00800388       0x10 LCDn5110.o
+                0x0080038a       0x10 LCDn5110.o
  .bss._ZL11LcdCacheIdx
-                0x00800398        0x2 LCDn5110.o
- .bss._ZL11HiWaterMark
                 0x0080039a        0x2 LCDn5110.o
- .bss._ZL11LoWaterMark
+ .bss._ZL11HiWaterMark
                 0x0080039c        0x2 LCDn5110.o
+ .bss._ZL11LoWaterMark
+                0x0080039e        0x2 LCDn5110.o
  .bss._ZL8LcdCache
-                0x0080039e      0x1f8 LCDn5110.o
- .bss.activity  0x00800596       0x9d main.o
-                0x00800596                activity
- .bss.screen    0x00800633        0x1 main.o
-                0x00800633                screen
- .bss.panel     0x00800634       0x31 main.o
-                0x00800634                panel
- .bss.carrage   0x00800665      0x104 main.o
-                0x00800665                carrage
+                0x008003a0      0x1f8 LCDn5110.o
+ .bss.activity  0x00800598       0x9d main.o
+                0x00800598                activity
+ .bss.screen    0x00800635        0x1 main.o
+                0x00800635                screen
+ .bss.panel     0x00800636       0x31 main.o
+                0x00800636                panel
+ .bss.carrage   0x00800667      0x104 main.o
+                0x00800667                carrage
  *(COMMON)
-                0x00800769                PROVIDE (__bss_end, .)
-                0x00005b54                __data_load_start = LOADADDR (.data)
-                0x00005ddc                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0080076b                PROVIDE (__bss_end, .)
+                0x00005b92                __data_load_start = LOADADDR (.data)
+                0x00005e1c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800769        0x0
+.noinit         0x0080076b        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800769                _end = .
+                0x0080076b                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000       0x5a
@@ -1229,25 +1229,25 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0xfab3
+.debug_info     0x00000000     0xfb93
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5/crtatmega328.o
- .debug_info    0x000005f4     0x291e Activity.o
- .debug_info    0x00002f12      0x297 Button.o
- .debug_info    0x000031a9     0x25d7 Carrage.o
- .debug_info    0x00005780      0xb72 LCDn5110.o
- .debug_info    0x000062f2     0x3352 main.o
- .debug_info    0x00009644     0x4860 Screen.o
- .debug_info    0x0000dea4      0x56f Panel.o
- .debug_info    0x0000e413      0x1a6 SensorsWheels.o
- .debug_info    0x0000e5b9      0x7f9 Support.o
- .debug_info    0x0000edb2      0x8fc Wheel.o
- .debug_info    0x0000f6ae       0xab C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_byte.o)
- .debug_info    0x0000f759       0xac C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_dword.o)
- .debug_info    0x0000f805       0xab C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_byte.o)
- .debug_info    0x0000f8b0       0xac C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_dword.o)
- .debug_info    0x0000f95c       0xab C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_word.o)
- .debug_info    0x0000fa07       0xac C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_block.o)
+ .debug_info    0x000005f4     0x292c Activity.o
+ .debug_info    0x00002f20      0x297 Button.o
+ .debug_info    0x000031b7     0x25e5 Carrage.o
+ .debug_info    0x0000579c      0xb72 LCDn5110.o
+ .debug_info    0x0000630e     0x3360 main.o
+ .debug_info    0x0000966e     0x4916 Screen.o
+ .debug_info    0x0000df84      0x56f Panel.o
+ .debug_info    0x0000e4f3      0x1a6 SensorsWheels.o
+ .debug_info    0x0000e699      0x7f9 Support.o
+ .debug_info    0x0000ee92      0x8fc Wheel.o
+ .debug_info    0x0000f78e       0xab C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_byte.o)
+ .debug_info    0x0000f839       0xac C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_dword.o)
+ .debug_info    0x0000f8e5       0xab C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_byte.o)
+ .debug_info    0x0000f990       0xac C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_dword.o)
+ .debug_info    0x0000fa3c       0xab C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eewr_word.o)
+ .debug_info    0x0000fae7       0xac C:/Program Files/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328/avr5\libatmega328.a(eerd_block.o)
 
 .debug_abbrev   0x00000000     0x2013
  *(.debug_abbrev)
