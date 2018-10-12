@@ -44,21 +44,21 @@ void Carrage::beforeAdjast(){
 	Wheel_4.initialHight();
 }
 
-void Carrage::Up(float step){
+void Carrage::Up(float step, Panel &panel){
 	Wheel_1.Up(step);
 	Wheel_2.Up(step);
 	Wheel_3.Up(step);
 	Wheel_4.Up(step);
-	Ajustment();
+	Ajustment(panel);
 	ChekGetLimitsHight();
 }
 
-void Carrage::Down(float step){
+void Carrage::Down(float step, Panel &panel){
 	Wheel_1.Down(step);
 	Wheel_2.Down(step);
 	Wheel_3.Down(step);
 	Wheel_4.Down(step);
-	Ajustment();
+	Ajustment(panel);
 	ChekGetLimitsLow();
 }
 
@@ -103,12 +103,16 @@ void Carrage::CheckLimitsSetHight(){
 	Wheel_4.SetLimitsSetHight();
 }
 
-void Carrage::Ajustment(){
+void Carrage::Ajustment(Panel &panel){
 	CheckLimitsSetHight();
 	finish=1;
 	int i=0;
+	int pressed = panel.Pressed(10);
 	if (chechWheelsBefore()){
-		while(finish>0&&i<500){
+		while(finish>0&&i<500&&pressed == -1){
+			
+			pressed = panel.Pressed(10);
+			
 			Wheel_1.hightBeforeMoveNoting();
 			Wheel_2.hightBeforeMoveNoting();
 			Wheel_3.hightBeforeMoveNoting();
@@ -134,14 +138,16 @@ void Carrage::Ajustment(){
 				
 			i++;
 			
+			if(i==100||i==200||i==300){
+				Wheel_1.stepMinReset();
+				Wheel_2.stepMinReset();
+				Wheel_3.stepMinReset();
+				Wheel_4.stepMinReset();
+			}
+			
 		}
 		
-		if(i==100||i==200||i==300){
-			Wheel_1.stepMinReset();
-			Wheel_2.stepMinReset();
-			Wheel_3.stepMinReset();
-			Wheel_4.stepMinReset();
-		}
+
 	
 		if(i>=500){
 			if(derWheel[1]>0){Wheel_1.malfuction = true;Wheel_1.Error = 2;flagNewMalfuction = true;}

@@ -224,8 +224,8 @@ bool Activity::Adjusting_Carrage(Panel &panel, Carrage &carrage){
 	if(B_UP___||B_DOWN_){if(!carrage.AnySelected()){Statment=SCREEN_MESSAGE;TypeMessage=MESSAGE_NO_ANY_SELECTED;}}
 	switch(pressed){
 		case(B_OK___):Statment = SCREEN_MAIN; break;
-		case(B_UP___):carrage.Up(Get_val_step()); break;
-		case(B_DOWN_):carrage.Down(Get_val_step()); break;
+		case(B_UP___):carrage.Up(Get_val_step(), panel); break;
+		case(B_DOWN_):carrage.Down(Get_val_step(), panel); break;
 		case(B_LEFT_):Step--; break;
 		case(B_RIGHT):Step++; break;
 	}

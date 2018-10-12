@@ -6,6 +6,7 @@
 */
 
 #include "Wheel.h"
+#include "Panel.h"
 #include "Support.h"
 #include "LCDn5110.h"
 #include <avr/eeprom.h>
@@ -42,14 +43,14 @@ public:
 	void Init();
 	bool IfForseAdjast();
 	void beforeAdjast();
-	void Up(float step);
-	void Down(float step);
+	void Up(float step, Panel &panel);
+	void Down(float step, Panel &panel);
 	void ForceUp();
 	void ForceDown();
 	bool IfSelectetMalfuction();
 	void SetLimits();
 	void CheckLimitsSetHight();
-	void Ajustment();
+	void Ajustment(Panel &panel);
 	void test();
 	bool chechAll();
 	bool chechWheelsBefore();
