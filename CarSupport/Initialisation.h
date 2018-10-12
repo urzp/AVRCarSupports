@@ -33,9 +33,12 @@ float Step_force_move EEMEM;
 float Accuracy EEMEM;
 float CarrajeMin EEMEM;
 float CarrajeMax EEMEM;
+byte LCD_contrast EEMEM;
 uint8_t OnOffMalfunction EEMEM;
 float countToMalfunctionLimit EEMEM;
 float PositionsStates[3][5] EEMEM;
+
+
 
 Carrage carrage;
 Panel panel;
@@ -44,18 +47,20 @@ Activity activity;
 
 
 void Initialisation(){
-	Lcd_init();
+
+
 	panel.Init();
 	carrage.Init();
 	activity.Init(carrage);
 	
 	if(!(eeprom_read_byte(&FierstStart) == 1)){
-		eeprom_write_float (&Tunning_rate, 1.00);
-		eeprom_write_float (&Inertion_rate, 100);
+		eeprom_write_float (&Tunning_rate, 0.50);
+		eeprom_write_float (&Inertion_rate, 50);
 		eeprom_write_float (&Step_force_move, 10);
 		eeprom_write_float (&Accuracy, 0);
-		eeprom_write_float (&CarrajeMin, 0.00);
-		eeprom_write_float (&CarrajeMax, 5.00);
+		eeprom_write_float (&CarrajeMin, 0.10);
+		eeprom_write_float (&CarrajeMax, 4.90);
+		eeprom_write_byte(&LCD_contrast, 0xBF);
 		eeprom_write_byte(&FierstStart, 1);
 	}
 	
@@ -80,6 +85,7 @@ void Initialisation(){
 	carrage.accuracy = eeprom_read_float(&Accuracy);
 	carrage.min =  eeprom_read_float(&CarrajeMin);
 	carrage.max =  eeprom_read_float(&CarrajeMax);
+	carrage.LCD_contrast = eeprom_read_byte(&LCD_contrast);
 	
 	carrage.SetLimits();
 	
@@ -90,6 +96,8 @@ void Initialisation(){
 	}
 	carrage.countToMalfunctionLimit = eeprom_read_float(&countToMalfunctionLimit);
 	carrage.OnOffMalfunction = eeprom_read_byte(&OnOffMalfunction);
+	
+	Lcd_init(carrage.LCD_contrast);
 }
 
 #endif /* INITIALISATION_H_ */

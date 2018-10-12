@@ -6,6 +6,7 @@
 */
 #include "Panel.h"
 #include "Carrage.h"
+#include "LCDn5110.h"
 #include <util/delay.h>
 #include <avr/pgmspace.h>
 
@@ -39,6 +40,8 @@ const int B_W_UP_ = 5;
 const int B_W_DOWN = 6;
 const int B_NOTHING = -1;
 
+//ACTIONS
+
 const int ACTION_WHEEL = 100;
 const int ACTION_ALL_WHEEL = 114;
 const int ACTION_ADJUST = 101;
@@ -54,6 +57,9 @@ const int ACTION_TUNING_SET = 110;
 const int ACTION_LIMITS_SET = 111;
 const int ACTION_TEST_MALFACTION = 112;
 const int ACTION_ERRORS = 113;
+const int ACTION_LCD_SETTINGS = 114;
+
+//SCREENS
 
 const int SCREEN_MAIN = 0;
 const int SCREEN_MENU = 1;
@@ -64,6 +70,9 @@ const int SCREEN_SET_MALFACTION = 5;
 const int SCREEN_SET_ERRORS = 6;
 const int SCREEN_ERROR_WHEEL = 7;
 const int SCREEN_MESSAGE = 8;
+const int SCREEN_LCD_SETTINGS = 9;
+
+//CURSOR POSITION
 
 const int SETPOSITION = 0;
 const int SAVE = 1;
@@ -84,12 +93,12 @@ const int SETTINGS_TUNING = 12;
 const int SETTINGS_LIMITS= 13;
 const int SETTINGS_TEST_MALFACTION = 14;
 const int SETTINGS_RESET_ERRORS = 15;
-const int SETTINGS_EXIT = 16;
+const int SETTINGS_LCD = 16;
 
 const int TUNING = 200;
 const int TUNING_INERT = 201;
-const int TUNING_STEP = 202;
-const int TUNING_ACCURACY = 203;
+const int TUNING_ACCURACY = 202;
+const int TUNING_STEP = 203;
 const int EXIT_TUNING =204;
 const int EXIT_TUNING_DISPLAY =205;
 
@@ -110,6 +119,10 @@ const int ERRORS_WHEEL3 = 233;
 const int ERRORS_WHEEL4 = 234;
 const int ERRORS_EXIT = 235;
 const int ERRORS_EXIT_DISPLAY = 236;
+
+const int LCD_SET_CONTRAST = 240;
+const int LCD_EXIT = 241;
+const int LCD_EXIT_DISPLAY = 242;
 
 static const float Steps[] PROGMEM={
 	0.01, 0.02, 0.03, 0.04, 0.05,
@@ -149,6 +162,7 @@ public:
 	bool Malfaction_set(Panel &panel, Carrage &carrage);
 	bool Errors(Panel &panel, Carrage &carrage);
 	bool Error(Panel &panel, Carrage &carrage);
+	bool LCD_Settings(Panel &panel, Carrage &carrage);
 	bool Message(Panel &panel,Carrage &carrage);
 	bool MessageSelectMalfunction(Panel &panel);
 	bool MessageGetMalfunction(Panel &panel,Carrage &carrage);

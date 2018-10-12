@@ -33,6 +33,7 @@ void Screen::Render(Activity &activity, Carrage &carrage){
 		case(SCREEN_SET_ERRORS):Render_ERRORS(activity,carrage);break;
 		case(SCREEN_ERROR_WHEEL):Render_ERROR(activity,carrage);break;\
 		case(SCREEN_MESSAGE):Message(activity,carrage);break;
+		case(SCREEN_LCD_SETTINGS):Render_LCDSettings(activity,carrage);break;
 	}
 	Lcd_update();
 }
@@ -88,24 +89,26 @@ void Screen::Render_tunning(Activity &activity, Carrage &carrage){
 	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Калибровка");
 	Lcd_print(0, 1, FONT_1X,(unsigned char *)"Корр-ия");
 	Lcd_print(0, 2, FONT_1X,(unsigned char *)"Инер-ия");
-	Lcd_print(0, 3, FONT_1X,(unsigned char *)"Шаг");
-	Lcd_print(0, 4, FONT_1X,(unsigned char *)"Точность");
+	Lcd_print(0, 3, FONT_1X,(unsigned char *)"Погре-ть");
+	Lcd_print(0, 4, FONT_1X,(unsigned char *)"Шаг");
+	
 	LcdGotoXY(3,5);LcdChr_full(0x9E);LcdChr_full(0x9F);//menu
-	LcdGotoXY(9,5);LcdChr_full(0xAD);LcdChr_full(0xAE);//Panel
+	LcdGotoXY(8,5);LcdChr_full(0xAD);LcdChr_full(0xAE);//Panel
 	
 	Lcd_printf(9, 1, FONT_1X, carrage.tunning , 2);
 	Lcd_printf2(10, 2, FONT_1X, carrage.inertion/100 , 2);
-	Lcd_printf2(10, 3, FONT_1X, carrage.step_force_move/100 , 2);
-	Lcd_printf(9, 4, FONT_1X, carrage.accuracy , 2);
+	Lcd_printf(9, 3, FONT_1X, carrage.accuracy , 2);
+	Lcd_printf2(10, 4, FONT_1X, carrage.step_force_move/100 , 2);
+	
 	
 	
 	switch(activity.Cursor){
 		case(TUNING):LcdGotoXY(8,1);LcdChr_full(0x9A);LcdGotoXY(13,1);LcdChr_full(0x9B);break;
 		case(TUNING_INERT):LcdGotoXY(8,2);LcdChr_full(0x9A);LcdGotoXY(13,2);LcdChr_full(0x9B);break;
-		case(TUNING_STEP):LcdGotoXY(8,3);LcdChr_full(0x9A);LcdGotoXY(13,3);LcdChr_full(0x9B);break;
-		case(TUNING_ACCURACY):LcdGotoXY(8,4);LcdChr_full(0x9A);LcdGotoXY(13,4);LcdChr_full(0x9B);break;
+		case(TUNING_ACCURACY):LcdGotoXY(8,3);LcdChr_full(0x9A);LcdGotoXY(13,3);LcdChr_full(0x9B);break;
+		case(TUNING_STEP):LcdGotoXY(8,4);LcdChr_full(0x9A);LcdGotoXY(13,4);LcdChr_full(0x9B);break;
 		case(EXIT_TUNING):LcdGotoXY(2,5);LcdChr_full(0xA2);break;
-		case(EXIT_TUNING_DISPLAY):LcdGotoXY(8,5);LcdChr_full(0xA2);break;
+		case(EXIT_TUNING_DISPLAY):LcdGotoXY(7,5);LcdChr_full(0xA2);break;
 	}
 }
 
@@ -201,7 +204,26 @@ void Screen::PrintError(Wheel wheel){
 	}
 }
 
+void Screen::Render_LCDSettings(Activity &activity, Carrage &carrage){
+	Lcd_print(3, 0, FONT_1X,(unsigned char *)"Дисплей");
+	Lcd_print(0, 1, FONT_1X,(unsigned char *)"контрастность");
 
+	LcdGotoXY(3,5);LcdChr_full(0x9E);LcdChr_full(0x9F);//menu
+	LcdGotoXY(9,5);LcdChr_full(0xAD);LcdChr_full(0xAE);//Panel
+	
+	//Lcd_print(6, 3, FONT_1X, carrage.LCD_contrast , 2);
+	
+		LcdGotoXY(5 , 3 );
+		LcdStepLevel(carrage.LCD_contrast - 0xB6);
+
+	
+	
+	switch(activity.Cursor){
+		case(LCD_SET_CONTRAST):LcdGotoXY(3,3);LcdChr_full(0x9A);LcdGotoXY(10,3);LcdChr_full(0x9B);break;
+		case(LCD_EXIT):LcdGotoXY(2,5);LcdChr_full(0xA2);break;
+		case(LCD_EXIT_DISPLAY):LcdGotoXY(8,5);LcdChr_full(0xA2);break;
+	}
+}
 
 
 // ******************************************************
@@ -357,7 +379,7 @@ void Screen::Draw_CursorMenuScreen(Activity &activity){
 		case(SETTINGS_LIMITS):LcdGotoXY(0,2);LcdChr_full(0x9B);break;
 		case(SETTINGS_TEST_MALFACTION):LcdGotoXY(0,3);LcdChr_full(0x9B);break;
 		case(SETTINGS_RESET_ERRORS):LcdGotoXY(0,4);LcdChr_full(0x9B);break;
-		case(SETTINGS_EXIT):LcdGotoXY(0,5);LcdChr_full(0x9B);break;
+		case(SETTINGS_LCD):LcdGotoXY(0,5);LcdChr_full(0x9B);break;
 	}
 }
 

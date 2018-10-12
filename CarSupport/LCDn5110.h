@@ -72,7 +72,8 @@ typedef enum
 } LcdFontSize;
 
 // Прототипы функций, детальную информацию смотрим внутри n5110lcd.c
-void Lcd_init      ( void );   // Инициализация
+void Lcd_init      ( byte );   // Инициализация
+void Lcd_contrast (byte);
 void Lcd_clear     ( void );   // Очистка буфера
 void Lcd_update    ( void );   // Копирование буфера в ОЗУ дисплея
 void LcdContrast   ( byte contrast );   // Установка контрастности дисплея

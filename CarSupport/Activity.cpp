@@ -34,13 +34,13 @@ void Activity::Init(Carrage &carrage){
 	Main_Screen_cursor_pathes[MENU][B_DOWN_] = ADJUST;
 	Main_Screen_cursor_pathes[MENU][B_OK___] = ACTION_MENU;
 	
-	Main_Screen_cursor_pathes[LEFTUP][B_LEFT_] = LEFTUP;
+	Main_Screen_cursor_pathes[LEFTUP][B_LEFT_] = ACTION_WHEEL;
 	Main_Screen_cursor_pathes[LEFTUP][B_RIGHT] = MENU;
 	Main_Screen_cursor_pathes[LEFTUP][B_UP___] = LEFTUP;
 	Main_Screen_cursor_pathes[LEFTUP][B_DOWN_] = LEFTDOWN;
 	Main_Screen_cursor_pathes[LEFTUP][B_OK___] = ACTION_WHEEL;
 	
-	Main_Screen_cursor_pathes[LEFTDOWN][B_LEFT_] = LEFTDOWN;
+	Main_Screen_cursor_pathes[LEFTDOWN][B_LEFT_] = ACTION_WHEEL;
 	Main_Screen_cursor_pathes[LEFTDOWN][B_RIGHT] = CARRAGE;
 	Main_Screen_cursor_pathes[LEFTDOWN][B_UP___] = LEFTUP;
 	Main_Screen_cursor_pathes[LEFTDOWN][B_DOWN_] = LEFTDOWN;
@@ -53,13 +53,13 @@ void Activity::Init(Carrage &carrage){
 	Main_Screen_cursor_pathes[ADJUST][B_OK___] = ACTION_ADJUST;
 	
 	Main_Screen_cursor_pathes[RIGHTDOWN][B_LEFT_] = CARRAGE;
-	Main_Screen_cursor_pathes[RIGHTDOWN][B_RIGHT] = RIGHTDOWN;
+	Main_Screen_cursor_pathes[RIGHTDOWN][B_RIGHT] = ACTION_WHEEL;
 	Main_Screen_cursor_pathes[RIGHTDOWN][B_UP___] = RIGHTUP;
 	Main_Screen_cursor_pathes[RIGHTDOWN][B_DOWN_] = RIGHTDOWN;
 	Main_Screen_cursor_pathes[RIGHTDOWN][B_OK___] = ACTION_WHEEL;
 	
 	Main_Screen_cursor_pathes[RIGHTUP][B_LEFT_] = MENU;
-	Main_Screen_cursor_pathes[RIGHTUP][B_RIGHT] = RIGHTUP;
+	Main_Screen_cursor_pathes[RIGHTUP][B_RIGHT] = ACTION_WHEEL;
 	Main_Screen_cursor_pathes[RIGHTUP][B_UP___] = RIGHTUP;
 	Main_Screen_cursor_pathes[RIGHTUP][B_DOWN_] = RIGHTDOWN;
 	Main_Screen_cursor_pathes[RIGHTUP][B_OK___] = ACTION_WHEEL;
@@ -175,14 +175,14 @@ void Activity::Init(Carrage &carrage){
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_LEFT_] = SETTINGS;
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_RIGHT] = ACTION_ERRORS;
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_UP___] = SETTINGS_TEST_MALFACTION;
-	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_DOWN_] = SETTINGS_EXIT;
+	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_DOWN_] = SETTINGS_LCD ;
 	Menu_Screen_cursor_pathes[SETTINGS_RESET_ERRORS][B_OK___] = ACTION_ERRORS;
 	
-	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_LEFT_] = SETTINGS;
-	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_RIGHT] = ACTION_MENU_EXIT;
-	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_UP___] = SETTINGS_RESET_ERRORS;
-	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_DOWN_] = SETTINGS_EXIT;
-	Menu_Screen_cursor_pathes[SETTINGS_EXIT][B_OK___] = ACTION_MENU_EXIT;
+	Menu_Screen_cursor_pathes[SETTINGS_LCD ][B_LEFT_] = SETTINGS;
+	Menu_Screen_cursor_pathes[SETTINGS_LCD ][B_RIGHT] = ACTION_LCD_SETTINGS;
+	Menu_Screen_cursor_pathes[SETTINGS_LCD ][B_UP___] = SETTINGS_RESET_ERRORS;
+	Menu_Screen_cursor_pathes[SETTINGS_LCD ][B_DOWN_] = SETTINGS_LCD ;
+	Menu_Screen_cursor_pathes[SETTINGS_LCD ][B_OK___] = ACTION_LCD_SETTINGS;
 	
 }
 
@@ -196,6 +196,7 @@ bool Activity::Cursor_Action(Panel &panel, Carrage &carrage){
 		case(SCREEN_SET_MALFACTION):Malfaction_set(panel,carrage);break;
 		case(SCREEN_SET_ERRORS):Errors(panel,carrage);break;
 		case(SCREEN_ERROR_WHEEL):Error(panel,carrage);break;
+		case(SCREEN_LCD_SETTINGS):LCD_Settings(panel,carrage);break;
 		case(SCREEN_MESSAGE):Message(panel,carrage);break;
 	}
 }
@@ -253,6 +254,7 @@ bool Activity::Menu_Screen_Move(Panel &panel, Carrage &carrage){
 		case (ACTION_LIMITS_SET):Statment = SCREEN_LIMITS;Cursor = LIMITS_MIN;break;
 		case (ACTION_TEST_MALFACTION):Statment = SCREEN_SET_MALFACTION;Cursor = TIME_MALFACTION;break;
 		case (ACTION_ERRORS):Statment = SCREEN_SET_ERRORS;Cursor = ERRORS_RESET;break;
+		case (ACTION_LCD_SETTINGS):Statment = SCREEN_LCD_SETTINGS;Cursor = LCD_SET_CONTRAST;break;
 		default: Cursor = next;break;
 	}
 	return true;
@@ -428,7 +430,32 @@ bool Activity::Error(Panel &panel, Carrage &carrage){
 	if (!(pressed == B_NOTHING)){Statment=SCREEN_SET_ERRORS;}
 	}
 
-
+bool Activity::LCD_Settings(Panel &panel, Carrage &carrage){
+		int pressed = panel.Pressed(100);
+		if (pressed == B_W_UP_){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
+		if (pressed == B_W_DOWN){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
+		if (pressed == B_NOTHING ){return false;}
+		if(Cursor==LCD_EXIT&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_TUNING;SettingsSaveFlag = true;return false;}
+		if(Cursor==LCD_EXIT_DISPLAY&&pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
+			
+		if(Cursor==LCD_SET_CONTRAST){
+			switch(pressed){
+				case(B_LEFT_): carrage.LCD_contrast-=1;Lcd_init(carrage.LCD_contrast); break;
+				case(B_RIGHT): carrage.LCD_contrast+=1;Lcd_init(carrage.LCD_contrast); break;
+			}
+		}
+		
+		switch(pressed){
+			case(B_DOWN_):Cursor++;break;
+			case(B_UP___):Cursor--;break;
+		}
+		
+		if(Cursor<=LCD_SET_CONTRAST){Cursor = LCD_SET_CONTRAST;};
+		if(Cursor>=LCD_EXIT_DISPLAY){Cursor = LCD_EXIT_DISPLAY;};
+		
+		if (carrage.LCD_contrast <= 0xB6){carrage.LCD_contrast = 0xB6;}
+		if (carrage.LCD_contrast >= 0xC9){carrage.LCD_contrast = 0xC9;}
+}
 
 
 void Activity::SelectWheel(Carrage &carrage){

@@ -30,6 +30,7 @@ public:
 	bool OnOffMalfunction;
 	bool flagNewMalfuction;
 	bool flagGetLimits;
+	byte LCD_contrast;
 protected:
 private:
 	int sort_array[4];

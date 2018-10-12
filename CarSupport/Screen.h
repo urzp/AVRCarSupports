@@ -37,6 +37,7 @@ public:
 	void Render_ERRORS(Activity &activity, Carrage &carrage);
 	void Render_ERROR(Activity &activity, Carrage &carrage);
 	void PrintError(Wheel wheel);
+	void Render_LCDSettings(Activity &activity, Carrage &carrage);
 protected:
 private:
 	// HELPERS
