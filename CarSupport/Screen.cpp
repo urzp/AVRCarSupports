@@ -61,7 +61,7 @@ void Screen::PrintTitle(Activity &activity, Carrage &carrage){
 		Lcd_print(3, 0, FONT_1X,(unsigned char *)"Настройки");
 		Lcd_print(2, 1, FONT_1X,(unsigned char *)"Калибровка");
 		Lcd_print(2, 2, FONT_1X,(unsigned char *)"Ограничения");
-		Lcd_print(2, 3, FONT_1X,(unsigned char *)"Диагностика");
+		Lcd_print(2, 3, FONT_1X,(unsigned char *)"В движении");
 		Lcd_print(2, 4, FONT_1X,(unsigned char *)"Ошибки");
 		Lcd_print(2, 5, FONT_1X,(unsigned char *)"Дисплей");
 	}
@@ -129,20 +129,23 @@ void Screen::Render_limits(Activity &activity, Carrage &carrage){
 }
 
 void Screen::Render_maltifaction(Activity &activity, Carrage &carrage){
-	Lcd_print(2, 0, FONT_1X,(unsigned char *)"Диагностика");
+	Lcd_print(2, 0, FONT_1X,(unsigned char *)"В движении");
 	Lcd_print(0, 1, FONT_1X,(unsigned char *)"Длительность");
-	Lcd_print(0, 2, FONT_1X,(unsigned char *)"процесса");
-	Lcd_printf2(10, 2, FONT_1X, carrage.countToMalfunctionLimit/100 , 2);
+	Lcd_print(0, 2, FONT_1X,(unsigned char *)"теста");
+	Lcd_print(0, 3, FONT_1X,(unsigned char *)"Порог");
+	Lcd_print(0, 4, FONT_1X,(unsigned char *)"Включить");
 	
-	Lcd_print(0, 3, FONT_1X,(unsigned char *)"Включить");
+	Lcd_printf2(10, 2, FONT_1X, carrage.countToMalfunctionLimit/100 , 2);	
+	Lcd_printf(9, 3, FONT_1X, carrage.sensitivityMove, 2);	
 	switch(carrage.OnOffMalfunction){
-		case(false):Lcd_print(10, 3, FONT_1X,(unsigned char *)"отк");break;
-		case(true):Lcd_print(10, 3, FONT_1X,(unsigned char *)"вкл");break;
+		case(false):Lcd_print(10, 4, FONT_1X,(unsigned char *)"отк");break;
+		case(true):Lcd_print(10, 4, FONT_1X,(unsigned char *)"вкл");break;
 	}
 	
 	switch(activity.Cursor){
-		case(ONOF_MALFACTION):LcdGotoXY(9,3);LcdChr_full(0xA2);break;
-		case(TIME_MALFACTION):LcdGotoXY(9,2);LcdChr_full(0x9A);LcdGotoXY(13,2);LcdChr_full(0x9B);break;
+		case(ONOF_MALFACTION):LcdGotoXY(9,4);LcdChr_full(0xA2);break;
+		case(SENSITIVE_MALFACTION):LcdGotoXY(8,3);LcdChr_full(0x9A);LcdGotoXY(13,3);LcdChr_full(0x9B);break;
+		case(TIME_MALFACTION):LcdGotoXY(8,2);LcdChr_full(0x9A);LcdGotoXY(13,2);LcdChr_full(0x9B);break;
 		case(EXIT_MALFACTION):LcdGotoXY(2,5);LcdChr_full(0xA2);break;
 		case(EXIT_MALFACTION_DISPLAY):LcdGotoXY(8,5);LcdChr_full(0xA2);break;
 	}

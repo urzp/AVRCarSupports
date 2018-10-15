@@ -31,6 +31,7 @@ float Tunning_rate EEMEM;
 float Inertion_rate EEMEM;
 float Step_force_move EEMEM;
 float Accuracy EEMEM;
+float SensitivityMove EEMEM;
 float CarrajeMin EEMEM;
 float CarrajeMax EEMEM;
 byte LCD_contrast EEMEM;
@@ -60,6 +61,9 @@ void Initialisation(){
 		eeprom_write_float (&Accuracy, 0);
 		eeprom_write_float (&CarrajeMin, 0.10);
 		eeprom_write_float (&CarrajeMax, 4.90);
+		eeprom_write_float (&countToMalfunctionLimit, 50.0);
+		eeprom_write_byte(&OnOffMalfunction,true);
+		eeprom_write_float (&SensitivityMove, 0.03);
 		eeprom_write_byte(&LCD_contrast, 0xBF);
 		eeprom_write_byte(&FierstStart, 1);
 	}
@@ -83,17 +87,13 @@ void Initialisation(){
 	carrage.inertion = eeprom_read_float(&Inertion_rate);
 	carrage.step_force_move = eeprom_read_float(&Step_force_move);
 	carrage.accuracy = eeprom_read_float(&Accuracy);
+	carrage.sensitivityMove = eeprom_read_float(&SensitivityMove);
 	carrage.min =  eeprom_read_float(&CarrajeMin);
 	carrage.max =  eeprom_read_float(&CarrajeMax);
 	carrage.LCD_contrast = eeprom_read_byte(&LCD_contrast);
 	
 	carrage.SetLimits();
 	
-	if (!(eeprom_read_float(&countToMalfunctionLimit)>=0||eeprom_read_float(&countToMalfunctionLimit)<=999)){
-		eeprom_write_float (&countToMalfunctionLimit, 50.0); 
-		eeprom_write_byte(&OnOffMalfunction,true);
-		
-	}
 	carrage.countToMalfunctionLimit = eeprom_read_float(&countToMalfunctionLimit);
 	carrage.OnOffMalfunction = eeprom_read_byte(&OnOffMalfunction);
 	

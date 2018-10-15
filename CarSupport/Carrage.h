@@ -26,7 +26,7 @@ public:
 	Support support;
 	float tunning, inertion, step_force_move, accuracy;
 	float min,max;
-	float countToMalfunctionLimit;
+	float countToMalfunctionLimit, sensitivityMove;
 	bool OnOffMalfunction;
 	bool flagNewMalfuction;
 	bool flagGetLimits;

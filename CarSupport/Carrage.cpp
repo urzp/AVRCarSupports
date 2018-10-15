@@ -249,10 +249,10 @@ void Carrage::Fast_print_LSD_hight(Wheel wheel){
 
 void Carrage::ControlMalfinction(){
 	if (OnOffMalfunction){
-		Wheel_1.IsChanchedHight();
-		Wheel_2.IsChanchedHight();
-		Wheel_3.IsChanchedHight();
-		Wheel_4.IsChanchedHight();
+		Wheel_1.IsChanchedHight(sensitivityMove);
+		Wheel_2.IsChanchedHight(sensitivityMove);
+		Wheel_3.IsChanchedHight(sensitivityMove);
+		Wheel_4.IsChanchedHight(sensitivityMove);
 		bool caragemove = (Wheel_1.move|Wheel_2.move|Wheel_3.move|Wheel_4.move);
 		if (caragemove){
 			if(Wheel_1.ControlMalfinction(countToMalfunctionLimit)){flagNewMalfuction = true;};

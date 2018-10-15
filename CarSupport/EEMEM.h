@@ -23,6 +23,7 @@ void SettingsSave(bool SettingSave){
 		eeprom_write_byte(&LCD_contrast, carrage.LCD_contrast);
 		carrage.SetLimits();
 		eeprom_write_float (&countToMalfunctionLimit, carrage.countToMalfunctionLimit);
+		eeprom_write_float (&SensitivityMove, carrage.sensitivityMove);
 		eeprom_write_byte(&OnOffMalfunction,carrage.OnOffMalfunction); 
 	}
 }

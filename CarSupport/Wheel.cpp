@@ -107,8 +107,9 @@ void Wheel::SetLimitsSetHight(){
 	if(sethight<=minHight){sethight=minHight;}
 }
 
-bool Wheel::IsChanchedHight(){
-	if(oldHigit != get_hight()){
+bool Wheel::IsChanchedHight(float sensitive){
+	float carren_hight = get_hight();
+	if(carren_hight - sensitive > oldHigit || carren_hight + sensitive < oldHigit){
 		oldHigit = hight;
 		move = true;
 		return true;

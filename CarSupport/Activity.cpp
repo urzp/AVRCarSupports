@@ -267,7 +267,7 @@ bool Activity::Tunning_rate(Panel &panel, Carrage &carrage){
 	if (pressed == B_W_DOWN){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
 	if (pressed == B_NOTHING ){button_step=0;return false;}
 	if(Cursor==EXIT_TUNING&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_TUNING;SettingsSaveFlag = true;return false;}
-	if(Cursor==EXIT_TUNING_DISPLAY&&pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
+	if(pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
 	switch(pressed){
 		case(B_DOWN_):Cursor++;break;
 		case(B_UP___):Cursor--;break;
@@ -326,7 +326,7 @@ bool Activity::Limits_set(Panel &panel, Carrage &carrage){
 	if (pressed == B_W_DOWN){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
 	if (pressed == B_NOTHING ){button_step=0;return false;}
 	if(Cursor==EXIT_LIMITS&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_LIMITS;SettingsSaveFlag = true;return false;}
-	if(Cursor==EXIT_LIMITS_DISPLAY&&pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
+	if(pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
 	switch(pressed){
 		case(B_DOWN_):Cursor++;break;
 		case(B_UP___):Cursor--;break;
@@ -360,7 +360,7 @@ bool Activity::Malfaction_set(Panel &panel, Carrage &carrage){
 	if (pressed == B_W_DOWN){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
 	if (pressed == B_NOTHING ){button_step=0;return false;}
 	if(Cursor==EXIT_MALFACTION&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_TEST_MALFACTION;SettingsSaveFlag = true;return false; }
-	if(Cursor==EXIT_MALFACTION_DISPLAY&&pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
+	if(pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
 	switch(pressed){
 		case(B_DOWN_):Cursor++;break;
 		case(B_UP___):Cursor--;break;
@@ -368,7 +368,8 @@ bool Activity::Malfaction_set(Panel &panel, Carrage &carrage){
 	
 	if(Cursor==ONOF_MALFACTION){
 		switch(pressed){
-			case(B_OK___):carrage.switch_malfaction(); break;
+			case(B_LEFT_):carrage.switch_malfaction(); break;
+			case(B_RIGHT):carrage.switch_malfaction(); break;
 		}
 	}
 	if(Cursor==TIME_MALFACTION){
@@ -377,6 +378,14 @@ bool Activity::Malfaction_set(Panel &panel, Carrage &carrage){
 			case(B_RIGHT):carrage.countToMalfunctionLimit+=(1+button_step);button_step=9; break;
 		}
 	}
+	
+	if(Cursor==SENSITIVE_MALFACTION){
+		switch(pressed){
+			case(B_LEFT_):if(Cursor==LIMITS_MIN){carrage.sensitivityMove-=(0.01+button_step);}else{carrage.sensitivityMove-=(0.01+button_step);};button_step=0.09; break;
+			case(B_RIGHT):if(Cursor==LIMITS_MIN){carrage.sensitivityMove+=(0.01+button_step);}else{carrage.sensitivityMove+=(0.01+button_step);};button_step=0.09; break;
+		}
+	}
+	
 	if(Cursor>=EXIT_MALFACTION){
 		switch(pressed){
 			case(B_LEFT_):Cursor--;break;
@@ -436,7 +445,7 @@ bool Activity::LCD_Settings(Panel &panel, Carrage &carrage){
 		if (pressed == B_W_DOWN){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
 		if (pressed == B_NOTHING ){return false;}
 		if(Cursor==LCD_EXIT&&pressed==B_OK___){Statment = SCREEN_MENU;Cursor=SETTINGS_TUNING;SettingsSaveFlag = true;return false;}
-		if(Cursor==LCD_EXIT_DISPLAY&&pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
+		if(pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
 			
 		if(Cursor==LCD_SET_CONTRAST){
 			switch(pressed){
@@ -449,6 +458,10 @@ bool Activity::LCD_Settings(Panel &panel, Carrage &carrage){
 			case(B_DOWN_):Cursor++;break;
 			case(B_UP___):Cursor--;break;
 		}
+		
+		if(pressed == B_RIGHT&&Cursor==LCD_EXIT){Cursor++;return false;}
+		if(pressed == B_LEFT_&&Cursor==LCD_EXIT_DISPLAY){Cursor--;return false;}
+		if(pressed == B_UP___&&Cursor==LCD_EXIT_DISPLAY){Cursor--;return false;}
 		
 		if(Cursor<=LCD_SET_CONTRAST){Cursor = LCD_SET_CONTRAST;};
 		if(Cursor>=LCD_EXIT_DISPLAY){Cursor = LCD_EXIT_DISPLAY;};
