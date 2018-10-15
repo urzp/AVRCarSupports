@@ -249,13 +249,14 @@ void Screen::Draw_icon_carrage(Activity &activity){
 
 
 void Screen::Draw_Carrage(Carrage &carrage){
-	Draw_Wheel(carrage.Wheel_1);
-	Draw_Wheel(carrage.Wheel_2);
-	Draw_Wheel(carrage.Wheel_3);
-	Draw_Wheel(carrage.Wheel_4);
+	
+	Draw_Wheel(carrage.Wheel_1, carrage.caragemove);
+	Draw_Wheel(carrage.Wheel_2, carrage.caragemove);
+	Draw_Wheel(carrage.Wheel_3, carrage.caragemove);
+	Draw_Wheel(carrage.Wheel_4, carrage.caragemove);
 }
 
-void Screen::Draw_Wheel(Wheel wheel){
+void Screen::Draw_Wheel(Wheel wheel, bool moving){
 	int i;
 	int pos_x;
 	int pos_y;
@@ -269,37 +270,77 @@ void Screen::Draw_Wheel(Wheel wheel){
 		case 3:pos_x  = 9;pos_y = 3; hight_pos_x = 11; hight_pos_y = 4 ;break;
 		case 4:pos_x  = 3;pos_y = 3; hight_pos_x = 0; hight_pos_y = 4 ;break;
 	}
-	//get char of wheel
-	if(wheel.malfuction){
-		if(wheel.selected){
-			Char_wheel[0] = 0xA7;
-			Char_wheel[1] = 0xA8;
-			Char_wheel[2] = 0xA9;
-			Char_wheel[3] = 0xAA;
-			Char_wheel[4] = 0xAB;
-			Char_wheel[5] = 0xAC;			
-		}else{
+	
+	if(moving){
+		//moving
+		i_effects++;
+		if (i_effects>30){i_effects=0;}
+		if(wheel.malfuction){
 			Char_wheel[0] = 0x8C;
 			Char_wheel[1] = 0x8D;
 			Char_wheel[2] = 0x8E;
 			Char_wheel[3] = 0x8F;
 			Char_wheel[4] = 0x90;
 			Char_wheel[5] = 0x91;
+		}else{
+			if(i_effects<10){
+				Char_wheel[0] = 0xAF;
+				Char_wheel[1] = 0xB0;
+				Char_wheel[2] = 0xB1;
+				Char_wheel[3] = 0xB2;
+				Char_wheel[4] = 0xB3;
+				Char_wheel[5] = 0xB4;
+			}else if (i_effects<20){
+				Char_wheel[0] = 0xB5;
+				Char_wheel[1] = 0xB6;
+				Char_wheel[2] = 0xB7;
+				Char_wheel[3] = 0xB8;
+				Char_wheel[4] = 0xB9;
+				Char_wheel[5] = 0xBA;
+			}else {
+				Char_wheel[0] = 0xBB;
+				Char_wheel[1] = 0xBC;
+				Char_wheel[2] = 0xBD;
+				Char_wheel[3] = 0xBE;
+				Char_wheel[4] = 0xBF;
+				Char_wheel[5] = 0xC0;
+			}
+			
 		}
-	} else if (wheel.selected){
-		Char_wheel[0] = 0x80;
-		Char_wheel[1] = 0x81;
-		Char_wheel[2] = 0x82;
-		Char_wheel[3] = 0x83;
-		Char_wheel[4] = 0x84;
-		Char_wheel[5] = 0x85;
-	} else {
-		Char_wheel[0] = 0x86;
-		Char_wheel[1] = 0x87;
-		Char_wheel[2] = 0x88;
-		Char_wheel[3] = 0x89;
-		Char_wheel[4] = 0x8A;
-		Char_wheel[5] = 0x8B;
+	}else{
+	
+		//not moving
+		if(wheel.malfuction){
+			if(wheel.selected){
+				Char_wheel[0] = 0xA7;
+				Char_wheel[1] = 0xA8;
+				Char_wheel[2] = 0xA9;
+				Char_wheel[3] = 0xAA;
+				Char_wheel[4] = 0xAB;
+				Char_wheel[5] = 0xAC;			
+			}else{
+				Char_wheel[0] = 0x8C;
+				Char_wheel[1] = 0x8D;
+				Char_wheel[2] = 0x8E;
+				Char_wheel[3] = 0x8F;
+				Char_wheel[4] = 0x90;
+				Char_wheel[5] = 0x91;
+			}
+		} else if (wheel.selected){
+				Char_wheel[0] = 0x80;//;
+				Char_wheel[1] = 0x81;//;
+				Char_wheel[2] = 0x82;//;
+				Char_wheel[3] = 0x83;//;
+				Char_wheel[4] = 0x84;//;
+				Char_wheel[5] = 0x85;//;
+		} else {
+			Char_wheel[0] = 0x86;
+			Char_wheel[1] = 0x87;
+			Char_wheel[2] = 0x88;
+			Char_wheel[3] = 0x89;
+			Char_wheel[4] = 0x8A;
+			Char_wheel[5] = 0x8B;
+		}
 	}
 
 	//draw wheel 2 symbols for cycle 

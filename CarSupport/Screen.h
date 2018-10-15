@@ -23,6 +23,7 @@ public:
 
 protected:
 private:
+	int i_effects;
 	
 //functions
 public:
@@ -45,7 +46,7 @@ private:
 	void Draw_icon_menu();
 	void Draw_icon_carrage(Activity &activity);
 	void Draw_Carrage(Carrage &carrage);
-	void Draw_Wheel(Wheel wheel);
+	void Draw_Wheel(Wheel wheel, bool moving);
 	void Draw_adjustment_carrage(Activity &activity);
 	bool Draw_CursorMainScreen(Activity &activity);
 	void Draw_CursorMenuScreen(Activity &activity);
