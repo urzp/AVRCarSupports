@@ -33,6 +33,8 @@ int main(void)
 		IFCarrageSaveStateToEEMEM(activity.SavePosition);
 		IFCarrageSetStateToEEMEM(activity.SavePosition);
 		SettingsSave(activity.SettingsSaveFlag);
+		activity.SettingsSaveFlag = false;
+		_delay_ms(50);
     }
 }
 

@@ -51,6 +51,8 @@ void Carrage::Up(float step, Panel &panel){
 	Wheel_4.Up(step);
 	Ajustment(panel);
 	ChekGetLimitsHight();
+	oldHightUpdate();
+	
 }
 
 void Carrage::Down(float step, Panel &panel){
@@ -60,6 +62,7 @@ void Carrage::Down(float step, Panel &panel){
 	Wheel_4.Down(step);
 	Ajustment(panel);
 	ChekGetLimitsLow();
+	oldHightUpdate();
 }
 
 void Carrage::ForceUp(){
@@ -68,6 +71,7 @@ void Carrage::ForceUp(){
 	if (Wheel_3.selected){derWheel[3]=1;}else{derWheel[3]=0;};
 	if (Wheel_4.selected){derWheel[4]=1;}else{derWheel[4]=0;};
 	if(!ChekGetLimitsHight()){support.ForceMove(step_force_move,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );}
+	oldHightUpdate();
 }
 
 void Carrage::ForceDown(){
@@ -76,7 +80,15 @@ void Carrage::ForceDown(){
 	if (Wheel_3.selected){derWheel[3]=2;}else{derWheel[3]=0;};
 	if (Wheel_4.selected){derWheel[4]=2;}else{derWheel[4]=0;};
 	if(!ChekGetLimitsLow()){support.ForceMove(step_force_move,derWheel[1], derWheel[2] ,derWheel[3] ,derWheel[4] );}
+	oldHightUpdate();
 	
+}
+
+void Carrage::oldHightUpdate(){
+	Wheel_1.oldHightUpdate();
+	Wheel_2.oldHightUpdate();
+	Wheel_3.oldHightUpdate();
+	Wheel_4.oldHightUpdate();
 }
 
 bool Carrage::IfSelectetMalfuction(){
@@ -182,7 +194,6 @@ bool Carrage::chechWheelsBefore(){
 }
 
 bool Carrage::chechAll(){
-	
 	Wheel_1.get_hight();
 	Wheel_2.get_hight();
 	Wheel_3.get_hight();
@@ -246,6 +257,8 @@ void Carrage::Fast_print_LSD_hight(Wheel wheel){
 	Lcd_printf2(hight_pos_x, hight_pos_y, FONT_1X, hight, 2);
 	Lcd_update();
 }
+
+
 
 void Carrage::ControlMalfinction(){
 	

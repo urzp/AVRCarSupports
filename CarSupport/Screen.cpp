@@ -451,6 +451,7 @@ bool Screen::Message(Activity &activity, Carrage &carrage){
 		case(MESSAGE_GET_MALFUCTION):MessageGetMalfuction();break;
 		case(MESSAGE_NO_ANY_SELECTED):MessageNoAnySelected();break;
 		case(MESSAGE_GET_LIMITS):MessageGetLimits();break;
+		case(MESSAGE_ANEBLE_WHILE_DRIVING):AnableWhileDriving();break;
 	}
 	
 }
@@ -483,4 +484,10 @@ void Screen::MessageNoAnySelected(){
 void Screen::MessageGetLimits(){
 	Lcd_print(3, 2, FONT_1X,(unsigned char *)"Достигнуто");
 	Lcd_print(2, 3, FONT_1X,(unsigned char *)"ограничение");
+}
+
+void Screen::AnableWhileDriving(){
+	Lcd_print(2, 1, FONT_1X,(unsigned char *)"Недоступно");
+	Lcd_print(2, 2, FONT_1X,(unsigned char *)" во время");
+	Lcd_print(2, 3, FONT_1X,(unsigned char *)" движения");
 }

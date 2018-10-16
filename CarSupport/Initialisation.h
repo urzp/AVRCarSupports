@@ -98,6 +98,7 @@ void Initialisation(){
 	carrage.OnOffMalfunction = eeprom_read_byte(&OnOffMalfunction);
 	
 	Lcd_init(carrage.LCD_contrast);
+
 }
 
 #endif /* INITIALISATION_H_ */

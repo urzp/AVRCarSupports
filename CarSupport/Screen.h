@@ -58,6 +58,7 @@ private:
 	void MessageGetMalfuction();
 	void MessageNoAnySelected();
 	void MessageGetLimits();
+	void AnableWhileDriving();
 }; //Main_Screen
 
 #endif //__MAIN_SCREEN_H__

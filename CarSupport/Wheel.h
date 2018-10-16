@@ -46,6 +46,7 @@ public:
 	void SetLimitsSetHight();
 	bool Up(float step);
 	bool Down(float step);
+	bool oldHightUpdate();
 	bool IsChanchedHight(float sensitive);
 	void Select();
 	void initialHight();

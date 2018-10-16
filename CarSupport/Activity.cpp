@@ -219,6 +219,8 @@ bool Activity::Main_Screen_Move(Panel &panel, Carrage &carrage){
 }
 
 bool Activity::Adjusting_Carrage(Panel &panel, Carrage &carrage){
+	carrage.ControlMalfinction();
+	if(carrage.caragemove){Statment=SCREEN_MESSAGE; TypeMessage = MESSAGE_ANEBLE_WHILE_DRIVING;return false;}
 	int pressed = panel.Pressed(100);
 	if (pressed == B_W_UP_||pressed == B_W_DOWN){ForceMove(carrage, pressed);return false;}
 	if (pressed == B_NOTHING ){return false;}
@@ -405,6 +407,7 @@ bool Activity::Errors(Panel &panel, Carrage &carrage){
 	if (pressed == B_W_DOWN){Statment=SCREEN_MAIN;Cursor = MENU;return false;}
 	if (pressed == B_NOTHING ){return false;}
 	if(pressed == B_OK___&&Cursor==ERRORS_RESET){carrage.errorsReset();return false;}
+	if(pressed == B_RIGHT&&Cursor==ERRORS_RESET){carrage.errorsReset();return false;}
 	if(pressed == B_OK___&&Cursor==ERRORS_EXIT){Statment = SCREEN_MENU;Cursor=SETTINGS_RESET_ERRORS;return false;}
 	if(Cursor==ERRORS_EXIT_DISPLAY&&pressed==B_OK___){Statment = SCREEN_MAIN;Cursor=MENU;SettingsSaveFlag = true;return false;}
 	switch(pressed){
@@ -521,6 +524,7 @@ bool Activity::Message(Panel &panel,Carrage &carrage){
 		case(MESSAGE_GET_MALFUCTION):MessageGetMalfunction(panel, carrage);break;
 		case(MESSAGE_NO_ANY_SELECTED):_delay_ms(1500);Statment=SCREEN_MAIN;Cursor = MENU;break;
 		case(MESSAGE_GET_LIMITS):_delay_ms(1500);Statment=SCREEN_LIMITS;Cursor=LIMITS_MIN;break;
+		case(MESSAGE_ANEBLE_WHILE_DRIVING):_delay_ms(1500);Statment=SCREEN_MAIN;Cursor = MENU;break;
 	}
 }
 
@@ -537,7 +541,8 @@ bool Activity::MessageGetMalfunction(Panel &panel,Carrage &carrage){
 	if (!(pressed == B_NOTHING)){carrage.flagNewMalfuction=false;Statment=SCREEN_SET_ERRORS;Cursor=ERRORS_RESET;}
 }
 
-void Activity::ForceMove(Carrage &carrage, int derection){
+bool Activity::ForceMove(Carrage &carrage, int derection){
+	if(carrage.caragemove){Statment=SCREEN_MESSAGE; TypeMessage = MESSAGE_ANEBLE_WHILE_DRIVING;return false;}
 	if(!MessageMoveMalfunctionReaded){
 		if(carrage.IfSelectetMalfuction()){Statment=SCREEN_MESSAGE; TypeMessage = MESSAGE_SELECT_MALFUCTION;};
 	}

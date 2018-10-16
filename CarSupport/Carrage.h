@@ -53,6 +53,7 @@ public:
 	void SetLimits();
 	void CheckLimitsSetHight();
 	void Ajustment(Panel &panel);
+	void oldHightUpdate();
 	void test();
 	bool chechAll();
 	bool chechWheelsBefore();

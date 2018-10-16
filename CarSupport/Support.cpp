@@ -112,7 +112,7 @@ void Support::ForceMove(int ms_time, int DerWheel_1, int DerWheel_2,int DerWheel
 		write_i2c((I2C_ADR_PCF8574<<1), data);
 		for (i=0;i<ms_time;i++){_delay_ms(1);}
 		write_i2c((I2C_ADR_PCF8574<<1), 0x00);
-		//_delay_ms(1);
+		_delay_ms(50);
 	}
 	
 }

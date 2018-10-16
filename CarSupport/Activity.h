@@ -21,6 +21,7 @@ const int MESSAGE_SELECT_MALFUCTION = 1;
 const int MESSAGE_GET_MALFUCTION = 2;
 const int MESSAGE_NO_ANY_SELECTED = 3;
 const int MESSAGE_GET_LIMITS = 400;
+const int MESSAGE_ANEBLE_WHILE_DRIVING = 401;
 
 const int MENU = 0;
 const int LEFTUP = 1;
@@ -174,7 +175,7 @@ public:
 	float Get_val_step();
 	void Save();
 	void Set();
-	void ForceMove(Carrage &carrage, int derection);
+	bool ForceMove(Carrage &carrage, int derection);
 	void GoToSetPosiions();
 	
 protected:
