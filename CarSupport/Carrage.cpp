@@ -30,7 +30,7 @@ void Carrage::Init(){
 	Wheel_4.Init(4);
 	support.Init();
 	_step =1;
-	chechAll();
+	//chechAll();
 }
 
 bool Carrage::IfForseAdjast(){
@@ -258,15 +258,25 @@ void Carrage::Fast_print_LSD_hight(Wheel wheel){
 	Lcd_update();
 }
 
-
+bool Carrage::IsDriving(){
+		Wheel_1.IsChanchedHight(sensitivityMove);
+		Wheel_2.IsChanchedHight(sensitivityMove);
+		Wheel_3.IsChanchedHight(sensitivityMove);
+		Wheel_4.IsChanchedHight(sensitivityMove);
+		if((Wheel_1.move|Wheel_2.move|Wheel_3.move|Wheel_4.move)){
+			if(!caragemove){countDriving++;countNotDriving=0;}
+		}else{
+			if(caragemove){countDriving=0;countNotDriving++;}
+		}
+		if(countDriving>10){caragemove = true;}
+		if(countNotDriving>100){caragemove = false;}
+		
+		return caragemove;
+}
 
 void Carrage::ControlMalfinction(){
-	
-	Wheel_1.IsChanchedHight(sensitivityMove);
-	Wheel_2.IsChanchedHight(sensitivityMove);
-	Wheel_3.IsChanchedHight(sensitivityMove);
-	Wheel_4.IsChanchedHight(sensitivityMove);
-	caragemove = (Wheel_1.move|Wheel_2.move|Wheel_3.move|Wheel_4.move);
+	IsDriving();
+
 	if (OnOffMalfunction){
 		if (caragemove){
 			if(Wheel_1.ControlMalfinction(countToMalfunctionLimit)){flagNewMalfuction = true;};

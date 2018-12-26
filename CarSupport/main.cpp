@@ -34,7 +34,7 @@ int main(void)
 		IFCarrageSetStateToEEMEM(activity.SavePosition);
 		SettingsSave(activity.SettingsSaveFlag);
 		activity.SettingsSaveFlag = false;
-		_delay_ms(50);
+		_delay_ms(10);
     }
 }
 

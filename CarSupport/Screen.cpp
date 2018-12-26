@@ -274,7 +274,7 @@ void Screen::Draw_Wheel(Wheel wheel, bool moving){
 	if(moving){
 		//moving
 		i_effects++;
-		if (i_effects>30){i_effects=0;}
+		if (i_effects>300){i_effects=0;}
 		if(wheel.malfuction){
 			Char_wheel[0] = 0x8C;
 			Char_wheel[1] = 0x8D;
@@ -283,14 +283,14 @@ void Screen::Draw_Wheel(Wheel wheel, bool moving){
 			Char_wheel[4] = 0x90;
 			Char_wheel[5] = 0x91;
 		}else{
-			if(i_effects<10){
+			if(i_effects<100){
 				Char_wheel[0] = 0xAF;
 				Char_wheel[1] = 0xB0;
 				Char_wheel[2] = 0xB1;
 				Char_wheel[3] = 0xB2;
 				Char_wheel[4] = 0xB3;
 				Char_wheel[5] = 0xB4;
-			}else if (i_effects<20){
+			}else if (i_effects<200){
 				Char_wheel[0] = 0xB5;
 				Char_wheel[1] = 0xB6;
 				Char_wheel[2] = 0xB7;

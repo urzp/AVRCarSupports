@@ -32,6 +32,7 @@ public:
 	bool flagNewMalfuction;
 	bool flagGetLimits;
 	byte LCD_contrast;
+	int countDriving,countNotDriving;
 protected:
 private:
 	int sort_array[4];
@@ -59,6 +60,7 @@ public:
 	bool chechWheelsBefore();
 	void Fast_print_LSD_hight(Wheel wheel);
 	int  getStep();
+	bool IsDriving();
 	void ControlMalfinction();
 	void ResecCountMalfinction();
 	void switch_malfaction();
